@@ -1,0 +1,31 @@
+{
+  "name": "agentic-workflow-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnnyMahoney/Agentic-Workflow-Engine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JohnnyMahoney/Agentic-Workflow-Engine/issues"
+  },
+  "homepage": "https://github.com/JohnnyMahoney/Agentic-Workflow-Engine#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0",
+    "playwright": "^1.64.1",
+    "stagehand-claude-sdk": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
