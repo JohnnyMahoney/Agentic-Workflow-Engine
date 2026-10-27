@@ -1,0 +1,17 @@
+{
+  "name": "nested",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "observedWords": [
+      "LEFT",
+      "MIDDLE",
+      "RIGHT",
+      "BOTTOM"
+    ],
+    "passed": true
+  },
+  "finalText": "I read the live page at https://the-internet.herokuapp.com/nested_frames. The frame contents came from the page text and the accessibility tree, and the screenshot matches them.\n\n**Top child frames, left to right**\n- Left frame (`/frame_left`): **LEFT**\n- Middle frame (`/frame_middle`): **MIDDLE**\n- Right frame (`/frame_right`): **RIGHT**\n\n**Bottom frame**\n- Bottom frame (`/frame_bottom`): **BOTTOM**",
+  "actionCount": 4
+}

@@ -1,0 +1,11 @@
+{
+  "name": "challenging",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "passed": false,
+    "completed": false
+  },
+  "error": "CDP websocket failed to open",
+  "actionCount": 0
+}

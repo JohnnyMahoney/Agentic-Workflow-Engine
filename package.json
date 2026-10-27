@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "typecheck": "tsc --noEmit",
+    "build": "tsc",
+    "spike:browser-use": "npm run build && node --env-file=.env dist/spike/browser-use.js"
   },
   "repository": {
     "type": "git",
@@ -13,7 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/JohnnyMahoney/Agentic-Workflow-Engine/issues"
   },
@@ -25,7 +27,6 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
-    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
 }

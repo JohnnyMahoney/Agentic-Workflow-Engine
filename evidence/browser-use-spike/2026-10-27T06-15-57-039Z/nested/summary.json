@@ -1,0 +1,17 @@
+{
+  "name": "nested",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "observedWords": [
+      "LEFT",
+      "MIDDLE",
+      "RIGHT",
+      "BOTTOM"
+    ],
+    "passed": true
+  },
+  "finalText": "I opened the live page and read the frame contents. These are the exact words in each frame:\n\n- **Top left frame:** \"LEFT\" (from `/frame_left`)\n- **Top middle frame:** \"MIDDLE\" (from `/frame_middle`)\n- **Top right frame:** \"RIGHT\" (from `/frame_right`)\n- **Bottom frame:** \"BOTTOM\" (from `/frame_bottom`)\n\nThe accessibility-tree read timed out on two of the frames (frame-1 and frame-2). The page-text extraction returned the text of all four frames, and a screenshot showed the same four words in the same positions.",
+  "actionCount": 4
+}

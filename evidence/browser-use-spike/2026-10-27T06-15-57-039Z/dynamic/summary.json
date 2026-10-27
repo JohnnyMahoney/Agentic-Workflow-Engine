@@ -1,0 +1,14 @@
+{
+  "name": "dynamic",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "clicked": true,
+    "resultObservedAfterClick": true,
+    "reportedValue": true,
+    "passed": true
+  },
+  "finalText": "I opened Dynamic Loading example 2 and clicked **Start**. I waited 6 seconds, then read the page text and took a screenshot. Both showed the rendered result:\n\n**Hello World!**",
+  "actionCount": 6
+}
