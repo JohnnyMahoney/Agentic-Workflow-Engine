@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "inputs": {
+    "rowKey": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "steps": [
+    {
+      "id": "open-page",
+      "action": "navigate",
+      "url": "https://the-internet.herokuapp.com/challenging_dom"
+    },
+    {
+      "id": "read-cell",
+      "action": "readTableCell",
+      "target": {
+        "firstCell": {
+          "input": "rowKey"
+        },
+        "columnHeader": "Diceret"
+      },
+      "saveAs": "cellValue"
+    },
+    {
+      "id": "click-row-link",
+      "action": "clickRowLink",
+      "target": {
+        "firstCell": {
+          "input": "rowKey"
+        },
+        "role": "link",
+        "name": "edit"
+      }
+    }
+  ],
+  "outputs": {
+    "cellValue": {
+      "type": "string",
+      "source": {
+        "savedValue": "cellValue"
+      }
+    },
+    "url": {
+      "type": "string",
+      "source": {
+        "page": "url"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "nonEmptyOutput",
+      "output": "cellValue"
+    },
+    {
+      "kind": "urlHash",
+      "value": "#edit"
+    }
+  ]
+}

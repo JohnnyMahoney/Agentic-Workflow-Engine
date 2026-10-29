@@ -1,0 +1,10 @@
+{
+  "status": "not_found",
+  "sessionId": "ffb90a16-f71b-42b6-be73-c48baf41a5c9",
+  "inputs": {
+    "rowKey": "Iuvaret42"
+  },
+  "stepId": "read-cell",
+  "category": "business_outcome",
+  "message": "No table row with first cell \"Iuvaret42\"."
+}

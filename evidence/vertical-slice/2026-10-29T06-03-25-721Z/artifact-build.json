@@ -1,0 +1,9 @@
+{
+  "source": "evidence/vertical-slice/2026-10-29T06-03-25-721Z/discovery/challenging/events.jsonl",
+  "eventsSha256": "475c8f215f809ed8f6be1e862141972b2230d14495465645ca33a9faacff3d43",
+  "discoveryAction": 4,
+  "discoveredRowKey": "Iuvaret4",
+  "discoveredValue": "Phaedrum4",
+  "columnHeader": "Diceret",
+  "postClickUrl": "https://the-internet.herokuapp.com/challenging_dom#edit"
+}

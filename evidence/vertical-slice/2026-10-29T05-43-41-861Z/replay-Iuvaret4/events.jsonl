@@ -1,0 +1,11 @@
+{"at":"2026-10-29T05:48:14.315Z","kind":"replay_start","sessionId":"c0c9e585-29c4-4a4a-918b-35e374ac8160","artifactPath":"evidence/vertical-slice/2026-10-29T05-43-41-861Z/artifact.json","schemaVersion":"1.0","inputs":{"rowKey":"Iuvaret4"},"llmCalls":0}
+{"at":"2026-10-29T05:48:14.419Z","kind":"step_start","stepId":"open-page","action":"navigate"}
+{"at":"2026-10-29T05:48:15.967Z","kind":"step_end","stepId":"open-page","url":"https://the-internet.herokuapp.com/challenging_dom","status":200}
+{"at":"2026-10-29T05:48:15.967Z","kind":"step_start","stepId":"read-cell","action":"readTableCell"}
+{"at":"2026-10-29T05:48:15.997Z","kind":"step_end","stepId":"read-cell","rowKey":"Iuvaret4","columnHeader":"Diceret","value":"Phaedrum4"}
+{"at":"2026-10-29T05:48:15.997Z","kind":"step_start","stepId":"click-row-link","action":"clickRowLink"}
+{"at":"2026-10-29T05:48:16.001Z","kind":"before_click","stepId":"click-row-link","rowKey":"Iuvaret4","linkName":"edit"}
+{"at":"2026-10-29T05:48:16.029Z","kind":"step_end","stepId":"click-row-link","url":"https://the-internet.herokuapp.com/challenging_dom#edit"}
+{"at":"2026-10-29T05:48:16.030Z","kind":"checkpoint","checkpoint":{"kind":"nonEmptyOutput","output":"cellValue"},"passed":true}
+{"at":"2026-10-29T05:48:16.030Z","kind":"checkpoint","checkpoint":{"kind":"urlHash","value":"#edit"},"passed":true}
+{"at":"2026-10-29T05:48:16.060Z","kind":"replay_end","status":"success","sessionId":"c0c9e585-29c4-4a4a-918b-35e374ac8160","inputs":{"rowKey":"Iuvaret4"},"outputs":{"cellValue":"Phaedrum4","url":"https://the-internet.herokuapp.com/challenging_dom#edit"}}

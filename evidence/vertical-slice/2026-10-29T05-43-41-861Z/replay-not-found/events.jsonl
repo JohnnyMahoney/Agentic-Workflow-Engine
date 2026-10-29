@@ -1,0 +1,5 @@
+{"at":"2026-10-29T05:48:30.689Z","kind":"replay_start","sessionId":"ffb90a16-f71b-42b6-be73-c48baf41a5c9","artifactPath":"evidence/vertical-slice/2026-10-29T05-43-41-861Z/artifact.json","schemaVersion":"1.0","inputs":{"rowKey":"Iuvaret42"},"llmCalls":0}
+{"at":"2026-10-29T05:48:30.787Z","kind":"step_start","stepId":"open-page","action":"navigate"}
+{"at":"2026-10-29T05:48:33.058Z","kind":"step_end","stepId":"open-page","url":"https://the-internet.herokuapp.com/challenging_dom","status":200}
+{"at":"2026-10-29T05:48:33.058Z","kind":"step_start","stepId":"read-cell","action":"readTableCell"}
+{"at":"2026-10-29T05:48:33.075Z","kind":"replay_end","status":"not_found","sessionId":"ffb90a16-f71b-42b6-be73-c48baf41a5c9","inputs":{"rowKey":"Iuvaret42"},"stepId":"read-cell","category":"business_outcome","message":"No table row with first cell \"Iuvaret42\"."}

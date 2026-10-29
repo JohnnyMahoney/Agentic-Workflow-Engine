@@ -6,7 +6,9 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "tsc",
-    "spike:browser-use": "npm run build && node --env-file=.env dist/spike/browser-use.js"
+    "spike:browser-use": "npm run build && node --env-file=.env dist/spike/browser-use.js",
+    "slice:discover": "npm run build && node --env-file=.env dist/slice/discover.js",
+    "slice:replay": "npm run build && node dist/slice/replay.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^1.1.0",
     "playwright": "^1.64.1",
-    "stagehand-claude-sdk": "^0.1.0"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

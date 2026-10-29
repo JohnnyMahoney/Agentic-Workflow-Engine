@@ -18,7 +18,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
         const parsed = new URL(url.includes("://") ? url : `https://${url}`);
         if (parsed.protocol !== "https:" || parsed.hostname !== host) throw new ToolError(`Navigation outside https://${host} is blocked.`);
       },
-      // Only these members are implemented for the three spike scenarios.
+      // Enable only the browser members supported by this web discovery driver.
       configs: Object.fromEntries([
         "zoom", "right_click", "middle_click", "double_click", "triple_click", "hover", "left_click_drag",
         "left_mouse_down", "left_mouse_up", "mouse_move", "scroll", "scroll_to", "type", "key", "hold_key",
@@ -83,7 +83,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
           const control = controls[index]!;
           if (!control.visible || (input.filter === "interactive" && !control.label)) continue;
           const ref = `ref_${++this.nextRef}`;
-          await frame.locator("a, button, input, select, textarea, [role=button], [role=link]").nth(index).evaluate((element, id) => element.setAttribute("data-spike-ref", id), ref);
+          await frame.locator("a, button, input, select, textarea, [role=button], [role=link]").nth(index).evaluate((element, id) => element.setAttribute("data-browser-ref", id), ref);
           this.refs.set(ref, frame);
           const role = control.tag === "a" ? "link" : control.tag === "button" ? "button" : control.tag;
           lines.push(`${role} "${control.label}" [${ref}]${control.row ? ` row "${control.row}"` : ""}`);
@@ -112,7 +112,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
     else {
       const frame = this.refs.get(input.target.ref);
       if (!frame) throw new ToolError(`Unknown or stale element reference: ${input.target.ref}`);
-      await frame.locator(`[data-spike-ref="${input.target.ref}"]`).click();
+      await frame.locator(`[data-browser-ref="${input.target.ref}"]`).click();
     }
     this.refs.clear();
   }
@@ -129,13 +129,15 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
           href: element instanceof HTMLAnchorElement ? element.getAttribute("href") : null,
           rowText: row?.innerText.replace(/\s+/g, " ").trim() ?? null,
           rowFirstCell: row?.querySelector("td")?.textContent?.trim() ?? null,
+          rowCells: row ? Array.from(row.querySelectorAll("td"), (cell) => cell.textContent?.trim() ?? "") : null,
+          columnHeaders: row ? Array.from(row.closest("table")?.querySelectorAll("thead th") ?? [], (cell) => cell.textContent?.trim() ?? "") : null,
           replayReady: false,
         };
       }, { x: target.x, y: target.y });
     }
     const frame = this.refs.get(target.ref);
     if (!frame) return null;
-    return frame.locator(`[data-spike-ref="${target.ref}"]`).evaluate((element) => {
+    return frame.locator(`[data-browser-ref="${target.ref}"]`).evaluate((element) => {
       const html = element as HTMLElement;
       const row = html.closest("tr");
       return {
@@ -144,9 +146,19 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
         href: html instanceof HTMLAnchorElement ? html.getAttribute("href") : null,
         rowText: row?.innerText.replace(/\s+/g, " ").trim() ?? null,
         rowFirstCell: row?.querySelector("td")?.textContent?.trim() ?? null,
+        rowCells: row ? Array.from(row.querySelectorAll("td"), (cell) => cell.textContent?.trim() ?? "") : null,
+        columnHeaders: row ? Array.from(row.closest("table")?.querySelectorAll("thead th") ?? [], (cell) => cell.textContent?.trim() ?? "") : null,
         replayReady: false,
       };
     });
+  }
+
+  currentUrl(): string {
+    return this.page.url();
+  }
+
+  async waitForUrlHash(timeout = 3000): Promise<void> {
+    await this.page.waitForURL((url) => Boolean(url.hash), { timeout });
   }
 
   protected override async screenshot(_context: BetaToolsetCallContext, input: BetaBrowserScreenshotInput) {
