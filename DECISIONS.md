@@ -1,7 +1,7 @@
 # Engineering Decisions
 
 This records the engineering choices behind the current web slice. The
-[assignment](assignment/interface-ai-assignment.pdf) defines the requirements.
+interface.ai assignment defines the requirements.
 
 | Area | Current choice | Reason and limit |
 | --- | --- | --- |

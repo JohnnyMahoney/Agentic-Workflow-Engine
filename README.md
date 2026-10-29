@@ -1,7 +1,7 @@
 # Agentic Workflow Engine
 
 This repository implements a web discovery and deterministic replay slice for the
-[interface.ai assignment](assignment/interface-ai-assignment.md). Claude Browser Use
+interface.ai assignment. Claude Browser Use
 explores a live page; the recorded run produces a versioned JSON artifact that
 Playwright replays in a fresh browser session without Claude.
 
