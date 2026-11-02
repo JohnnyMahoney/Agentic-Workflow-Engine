@@ -6,6 +6,24 @@ A TypeScript/Node.js MVP for turning UI-only business tasks into reviewable,
 parameterized automation. Claude explores a real application; deterministic
 validation gates the saved workflow that Playwright executes.
 
+## Our Banking Sandbox and verified scenarios
+
+We built a [synthetic Banking Sandbox](banking-sandbox/README.md) with three UIs
+for the same member-service tasks: Modern forms, Legacy tables/iframes, and an
+intentionally Awkward interface with ambiguous controls and delayed values.
+
+Saved end-to-end evidence demonstrates successful member lookups on all three
+surfaces and verified Youth sub-account creation on Modern and Awkward. Legacy
+creation exposed a real fixture defect; it is not counted as a successful creation.
+See the [test results](evidence/e2e-round-2/README.md) for exact outcomes and retries.
+
+| Modern | Legacy | Awkward |
+| --- | --- | --- |
+| ![Modern member details](docs/assets/sandbox-modern.png) | ![Legacy member details inside an iframe](docs/assets/sandbox-legacy.png) | ![Awkward member details with a valid zero balance](docs/assets/sandbox-awkward.png) |
+
+*Screenshots show the running bundled UI with synthetic data, captured for this
+README. They are UI previews, not new Claude test runs. Click an image to enlarge.*
+
 ## Architecture
 
 ```mermaid
