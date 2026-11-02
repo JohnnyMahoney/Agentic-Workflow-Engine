@@ -7,5 +7,6 @@
 5. [Legacy UI M-1009 Youth](test-5-legacy-M1009-youth/README.md): ACCEPTED by the administrator for correctly detecting a manually reproduced Legacy UI defect. Actual UI observation recorded VALIDATION_ERROR. Account creation, Compilation and Replay did not complete.
 6. [Awkward UI M-1010 Youth](test-6-awkward-M1010-youth/README.md): SUCCESS after safe recovered-failure admission and saved-evidence Compilation. Failed action 7 preserved in audit and excluded from artifact. Replay and actual sandbox state verify exactly M-1010-S1 (Youth); administrator acceptance pending.
 
-Each test runs new Claude Discovery, separate Claude Compilation, deterministic
-Evidence Validation, and fresh-session Playwright Replay without LLM calls.
+The intended pipeline is new Claude Discovery, separate Claude Compilation,
+Evidence Validation and fresh-session Playwright Replay without LLM calls. Some
+cases stopped early or required saved-evidence recompilation, as noted above.

@@ -1,55 +1,88 @@
 # Agentic Workflow Engine
 
-This repository implements a web discovery and deterministic replay slice for the
-interface.ai assignment. Claude Browser Use
-explores a live page; the recorded run produces a versioned JSON artifact that
-Playwright replays in a fresh browser session without Claude. Capability v2 adds a
-separate Claude compilation call and deterministic validation against recorded evidence.
+Discover once. Compile a typed capability. Replay deterministically without an LLM.
 
-## Run Capability v2
+A TypeScript/Node.js MVP for turning UI-only business tasks into reviewable,
+parameterized automation. Claude explores a real application; deterministic
+validation gates the saved workflow that Playwright executes.
 
-Use Node.js 22.18+ and put `ANTHROPIC_API_KEY=...` in a root `.env` file. The file
-is ignored by Git.
+## Architecture
+
+```mermaid
+flowchart LR
+  D[Claude Discovery] --> A[Discovery Acceptance]
+  A --> C[Separate Claude Compilation]
+  C --> V[Evidence Validator]
+  V --> K[Versioned Capability Artifact]
+  K --> R[Deterministic Playwright Replay]
+  D --> E[Recorded Evidence]
+  E --> C
+  E --> V
+```
+
+Discovery admission establishes eligibility, not business success. Compilation
+proposes JSON; Zod, semantic checks and recorded-state validation decide whether
+to save it. Replay has no model in its decision loop. See [decisions](DECISIONS.md)
+and the [design report](REPORT.md).
+
+## Current status — work in progress
+
+| Assignment area | Current scope |
+| --- | --- |
+| §3.1 Discovery | Implemented/tested with genuine Claude runs on Modern, Legacy and Awkward web UIs. |
+| §3.2 Capability | Implemented/tested: versioned schema, explicit inputs, targets, outputs and checkpoints. |
+| §3.3 Replay | Implemented/tested for this web MVP: parameterization, output readiness, typed outcomes and bounded recovery. Evidence includes failed runs and subsequent fixes; not universal reliability or final assignment acceptance. |
+| §3.4 Safety | Partial: origin/action policy and conservative write handling; production redaction and comprehensive risky-action controls remain. |
+| §3.5 Evidence | Structured logs, snapshots, validation reports and failure screenshots available for synthetic fixtures. |
+| §3.6 Handoff | Not implemented: no same-session human takeover/resume. |
+| §3.7 Heterogeneity | Web adapter seam and three web surfaces demonstrated; desktop and tenant reuse remain design work. |
+
+## Prerequisites and setup
+
+Node.js 22.18+ (verification environment: 24.14.0), npm and Chromium are required.
+Dependencies are pinned by package-lock.json: Anthropic SDK, Playwright, Zod and
+TypeScript. Commands below use Windows PowerShell; on other shells use npm/npx
+instead of npm.cmd/npx.cmd and adapt variable assignment.
 
 ```powershell
 npm.cmd ci
 npx.cmd playwright install chromium
-$run = Join-Path 'evidence/capability-v2' (Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')
-npm.cmd run capability:discover -- --request examples/challenging.json --out "$run/discovery"
-npm.cmd run capability:compile -- --evidence "$run/discovery/discovery-v2.json" --out "$run/compilation"
-npm.cmd run capability:replay -- --artifact "$run/compilation/artifact.json" --input rowKey=Iuvaret7 --out "$run/replay"
+# Once, only if .env does not already exist:
+Copy-Item .env.example .env
 ```
 
-Each output directory must be empty. Discovery and compilation load `.env`;
-validation and replay do not call Claude. The [implementation guide](docs/capability-v2.md)
-includes both workflows, compilation retry, offline validation, and limitations.
+Set ANTHROPIC_API_KEY in the root .env for Discovery and Compilation. Never commit
+it. Browserbase is not needed for the local driver. Optional CLAUDE_MODEL overrides
+the code's tested default; model access depends on your Anthropic account.
+Serving the sandbox, validation, tests and Replay require no API key or model calls.
 
-```powershell
-npm.cmd test
-npm.cmd run typecheck
-```
-
-See [engineering decisions](DECISIONS.md) and [v2 evidence](evidence/capability-v2/README.md)
-for the results. The original `slice:discover` and `slice:replay` commands and
-[v1 evidence](evidence/vertical-slice/README.md) remain available. The earlier
-[browser-use spike evidence](evidence/browser-use-spike/) covers three discovery cases.
-
-## Run the bundled Banking Sandbox
-
-The original Modern, Legacy and Awkward test UIs are included in
-[banking-sandbox/](banking-sandbox/INTEGRATION.md), including the Legacy iframe.
-Start the fixture from the repository root:
+## Launch the Banking Sandbox
 
 ```powershell
 npm.cmd run sandbox:serve
 ```
 
-Open http://localhost:8080/ (`modern.html`, `legacy/index.html`, `awkward.html`).
-The server uses Node.js with no additional dependencies. If port 8080 is already
-occupied by the Desktop copy, stop that server before starting this one. Serving
-does not reset saved browser state. The known Legacy selection defect is preserved.
+Open http://localhost:8080/: [Modern](http://localhost:8080/modern.html),
+[Legacy](http://localhost:8080/legacy/index.html), or
+[Awkward](http://localhost:8080/awkward.html). Stop any existing server on 8080 first.
+This Node server serves only the bundled fixture; it does not reset browser data.
+Fresh automation contexts have separate localStorage from your existing browser.
+See [sandbox setup and known defects](banking-sandbox/INTEGRATION.md).
 
-In another terminal, run a complete member-balance demo after the setup above:
+Optional Python alternative, from the actual fixture directory (do not run both):
+
+```powershell
+cd banking-sandbox
+python -m http.server 8080 --bind 127.0.0.1
+```
+
+Return to the repository root for the commands below.
+
+## Run the full pipeline
+
+With the sandbox running, this request finds M-1005 and returns member ID,
+account type and balance. It supplies a goal and bindings, not steps or selectors.
+Discovery and Compilation make paid API calls. Compilation includes validation.
 
 ```powershell
 $run = Join-Path 'evidence/banking-demo' (Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')
@@ -58,56 +91,54 @@ npm.cmd run capability:compile -- --evidence "$run/discovery/discovery-v2.json" 
 npm.cmd run capability:replay -- --artifact "$run/compilation/artifact.json" --input memberId=M-1005 --policy examples/banking/policy.json --out "$run/replay"
 ```
 
-This demo requests member ID, account type and balance. Discovery and Compilation
-use the API key in `.env`; Replay uses the saved artifact without an LLM. See the
-[integration guide](banking-sandbox/INTEGRATION.md) for alternate ports, storage
-behavior and the fixture's limitations.
+Run each stage only if the previous one succeeds. Output directories must be empty.
+A rejected candidate does not produce an artifact. Preserve its evidence and
+[retry compilation with feedback](docs/capability-v2.md), without repeating Discovery.
 
-## Runtime verification (§3.3)
+For a demo **without model access**, replay the saved genuine Modern artifact:
 
 ```powershell
+$run = Join-Path 'evidence/reviewer-replay' (Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')
+npm.cmd run capability:replay -- --artifact evidence/e2e-round-2/test-1-modern-M1005/compilation/artifact.json --input memberId=M-1005 --policy examples/banking/policy.json --out "$run"
+```
+
+Replay writes result.json and events.jsonl, plus failure diagnostics when available.
+Non-SUCCESS outcomes return a nonzero CLI exit code; inspect status and code.
+OUTCOME_UNKNOWN means reconcile actual state before attempting a new write.
+
+## Tests
+
+```powershell
+npm.cmd run build
+npm.cmd run typecheck
 npm.cmd test
-# In another terminal: npm.cmd run sandbox:serve
+# Keep the sandbox running in another terminal:
 npm.cmd run test:banking
 ```
 
-Banking tests use fresh browser contexts and hand-authored runtime fixtures.
-They do not reset your browser state or call Claude. Override the application
-URL with `BANKING_SANDBOX_URL`; evidence defaults to `evidence/runtime-3-3/<timestamp>/`.
-See [saved results](evidence/runtime-3-3/README.md) and [runtime contract](docs/runtime-3-3.md).
+The first suite uses synthetic pages/mocks and saved evidence. The banking suite
+runs hand-authored runtime fixtures against real browser UI in isolated contexts;
+it is not Claude Discovery. It writes evidence/runtime-3-3/<timestamp>/.
+Set BANKING_SANDBOX_URL and RUNTIME_EVIDENCE_DIR to override its URL and output.
+[Cleanup verification](docs/reviewer-readiness.md) records actual results.
 
-Replay writes `result.json`, `events.jsonl`, and a failure screenshot when available.
-For example, an unconfirmed write returns:
+## Evidence
 
-```json
-{
-  "status": "OUTCOME_UNKNOWN",
-  "code": "WAIT_TIMEOUT",
-  "stepId": "waitConfirmation",
-  "retryable": false,
-  "reconciliationRequired": true,
-  "evidenceRef": "<run>/events.jsonl"
-}
-```
+Start with the [reviewer evidence index](evidence/README.md): genuine lookup,
+verified account creation, a real negative replay, and regression evidence.
+The [six-case index](evidence/e2e-round-2/README.md) distinguishes successful
+pipelines, recompilations and the administrator-confirmed Legacy UI defect.
+Historical failures remain unchanged and are not counted as successful runs.
 
-Do not rerun creation after this result: verify the actual state first. The CLI
-returns a nonzero exit code for every non-`SUCCESS` result, including a detected
-business outcome; callers should inspect `status` and `code`.
-New Claude Discovery/Compilation/Replay acceptance remains a separate test.
+## Limitations and next steps
 
-New compilations emit Capability v2.1 with a readiness condition and timeout for
-every extracted output. Replay waits for a valid value and saves that exact sample;
-permanent invalid values return `OUTPUT_VALIDATION_TIMEOUT`. Existing v2.0 artifacts
-remain readable but report `outputReadiness: legacy-unverified` when checks are absent.
-See [output readiness evidence](evidence/output-readiness/README.md) and the
-[contract details](docs/output-readiness.md). Run the regression tests with `npm.cmd test`.
+- Synthetic/public test data only; DOM, screenshots and outputs are not fully PII-redacted.
+- Same-session human control transfer is the next core gap; failure currently closes the session.
+- Linear workflows cannot safely express the existing-account conditional branch.
+- v2.0 artifacts remain compatible but may report legacy-unverified output readiness;
+  v2.1 adds declared readiness checks. Sparse evidence cannot prove all future states.
+- CSS/role/frame strategies are web-specific. No desktop adapter or tenant override system exists.
+- The Legacy fixture has a known broken account-type control; Awkward omits primary account type.
 
-`extract` also supports `property: selectedOptionLabel` on a native single select;
-the omitted property retains text extraction. This reads the UI selection, while
-post-action checkpoints still establish whether creation succeeded.
-
-Discovery with a proven recovered pre-dispatch failure may now be recorded for
-Compilation. Failed actions remain in the audit, while Builder accepts only
-successful executable steps and observed goal checkpoints. Potentially modifying
-failures remain blocked. See [acceptance rules](docs/discovery-acceptance.md) and
-[recovery evidence](evidence/discovery-recovery/README.md).
+Technical detail: [contract/CLI](docs/capability-v2.md), [runtime outcomes](docs/runtime-3-3.md),
+[output readiness](docs/output-readiness.md), [Discovery acceptance](docs/discovery-acceptance.md).

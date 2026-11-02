@@ -1,0 +1,48 @@
+{"at":"2026-11-02T03:04:31.648Z","kind":"replay_start","sessionId":"4ee78120-87b7-4786-a6aa-36a5e19648ed","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T03:04:31.826Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T03:04:31.872Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T03:04:31.872Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T03:04:31.890Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T03:04:31.890Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T03:04:31.928Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T03:04:31.928Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T03:04:31.935Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.940Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.998Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.061Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.123Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.187Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.248Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T03:04:32.248Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-02T03:04:32.248Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-02T03:04:32.277Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-02T03:04:32.277Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-02T03:04:32.283Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.293Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.359Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.417Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.489Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.554Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.621Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T03:04:32.621Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-02T03:04:32.621Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-02T03:04:32.646Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T03:04:32.646Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-02T03:04:32.664Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-02T03:04:32.664Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T03:04:32.693Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T03:04:32.694Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-02T03:04:32.699Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.704Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.707Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T03:04:32.769Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.772Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T03:04:32.832Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.834Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T03:04:32.901Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.904Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T03:04:32.963Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:32.966Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T03:04:33.029Z","kind":"detector","stepId":"waitConfirmation","code":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type."}
+{"at":"2026-11-02T03:04:33.070Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T03:04:33.093Z","kind":"replay_end","status":"BUSINESS_OUTCOME","code":"VALIDATION_ERROR","sessionId":"4ee78120-87b7-4786-a6aa-36a5e19648ed","stepId":"waitConfirmation","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\reviewer-readiness\\banking\\VALIDATION_ERROR\\events.jsonl","expected":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type.","message":"Explicit UI outcome detector matched","details":{"code":"VALIDATION_ERROR","status":"BUSINESS_OUTCOME","expected":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type.","resolvesMutations":["create"],"pendingMutations":["create"],"writeDispatched":true}}

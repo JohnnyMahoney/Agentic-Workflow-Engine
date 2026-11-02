@@ -1,0 +1,17 @@
+{"at":"2026-11-02T03:04:30.969Z","kind":"replay_start","sessionId":"9f83c170-0fb9-493c-8eb9-392c8036b671","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T03:04:31.141Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T03:04:31.185Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T03:04:31.185Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T03:04:31.202Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T03:04:31.202Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T03:04:31.245Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T03:04:31.245Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T03:04:31.251Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.256Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.325Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.388Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.452Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.521Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:31.583Z","kind":"detector","stepId":"waitSearch","code":"NOT_FOUND","observed":"NOT_FOUND: No members found."}
+{"at":"2026-11-02T03:04:31.621Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T03:04:31.645Z","kind":"replay_end","status":"BUSINESS_OUTCOME","code":"NOT_FOUND","sessionId":"9f83c170-0fb9-493c-8eb9-392c8036b671","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\reviewer-readiness\\banking\\NOT_FOUND\\events.jsonl","expected":"NOT_FOUND","observed":"NOT_FOUND: No members found.","message":"Explicit UI outcome detector matched","details":{"code":"NOT_FOUND","status":"BUSINESS_OUTCOME","expected":"NOT_FOUND","observed":"NOT_FOUND: No members found.","resolvesMutations":["create"],"pendingMutations":[],"writeDispatched":false}}

@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "elapsedMs": 663,
+  "creates": 0,
+  "finalState": {
+    "mode": "SESSION_EXPIRED",
+    "auth": false,
+    "subs": {}
+  },
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "SESSION_EXPIRED",
+    "sessionId": "7f1a16e7-c76f-42a3-aca1-3af9704679f2",
+    "stepId": "waitSearch",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\reviewer-readiness\\banking\\SESSION_EXPIRED\\events.jsonl",
+    "expected": "SESSION_EXPIRED",
+    "observed": "SESSION_EXPIRED: Session expired. Please log in again.",
+    "message": "Explicit UI outcome detector matched",
+    "details": {
+      "code": "SESSION_EXPIRED",
+      "status": "HARD_FAILURE",
+      "expected": "SESSION_EXPIRED",
+      "observed": "SESSION_EXPIRED: Session expired. Please log in again.",
+      "resolvesMutations": [
+        "create"
+      ],
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

@@ -1,0 +1,32 @@
+✔ discovery form_input selects a native option and still fills text fields (478.0769ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (479.5965ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (7.443ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (495.6687ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (1915.8755ms)
+✔ builder verifies a native select's recorded chosen option (998.9098ms)
+✔ replay selects by parameterized label or value (511.3523ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1459.4915ms)
+✔ pre-dispatch guard is typed and does not modify the field (369.094ms)
+✔ admission requires safe recovery, preserves failures, and rejects uncertain writes (8.5708ms)
+✔ Builder excludes failed actions but still requires final goal evidence and all successful interactions (1702.8484ms)
+✔ legacy audit safely admits Test 6 unchanged and rejects missing or contradictory proof (9.386ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1993.0834ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (38.0255ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1343.0572ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (117.7472ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (160.6199ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (100.7771ms)
+✔ native dialog and timeout are not guessed authentication failures (57.6959ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (69.6331ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (2130.8101ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (391.4857ms)
+✔ Builder validates selectedOptionLabel from native select metadata after form_input (2054.4554ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (1393.6442ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6956.4327

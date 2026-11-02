@@ -1,0 +1,32 @@
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\happy-M1001
+✔ banking happy-M1001 (1820.9566ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\parameterized-M1002
+✔ banking parameterized-M1002 (1784.6224ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\NOT_FOUND
+✔ banking NOT_FOUND (679.2572ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\VALIDATION_ERROR
+✔ banking VALIDATION_ERROR (1448.6005ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\PERMISSION_DENIED
+✔ banking PERMISSION_DENIED (1483.7784ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\SESSION_EXPIRED
+✔ banking SESSION_EXPIRED (665.6625ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\SLOW_LOADING
+✔ banking SLOW_LOADING (4348.1167ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\TIMEOUT
+✔ banking TIMEOUT (685.2734ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\UNEXPECTED_DIALOG
+✔ banking UNEXPECTED_DIALOG (667.3893ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\AMBIGUOUS_TARGET
+✔ banking AMBIGUOUS_TARGET (282.4064ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\committed-but-unverified
+✔ banking committed-but-unverified (1766.661ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\reviewer-readiness\banking\unconfirmed-write
+✔ banking unconfirmed-write (1199.2897ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17143.7758

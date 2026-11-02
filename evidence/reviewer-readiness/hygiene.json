@@ -1,0 +1,12 @@
+{
+  "scan": "Tracked text files; recognized credential patterns only, values never printed; not a comprehensive secret/PII audit",
+  "matches": [],
+  "brokenLinks": [],
+  "trackedEnvironmentFiles": [
+    ".env.example"
+  ],
+  "historicalEvidence": "retained unchanged",
+  "architectureScreenshot": "No supplied architecture image found under docs",
+  "configuredSecretMatches": [],
+  "nonEvidenceImages": []
+}

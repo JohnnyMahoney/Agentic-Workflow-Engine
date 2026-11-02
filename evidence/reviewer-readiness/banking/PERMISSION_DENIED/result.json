@@ -1,0 +1,24 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "PERMISSION_DENIED",
+  "sessionId": "fe611f26-f09f-424c-bb15-aff2dedfdf2d",
+  "stepId": "waitConfirmation",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\reviewer-readiness\\banking\\PERMISSION_DENIED\\events.jsonl",
+  "expected": "PERMISSION_DENIED",
+  "observed": "PERMISSION_DENIED: You are not authorized to open sub-accounts.",
+  "message": "Explicit UI outcome detector matched",
+  "details": {
+    "code": "PERMISSION_DENIED",
+    "status": "HARD_FAILURE",
+    "expected": "PERMISSION_DENIED",
+    "observed": "PERMISSION_DENIED: You are not authorized to open sub-accounts.",
+    "resolvesMutations": [
+      "create"
+    ],
+    "pendingMutations": [
+      "create"
+    ],
+    "writeDispatched": true
+  }
+}

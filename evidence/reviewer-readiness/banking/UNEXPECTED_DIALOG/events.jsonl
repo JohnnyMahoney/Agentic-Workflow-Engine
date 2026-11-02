@@ -1,0 +1,18 @@
+{"at":"2026-11-02T03:04:40.280Z","kind":"replay_start","sessionId":"aecea927-2885-462a-bd62-dc660e02a31e","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T03:04:40.450Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T03:04:40.494Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T03:04:40.494Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T03:04:40.511Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T03:04:40.511Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T03:04:40.544Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T03:04:40.544Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T03:04:40.552Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.557Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.623Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.686Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.749Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.818Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.889Z","kind":"detector","stepId":"waitSearch","code":"UNEXPECTED_DIALOG","observed":"Scheduled maintenance notice.\n\nOK"}
+{"at":"2026-11-02T03:04:40.892Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T03:04:40.920Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T03:04:40.944Z","kind":"replay_end","status":"HARD_FAILURE","code":"UNEXPECTED_DIALOG","sessionId":"aecea927-2885-462a-bd62-dc660e02a31e","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\reviewer-readiness\\banking\\UNEXPECTED_DIALOG\\events.jsonl","expected":"Scheduled maintenance notice.","observed":"Scheduled maintenance notice.\n\nOK","message":"Explicit UI outcome detector matched","details":{"code":"UNEXPECTED_DIALOG","status":"HARD_FAILURE","expected":"Scheduled maintenance notice.","observed":"Scheduled maintenance notice.\n\nOK","resolvesMutations":[],"pendingMutations":[],"writeDispatched":false}}

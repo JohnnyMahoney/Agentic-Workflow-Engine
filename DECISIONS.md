@@ -214,7 +214,8 @@ extensions are not part of this select slice.
 ## D7 — Deterministic runtime outcomes and evidence-backed checkpoints
 
 **Status:** Implemented and tested for §3.3; final acceptance with a new Claude
-Discovery ? Compilation ? Replay run remains pending.
+Discovery -> Compilation -> Replay run was pending at this decision. Later E2E
+evidence and subsequent gaps/fixes are indexed in [evidence/README.md](evidence/README.md).
 
 **Decision:** Keep the existing pipeline and adapter boundary. Add `textContains`
 (literal/input) to wait/assert/checkpoints. Builder checks the cited success state

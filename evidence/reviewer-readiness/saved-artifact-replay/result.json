@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "f790243f-88ec-4b05-98db-78b04e4ebfb5",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "$50,000.00",
+    "accountType": "Term Deposit",
+    "memberId": "M-1005"
+  },
+  "outputReadiness": "legacy-unverified",
+  "retryable": false,
+  "evidenceRef": "evidence\\reviewer-readiness\\saved-artifact-replay\\events.jsonl"
+}

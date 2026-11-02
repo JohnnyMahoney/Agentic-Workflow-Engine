@@ -96,7 +96,8 @@ real banking PII/credentials are outside the supported capture mode. Evidence
 validation does not prove business intent, arbitrary-site compatibility, or future
 stability. The tested table locator still depends on its sixth column position.
 
-Runtime recovery, richer business outcomes, and human handoff remain future work.
+Runtime outcomes and bounded recovery are implemented; see [runtime contract](runtime-3-3.md).
+Real same-session human handoff remains future work.
 CSS and frame strategies do not automatically work on a desktop adapter.
 
 ## Tests
