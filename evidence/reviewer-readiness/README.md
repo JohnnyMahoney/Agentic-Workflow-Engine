@@ -9,3 +9,7 @@ No new Claude calls. Source and tests unchanged.
 - [Hygiene scan](hygiene.json): recognized credential patterns and configured secret comparison, values suppressed; local documentation links checked. Not a comprehensive secret/PII/history audit.
 
 See [cleanup disposition and limits](../../docs/reviewer-readiness.md).
+
+The reintroduced AMBIGUOUS_TARGET artifact was removed from this directory and
+preserved separately in the ignored local archive. See the retained
+[original runtime fixture](../runtime-3-3/2026-11-02-final/banking/AMBIGUOUS_TARGET/artifact.json).
