@@ -1,0 +1,31 @@
+{
+  "status": "failed",
+  "failedStage": "Claude Discovery",
+  "attempt": "discovery-3",
+  "reason": "Native Account type dropdown could not be set to Savings: two form_input failures, and coordinate clicks did not select an option.",
+  "discovery": {
+    "summary": "discovery-3/summary.json",
+    "evidence": "discovery-3/discovery-v2.json",
+    "modelCompleted": true,
+    "toolFailures": 2,
+    "actionCount": 31,
+    "failedActions": [
+      {
+        "index": 22,
+        "name": "form_input"
+      },
+      {
+        "index": 28,
+        "name": "form_input"
+      }
+    ],
+    "observedSubAccounts": "none",
+    "savingsSelected": false,
+    "subAccountCreated": false
+  },
+  "compilationStarted": false,
+  "evidenceValidationStarted": false,
+  "replayStarted": false,
+  "codeOrContractChanged": false,
+  "sandboxReset": false
+}

@@ -1,0 +1,11 @@
+﻿{
+  "status": "blocked_before_execution",
+  "stage": "Claude Discovery",
+  "cause": "Automatic approval review rejected the unguarded discovery command. It could click Continue, which creates a sub-account before the confirmation screen, contrary to the explicit no-finalization constraint.",
+  "discoveryStarted": false,
+  "compilationStarted": false,
+  "evidenceValidationStarted": false,
+  "replayStarted": false,
+  "codeChanged": false,
+  "artifactCreated": false
+}

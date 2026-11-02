@@ -8,7 +8,12 @@
     "build": "tsc",
     "spike:browser-use": "npm run build && node --env-file=.env dist/spike/browser-use.js",
     "slice:discover": "npm run build && node --env-file=.env dist/slice/discover.js",
-    "slice:replay": "npm run build && node dist/slice/replay.js"
+    "slice:replay": "npm run build && node dist/slice/replay.js",
+    "capability:discover": "npm run build && node --env-file=.env dist/capability/cli.js discover",
+    "capability:compile": "npm run build && node --env-file=.env dist/capability/cli.js compile",
+    "capability:validate": "npm run build && node dist/capability/cli.js validate",
+    "capability:replay": "npm run build && node dist/capability/cli.js replay",
+    "test": "npm run build && node --test dist/tests/*.test.js"
   },
   "repository": {
     "type": "git",

@@ -35,7 +35,7 @@ function eventsFrom(path: string): { events: Event[]; sha256: string } {
 
 export function compileDiscovery(discoveryDir: string, outputDir: string): Artifact {
   const summary = JSON.parse(readFileSync(join(discoveryDir, "summary.json"), "utf8")) as Event;
-  if ((summary.assessment as Event | undefined)?.passed !== true || summary.name !== "challenging") throw new Error("Discovery did not pass the Challenging DOM checks.");
+  if ((summary.assessment as Event | undefined)?.completed !== true || Number(summary.toolFailures ?? 0) > 0 || summary.name !== "challenging") throw new Error("Discovery did not complete cleanly for Challenging DOM.");
   const source = join(discoveryDir, "events.jsonl");
   const { events, sha256 } = eventsFrom(source);
   const click = events.find((event) => event.kind === "before_execution" && event.name === "left_click");

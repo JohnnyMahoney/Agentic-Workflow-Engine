@@ -1,0 +1,8 @@
+{
+  "status": "failure",
+  "sessionId": "2d46d9fe-ba64-41f7-bb80-58963d5ca8dc",
+  "stepId": "openMember",
+  "code": "TARGET_NOT_FOUND",
+  "message": "No strategy resolved the target",
+  "details": {}
+}

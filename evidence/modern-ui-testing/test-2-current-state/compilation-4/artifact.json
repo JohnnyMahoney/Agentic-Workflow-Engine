@@ -1,0 +1,317 @@
+{
+  "schemaVersion": "2.0",
+  "id": "ensureSavingsSubAccount",
+  "version": "1.0.0",
+  "description": "Search for a member by ID, open the customer details, open a sub-account of the requested type, confirm the result, and report the member ID, account type and outcome. The recorded path covers the case where no sub-account existed yet.",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID supplied by the user"
+    },
+    "accountType": {
+      "type": "string",
+      "required": true,
+      "description": "Sub-account type supplied by the user"
+    }
+  },
+  "targets": {
+    "searchInput": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "textbox",
+          "name": {
+            "literal": "Member ID or name"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#q",
+          "frames": []
+        }
+      ]
+    },
+    "searchButton": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Search"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#f button[type=submit]",
+          "frames": []
+        }
+      ]
+    },
+    "viewButton": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "button",
+          "frames": [],
+          "scope": {
+            "css": "tbody tr",
+            "has": {
+              "css": "td",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "openSubAccountButton": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Open sub-account"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#o",
+          "frames": []
+        }
+      ]
+    },
+    "accountTypeSelect": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "combobox",
+          "name": {
+            "literal": "Account type"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#t",
+          "frames": []
+        }
+      ]
+    },
+    "continueButton": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Continue"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#w button:not(#x)",
+          "frames": []
+        }
+      ]
+    },
+    "confirmationStatus": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out p[role=status]",
+          "frames": []
+        }
+      ]
+    },
+    "backToCustomerButton": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Back to customer"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#b",
+          "frames": []
+        }
+      ]
+    },
+    "detailsMemberId": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out dl dd:first-of-type",
+          "frames": []
+        }
+      ]
+    },
+    "subAccountsLine": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out p:nth-of-type(2)",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navigateHome",
+      "action": "navigate",
+      "url": "http://localhost:8080/modern.html"
+    },
+    {
+      "id": "focusSearch",
+      "action": "click",
+      "target": "searchInput"
+    },
+    {
+      "id": "fillMemberId",
+      "action": "fill",
+      "target": "searchInput",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "id": "clickSearch",
+      "action": "click",
+      "target": "searchButton"
+    },
+    {
+      "id": "waitResults",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "viewButton"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "clickView",
+      "action": "click",
+      "target": "viewButton"
+    },
+    {
+      "id": "waitDetails",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "openSubAccountButton"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "clickOpenSubAccount",
+      "action": "click",
+      "target": "openSubAccountButton"
+    },
+    {
+      "id": "waitForm",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "accountTypeSelect"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "selectAccountType",
+      "action": "selectOption",
+      "target": "accountTypeSelect",
+      "by": "label",
+      "value": {
+        "input": "accountType"
+      }
+    },
+    {
+      "id": "clickContinue",
+      "action": "click",
+      "target": "continueButton"
+    },
+    {
+      "id": "waitConfirmation",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "confirmationStatus"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractStatus",
+      "action": "extract",
+      "target": "confirmationStatus",
+      "saveAs": "statusText"
+    },
+    {
+      "id": "clickBack",
+      "action": "click",
+      "target": "backToCustomerButton"
+    },
+    {
+      "id": "waitSubAccounts",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "subAccountsLine"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractMemberId",
+      "action": "extract",
+      "target": "detailsMemberId",
+      "saveAs": "memberIdText"
+    },
+    {
+      "id": "extractAccountType",
+      "action": "extract",
+      "target": "subAccountsLine",
+      "saveAs": "accountTypeText"
+    }
+  ],
+  "outputs": {
+    "memberId": {
+      "type": "string",
+      "description": "Member ID that was checked",
+      "source": {
+        "savedValue": "memberIdText"
+      }
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Savings sub-account type",
+      "source": {
+        "savedValue": "accountTypeText"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Observed outcome: existing Savings sub-account or newly created Savings sub-account",
+      "source": {
+        "savedValue": "statusText"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "visible",
+      "target": "detailsMemberId"
+    },
+    {
+      "kind": "visible",
+      "target": "subAccountsLine"
+    }
+  ]
+}

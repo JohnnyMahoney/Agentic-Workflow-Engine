@@ -1,0 +1,12 @@
+{
+  "name": "legacy-member-balance",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "I found member M-1002 and confirmed the details on the Customer Details page.\n\n- **Member ID:** M-1002 (Bohdan Melnyk)\n- **Account type:** Savings\n- **Current balance:** $18,200.00\n\nI read the page text before searching and again after the details page loaded. The final page text showed the same ID, account type and balance as above. The member has no sub-accounts.",
+  "actionCount": 17
+}

@@ -1,0 +1,41 @@
+{
+  "status": "failure",
+  "code": "INVALID_CANDIDATE",
+  "message": "Compilation candidate schema validation failed",
+  "details": {
+    "issues": [
+      {
+        "expected": "object",
+        "code": "invalid_type",
+        "path": [
+          "capability"
+        ],
+        "message": "Invalid input: expected object, received undefined"
+      },
+      {
+        "expected": "record",
+        "code": "invalid_type",
+        "path": [
+          "stepEvidence"
+        ],
+        "message": "Invalid input: expected record, received undefined"
+      },
+      {
+        "expected": "array",
+        "code": "invalid_type",
+        "path": [
+          "checkpointEvidence"
+        ],
+        "message": "Invalid input: expected array, received undefined"
+      },
+      {
+        "code": "unrecognized_keys",
+        "keys": [
+          "compilationError"
+        ],
+        "path": [],
+        "message": "Unrecognized key: \"compilationError\""
+      }
+    ]
+  }
+}

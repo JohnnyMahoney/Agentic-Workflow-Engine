@@ -1,0 +1,10 @@
+{"at":"2026-11-01T04:46:22.703Z","kind":"replay_start","sessionId":"8df1d6ba-155a-44ef-aec8-28ae60204e81","capabilityId":"read-loaded-message","llmCalls":0}
+{"at":"2026-11-01T04:46:22.817Z","kind":"step_start","stepId":"openPage","action":"navigate"}
+{"at":"2026-11-01T04:46:24.244Z","kind":"step_end","stepId":"openPage"}
+{"at":"2026-11-01T04:46:24.245Z","kind":"step_start","stepId":"clickStart","action":"click"}
+{"at":"2026-11-01T04:46:24.294Z","kind":"step_end","stepId":"clickStart"}
+{"at":"2026-11-01T04:46:24.295Z","kind":"step_start","stepId":"waitMessage","action":"wait"}
+{"at":"2026-11-01T04:46:29.295Z","kind":"step_end","stepId":"waitMessage"}
+{"at":"2026-11-01T04:46:29.295Z","kind":"step_start","stepId":"readMessage","action":"extract"}
+{"at":"2026-11-01T04:46:29.298Z","kind":"step_end","stepId":"readMessage"}
+{"at":"2026-11-01T04:46:29.327Z","kind":"replay_end","status":"success","sessionId":"8df1d6ba-155a-44ef-aec8-28ae60204e81","outputs":{"message":"Hello World!"}}

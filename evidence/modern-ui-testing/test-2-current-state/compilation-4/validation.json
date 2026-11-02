@@ -1,0 +1,19 @@
+{
+  "status": "validated",
+  "evidenceSha256": "39aceaf1f1290960cbbe9e78d9c755a49614b8929cb2fabe24177cadd0da916e",
+  "candidateSha256": "0ad0afd8dd4436ec16e053c836ab37232bbbcf7167565ab3f85a95fe5ea0fe92",
+  "evidencePath": "evidence/modern-ui-testing/test-2-current-state/discovery-5/discovery-v2.json",
+  "candidatePath": "evidence\\modern-ui-testing\\test-2-current-state\\compilation-4\\candidate.json",
+  "checks": [
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-select-state",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

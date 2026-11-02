@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-11-01T18:06:10.266Z",
+  "checks": {
+    "replaySucceeded": true,
+    "outputsMatchObservedDiscovery": true,
+    "memberIdMatchesInput": true,
+    "noReplayLlmCalls": true,
+    "evidenceHashMatches": true
+  },
+  "observedDiscoveryOutputs": {
+    "balance": "$18,200.00",
+    "accountType": "Savings",
+    "memberId": "M-1002"
+  },
+  "replayOutputs": {
+    "balance": "$18,200.00",
+    "accountType": "Savings",
+    "memberId": "M-1002"
+  },
+  "sessionId": "8e3d27dc-f96a-406d-8cf5-9826882150f2"
+}

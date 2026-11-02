@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "2.0",
+  "id": "legacyMemberBalanceLookup",
+  "version": "1.0.0",
+  "description": "Search for a member by ID in the legacy Member Services app, open the member's customer details, confirm the member ID, and return the account balance, account type and member ID.",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID to look up and confirm"
+    }
+  },
+  "targets": {
+    "memberInput": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "input[name=qq]",
+          "frames": [
+            "iframe[name=content]"
+          ]
+        }
+      ]
+    },
+    "searchButton": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "span.b",
+          "frames": [
+            "iframe[name=content]"
+          ]
+        }
+      ]
+    },
+    "memberLink": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "u",
+          "frames": [
+            "iframe[name=content]"
+          ],
+          "scope": {
+            "css": "td > table tr",
+            "has": {
+              "css": "td",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "memberIdValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "td:nth-child(2) b",
+          "frames": [
+            "iframe[name=content]"
+          ],
+          "scope": {
+            "css": "td > table tr",
+            "has": {
+              "css": "td",
+              "text": {
+                "literal": "Member:"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "accountTypeValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "td:nth-child(2)",
+          "frames": [
+            "iframe[name=content]"
+          ],
+          "scope": {
+            "css": "td > table tr",
+            "has": {
+              "css": "td",
+              "text": {
+                "literal": "Acct Type:"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "balanceValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "td:nth-child(2) b",
+          "frames": [
+            "iframe[name=content]"
+          ],
+          "scope": {
+            "css": "td > table tr",
+            "has": {
+              "css": "td",
+              "text": {
+                "literal": "Balance:"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "openApp",
+      "action": "navigate",
+      "url": "http://localhost:8080/legacy/index.html"
+    },
+    {
+      "id": "focusSearch",
+      "action": "click",
+      "target": "memberInput"
+    },
+    {
+      "id": "enterMemberId",
+      "action": "fill",
+      "target": "memberInput",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "id": "clickSearch",
+      "action": "click",
+      "target": "searchButton"
+    },
+    {
+      "id": "waitResults",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "memberLink"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "openMember",
+      "action": "click",
+      "target": "memberLink"
+    },
+    {
+      "id": "waitDetails",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "balanceValue"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "readBalance",
+      "action": "extract",
+      "target": "balanceValue",
+      "saveAs": "balanceText"
+    },
+    {
+      "id": "readAccountType",
+      "action": "extract",
+      "target": "accountTypeValue",
+      "saveAs": "accountTypeText"
+    },
+    {
+      "id": "readMemberId",
+      "action": "extract",
+      "target": "memberIdValue",
+      "saveAs": "memberIdText"
+    },
+    {
+      "id": "confirmMemberId",
+      "action": "assert",
+      "condition": {
+        "kind": "textEquals",
+        "target": "memberIdValue",
+        "value": {
+          "input": "memberId"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Current account balance as displayed by the application, including currency",
+      "source": {
+        "savedValue": "balanceText"
+      }
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Account type displayed for the requested member",
+      "source": {
+        "savedValue": "accountTypeText"
+      }
+    },
+    "memberId": {
+      "type": "string",
+      "description": "Member ID read from the account details and confirmed against the supplied memberId",
+      "source": {
+        "savedValue": "memberIdText"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "memberIdValue",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "kind": "visible",
+      "target": "balanceValue"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checkedAt": "2026-11-01T17:54:47.159Z",
+  "checks": {
+    "replaySucceeded": true,
+    "outputsMatchObservedDiscovery": true,
+    "memberIdMatchesInput": true,
+    "noReplayLlmCalls": true,
+    "evidenceHashMatches": true
+  },
+  "observedDiscoveryOutputs": {
+    "balance": "$2,450.75",
+    "accountType": "Checking",
+    "memberId": "M-1001"
+  },
+  "replayOutputs": {
+    "balance": "$2,450.75",
+    "accountType": "Checking",
+    "memberId": "M-1001"
+  },
+  "sessionId": "2011af53-3169-4bac-a1a4-c5243d0a25d7"
+}

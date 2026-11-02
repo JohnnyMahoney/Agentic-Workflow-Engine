@@ -1,0 +1,16 @@
+{
+  "sourceEvidence": "evidence/awkward-ui-testing/test-1/discovery-1/discovery-v2.json",
+  "sourceSha256": "29094a9c38dce3d7366361ccc2f33d60232d5324a2e60cdf07559cebd2140f9a",
+  "selectedActions": "1-16",
+  "reason": "Narrowed goal is satisfied at the recorded member profile; subsequent actions explored new sub-account creation.",
+  "discoveryRepeated": false,
+  "requestChanged": {
+    "goal": true,
+    "outputs": [
+      "balance",
+      "memberId"
+    ],
+    "inputBindingPreserved": true,
+    "urlPreserved": true
+  }
+}

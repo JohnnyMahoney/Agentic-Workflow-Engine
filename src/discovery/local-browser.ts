@@ -2,42 +2,41 @@ import { BetaAbstractBrowserToolset20260801, ToolError } from "@anthropic-ai/sdk
 import type { BetaBrowserMemberResult, BetaToolsetCallContext } from "@anthropic-ai/sdk/helpers/beta/toolsets";
 import type { BetaBrowserClickTarget, BetaBrowserGetPageTextInput, BetaBrowserLeftClickInput, BetaBrowserMemberInput, BetaBrowserMemberName, BetaBrowserNavigateInput, BetaBrowserReadPageInput, BetaBrowserScreenshotInput, BetaBrowserWaitInput } from "@anthropic-ai/sdk/resources/beta";
 import { chromium, type Browser, type BrowserContext, type Frame, type Page } from "playwright";
-
-const host = "the-internet.herokuapp.com";
+import { checkUrl, testPolicy, type Policy } from "../surfaces/playwright.js";
 
 export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   onExecute?: (context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput, run: () => Promise<BetaBrowserMemberResult>) => Promise<BetaBrowserMemberResult>;
   private readonly refs = new Map<string, Frame>();
   private nextRef = 0;
 
-  protected constructor(private readonly browser: Browser, private readonly context: BrowserContext, private readonly page: Page) {
+  protected constructor(private readonly browser: Browser, private readonly context: BrowserContext, readonly page: Page, private readonly policy: Policy) {
     super({
       browserState: async () => ({ tabs: [{ tab_id: "tab-1", title: await page.title(), url: page.url(), active: true }] }),
       urlPolicy: (_context, url) => {
         if (["back", "forward", "reload"].includes(url)) return;
         const parsed = new URL(url.includes("://") ? url : `https://${url}`);
-        if (parsed.protocol !== "https:" || parsed.hostname !== host) throw new ToolError(`Navigation outside https://${host} is blocked.`);
+        checkUrl(parsed.href, policy);
       },
       // Enable only the browser members supported by this web discovery driver.
       configs: Object.fromEntries([
         "zoom", "right_click", "middle_click", "double_click", "triple_click", "hover", "left_click_drag",
         "left_mouse_down", "left_mouse_up", "mouse_move", "scroll", "scroll_to", "type", "key", "hold_key",
-        "form_input", "find", "file_upload", "read_console", "read_network", "javascript_exec",
+        "find", "file_upload", "read_console", "read_network", "javascript_exec",
         "new_tab", "list_tabs", "switch_tab", "close_tab",
       ].map((name) => [name, { enabled: false }])),
     });
   }
 
-  static async launch(headless: boolean): Promise<LocalPlaywrightBrowser> {
+  static async launch(headless: boolean, policy: Policy = testPolicy): Promise<LocalPlaywrightBrowser> {
     const browser = await chromium.launch({ headless });
     try {
       const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
       await context.route("**/*", (route) => {
         const url = new URL(route.request().url());
-        return url.protocol === "https:" && url.hostname === host ? route.continue() : route.abort();
+        try { checkUrl(url.href, policy); return route.continue(); } catch { return route.abort(); }
       });
       const page = await context.newPage();
-      return new LocalPlaywrightBrowser(browser, context, page);
+      return new LocalPlaywrightBrowser(browser, context, page, policy);
     } catch (error) {
       await browser.close();
       throw error;
@@ -51,6 +50,8 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   }
 
   protected override async execute(context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput): Promise<BetaBrowserMemberResult> {
+    const action = name === "left_click" ? "click" : name === "form_input" ? "fill" : ["read_page", "get_page_text", "screenshot"].includes(name) ? "extract" : name;
+    if (["navigate", "click", "fill", "wait", "extract"].includes(action) && !this.policy.actions.includes(action)) throw new ToolError(`Action ${action} is blocked by policy`);
     const run = () => super.execute(context, name, input);
     return this.onExecute ? this.onExecute(context, name, input, run) : run();
   }
@@ -119,11 +120,35 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
 
   async inspectTarget(target: BetaBrowserClickTarget): Promise<Record<string, unknown> | null> {
     if (target.type === "coordinate") {
-      return this.page.evaluate(({ x, y }) => {
+      let frame = this.page.mainFrame();
+      let x = target.x;
+      let y = target.y;
+      // Hit testing stops at frame elements; descend to the actual clicked node.
+      while (true) {
+        const handle = await frame.evaluateHandle(({ x, y }) => document.elementFromPoint(x, y), { x, y });
+        try {
+          const element = handle.asElement();
+          if (!element) return null;
+          const child = await element.contentFrame();
+          if (!child) break;
+          const geometry = await element.evaluate((node) => {
+            const html = node as HTMLElement;
+            const rect = html.getBoundingClientRect();
+            return { left: rect.left, top: rect.top, borderX: html.clientLeft, borderY: html.clientTop,
+              transformed: getComputedStyle(html).transform !== "none" || Math.abs(rect.width - html.offsetWidth) > 1 || Math.abs(rect.height - html.offsetHeight) > 1 };
+          });
+          if (geometry.transformed) throw new ToolError("Coordinate recording through transformed frames is unsupported");
+          x -= geometry.left + geometry.borderX;
+          y -= geometry.top + geometry.borderY;
+          frame = child;
+        } finally { await handle.dispose(); }
+      }
+      return frame.evaluate(({ x, y, frameId }) => {
         const element = document.elementFromPoint(x, y) as HTMLElement | null;
         if (!element) return null;
         const row = element.closest("tr");
         return {
+          node: element.getAttribute("data-cap-node"), frame: frameId,
           tag: element.tagName.toLowerCase(),
           label: element.innerText.trim(),
           href: element instanceof HTMLAnchorElement ? element.getAttribute("href") : null,
@@ -133,14 +158,15 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
           columnHeaders: row ? Array.from(row.closest("table")?.querySelectorAll("thead th") ?? [], (cell) => cell.textContent?.trim() ?? "") : null,
           replayReady: false,
         };
-      }, { x: target.x, y: target.y });
+      }, { x, y, frameId: this.page.frames().indexOf(frame) });
     }
     const frame = this.refs.get(target.ref);
     if (!frame) return null;
-    return frame.locator(`[data-browser-ref="${target.ref}"]`).evaluate((element) => {
+    return frame.locator(`[data-browser-ref="${target.ref}"]`).evaluate((element, frameId) => {
       const html = element as HTMLElement;
       const row = html.closest("tr");
       return {
+        node: element.getAttribute("data-cap-node"), frame: frameId,
         tag: html.tagName.toLowerCase(),
         label: html.innerText.trim(),
         href: html instanceof HTMLAnchorElement ? html.getAttribute("href") : null,
@@ -150,7 +176,19 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
         columnHeaders: row ? Array.from(row.closest("table")?.querySelectorAll("thead th") ?? [], (cell) => cell.textContent?.trim() ?? "") : null,
         replayReady: false,
       };
-    });
+    }, this.page.frames().indexOf(frame));
+  }
+
+  protected override async form_input(_context: BetaToolsetCallContext, input: import("@anthropic-ai/sdk/resources/beta").BetaBrowserFormInputInput): Promise<void> {
+    this.checkTab(input.tab_id);
+    const frame = this.refs.get(input.target.ref);
+    if (!frame || typeof input.value !== "string") throw new ToolError("Only string form input on an observed reference is supported");
+    const target = frame.locator(`[data-browser-ref="${input.target.ref}"]`);
+    if (await target.getAttribute("type") === "password") throw new ToolError("Secret entry is outside this public-data slice");
+    if (await target.evaluate((element) => element.tagName.toLowerCase()) === "select") {
+      const matchesLabel = await target.locator("option").evaluateAll((options, value) => options.some((option) => (option as HTMLOptionElement).label.trim() === value), input.value);
+      await target.selectOption(matchesLabel ? { label: input.value } : { value: input.value });
+    } else await target.fill(input.value);
   }
 
   currentUrl(): string {

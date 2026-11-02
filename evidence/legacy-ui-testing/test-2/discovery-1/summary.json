@@ -1,0 +1,12 @@
+{
+  "name": "legacy-member-balance-m1003",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Member M-1003 has a current balance of $310.40 in a Checking account.\n\n- **Member ID:** M-1003 (confirmed on both the search result and the details page)\n- **Name:** Sam Rivera\n- **Account type:** Checking\n- **Balance:** $310.40\n- **Sub-accounts:** none\n\nI read the page text before searching and again after the Customer Details page loaded. The details page matched the search result.",
+  "actionCount": 17
+}

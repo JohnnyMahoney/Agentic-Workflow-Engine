@@ -1,0 +1,9 @@
+{
+  "id": "read-loaded-message",
+  "goal": "Click Start, wait for the asynchronously rendered result, read its exact text, and report it. Confirm that the resulting message is visible.",
+  "url": "https://the-internet.herokuapp.com/dynamic_loading/2",
+  "dataMode": "public-test",
+  "inputs": {},
+  "bindings": {},
+  "outputs": { "message": { "type": "string", "description": "Visible message rendered after loading completes" } }
+}

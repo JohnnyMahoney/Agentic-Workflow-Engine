@@ -1,0 +1,34 @@
+{
+  "status": "failed_at_replay",
+  "goalSource": "request.json",
+  "sandboxReset": false,
+  "discovery": {
+    "status": "completed",
+    "actions": 27,
+    "toolFailures": 0,
+    "observedExistingSavings": false,
+    "createdInDiscoverySession": true,
+    "confirmationObserved": true,
+    "evidence": "discovery-4/discovery-v2.json"
+  },
+  "compilation": {
+    "firstAttempt": "rejected_output_definition_mismatch",
+    "secondAttempt": "validated",
+    "artifact": "compilation-2/artifact.json",
+    "validation": "compilation-2/validation.json"
+  },
+  "replay": {
+    "status": "failure",
+    "stepId": "fillType",
+    "code": "EXECUTION_FAILED",
+    "message": "locator.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element\nCall log:\n\u001b[2m  - waiting for locator('#t')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"t\">…</select>\u001b[22m\n\u001b[2m    - fill(\"Savings\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n",
+    "createdInReplaySession": false,
+    "log": "replay-2/events.jsonl"
+  },
+  "limits": [
+    "Browser contexts have independent localStorage; previously open user-browser state was not tested.",
+    "Capability fill action resolves to Playwright fill and cannot operate a native select.",
+    "Recorded DOM snapshot does not retain selected option state.",
+    "Artifact is linear and has no existing-Savings branch or replay duplicate guard."
+  ]
+}

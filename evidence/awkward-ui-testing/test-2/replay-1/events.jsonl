@@ -1,0 +1,10 @@
+{"at":"2026-11-01T18:40:13.499Z","kind":"replay_start","sessionId":"2d46d9fe-ba64-41f7-bb80-58963d5ca8dc","capabilityId":"awkwardMemberBalance","llmCalls":0}
+{"at":"2026-11-01T18:40:13.596Z","kind":"step_start","stepId":"navigateHome","action":"navigate"}
+{"at":"2026-11-01T18:40:13.621Z","kind":"step_end","stepId":"navigateHome"}
+{"at":"2026-11-01T18:40:13.622Z","kind":"step_start","stepId":"focusSearch","action":"click"}
+{"at":"2026-11-01T18:40:13.692Z","kind":"step_end","stepId":"focusSearch"}
+{"at":"2026-11-01T18:40:13.692Z","kind":"step_start","stepId":"fillSearch","action":"fill"}
+{"at":"2026-11-01T18:40:13.702Z","kind":"step_end","stepId":"fillSearch"}
+{"at":"2026-11-01T18:40:13.703Z","kind":"step_start","stepId":"openMember","action":"click"}
+{"at":"2026-11-01T18:40:13.734Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-01T18:40:13.758Z","kind":"replay_end","status":"failure","sessionId":"2d46d9fe-ba64-41f7-bb80-58963d5ca8dc","stepId":"openMember","code":"TARGET_NOT_FOUND","message":"No strategy resolved the target","details":{}}

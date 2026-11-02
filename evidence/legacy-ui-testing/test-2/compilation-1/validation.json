@@ -1,0 +1,18 @@
+{
+  "status": "validated",
+  "evidenceSha256": "00723e9383e02b4f0709875ccc73fd0dd097bd314579700d1f02c70c6721b818",
+  "candidateSha256": "c5f329d82e4285d7738eb3ec2ccaaaf0b505aebcda05f0073c0c72696ff45c0f",
+  "evidencePath": "evidence/legacy-ui-testing/test-2/discovery-1/discovery-v2.json",
+  "candidatePath": "evidence\\legacy-ui-testing\\test-2\\compilation-1\\candidate.json",
+  "checks": [
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

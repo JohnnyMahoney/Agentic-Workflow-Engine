@@ -1,0 +1,16 @@
+{
+  "id": "modern-ensure-savings-m1001",
+  "goal": "Find member M-1001 and ensure they have a Savings sub-account. If one already exists, report its existence and do not create a duplicate. Otherwise, create one and verify success.",
+  "url": "http://localhost:8080/modern.html",
+  "dataMode": "synthetic-test",
+  "inputs": {
+    "memberId": { "type": "string", "required": true, "description": "Member ID supplied by the user" },
+    "accountType": { "type": "string", "required": true, "description": "Sub-account type supplied by the user" }
+  },
+  "bindings": { "memberId": "M-1001", "accountType": "Savings" },
+  "outputs": {
+    "memberId": { "type": "string", "description": "Member ID that was checked" },
+    "accountType": { "type": "string", "description": "Savings sub-account type" },
+    "status": { "type": "string", "description": "Observed outcome: existing Savings sub-account or newly created Savings sub-account" }
+  }
+}

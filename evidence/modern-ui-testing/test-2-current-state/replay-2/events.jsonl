@@ -1,0 +1,22 @@
+{"at":"2026-11-01T19:49:51.982Z","kind":"replay_start","sessionId":"d9234a2c-3248-45c6-ae30-9eb38602b155","capabilityId":"modernEnsureSavingsSubAccount","llmCalls":0}
+{"at":"2026-11-01T19:49:52.075Z","kind":"step_start","stepId":"navigateHome","action":"navigate"}
+{"at":"2026-11-01T19:49:52.104Z","kind":"step_end","stepId":"navigateHome"}
+{"at":"2026-11-01T19:49:52.104Z","kind":"step_start","stepId":"clickSearchInput","action":"click"}
+{"at":"2026-11-01T19:49:52.171Z","kind":"step_end","stepId":"clickSearchInput"}
+{"at":"2026-11-01T19:49:52.171Z","kind":"step_start","stepId":"fillSearch","action":"fill"}
+{"at":"2026-11-01T19:49:52.181Z","kind":"step_end","stepId":"fillSearch"}
+{"at":"2026-11-01T19:49:52.181Z","kind":"step_start","stepId":"clickSearch","action":"click"}
+{"at":"2026-11-01T19:49:52.220Z","kind":"step_end","stepId":"clickSearch"}
+{"at":"2026-11-01T19:49:52.220Z","kind":"step_start","stepId":"waitResults","action":"wait"}
+{"at":"2026-11-01T19:49:52.560Z","kind":"step_end","stepId":"waitResults"}
+{"at":"2026-11-01T19:49:52.560Z","kind":"step_start","stepId":"clickView","action":"click"}
+{"at":"2026-11-01T19:49:52.587Z","kind":"step_end","stepId":"clickView"}
+{"at":"2026-11-01T19:49:52.587Z","kind":"step_start","stepId":"waitDetails","action":"wait"}
+{"at":"2026-11-01T19:49:52.923Z","kind":"step_end","stepId":"waitDetails"}
+{"at":"2026-11-01T19:49:52.923Z","kind":"step_start","stepId":"clickOpen","action":"click"}
+{"at":"2026-11-01T19:49:52.937Z","kind":"step_end","stepId":"clickOpen"}
+{"at":"2026-11-01T19:49:52.937Z","kind":"step_start","stepId":"waitForm","action":"wait"}
+{"at":"2026-11-01T19:49:52.944Z","kind":"step_end","stepId":"waitForm"}
+{"at":"2026-11-01T19:49:52.944Z","kind":"step_start","stepId":"fillType","action":"fill"}
+{"at":"2026-11-01T19:49:52.980Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-01T19:49:53.005Z","kind":"replay_end","status":"failure","sessionId":"d9234a2c-3248-45c6-ae30-9eb38602b155","stepId":"fillType","code":"EXECUTION_FAILED","message":"locator.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element\nCall log:\n\u001b[2m  - waiting for locator('#t')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"t\">…</select>\u001b[22m\n\u001b[2m    - fill(\"Savings\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n"}

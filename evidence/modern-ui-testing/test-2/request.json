@@ -1,0 +1,16 @@
+﻿{
+  "id": "modern-open-savings-m1001",
+  "goal": "Find member M-1001, initiate opening a new Savings sub-account, and reach the confirmation screen. Do not finalize any irreversible action. Return the member ID, selected account type, and confirmation status.",
+  "url": "http://localhost:8080/modern.html",
+  "dataMode": "synthetic-test",
+  "inputs": {
+    "memberId": { "type": "string", "required": true, "description": "Member ID supplied by the user" },
+    "accountType": { "type": "string", "required": true, "description": "Account type supplied by the user" }
+  },
+  "bindings": { "memberId": "M-1001", "accountType": "Savings" },
+  "outputs": {
+    "memberId": { "type": "string", "description": "Member ID confirmed for the operation" },
+    "accountType": { "type": "string", "description": "Selected sub-account type" },
+    "confirmationStatus": { "type": "string", "description": "Confirmation status observed in the UI without finalizing an irreversible action" }
+  }
+}

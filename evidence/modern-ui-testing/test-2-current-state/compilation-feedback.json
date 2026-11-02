@@ -1,0 +1,10 @@
+{
+  "source": "compilation-1/compilation-error.json",
+  "error": {
+    "status": "failure",
+    "code": "UNSUPPORTED_EVIDENCE",
+    "message": "Output definitions differ from the explicit compilation request",
+    "details": {}
+  },
+  "diagnosis": "The candidate changed request output descriptions. Preserve request.inputs and request.outputs exactly, adding only output sources."
+}

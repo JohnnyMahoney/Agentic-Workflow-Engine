@@ -1,0 +1,6 @@
+{
+  "status": "failure",
+  "code": "UNSUPPORTED_EVIDENCE",
+  "message": "Action does not match the actual discovery target",
+  "details": {}
+}

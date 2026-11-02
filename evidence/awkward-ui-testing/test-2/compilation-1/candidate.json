@@ -1,0 +1,211 @@
+{
+  "capability": {
+    "schemaVersion": "2.0",
+    "id": "awkwardMemberBalance",
+    "version": "1.0.0",
+    "description": "Search for a member by ID in the NeoBank Console, open the member's account details, and return the displayed balance and member ID.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "targets": {
+      "searchInput": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#sq",
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "input[placeholder='Search members']",
+            "frames": []
+          }
+        ]
+      },
+      "openButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "div:last-child > button:first-child",
+            "frames": [],
+            "scope": {
+              "css": ".r",
+              "has": {
+                "css": "div",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "balanceValue": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#bal",
+            "frames": []
+          }
+        ]
+      },
+      "memberIdValue": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#root span",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "navigateHome",
+        "action": "navigate",
+        "url": "http://localhost:8080/awkward.html"
+      },
+      {
+        "id": "focusSearch",
+        "action": "click",
+        "target": "searchInput"
+      },
+      {
+        "id": "fillSearch",
+        "action": "fill",
+        "target": "searchInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "openMember",
+        "action": "click",
+        "target": "openButton"
+      },
+      {
+        "id": "waitBalance",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "balanceValue"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractBalance",
+        "action": "extract",
+        "target": "balanceValue",
+        "saveAs": "balanceText"
+      },
+      {
+        "id": "extractMemberId",
+        "action": "extract",
+        "target": "memberIdValue",
+        "saveAs": "memberIdText"
+      }
+    ],
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency",
+        "source": {
+          "savedValue": "balanceText"
+        }
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the account details and confirmed against the supplied memberId",
+        "source": {
+          "savedValue": "memberIdText"
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "visible",
+        "target": "memberIdValue"
+      },
+      {
+        "kind": "visible",
+        "target": "balanceValue"
+      }
+    ]
+  },
+  "stepEvidence": {
+    "navigateHome": {
+      "action": 1,
+      "phase": "after"
+    },
+    "focusSearch": {
+      "action": 4,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "fillSearch": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "openMember": {
+      "action": 14,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n18"
+      }
+    },
+    "waitBalance": {
+      "action": 15,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    },
+    "extractBalance": {
+      "action": 16,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    },
+    "extractMemberId": {
+      "action": 16,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 16,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    },
+    {
+      "action": 16,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "status": "failure",
+  "code": "COMPILATION_EVIDENCE_INSUFFICIENT",
+  "message": "The recorded evidence does not show an account type for member M-1004. The account details page (state-9) contains only the member name (Olena Shevchenko), 'ID: M-1004', 'Balance: $92,500.10' and 'Sub-accounts: none'. The request requires an accountType output, but no recorded page text or DOM node holds that value. The only other lead was the second 'Open' button, which opens a 'New sub-account' creation form listing Savings, Checking, Term Deposit and Youth. That is an option list for creating a sub-account, not the member's account type. Mapping any of those to accountType would be fabricating an output, so I cannot compile the capability as specified. A new recording that reaches a page displaying the account type would fix this.",
+  "details": {}
+}

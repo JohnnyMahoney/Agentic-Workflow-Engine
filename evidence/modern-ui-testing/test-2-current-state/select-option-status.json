@@ -1,0 +1,32 @@
+{
+  "status": "blocked_before_replay",
+  "goalSource": "request.json",
+  "sandboxReset": false,
+  "discovery": {
+    "completed": true,
+    "toolFailures": 0,
+    "actionCount": 30,
+    "existingSavingsObserved": false,
+    "createdInDiscoverySession": true,
+    "selectedOption": {
+      "label": "Savings",
+      "value": "Savings"
+    },
+    "evidence": "discovery-5/discovery-v2.json"
+  },
+  "compilation": {
+    "firstAttempt": "rejected_output_definition_mismatch",
+    "secondAttempt": "validated",
+    "artifact": "compilation-4/artifact.json",
+    "validation": "compilation-4/validation.json",
+    "selectActionCount": 1
+  },
+  "replay": {
+    "started": false,
+    "reason": "Validated artifact unconditionally clicks Open sub-account and Continue. It has no existing-Savings branch or absence precondition, so replay could create a duplicate and cannot satisfy the full goal."
+  },
+  "tests": {
+    "passed": 8,
+    "failed": 0
+  }
+}

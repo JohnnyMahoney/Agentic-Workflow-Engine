@@ -1,0 +1,10 @@
+{"at":"2026-11-01T04:46:23.435Z","kind":"replay_start","sessionId":"c3535556-2f49-47cf-a595-f963f3fb9f9b","capabilityId":"read-row-and-edit","llmCalls":0}
+{"at":"2026-11-01T04:46:23.562Z","kind":"step_start","stepId":"openPage","action":"navigate"}
+{"at":"2026-11-01T04:46:24.829Z","kind":"step_end","stepId":"openPage"}
+{"at":"2026-11-01T04:46:24.829Z","kind":"step_start","stepId":"readCell","action":"extract"}
+{"at":"2026-11-01T04:46:24.852Z","kind":"step_end","stepId":"readCell"}
+{"at":"2026-11-01T04:46:24.852Z","kind":"step_start","stepId":"clickEdit","action":"click"}
+{"at":"2026-11-01T04:46:24.911Z","kind":"step_end","stepId":"clickEdit"}
+{"at":"2026-11-01T04:46:24.911Z","kind":"step_start","stepId":"waitEditHash","action":"wait"}
+{"at":"2026-11-01T04:46:24.912Z","kind":"step_end","stepId":"waitEditHash"}
+{"at":"2026-11-01T04:46:24.936Z","kind":"replay_end","status":"success","sessionId":"c3535556-2f49-47cf-a595-f963f3fb9f9b","outputs":{"cellValue":"Phaedrum4","url":"https://the-internet.herokuapp.com/challenging_dom#edit"}}

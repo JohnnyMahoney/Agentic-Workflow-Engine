@@ -1,0 +1,12 @@
+{
+  "name": "modern-ensure-savings-m1001",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Member M-1001 (Anna Kovalenko) now has a Savings sub-account, M-1001-S1. I created it because none existed.\n\n- **Before:** her customer details page said \"Sub-accounts: none\". The checking balance was $2,450.75.\n- **Action:** I opened a sub-account, chose Savings and clicked Continue. The confirmation read \"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction.\"\n- **After:** I went back to her customer page. It now says \"Sub-accounts: M-1001-S1 (Savings)\", and there is only one.\n\nThe site labels the transaction as simulated, so no real account was opened.",
+  "actionCount": 30
+}

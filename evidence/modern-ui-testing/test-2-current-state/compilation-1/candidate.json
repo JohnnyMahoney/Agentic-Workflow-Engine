@@ -1,0 +1,473 @@
+{
+  "capability": {
+    "schemaVersion": "2.0",
+    "id": "ensureSavingsSubAccount",
+    "version": "1.0.0",
+    "description": "Searches for a member by ID, opens the customer record and opens a sub-account of the requested type through the Open sub-account wizard. The recording only shows the creation path, for a member whose sub-accounts were 'none'. The capability has no conditional step, so it cannot detect an existing Savings sub-account and skip creation. Run it only for members without an existing sub-account of that type. The final sub-accounts line is returned as the status.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID supplied by the user"
+      },
+      "accountType": {
+        "type": "string",
+        "required": true,
+        "description": "Sub-account type supplied by the user"
+      }
+    },
+    "targets": {
+      "memberInput": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": {
+              "literal": "Member ID or name"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#q",
+            "frames": []
+          }
+        ]
+      },
+      "searchButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Search"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#f button[type=submit]",
+            "frames": []
+          }
+        ]
+      },
+      "viewButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "button",
+            "frames": [],
+            "scope": {
+              "css": "#out tbody tr",
+              "has": {
+                "css": "td",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "openButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Open sub-account"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#o",
+            "frames": []
+          }
+        ]
+      },
+      "memberIdValue": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out dl dd:nth-of-type(1)",
+            "frames": []
+          }
+        ]
+      },
+      "accountTypeSelect": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "combobox",
+            "name": {
+              "literal": "Account type"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#t",
+            "frames": []
+          }
+        ]
+      },
+      "continueButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Continue"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#w button:first-of-type",
+            "frames": []
+          }
+        ]
+      },
+      "confirmationMessage": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out p[role=status]",
+            "frames": []
+          }
+        ]
+      },
+      "backButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Back to customer"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#b",
+            "frames": []
+          }
+        ]
+      },
+      "subAccountsLine": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out p:nth-of-type(2)",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "s1",
+        "action": "navigate",
+        "url": "http://localhost:8080/modern.html"
+      },
+      {
+        "id": "s2",
+        "action": "click",
+        "target": "memberInput"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "target": "memberInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "s4",
+        "action": "click",
+        "target": "searchButton"
+      },
+      {
+        "id": "s5",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "viewButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "s6",
+        "action": "click",
+        "target": "viewButton"
+      },
+      {
+        "id": "s7",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "openButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "s8",
+        "action": "extract",
+        "target": "memberIdValue",
+        "saveAs": "memberIdText"
+      },
+      {
+        "id": "s9",
+        "action": "click",
+        "target": "openButton"
+      },
+      {
+        "id": "s10",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "accountTypeSelect"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "s11",
+        "action": "fill",
+        "target": "accountTypeSelect",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      {
+        "id": "s12",
+        "action": "click",
+        "target": "continueButton"
+      },
+      {
+        "id": "s13",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "confirmationMessage"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "s14",
+        "action": "extract",
+        "target": "confirmationMessage",
+        "saveAs": "confirmationText"
+      },
+      {
+        "id": "s15",
+        "action": "click",
+        "target": "backButton"
+      },
+      {
+        "id": "s16",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "subAccountsLine"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "s17",
+        "action": "extract",
+        "target": "subAccountsLine",
+        "saveAs": "subAccountsText"
+      }
+    ],
+    "outputs": {
+      "memberId": {
+        "type": "string",
+        "description": "Member ID that was checked",
+        "source": {
+          "savedValue": "memberIdText"
+        }
+      },
+      "accountType": {
+        "type": "string",
+        "description": "Confirmation text naming the sub-account type that was opened",
+        "source": {
+          "savedValue": "confirmationText"
+        }
+      },
+      "status": {
+        "type": "string",
+        "description": "Observed sub-accounts line for the member after the operation",
+        "source": {
+          "savedValue": "subAccountsText"
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "textEquals",
+        "target": "memberIdValue",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "kind": "visible",
+        "target": "subAccountsLine"
+      }
+    ]
+  },
+  "stepEvidence": {
+    "s1": {
+      "action": 1,
+      "phase": "after"
+    },
+    "s2": {
+      "action": 5,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "s3": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "s4": {
+      "action": 8,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n16"
+      }
+    },
+    "s5": {
+      "action": 9,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "s6": {
+      "action": 12,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "s7": {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n30"
+      }
+    },
+    "s8": {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    },
+    "s9": {
+      "action": 16,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n30"
+      }
+    },
+    "s10": {
+      "action": 17,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n22"
+      }
+    },
+    "s11": {
+      "action": 20,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n22"
+      }
+    },
+    "s12": {
+      "action": 21,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n28"
+      }
+    },
+    "s13": {
+      "action": 22,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    "s14": {
+      "action": 23,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    "s15": {
+      "action": 25,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n20"
+      }
+    },
+    "s16": {
+      "action": 26,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n29"
+      }
+    },
+    "s17": {
+      "action": 27,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n29"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 27,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    },
+    {
+      "action": 27,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n29"
+      }
+    }
+  ]
+}

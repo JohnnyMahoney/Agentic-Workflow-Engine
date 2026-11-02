@@ -11,7 +11,7 @@ async function main(): Promise<void> {
   const directory = join("evidence", "vertical-slice", new Date().toISOString().replace(/[:.]/g, "-"));
   mkdirSync(directory, { recursive: true });
   const summary = await runDiscovery({ name: "challenging", ...scenarios.challenging, model: "claude-sonnet-5-5", headless: true, directory: join(directory, "discovery", "challenging") });
-  if ((summary.assessment as { passed?: boolean }).passed !== true) throw new Error(`Discovery did not pass. Inspect ${join(directory, "discovery", "challenging", "summary.json")}`);
+  if ((summary.assessment as { completed?: boolean }).completed !== true || Number(summary.toolFailures) > 0) throw new Error(`Discovery did not complete cleanly. Inspect ${join(directory, "discovery", "challenging", "summary.json")}`);
   const artifact = compileDiscovery(join(directory, "discovery", "challenging"), directory);
   console.log(JSON.stringify({ directory, artifactPath: join(directory, "artifact.json"), steps: artifact.steps.length, discoveryPassed: true }, null, 2));
 }

@@ -1,0 +1,12 @@
+{
+  "id": "read-row-and-edit",
+  "goal": "Find the table row whose first cell is {{rowKey}}, read its Diceret cell, and click the edit link in that same row. Report the cell value and final URL. Confirm the final URL ends with #edit.",
+  "url": "https://the-internet.herokuapp.com/challenging_dom",
+  "dataMode": "public-test",
+  "inputs": { "rowKey": { "type": "string", "required": true, "description": "Exact text identifying the first cell of the desired row" } },
+  "bindings": { "rowKey": "Iuvaret4" },
+  "outputs": {
+    "cellValue": { "type": "string", "description": "Text from the Diceret cell of the selected row" },
+    "url": { "type": "string", "description": "Page URL after clicking edit" }
+  }
+}

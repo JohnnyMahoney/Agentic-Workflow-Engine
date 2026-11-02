@@ -1,0 +1,7 @@
+{
+  "status": "failure",
+  "sessionId": "d9234a2c-3248-45c6-ae30-9eb38602b155",
+  "stepId": "fillType",
+  "code": "EXECUTION_FAILED",
+  "message": "locator.fill: Error: Element is not an <input>, <textarea> or [contenteditable] element\nCall log:\n\u001b[2m  - waiting for locator('#t')\u001b[22m\n\u001b[2m    - locator resolved to <select id=\"t\">…</select>\u001b[22m\n\u001b[2m    - fill(\"Savings\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n"
+}

@@ -1,0 +1,26 @@
+{
+  "attempts": [
+    {
+      "result": {
+        "status": "failure",
+        "sessionId": "2d46d9fe-ba64-41f7-bb80-58963d5ca8dc",
+        "stepId": "openMember",
+        "code": "TARGET_NOT_FOUND",
+        "message": "No strategy resolved the target",
+        "details": {}
+      },
+      "diagnosis": "The search result arrives asynchronously after filling the query; the next click needs an observed condition wait."
+    },
+    {
+      "result": {
+        "status": "success",
+        "sessionId": "ff6f98a5-6d78-4945-aead-d327ecc9af67",
+        "outputs": {
+          "balance": "…",
+          "memberId": "M-1004"
+        }
+      },
+      "diagnosis": "The balance element became visible while its text was a loading placeholder. Wait for completed currency text before extracting; use a selector or condition that distinguishes loaded text without hardcoding the observed amount."
+    }
+  ]
+}

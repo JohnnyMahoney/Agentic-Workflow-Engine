@@ -1,0 +1,18 @@
+{
+  "status": "validated",
+  "evidenceSha256": "8abef46f9d22d412da9854421ddd2d80e18f6daca1246a429149dc7512b391e2",
+  "candidateSha256": "6af9348e09d787ba4bff12a96a9221786e9fa030bdc49433639235ce11e33b2f",
+  "evidencePath": "evidence/capability-v2/2026-10-31/dynamic/discovery/discovery-v2.json",
+  "candidatePath": "evidence\\capability-v2\\2026-10-31\\dynamic\\compilation-1\\candidate.json",
+  "checks": [
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

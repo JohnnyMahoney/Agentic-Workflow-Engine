@@ -1,0 +1,10 @@
+{"at":"2026-11-01T04:46:25.068Z","kind":"replay_start","sessionId":"24ad4600-09cb-4242-9bfc-a4c3f45fd0a8","capabilityId":"read-row-and-edit","llmCalls":0}
+{"at":"2026-11-01T04:46:25.175Z","kind":"step_start","stepId":"openPage","action":"navigate"}
+{"at":"2026-11-01T04:46:26.406Z","kind":"step_end","stepId":"openPage"}
+{"at":"2026-11-01T04:46:26.406Z","kind":"step_start","stepId":"readCell","action":"extract"}
+{"at":"2026-11-01T04:46:26.426Z","kind":"step_end","stepId":"readCell"}
+{"at":"2026-11-01T04:46:26.426Z","kind":"step_start","stepId":"clickEdit","action":"click"}
+{"at":"2026-11-01T04:46:26.460Z","kind":"step_end","stepId":"clickEdit"}
+{"at":"2026-11-01T04:46:26.461Z","kind":"step_start","stepId":"waitEditHash","action":"wait"}
+{"at":"2026-11-01T04:46:26.461Z","kind":"step_end","stepId":"waitEditHash"}
+{"at":"2026-11-01T04:46:26.489Z","kind":"replay_end","status":"success","sessionId":"24ad4600-09cb-4242-9bfc-a4c3f45fd0a8","outputs":{"cellValue":"Phaedrum7","url":"https://the-internet.herokuapp.com/challenging_dom#edit"}}

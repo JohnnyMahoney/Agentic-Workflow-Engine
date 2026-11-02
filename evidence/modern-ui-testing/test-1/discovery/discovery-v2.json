@@ -1,0 +1,504 @@
+{
+  "evidenceVersion": "2.0",
+  "request": {
+    "id": "modern-member-balance",
+    "goal": "Find member {{memberId}} and retrieve their current account balance. Confirm the member ID and account type. Return the balance, account type, and member ID.",
+    "url": "http://localhost:8080/modern.html",
+    "dataMode": "synthetic-test",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "bindings": {
+      "memberId": "M-1001"
+    },
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency"
+      },
+      "accountType": {
+        "type": "string",
+        "description": "Account type displayed for the requested member"
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the account details and confirmed against the supplied memberId"
+      }
+    }
+  },
+  "completed": true,
+  "actions": [
+    {
+      "index": 2,
+      "name": "wait",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "duration": 2
+      },
+      "success": true
+    },
+    {
+      "index": 3,
+      "name": "get_page_text",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "chrome-error://chromewebdata/\n",
+      "success": true
+    },
+    {
+      "index": 4,
+      "name": "read_page",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "filter": "interactive"
+      },
+      "observation": "frame-1 chrome-error://chromewebdata/\n",
+      "success": true
+    },
+    {
+      "index": 6,
+      "name": "wait",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "duration": 3
+      },
+      "success": true
+    },
+    {
+      "index": 7,
+      "name": "get_page_text",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "chrome-error://chromewebdata/\n",
+      "success": true
+    },
+    {
+      "index": 8,
+      "name": "screenshot",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "success": true
+    },
+    {
+      "index": 10,
+      "name": "wait",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "duration": 5
+      },
+      "success": true
+    },
+    {
+      "index": 11,
+      "name": "get_page_text",
+      "before": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "chrome-error://chromewebdata/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "chrome-error://chromewebdata/\n",
+      "success": true
+    }
+  ]
+}
