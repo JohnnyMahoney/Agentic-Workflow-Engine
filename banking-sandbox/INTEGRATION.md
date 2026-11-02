@@ -1,6 +1,6 @@
 # Bundled Banking Sandbox
 
-The HTML, JavaScript and original README were copied byte-for-byte from the
+The HTML and JavaScript were copied byte-for-byte from the
 user's Desktop/BankGPT fixture, including both Legacy frame files. Modern, Legacy
 and Awkward use the same synthetic data and browser-local `sbx` storage.
 
@@ -37,5 +37,5 @@ Known fixture limitations are preserved:
 - Awkward member details omit the primary account type and load balance later.
 - These are simulated accounts and transactions, with no production banking API.
 
-The original README in this directory describes the standalone fixture. This
+The English README in this directory describes the fixture. This
 integration guide provides the current repository commands and known limits.

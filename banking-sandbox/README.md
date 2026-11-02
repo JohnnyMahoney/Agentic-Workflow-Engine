@@ -1,21 +1,38 @@
-# Legacy Banking UI Sandbox
+# Banking UI Sandbox
 
-Тестовий полігон для AI computer-use automation (Discovery → JSON Capability Contract → Playwright replay).
-**Це не банківська система.** Лише вигадані дані, жодних реальних транзакцій, backend чи API — «бекенд» це `api()` у `shared.js`, стан у `localStorage` (ключ `sbx`).
+A synthetic test application for AI computer-use automation: Discovery, a JSON
+Capability Contract, and deterministic Playwright Replay.
 
-## Запуск
-```bash
-cd banking-sandbox
-python3 -m http.server 8080      # або: npx serve -l 8080
+This is not a banking system. All customers and transactions are fictional.
+There is no backend service: the simulated api() function lives in shared.js,
+and browser state is stored in localStorage under the sbx key.
+
+## Run
+
+From the repository root:
+
+```powershell
+npm.cmd run sandbox:serve
 ```
-Відкрийте http://localhost:8080/ → `modern.html`, `legacy/index.html`, `awkward.html`.
 
-## Файли
-`shared.js` — дані, логіка, failure modes, test panel · `modern.html` · `legacy/index.html` (outer table + iframe) + `legacy/content.html` · `awkward.html`.
+Open http://localhost:8080/ and choose Modern, Legacy or Awkward.
+For an optional Python server, port configuration and browser storage behavior,
+see the [integration guide](INTEGRATION.md) and [project setup](../README.md).
 
-## Тестові клієнти
-| ID | Ім'я | Тип | Баланс |
-|---|---|---|---|
+## Files
+
+| File | Purpose |
+| --- | --- |
+| shared.js | Synthetic data, simulated API, failure modes and test panel |
+| modern.html | Conventional labeled forms and buttons |
+| legacy/index.html | Outer table layout and iframe |
+| legacy/content.html | Legacy content with nested tables and custom controls |
+| awkward.html | Ambiguous controls and asynchronous UI states |
+
+## Synthetic members
+
+| ID | Name | Account type | Balance |
+| --- | --- | --- | --- |
 | M-1001 | Anna Kovalenko | Checking | $2,450.75 |
 | M-1002 | Bohdan Melnyk | Savings | $18,200.00 |
 | M-1003 | Sam Rivera | Checking | $310.40 |
@@ -29,32 +46,50 @@ python3 -m http.server 8080      # або: npx serve -l 8080
 | M-1011 | Kateryna Moroz | Checking | -$120.50 |
 | M-1012 | Leo Hrytsenko | Term Deposit | $25,000.00 |
 
-Дублікат імені (M-1003 / M-1009) — для scoped row/cell selection.
+The duplicate name Sam Rivera (M-1003 and M-1009) exercises scoped row selection.
+These are fixture data values; not every UI exposes every field.
 
-## Сценарії та очікувані результати (усі три UI)
-1. **Search ID**: `M-1001` → 1 запис; Details: Anna Kovalenko, Checking; Balance `$2,450.75`.
-2. **Search name**: `Sam Rivera` → 2 рядки; вибрати M-1009 → Balance `$15,800.00`.
-3. **Open Sub-Account**: M-1002 → тип `Savings` → confirmation `M-1002-S1` (другий раз `-S2`). Деталі клієнта потім показують sub-account.
-4. **Coordinate fallback** (Legacy, Customer Details): `<canvas>` «Print Statement» — без тексту/ролі в DOM; клік → «Statement queued (simulated)».
-5. Негативні: порожній пошук → `VALIDATION_ERROR`; `zzz` → `NOT_FOUND`.
+## Example scenarios
+
+1. Search for M-1001 and inspect the member details and $2,450.75 balance.
+2. Search for Sam Rivera, distinguish the two members, and select M-1009 with a
+   $15,800.00 balance.
+3. Open a Savings sub-account for M-1002 and verify its confirmation and appearance
+   in member details. A fresh state produces M-1002-S1; subsequent creation uses S2.
+4. On Legacy details, the Print Statement canvas exercises coordinate targeting;
+   its simulated response is Statement queued (simulated).
+5. Exercise negative outcomes: empty search and a missing member such as zzz.
+
+These describe fixture scenarios, not a claim that every automation path passes.
+Legacy account-type selection has a known defect reproduced manually by the
+administrator. Awkward details do not expose the primary account type.
 
 ## Locator challenges
-- **Modern**: role/name (`button "View Anna Kovalenko (M-1001)"`), label (`Member ID or name`, `Account type`), `role=alert/status`.
-- **Legacy**: iframe `content` (frame traversal), вкладені `<table>`, клікабельні `<td>`/`<span>` без ролей, input без label, scoped row/cell, canvas.
-- **Awkward**: дві кнопки `Open` у кожному рядку (1-ша = details, 2-га = sub-account) і ще `Open` на details/finish; глибокі обгортки; live search з debounce 500 мс; рядки з'являються по 150 мс; баланс `…` → значення за 1 с; опції типу з'являються через 800 мс; кнопка `Next` лише після вибору; toast на 1,2 с.
+
+- **Modern:** role/name targeting, labeled inputs, and alert/status regions.
+- **Legacy:** frame traversal, nested tables, clickable td/span elements without
+  semantic roles, unlabeled inputs, scoped rows and a canvas control.
+- **Awkward:** two Open buttons per row, additional Open controls on other screens,
+  deep wrappers, debounced search, staggered results, a delayed balance, delayed
+  account-type options, Next appearing only after selection, and a transient toast.
 
 ## Failure modes
-Test panel (правий нижній кут, лише top window): select + `Reset state`. Режим зберігається, поки його не змінять. URL-швидкість: `/modern.html?mode=SLOW_LOADING`.
 
-| Mode | Поведінка |
-|---|---|
-| `NONE` | Норма |
-| `NOT_FOUND` | Пошук і get → `NOT_FOUND` |
-| `VALIDATION_ERROR` | Open sub-account завжди → `VALIDATION_ERROR` (форма лишається; у Legacy — екран помилки + Back) |
-| `PERMISSION_DENIED` | Open sub-account → `PERMISSION_DENIED` |
-| `SESSION_EXPIRED` | Перший виклик API → помилка + кнопка Log in; після входу далі працює (знову «заряджається» при перемиканні режиму/Reset) |
-| `SLOW_LOADING` | Кожен виклик 4 с замість 0,3 с |
-| `UNEXPECTED_DIALOG` | Перед кожним викликом модальне вікно «Scheduled maintenance notice» з `OK` |
-| `TIMEOUT` | Відповідь ніколи не приходить («Loading…» назавжди) |
+The test panel appears in the lower-right corner of the top window. Choose a mode
+there or use a URL such as /modern.html?mode=SLOW_LOADING. The selected mode remains
+active until changed or reset.
 
-`Reset state` очищає sub-accounts, режим → `NONE`, сесія активна.
+| Mode | Behavior |
+| --- | --- |
+| NONE | Normal behavior |
+| NOT_FOUND | Search and member lookup return NOT_FOUND |
+| VALIDATION_ERROR | Sub-account creation returns VALIDATION_ERROR; Legacy shows an error screen with Back |
+| PERMISSION_DENIED | Sub-account creation returns PERMISSION_DENIED |
+| SESSION_EXPIRED | The first simulated API call shows a session error and Log in; login restores access until the mode is rearmed |
+| SLOW_LOADING | Each simulated API call takes four seconds instead of 0.3 seconds |
+| UNEXPECTED_DIALOG | A Scheduled maintenance notice dialog appears before each call |
+| TIMEOUT | The response never arrives; loading remains indefinitely |
+
+Reset state clears sub-accounts, sets the mode to NONE and restores the active
+session. Starting the server does not reset state. Fresh automation browser
+contexts do not share your existing browser's localStorage.
