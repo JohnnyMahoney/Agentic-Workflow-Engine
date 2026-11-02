@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "9d9398b8-f6b3-4026-806d-a6346ce78eff",
+  "stepId": "checkpoints",
+  "outputs": {
+    "status": "Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."
+  },
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\banking\\parameterized-M1002\\events.jsonl"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "legacy-member-M1006-balance",
+  "goal": "Find member {{memberId}} and retrieve their current account balance. Confirm the member ID and account type. Return the balance, account type, and member ID.",
+  "url": "http://localhost:8080/legacy/index.html",
+  "dataMode": "synthetic-test",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID to look up and confirm"
+    }
+  },
+  "bindings": {
+    "memberId": "M-1006"
+  },
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Current account balance as displayed by the application, including currency"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Account type displayed for the requested member"
+    },
+    "memberId": {
+      "type": "string",
+      "description": "Member ID read from the account details and confirmed against the supplied memberId"
+    }
+  }
+}

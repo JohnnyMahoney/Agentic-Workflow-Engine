@@ -1,0 +1,22 @@
+{"at":"2026-11-02T02:18:36.986Z","kind":"replay_start","sessionId":"3b4a3b55-5056-4daa-b95d-70c29736df61","capabilityId":"selection-confirmation-fixture","llmCalls":0}
+{"at":"2026-11-02T02:18:37.194Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-02T02:18:37.212Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T02:18:37.212Z","kind":"step_start","stepId":"choose","action":"selectOption"}
+{"at":"2026-11-02T02:18:37.254Z","kind":"step_end","stepId":"choose"}
+{"at":"2026-11-02T02:18:37.254Z","kind":"step_start","stepId":"readType","action":"extract"}
+{"at":"2026-11-02T02:18:37.276Z","kind":"output_validation","stepId":"readType","property":"selectedOptionLabel","output":"type","expected":{"kind":"textEquals","value":{"input":"choice"}},"observed":{"visible":true,"text":"Youth"},"matches":true,"elapsedMs":22}
+{"at":"2026-11-02T02:18:37.276Z","kind":"step_end","stepId":"readType"}
+{"at":"2026-11-02T02:18:37.277Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T02:18:37.301Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T02:18:37.301Z","kind":"step_start","stepId":"confirm","action":"wait"}
+{"at":"2026-11-02T02:18:37.303Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.371Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.428Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.491Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.545Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.601Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.657Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.711Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.768Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:37.826Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T02:18:37.852Z","kind":"replay_end","status":"OUTCOME_UNKNOWN","code":"WAIT_TIMEOUT","sessionId":"3b4a3b55-5056-4daa-b95d-70c29736df61","stepId":"confirm","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\selected-option-extraction\\regression-2\\blocked\\events.jsonl","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"observed":{"visible":false,"text":""},"message":"Expected condition was not observed before timeout","details":{"expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"observed":{"visible":false,"text":""},"timeoutMs":500,"pendingMutations":["create"],"writeDispatched":true},"reconciliationRequired":true}

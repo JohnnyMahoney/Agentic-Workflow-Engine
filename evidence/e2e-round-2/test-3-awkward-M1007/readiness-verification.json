@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "originalTestStatus": "FAILED with false engine SUCCESS; preserved",
+  "newDiscovery": false,
+  "manualArtifactEdits": false,
+  "compilationAttempts": 2,
+  "firstCandidateRejected": "Output descriptions differ from request",
+  "originalHashesVerified": true,
+  "replayLlmCalls": 0,
+  "outputReadiness": "validated",
+  "comparisons": {
+    "balance": {
+      "discovery": "$0.00",
+      "replay": "$0.00",
+      "matches": true
+    },
+    "memberId": {
+      "discovery": "M-1007",
+      "replay": "M-1007",
+      "matches": true
+    }
+  },
+  "balanceReadiness": {
+    "rejectedSamples": 17,
+    "firstObserved": {
+      "visible": true,
+      "text": "…"
+    },
+    "lastObserved": {
+      "visible": true,
+      "text": "$0.00"
+    },
+    "elapsedMs": 981
+  },
+  "limitations": [
+    "Saved Discovery contains no intermediate balance placeholder; Builder proves only positive-sample compatibility for this output",
+    "Runtime replay now independently observed and rejected the placeholder",
+    "Format validation does not prove freshness or correctness of every possible formatted value",
+    "Legacy v2.0 artifacts need recompilation for the readiness guarantee"
+  ],
+  "administratorAcceptance": "pending"
+}

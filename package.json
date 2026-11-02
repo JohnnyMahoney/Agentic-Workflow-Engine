@@ -13,7 +13,9 @@
     "capability:compile": "npm run build && node --env-file=.env dist/capability/cli.js compile",
     "capability:validate": "npm run build && node dist/capability/cli.js validate",
     "capability:replay": "npm run build && node dist/capability/cli.js replay",
-    "test": "npm run build && node --test dist/tests/*.test.js"
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "test:banking": "npm run build && node --test dist/tests/integration/banking.test.js",
+    "sandbox:serve": "node scripts/serve-banking-sandbox.mjs"
   },
   "repository": {
     "type": "git",

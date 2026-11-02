@@ -1,0 +1,49 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (299.5359ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (405.0566ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (6.2689ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (336.0925ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (1955.6859ms)
+✔ builder verifies a native select's recorded chosen option (1064.4875ms)
+✔ replay selects by parameterized label or value (521.2598ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1448.2976ms)
+✖ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1631.3158ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (38.2055ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1328.3332ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (121.8592ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (124.7699ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (107.705ms)
+✔ native dialog and timeout are not guessed authentication failures (67.0482ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (69.8704ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (1402.7532ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 16
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6574.7251
+
+✖ failing tests:
+
+test at dist\tests\output-readiness.test.js:25:1
+✖ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1631.3158ms)
+  Error: ENOENT: no such file or directory, open 'C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\regression\permanent\failure.png'
+      at Object.openSync (node:fs:560:18)
+      at readFileSync (node:fs:444:35)
+      at TestContext.<anonymous> (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/tests/output-readiness.test.js:48:27)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    errno: -4058,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: 'C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\regression\\permanent\\failure.png'
+  }

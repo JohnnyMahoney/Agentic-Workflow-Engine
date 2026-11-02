@@ -1,0 +1,17 @@
+{"at":"2026-11-02T01:50:52.179Z","kind":"replay_start","sessionId":"9a8086e1-d92e-47ed-9909-773f12f39472","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:50:52.351Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:50:52.394Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:50:52.395Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:50:52.412Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:50:52.412Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:50:52.459Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T01:50:52.459Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T01:50:52.466Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.471Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.538Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.602Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.665Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.727Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.792Z","kind":"detector","stepId":"waitSearch","code":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again."}
+{"at":"2026-11-02T01:50:52.818Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T01:50:52.842Z","kind":"replay_end","status":"HARD_FAILURE","code":"SESSION_EXPIRED","sessionId":"9a8086e1-d92e-47ed-9909-773f12f39472","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\SESSION_EXPIRED\\events.jsonl","expected":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again.","message":"Explicit UI outcome detector matched","details":{"code":"SESSION_EXPIRED","status":"HARD_FAILURE","expected":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again.","resolvesMutations":["create"],"pendingMutations":[],"writeDispatched":false}}

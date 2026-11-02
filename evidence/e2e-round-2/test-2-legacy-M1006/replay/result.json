@@ -1,0 +1,13 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "1822e337-f6cb-4382-82de-16690a8478f1",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "$7,640.20",
+    "accountType": "Savings",
+    "memberId": "M-1006"
+  },
+  "retryable": false,
+  "evidenceRef": "evidence\\e2e-round-2\\test-2-legacy-M1006\\replay\\events.jsonl"
+}

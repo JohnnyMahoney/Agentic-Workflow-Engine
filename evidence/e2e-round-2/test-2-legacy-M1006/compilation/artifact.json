@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "2.0",
+  "id": "legacyMemberBalanceLookup",
+  "version": "1.0.0",
+  "description": "Search for a member by ID in the legacy Member Services app, open their customer details, confirm the member ID, and return the account balance, account type and member ID.",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID to look up and confirm"
+    }
+  },
+  "targets": {
+    "indexSearchInput": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "input[name=\"qq\"]",
+          "frames": [
+            "iframe[name=\"content\"]"
+          ]
+        }
+      ]
+    },
+    "searchInput": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "input[name=\"qq\"]",
+          "frames": []
+        }
+      ]
+    },
+    "searchButton": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "span.b",
+          "frames": []
+        }
+      ]
+    },
+    "memberLink": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#m u",
+          "frames": []
+        }
+      ]
+    },
+    "memberIdValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#m table table tr:nth-child(2) > td:nth-child(2) > b",
+          "frames": []
+        }
+      ]
+    },
+    "accountTypeValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#m table table tr:nth-child(4) > td:nth-child(2)",
+          "frames": []
+        }
+      ]
+    },
+    "balanceValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#m font[color=\"green\"] b",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navIndex",
+      "action": "navigate",
+      "url": "http://localhost:8080/legacy/index.html"
+    },
+    {
+      "id": "clickIndexInput",
+      "action": "click",
+      "target": "indexSearchInput"
+    },
+    {
+      "id": "navContent",
+      "action": "navigate",
+      "url": "http://localhost:8080/legacy/content.html"
+    },
+    {
+      "id": "fillMember",
+      "action": "fill",
+      "target": "searchInput",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "id": "clickSearch",
+      "action": "click",
+      "target": "searchButton"
+    },
+    {
+      "id": "waitResult",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "memberLink",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "clickMember",
+      "action": "click",
+      "target": "memberLink"
+    },
+    {
+      "id": "waitDetails",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "memberIdValue",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractBalance",
+      "action": "extract",
+      "target": "balanceValue",
+      "saveAs": "balanceText"
+    },
+    {
+      "id": "extractType",
+      "action": "extract",
+      "target": "accountTypeValue",
+      "saveAs": "accountTypeText"
+    },
+    {
+      "id": "extractId",
+      "action": "extract",
+      "target": "memberIdValue",
+      "saveAs": "memberIdText"
+    }
+  ],
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Current account balance as displayed by the application, including currency",
+      "source": {
+        "savedValue": "balanceText"
+      }
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Account type displayed for the requested member",
+      "source": {
+        "savedValue": "accountTypeText"
+      }
+    },
+    "memberId": {
+      "type": "string",
+      "description": "Member ID read from the account details and confirmed against the supplied memberId",
+      "source": {
+        "savedValue": "memberIdText"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textContains",
+      "target": "memberIdValue",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "kind": "textContains",
+      "target": "balanceValue",
+      "value": {
+        "literal": "$"
+      }
+    }
+  ]
+}

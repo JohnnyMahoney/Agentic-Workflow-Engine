@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "2.1",
+  "id": "awkward-member-balance",
+  "version": "1.0.0",
+  "description": "Search for a member by ID in the NeoBank Console, open the member's account details, and return the displayed balance and the member ID, confirming the ID against the supplied memberId.",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID to look up and confirm"
+    }
+  },
+  "targets": {
+    "searchInput": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#sq",
+          "frames": []
+        }
+      ]
+    },
+    "resultIdCell": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "div:nth-child(2)",
+          "frames": [],
+          "scope": {
+            "css": ".r",
+            "has": {
+              "css": "div",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "openButton": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "button:first-child",
+          "frames": [],
+          "scope": {
+            "css": ".r",
+            "has": {
+              "css": "div",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "detailId": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#root span",
+          "frames": []
+        }
+      ]
+    },
+    "balanceValue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#bal",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navigateHome",
+      "action": "navigate",
+      "url": "http://localhost:8080/awkward.html"
+    },
+    {
+      "id": "focusSearch",
+      "action": "click",
+      "target": "searchInput"
+    },
+    {
+      "id": "fillSearch",
+      "action": "fill",
+      "target": "searchInput",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "id": "waitResultRow",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "resultIdCell"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractMemberId",
+      "action": "extract",
+      "target": "resultIdCell",
+      "saveAs": "memberIdValue",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 300
+      }
+    },
+    {
+      "id": "openMember",
+      "action": "click",
+      "target": "openButton"
+    },
+    {
+      "id": "waitBalance",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "balanceValue"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractBalance",
+      "action": "extract",
+      "target": "balanceValue",
+      "saveAs": "balanceText",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 300
+      }
+    }
+  ],
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Current account balance as displayed by the application, including currency",
+      "source": {
+        "savedValue": "balanceText"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textMatches",
+          "pattern": "^-?[$€£]\\s?\\d[\\d,]*(\\.\\d{2})?$"
+        },
+        "timeoutMs": 5000
+      }
+    },
+    "memberId": {
+      "type": "string",
+      "description": "Member ID read from the account details and confirmed against the supplied memberId",
+      "source": {
+        "savedValue": "memberIdValue"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "input": "memberId"
+          }
+        },
+        "timeoutMs": 5000
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textContains",
+      "target": "detailId",
+      "value": {
+        "input": "memberId"
+      }
+    }
+  ]
+}

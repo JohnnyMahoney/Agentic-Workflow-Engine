@@ -1,0 +1,9 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "c485095a-fbd0-4228-b789-6259be7a911d",
+  "stepId": "checkpoints",
+  "outputs": {},
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\loading\\events.jsonl"
+}

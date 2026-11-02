@@ -1,0 +1,32 @@
+{
+  "status": "PARTIAL",
+  "fullE2EPassed": false,
+  "stage": "Discovery acceptance gate",
+  "code": "RECOVERED_TOOL_FAILURE_BLOCKS_COMPILATION",
+  "businessGoalConfirmationObserved": true,
+  "creationConfirmation": {
+    "action": 33,
+    "tool": "get_page_text",
+    "reference": "M-1010-S1",
+    "accountType": "Youth",
+    "memberId": "M-1010",
+    "observation": "http://localhost:8080/awkward.html\nDone\nSub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated.\nOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state"
+  },
+  "initialFailure": {
+    "action": 7,
+    "name": "form_input",
+    "message": "Only string form input on an observed reference is supported"
+  },
+  "toolFailures": 1,
+  "attemptedActions": 34,
+  "modelCompletedFlag": true,
+  "savedEvidenceCompleted": false,
+  "diagnosis": "Claude recovered from a rejected form_input and reached a real creation confirmation. Current CLI and Builder require zero failed discovery actions; evidence is marked incomplete and cannot be compiled as-is.",
+  "compilationExecuted": false,
+  "replayExecuted": false,
+  "codeChangedForTest": false,
+  "discoveryRepeated": false,
+  "evidenceEdited": false,
+  "localStorageVerified": false,
+  "administratorAcceptance": "pending"
+}

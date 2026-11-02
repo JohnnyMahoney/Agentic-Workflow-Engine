@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "test": "4/6",
+  "newDiscovery": false,
+  "manualArtifactEdits": false,
+  "compilationHistory": [
+    {
+      "directory": "compilation",
+      "status": "rejected",
+      "reason": "Changed accountType output definition"
+    },
+    {
+      "directory": "compilation-2",
+      "status": "rejected",
+      "reason": "Invisible option text / no textual extraction evidence"
+    },
+    {
+      "directory": "compilation-3-selected-option",
+      "status": "validated",
+      "extension": "extract.property selectedOptionLabel"
+    }
+  ],
+  "originalHashesVerified": true,
+  "replayLlmCalls": 0,
+  "comparisons": {
+    "memberId": {
+      "discovery": "M-1008",
+      "replay": "M-1008",
+      "matches": true,
+      "property": "text"
+    },
+    "accountType": {
+      "discovery": "Youth",
+      "replay": "Youth",
+      "matches": true,
+      "property": "selectedOptionLabel"
+    },
+    "status": {
+      "discovery": "Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction.",
+      "replay": "Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction.",
+      "matches": true,
+      "property": "text"
+    }
+  },
+  "confirmationVerified": {
+    "expectedReference": "M-1008-S1",
+    "expectedType": "Youth",
+    "message": "Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction.",
+    "terminalPageMatches": true
+  },
+  "actualSandboxSubAccounts": [
+    {
+      "ref": "M-1008-S1",
+      "type": "Youth"
+    }
+  ],
+  "creationDispatches": 1,
+  "creationRetries": 0,
+  "readOnlyTerminalHook": true,
+  "testsPassed": 20,
+  "administratorAcceptance": "pending",
+  "limitations": [
+    "Fresh isolated browser context, not the user Chrome localStorage",
+    "Only native single select supported",
+    "Selection output is pre-submit evidence; confirmation and terminal sandbox state separately establish creation"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "FAILED",
+  "code": "FALSE_SUCCESS_OUTPUT_MISMATCH",
+  "engineStatus": "SUCCESS",
+  "stage": "Replay output verification",
+  "stepId": "extractBalance",
+  "comparisons": {
+    "balance": {
+      "discovery": "$0.00",
+      "replay": "…",
+      "matches": false,
+      "stepId": "extractBalance"
+    },
+    "memberId": {
+      "discovery": "M-1007",
+      "replay": "M-1007",
+      "matches": true,
+      "stepId": "extractMemberId"
+    }
+  },
+  "discoveryActions": 14,
+  "replayLlmCalls": 0,
+  "sourceEvidenceHashVerified": true,
+  "codeChangedForTest": false,
+  "diagnosis": {
+    "compilation": "waitDetails and final checkpoint validate member identity only; no balance readiness condition precedes extractBalance",
+    "validator": "Validates declared conditions and extraction evidence but does not require readiness coverage for every output; recorded balance snapshots only show the final $0.00, not the transient placeholder",
+    "replay": "Faithfully executes the weak artifact and returns a placeholder as a string; all declared checkpoints pass, producing false business success"
+  },
+  "failureScreenshot": "Not captured: engine classified this run as SUCCESS and closed the browser",
+  "automaticFixes": false,
+  "administratorAcceptance": "pending"
+}

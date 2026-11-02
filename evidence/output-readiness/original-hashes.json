@@ -1,0 +1,7 @@
+{
+  "evidence/e2e-round-2/test-3-awkward-M1007/discovery/discovery-v2.json": "7c4e32f0584c7de8124842450c8358803e9c4cdcbb7eb4e99e064d49968b77a4",
+  "evidence/e2e-round-2/test-3-awkward-M1007/compilation/candidate.json": "3a45877aebc24bd26e90b46b0bedd0d3137b41c4633e447c6405c7b22b865216",
+  "evidence/e2e-round-2/test-3-awkward-M1007/compilation/artifact.json": "75d6b83e426333a885c5d73ba8bdcbcf7d438d34f5d44c148a8781660a9b4fa8",
+  "evidence/e2e-round-2/test-3-awkward-M1007/replay/result.json": "77f4bbed500552057c20be924eab2d2020648d400af08848215adcebc3de46ec",
+  "evidence/e2e-round-2/test-3-awkward-M1007/replay/events.jsonl": "672a8b45a81de42968ed972861516ddbf69b4a3e155241d1865970ae69f26a9b"
+}

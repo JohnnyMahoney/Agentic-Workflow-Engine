@@ -1,0 +1,26 @@
+{
+  "id": "awkward-member-M1007-balance",
+  "goal": "Find member {{memberId}} and retrieve their current account balance. Confirm the member ID. Return the balance and member ID.",
+  "url": "http://localhost:8080/awkward.html",
+  "dataMode": "synthetic-test",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID to look up and confirm"
+    }
+  },
+  "bindings": {
+    "memberId": "M-1007"
+  },
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Current account balance as displayed by the application, including currency"
+    },
+    "memberId": {
+      "type": "string",
+      "description": "Member ID read from the account details and confirmed against the supplied memberId"
+    }
+  }
+}

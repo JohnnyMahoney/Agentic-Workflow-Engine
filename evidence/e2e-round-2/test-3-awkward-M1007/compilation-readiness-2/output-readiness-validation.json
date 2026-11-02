@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "2.1",
+  "outputs": [
+    {
+      "output": "memberId",
+      "stepId": "extractMemberId",
+      "condition": {
+        "kind": "textEquals",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "positiveSample": "M-1007",
+      "rejectedIntermediateValues": [],
+      "limitation": "No distinct intermediate value was recorded for this output; only positive-sample compatibility is proven."
+    },
+    {
+      "output": "balance",
+      "stepId": "extractBalance",
+      "condition": {
+        "kind": "textMatches",
+        "pattern": "^-?[$€£]\\s?\\d[\\d,]*(\\.\\d{2})?$"
+      },
+      "positiveSample": "$0.00",
+      "rejectedIntermediateValues": [],
+      "limitation": "No distinct intermediate value was recorded for this output; only positive-sample compatibility is proven."
+    }
+  ],
+  "legacyUnverifiedOutputs": []
+}

@@ -1,0 +1,36 @@
+{
+  "status": "RECOVERABLE_ERROR",
+  "code": "WAIT_TIMEOUT",
+  "sessionId": "fe154d8f-6e00-4ca6-929e-cb5f944cb03a",
+  "stepId": "wait",
+  "retryable": true,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\timeout\\events.jsonl",
+  "expected": {
+    "kind": "textContains",
+    "target": "state",
+    "value": {
+      "literal": "confirmed"
+    }
+  },
+  "observed": {
+    "visible": true,
+    "text": "Loading..."
+  },
+  "message": "Expected condition was not observed before timeout",
+  "details": {
+    "expected": {
+      "kind": "textContains",
+      "target": "state",
+      "value": {
+        "literal": "confirmed"
+      }
+    },
+    "observed": {
+      "visible": true,
+      "text": "Loading..."
+    },
+    "timeoutMs": 50,
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

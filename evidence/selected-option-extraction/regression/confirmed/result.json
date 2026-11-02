@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "a321c905-ea8a-4662-b008-feb0063d7364",
+  "stepId": "checkpoints",
+  "outputs": {
+    "type": "Youth"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\selected-option-extraction\\regression\\confirmed\\events.jsonl"
+}

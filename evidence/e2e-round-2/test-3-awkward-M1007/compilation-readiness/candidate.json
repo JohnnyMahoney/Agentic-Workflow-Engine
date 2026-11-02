@@ -1,0 +1,274 @@
+{
+  "capability": {
+    "schemaVersion": "2.1",
+    "id": "awkward-member-balance",
+    "version": "1.0.0",
+    "description": "Search for a member by ID in the NeoBank Console, read the member ID from the search result row, open the account, wait for the balance to finish loading, confirm the member ID on the account details page, and return the balance and member ID.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "targets": {
+      "searchInput": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#sq",
+            "frames": []
+          }
+        ]
+      },
+      "memberRowId": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "div:nth-child(2)",
+            "frames": [],
+            "scope": {
+              "css": ".r",
+              "has": {
+                "css": "div",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "openButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "div:last-child > button:first-child",
+            "frames": [],
+            "scope": {
+              "css": ".r",
+              "has": {
+                "css": "div",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "balanceValue": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#bal:has-text(\"$\")",
+            "frames": []
+          }
+        ]
+      },
+      "detailId": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "div.w2 span",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "navigate",
+        "action": "navigate",
+        "url": "http://localhost:8080/awkward.html"
+      },
+      {
+        "id": "clickSearch",
+        "action": "click",
+        "target": "searchInput"
+      },
+      {
+        "id": "fillSearch",
+        "action": "fill",
+        "target": "searchInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "waitResults",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "openButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractMemberId",
+        "action": "extract",
+        "target": "memberRowId",
+        "saveAs": "memberIdValue"
+      },
+      {
+        "id": "openMember",
+        "action": "click",
+        "target": "openButton"
+      },
+      {
+        "id": "waitBalance",
+        "action": "wait",
+        "condition": {
+          "kind": "textContains",
+          "target": "balanceValue",
+          "value": {
+            "literal": "$"
+          }
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractBalance",
+        "action": "extract",
+        "target": "balanceValue",
+        "saveAs": "balanceText",
+        "retry": {
+          "maxAttempts": 3,
+          "delayMs": 500
+        }
+      },
+      {
+        "id": "assertMemberId",
+        "action": "assert",
+        "condition": {
+          "kind": "textContains",
+          "target": "detailId",
+          "value": {
+            "input": "memberId"
+          }
+        }
+      }
+    ],
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency",
+        "source": {
+          "savedValue": "balanceText"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textMatches",
+            "pattern": "-?\\$[0-9][0-9,]*\\.[0-9]{2}"
+          },
+          "timeoutMs": 10000
+        }
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the member record and confirmed against the supplied memberId on the account details page",
+        "source": {
+          "savedValue": "memberIdValue"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textEquals",
+            "value": {
+              "input": "memberId"
+            }
+          },
+          "timeoutMs": 10000
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "textContains",
+        "target": "detailId",
+        "value": {
+          "input": "memberId"
+        }
+      }
+    ]
+  },
+  "stepEvidence": {
+    "navigate": {
+      "action": 1,
+      "phase": "after"
+    },
+    "clickSearch": {
+      "action": 4,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "fillSearch": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "waitResults": {
+      "action": 8,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n18"
+      }
+    },
+    "extractMemberId": {
+      "action": 9,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n16"
+      }
+    },
+    "openMember": {
+      "action": 11,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n18"
+      }
+    },
+    "waitBalance": {
+      "action": 12,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    },
+    "extractBalance": {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    },
+    "assertMemberId": {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "2.1",
+  "id": "selection-confirmation-fixture",
+  "version": "1.0.0",
+  "description": "Selection is not creation",
+  "inputs": {
+    "choice": {
+      "type": "string",
+      "required": true,
+      "description": "Desired label"
+    }
+  },
+  "targets": {
+    "type": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#type",
+          "frames": []
+        }
+      ]
+    },
+    "create": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#create",
+          "frames": []
+        }
+      ]
+    },
+    "status": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#status",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "open",
+      "action": "navigate",
+      "url": "http://127.0.0.1:52744/blocked"
+    },
+    {
+      "id": "choose",
+      "action": "selectOption",
+      "target": "type",
+      "by": "label",
+      "value": {
+        "input": "choice"
+      },
+      "effect": "readOnly"
+    },
+    {
+      "id": "readType",
+      "action": "extract",
+      "target": "type",
+      "property": "selectedOptionLabel",
+      "saveAs": "type"
+    },
+    {
+      "id": "create",
+      "action": "click",
+      "target": "create",
+      "effect": "stateChanging"
+    },
+    {
+      "id": "confirm",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "input": "choice"
+        }
+      },
+      "timeoutMs": 500,
+      "confirms": "create"
+    }
+  ],
+  "outputs": {
+    "type": {
+      "type": "string",
+      "description": "Selected label",
+      "source": {
+        "savedValue": "type"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "input": "choice"
+          }
+        },
+        "timeoutMs": 500
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textContains",
+      "target": "status",
+      "value": {
+        "literal": "Created"
+      }
+    }
+  ]
+}

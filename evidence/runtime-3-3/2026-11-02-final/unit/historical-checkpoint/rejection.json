@@ -1,0 +1,14 @@
+{
+  "source": "evidence/modern-ui-testing/test-2-current-state",
+  "code": "PREMATURE_CHECKPOINT",
+  "details": {
+    "expected": "Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction.",
+    "observed": "Loading…",
+    "action": 24,
+    "phase": "after",
+    "condition": {
+      "kind": "visible",
+      "target": "confirmationStatus"
+    }
+  }
+}

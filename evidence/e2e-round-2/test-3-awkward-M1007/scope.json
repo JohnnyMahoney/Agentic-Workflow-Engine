@@ -1,0 +1,7 @@
+{
+  "outputs": [
+    "balance",
+    "memberId"
+  ],
+  "reason": "Administrator previously confirmed that Awkward UI does not expose account type; retaining the previously approved narrowed lookup scope."
+}

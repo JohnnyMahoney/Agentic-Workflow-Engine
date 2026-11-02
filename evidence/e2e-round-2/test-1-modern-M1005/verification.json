@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "stages": [
+    "new Claude Discovery",
+    "separate Claude Compilation",
+    "Evidence Validation",
+    "fresh-session Playwright Replay"
+  ],
+  "discoveryActions": 15,
+  "replaySteps": 11,
+  "replayLlmCalls": 0,
+  "comparisons": {
+    "balance": {
+      "discovery": "$50,000.00",
+      "replay": "$50,000.00",
+      "matches": true
+    },
+    "accountType": {
+      "discovery": "Term Deposit",
+      "replay": "Term Deposit",
+      "matches": true
+    },
+    "memberId": {
+      "discovery": "M-1005",
+      "replay": "M-1005",
+      "matches": true
+    }
+  },
+  "sourceEvidenceHashVerified": true,
+  "codeChangedForTest": false,
+  "initialAttempt": "discovery: API connection error before any action; preserved",
+  "limitations": [
+    "One successful lookup does not establish all section 3.3 exceptional outcomes",
+    "Fresh isolated browser contexts do not share user Chrome localStorage",
+    "No runtime detectors configured for this happy-path run"
+  ]
+}

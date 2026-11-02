@@ -1,0 +1,12 @@
+{
+  "name": "legacy-open-youth-M1009",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 2,
+  "finalText": "I couldn't open the Youth sub-account for M-1009, so no sub-account was created. The browser session hit a 35-action limit and stopped accepting further actions.\n\n**What I did**\n- **Search:** I searched for M-1009 and opened the record: Sam Rivera, Savings account, balance $15,800.00, no sub-accounts.\n- **Account type step:** I clicked \"Open Sub-Account\", which lists Savings, Checking, Term Deposit and Youth. I clicked \"Youth\" and then \"Next\".\n- **Validation error:** The site returned `ERROR VALIDATION_ERROR – Select a valid account type.` The Youth click didn't register as a selection, and the page showed no highlight to confirm it had.\n- **Retry:** I went back and reopened the Open Sub-Account form to try again. The session limit cut me off before I could do anything else.\n\n**Result**\n- **Member ID:** M-1009\n- **Selected account type:** Youth was intended but not registered by the site.\n- **Confirmation status:** Not confirmed. No creation confirmation ever appeared, and I made no final-state check, so I can't say the sub-account exists.\n\nThe `type` and `find` tools were also blocked, which left no way to set the selection other than clicking. To finish, start a fresh session and either click the Youth option in a way the site registers, or create the sub-account manually.",
+  "actionCount": 37
+}

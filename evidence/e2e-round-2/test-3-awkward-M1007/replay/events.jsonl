@@ -1,0 +1,23 @@
+{"at":"2026-11-02T01:40:33.447Z","kind":"replay_start","sessionId":"216f5737-e2ed-41ff-a1f7-bacbdce2063e","capabilityId":"awkwardMemberBalanceLookup","llmCalls":0}
+{"at":"2026-11-02T01:40:33.653Z","kind":"step_start","stepId":"navigateConsole","action":"navigate"}
+{"at":"2026-11-02T01:40:33.682Z","kind":"step_end","stepId":"navigateConsole"}
+{"at":"2026-11-02T01:40:33.682Z","kind":"step_start","stepId":"focusSearch","action":"click"}
+{"at":"2026-11-02T01:40:33.719Z","kind":"step_end","stepId":"focusSearch"}
+{"at":"2026-11-02T01:40:33.720Z","kind":"step_start","stepId":"fillSearch","action":"fill"}
+{"at":"2026-11-02T01:40:33.724Z","kind":"step_end","stepId":"fillSearch"}
+{"at":"2026-11-02T01:40:33.724Z","kind":"step_start","stepId":"waitRow","action":"wait"}
+{"at":"2026-11-02T01:40:34.593Z","kind":"condition","stepId":"waitRow","expected":{"kind":"visible","target":"openButton"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T01:40:34.593Z","kind":"step_end","stepId":"waitRow"}
+{"at":"2026-11-02T01:40:34.594Z","kind":"step_start","stepId":"extractMemberId","action":"extract"}
+{"at":"2026-11-02T01:40:34.594Z","kind":"attempt","stepId":"extractMemberId","attempt":1}
+{"at":"2026-11-02T01:40:34.596Z","kind":"step_end","stepId":"extractMemberId"}
+{"at":"2026-11-02T01:40:34.597Z","kind":"step_start","stepId":"openMember","action":"click"}
+{"at":"2026-11-02T01:40:34.617Z","kind":"step_end","stepId":"openMember"}
+{"at":"2026-11-02T01:40:34.618Z","kind":"step_start","stepId":"waitDetails","action":"wait"}
+{"at":"2026-11-02T01:40:34.974Z","kind":"condition","stepId":"waitDetails","expected":{"kind":"textContains","target":"memberIdText","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"ID: M-1007"},"blocked":false}
+{"at":"2026-11-02T01:40:34.974Z","kind":"step_end","stepId":"waitDetails"}
+{"at":"2026-11-02T01:40:34.974Z","kind":"step_start","stepId":"extractBalance","action":"extract"}
+{"at":"2026-11-02T01:40:34.974Z","kind":"attempt","stepId":"extractBalance","attempt":1}
+{"at":"2026-11-02T01:40:34.976Z","kind":"step_end","stepId":"extractBalance"}
+{"at":"2026-11-02T01:40:34.979Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"memberIdText","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"ID: M-1007"},"blocked":false}
+{"at":"2026-11-02T01:40:35.003Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"216f5737-e2ed-41ff-a1f7-bacbdce2063e","stepId":"checkpoints","outputs":{"balance":"…","memberId":"M-1007"},"retryable":false,"evidenceRef":"evidence\\e2e-round-2\\test-3-awkward-M1007\\replay\\events.jsonl"}

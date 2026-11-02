@@ -202,7 +202,7 @@ test("replay selects by parameterized label or value", async () => {
       (cap.steps[1] as { by: "label" | "value" }).by = by;
       writeFileSync(path, JSON.stringify(cap));
       const result = await replayCapability(path, { choice }, join(directory, by), policy);
-      assert.equal(result.status, "success", JSON.stringify(result));
+      assert.equal(result.status, "SUCCESS", JSON.stringify(result));
       assert.equal(result.outputs?.selected, "Savings");
     }
   } finally { await new Promise<void>((resolve) => server.close(() => resolve())); }
@@ -230,7 +230,7 @@ test("generic replay executes fill, click, wait, extract, assert; returns struct
     const path = join(directory, "artifact.json"); writeFileSync(path, JSON.stringify(cap));
     for (const name of ["Alice-test", "Bob-test"]) {
       const result = await replayCapability(path, { name }, join(directory, name), policy);
-      assert.equal(result.status, "success"); assert.equal(result.outputs?.text, name);
+      assert.equal(result.status, "SUCCESS"); assert.equal(result.outputs?.text, name);
     }
     const invalid = await replayCapability(path, {}, join(directory, "invalid"), policy);
     assert.equal(invalid.code, "INVALID_INPUT");

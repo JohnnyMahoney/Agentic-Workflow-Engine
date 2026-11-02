@@ -1,0 +1,74 @@
+{"at":"2026-11-02T01:50:45.056Z","kind":"replay_start","sessionId":"b20cd6c4-cc1c-4784-92c4-990cd151bb70","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:50:45.265Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:50:45.320Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:50:45.320Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:50:45.338Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:50:45.338Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:50:45.378Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T01:50:45.378Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T01:50:45.386Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.396Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.458Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.521Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.583Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.645Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.703Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T01:50:45.704Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-02T01:50:45.704Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-02T01:50:45.742Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-02T01:50:45.742Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-02T01:50:45.749Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.755Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.818Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.878Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:45.937Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.007Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.071Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T01:50:46.071Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-02T01:50:46.071Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-02T01:50:46.093Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T01:50:46.094Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-02T01:50:46.115Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-02T01:50:46.115Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T01:50:46.142Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T01:50:46.142Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-02T01:50:46.148Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.154Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.157Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.216Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.219Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.279Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.282Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.342Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.345Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.409Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.412Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.486Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-02T01:50:46.486Z","kind":"step_end","stepId":"waitConfirmation"}
+{"at":"2026-11-02T01:50:46.486Z","kind":"step_start","stepId":"verifyMember","action":"assert"}
+{"at":"2026-11-02T01:50:46.495Z","kind":"condition","stepId":"verifyMember","expected":{"kind":"textContains","target":"status","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."}}
+{"at":"2026-11-02T01:50:46.495Z","kind":"step_end","stepId":"verifyMember"}
+{"at":"2026-11-02T01:50:46.495Z","kind":"step_start","stepId":"verifyType","action":"assert"}
+{"at":"2026-11-02T01:50:46.504Z","kind":"condition","stepId":"verifyType","expected":{"kind":"textContains","target":"status","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."}}
+{"at":"2026-11-02T01:50:46.504Z","kind":"step_end","stepId":"verifyType"}
+{"at":"2026-11-02T01:50:46.504Z","kind":"step_start","stepId":"status","action":"extract"}
+{"at":"2026-11-02T01:50:46.514Z","kind":"attempt","stepId":"status","attempt":1}
+{"at":"2026-11-02T01:50:46.516Z","kind":"step_end","stepId":"status"}
+{"at":"2026-11-02T01:50:46.516Z","kind":"step_start","stepId":"back","action":"click"}
+{"at":"2026-11-02T01:50:46.541Z","kind":"step_end","stepId":"back"}
+{"at":"2026-11-02T01:50:46.541Z","kind":"step_start","stepId":"verifyCreated","action":"wait"}
+{"at":"2026-11-02T01:50:46.547Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.552Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.555Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.617Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.620Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.679Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.682Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.742Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.744Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.804Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:46.807Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:46.875Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-accounts: M-1001-S1 (Savings)"},"blocked":false}
+{"at":"2026-11-02T01:50:46.875Z","kind":"step_end","stepId":"verifyCreated"}
+{"at":"2026-11-02T01:50:46.882Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"subs","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-accounts: M-1001-S1 (Savings)"},"blocked":false}
+{"at":"2026-11-02T01:50:46.908Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"b20cd6c4-cc1c-4784-92c4-990cd151bb70","stepId":"checkpoints","outputs":{"status":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"outputReadiness":"legacy-unverified","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\happy-M1001\\events.jsonl"}

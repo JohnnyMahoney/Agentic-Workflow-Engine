@@ -1,0 +1,313 @@
+{
+  "capability": {
+    "schemaVersion": "2.0",
+    "id": "modernMemberBalanceLookup",
+    "version": "1.0.0",
+    "description": "Search for a member by ID on the Modern Bank member services page, open their details, confirm the member ID, and return the account balance, account type and member ID.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "targets": {
+      "searchInput": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": {
+              "literal": "Member ID or name"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#q",
+            "frames": []
+          }
+        ]
+      },
+      "searchButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Search"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#f button[type=submit]",
+            "frames": []
+          }
+        ]
+      },
+      "viewButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "button",
+            "frames": [],
+            "scope": {
+              "css": "#out tbody tr",
+              "has": {
+                "css": "td",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "detailMemberId": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out dl dd:nth-of-type(1)",
+            "frames": []
+          }
+        ]
+      },
+      "detailAccountType": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out dl dd:nth-of-type(3)",
+            "frames": []
+          }
+        ]
+      },
+      "detailBalance": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out output",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "navigateHome",
+        "action": "navigate",
+        "url": "http://localhost:8080/modern.html"
+      },
+      {
+        "id": "focusSearch",
+        "action": "click",
+        "target": "searchInput"
+      },
+      {
+        "id": "fillMemberId",
+        "action": "fill",
+        "target": "searchInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "clickSearch",
+        "action": "click",
+        "target": "searchButton"
+      },
+      {
+        "id": "waitResults",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "viewButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "clickView",
+        "action": "click",
+        "target": "viewButton"
+      },
+      {
+        "id": "waitDetails",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "detailBalance"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "assertMemberId",
+        "action": "assert",
+        "condition": {
+          "kind": "textContains",
+          "target": "detailMemberId",
+          "value": {
+            "input": "memberId"
+          }
+        }
+      },
+      {
+        "id": "extractBalance",
+        "action": "extract",
+        "target": "detailBalance",
+        "saveAs": "balanceValue"
+      },
+      {
+        "id": "extractAccountType",
+        "action": "extract",
+        "target": "detailAccountType",
+        "saveAs": "accountTypeValue"
+      },
+      {
+        "id": "extractMemberId",
+        "action": "extract",
+        "target": "detailMemberId",
+        "saveAs": "memberIdValue"
+      }
+    ],
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency",
+        "source": {
+          "savedValue": "balanceValue"
+        }
+      },
+      "accountType": {
+        "type": "string",
+        "description": "Account type displayed for the requested member",
+        "source": {
+          "savedValue": "accountTypeValue"
+        }
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the account details and confirmed against the supplied memberId",
+        "source": {
+          "savedValue": "memberIdValue"
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "textContains",
+        "target": "detailMemberId",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "kind": "visible",
+        "target": "detailBalance"
+      }
+    ]
+  },
+  "stepEvidence": {
+    "navigateHome": {
+      "action": 1,
+      "phase": "after"
+    },
+    "focusSearch": {
+      "action": 5,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "fillMemberId": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "clickSearch": {
+      "action": 8,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n16"
+      }
+    },
+    "waitResults": {
+      "action": 9,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "clickView": {
+      "action": 12,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "waitDetails": {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n28"
+      }
+    },
+    "assertMemberId": {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    },
+    "extractBalance": {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n28"
+      }
+    },
+    "extractAccountType": {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n25"
+      }
+    },
+    "extractMemberId": {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    },
+    {
+      "action": 14,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n28"
+      }
+    }
+  ]
+}

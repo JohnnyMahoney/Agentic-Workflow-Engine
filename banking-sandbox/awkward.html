@@ -1,0 +1,24 @@
+<!doctype html><meta charset=utf-8><title>NeoBank Console</title>
+<style>body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>
+<body><div id=root></div><script src=shared.js></script><script>
+const root=document.getElementById('root');
+const nest=h=>`<div class="w1"><div class="w2"><span>${h}</span></div></div>`;
+const toast=()=>{const d=document.createElement('div');d.id='toast';d.textContent='Results updated';document.body.append(d);setTimeout(()=>d.remove(),1200)};
+function fail(r,el=root){el.insertAdjacentHTML('beforeend',`<div class=e>${r.error}: ${r.message} ${r.error=='SESSION_EXPIRED'?'<button id=li>Sign in</button>':''}</div>`);
+ const b=document.getElementById('li');if(b)b.onclick=async()=>{await api('login');home()}}
+function home(){root.innerHTML='<h2>NeoBank Console</h2><input id=sq placeholder="Search members"><div id=res></div>';
+ let t;sq.oninput=()=>{clearTimeout(t);t=setTimeout(async()=>{res.textContent='Loading...';const r=await api('search',{q:sq.value});res.textContent='';if(r.error)return fail(r,res);
+  r.data.forEach((c,i)=>setTimeout(()=>{const d=document.createElement('div');d.className='r';
+   d.innerHTML=`<div>${nest(c.name)}</div><div>${c.id}</div><div><button>Open</button><button>Open</button></div>`;
+   const[b1,b2]=d.querySelectorAll('button');b1.onclick=()=>view(c.id);b2.onclick=()=>wiz(c.id);res.append(d);if(!i)toast()},i*150))},500)}}
+async function view(id){root.innerHTML='Loading...';const r=await api('get',{id});if(r.error){home();return fail(r)}const c=r.data;
+ root.innerHTML=`<h2>${c.name}</h2><div>${nest('ID: '+c.id)}</div><div>Balance: <b id=bal>…</b></div><div>Sub-accounts: ${c.subs.map(s=>s.ref).join(', ')||'none'}</div><button>Open</button> <button>Back</button>`;
+ setTimeout(()=>bal.textContent=fmt(c.bal),1000);const[a,b]=root.querySelectorAll('button');a.onclick=()=>wiz(id);b.onclick=home}
+async function wiz(id,e){root.innerHTML='Loading...';const r=await api('get',{id});if(r.error){home();return fail(r)}const c=r.data;let ty=null;
+ root.innerHTML=`<h2>New sub-account: ${c.name}</h2>${e?`<div class=e>${e.error}: ${e.message}</div>`:''}<div id=ops></div><div id=nx></div>`;
+ setTimeout(()=>{ops.innerHTML=TYPES.map(t=>`<div class=o>${t}</div>`).join('');
+  ops.querySelectorAll('.o').forEach((d,i)=>d.onclick=()=>{ops.querySelectorAll('.o').forEach(x=>x.classList.remove('s'));d.classList.add('s');ty=TYPES[i];nx.innerHTML='<button>Next</button>';
+   nx.firstChild.onclick=async()=>{const r=await api('open',{id,type:ty});if(r.error)return r.error=='VALIDATION_ERROR'?wiz(id,r):fail(r);
+    root.innerHTML=`<h2>Done</h2><div class=e style="background:#dfd">Sub-account ${r.data.ref} (${r.data.type}) created for ${r.data.owner}. Simulated.</div><button>Open</button>`;root.querySelector('button').onclick=()=>view(id)}})},800)}
+home();
+</script>

@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "958fc3c1-106e-42eb-b4f2-6ae8a2ef096b",
+  "stepId": "checkpoints",
+  "outputs": {
+    "memberId": "M-1008",
+    "accountType": "Youth",
+    "status": "Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\e2e-round-2\\test-4-modern-M1008-youth\\replay-selected-option\\events.jsonl"
+}

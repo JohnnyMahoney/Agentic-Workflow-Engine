@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "2.1",
+  "id": "output-readiness-fixture",
+  "version": "1.0.0",
+  "description": "Synthetic runtime fixture",
+  "inputs": {},
+  "targets": {
+    "value": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#value",
+          "frames": []
+        }
+      ]
+    },
+    "done": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#done",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navigate",
+      "action": "navigate",
+      "url": "http://127.0.0.1:55609/?mode=permanent"
+    },
+    {
+      "id": "extract",
+      "action": "extract",
+      "target": "value",
+      "saveAs": "amount"
+    }
+  ],
+  "outputs": {
+    "amount": {
+      "type": "string",
+      "description": "Displayed amount",
+      "source": {
+        "savedValue": "amount"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textMatches",
+          "pattern": "\\$[0-9]+\\.[0-9]{2}"
+        },
+        "timeoutMs": 150
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "visible",
+      "target": "done"
+    }
+  ]
+}

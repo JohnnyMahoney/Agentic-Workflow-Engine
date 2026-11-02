@@ -1,0 +1,36 @@
+{
+  "status": "RECOVERABLE_ERROR",
+  "code": "WAIT_TIMEOUT",
+  "sessionId": "fa1f9c1f-6de9-41ba-87a7-a08b508c8a4a",
+  "stepId": "later",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\confirmed-write-later-timeout\\events.jsonl",
+  "expected": {
+    "kind": "textEquals",
+    "target": "state",
+    "value": {
+      "literal": "unobserved"
+    }
+  },
+  "observed": {
+    "visible": true,
+    "text": "Confirmed M-1001 Savings"
+  },
+  "message": "Expected condition was not observed before timeout",
+  "details": {
+    "expected": {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "unobserved"
+      }
+    },
+    "observed": {
+      "visible": true,
+      "text": "Confirmed M-1001 Savings"
+    },
+    "timeoutMs": 50,
+    "pendingMutations": [],
+    "writeDispatched": true
+  }
+}

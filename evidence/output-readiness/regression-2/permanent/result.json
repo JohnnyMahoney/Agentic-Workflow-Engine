@@ -1,0 +1,31 @@
+{
+  "status": "RECOVERABLE_ERROR",
+  "code": "OUTPUT_VALIDATION_TIMEOUT",
+  "sessionId": "45538b54-4770-4175-8fbb-c3be4cbc58f0",
+  "stepId": "extract",
+  "retryable": true,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\regression-2\\permanent\\events.jsonl",
+  "expected": {
+    "kind": "textMatches",
+    "pattern": "\\$[0-9]+\\.[0-9]{2}"
+  },
+  "observed": {
+    "visible": true,
+    "text": "…"
+  },
+  "message": "Extracted output did not satisfy its declared readiness condition",
+  "details": {
+    "output": "amount",
+    "expected": {
+      "kind": "textMatches",
+      "pattern": "\\$[0-9]+\\.[0-9]{2}"
+    },
+    "observed": {
+      "visible": true,
+      "text": "…"
+    },
+    "timeoutMs": 150,
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

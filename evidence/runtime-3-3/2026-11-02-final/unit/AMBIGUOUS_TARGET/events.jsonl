@@ -1,0 +1,4 @@
+{"at":"2026-11-02T01:04:55.350Z","kind":"replay_start","sessionId":"07f87efb-4388-431d-a49f-80fe8b3ca3fd","capabilityId":"runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:04:55.350Z","kind":"step_start","stepId":"read","action":"extract"}
+{"at":"2026-11-02T01:04:55.350Z","kind":"attempt","stepId":"read","attempt":1}
+{"at":"2026-11-02T01:04:55.351Z","kind":"replay_end","status":"HARD_FAILURE","code":"AMBIGUOUS_TARGET","sessionId":"07f87efb-4388-431d-a49f-80fe8b3ca3fd","stepId":"read","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\AMBIGUOUS_TARGET\\events.jsonl","expected":{"id":"read","action":"extract","target":"state","saveAs":"v","retry":{"maxAttempts":3,"delayMs":20}},"observed":{"code":"AMBIGUOUS_TARGET"},"message":"fixture","details":{"pendingMutations":[],"writeDispatched":false}}

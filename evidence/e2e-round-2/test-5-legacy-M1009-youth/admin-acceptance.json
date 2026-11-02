@@ -1,0 +1,20 @@
+{
+  "status": "accepted",
+  "test": "5/6",
+  "acceptedBy": "user acting as administrator",
+  "recordedAt": "2026-11-02T02:28:26.220Z",
+  "acceptedOutcome": "Correct detection and reporting of a confirmed defect in Legacy UI",
+  "administratorConfirmation": "Administrator manually reproduced the same account-type selection failure and cannot proceed through this step",
+  "observedUiError": {
+    "action": 28,
+    "tool": "get_page_text",
+    "code": "VALIDATION_ERROR",
+    "message": "Select a valid account type.",
+    "evidence": "discovery/discovery-v2.json"
+  },
+  "qualification": "Accepted as a defect-detection test. Successful account creation and successful end-to-end replay are not claimed.",
+  "accountCreationConfirmed": false,
+  "compilationExecuted": false,
+  "replayExecuted": false,
+  "originalExecutionResultPreserved": "verification.json"
+}

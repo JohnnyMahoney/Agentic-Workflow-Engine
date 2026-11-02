@@ -1,0 +1,40 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (565.0821ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (530.2882ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (7.148ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (418.3043ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (2176.7198ms)
+✔ builder verifies a native select's recorded chosen option (996.2588ms)
+✔ replay selects by parameterized label or value (510.1359ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1452.4325ms)
+✔ pre-dispatch guard is typed and does not modify the field (560.5926ms)
+✔ admission requires safe recovery, preserves failures, and rejects uncertain writes (10.7981ms)
+✔ Builder excludes failed actions but still requires final goal evidence and all successful interactions (1999.9259ms)
+✔ legacy audit safely admits Test 6 unchanged and rejects missing or contradictory proof (9.1418ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (2336.2909ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (73.4261ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1463.6877ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (135.5534ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (125.5623ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (144.439ms)
+✔ native dialog and timeout are not guessed authentication failures (80.2082ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (74.2203ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (2335.4313ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (612.0157ms)
+✔ Builder validates selectedOptionLabel from native select metadata after form_input (2328.6622ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (1423.7488ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7258.4092

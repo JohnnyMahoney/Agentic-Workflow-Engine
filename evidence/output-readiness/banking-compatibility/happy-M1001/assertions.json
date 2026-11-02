@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "elapsedMs": 1854,
+  "creates": 1,
+  "finalState": {
+    "mode": "NONE",
+    "auth": true,
+    "subs": {
+      "M-1001": [
+        {
+          "ref": "M-1001-S1",
+          "type": "Savings"
+        }
+      ]
+    }
+  },
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "b20cd6c4-cc1c-4784-92c4-990cd151bb70",
+    "stepId": "checkpoints",
+    "outputs": {
+      "status": "Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."
+    },
+    "outputReadiness": "legacy-unverified",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\happy-M1001\\events.jsonl"
+  }
+}

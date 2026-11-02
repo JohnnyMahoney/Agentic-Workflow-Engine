@@ -121,8 +121,10 @@ navigation to details, and extraction of multiple business outputs. This checks
 whether the same contract and executor extend beyond the initial isolated web demos.
 
 **Trade-offs and limits:** These are real interactions with synthetic sandbox data;
-they do not demonstrate production banking or PII readiness. The sandbox is run
-outside this repository and must remain available. An explicit CLI `--policy`
+they do not demonstrate production banking or PII readiness. The original runs used
+the Desktop sandbox; its unchanged static files are now included in `banking-sandbox/`
+with `npm run sandbox:serve` for repeatable setup. The known Legacy selection defect
+is preserved. The local server must remain available during a run. An explicit CLI `--policy`
 supplies the exact allowed origin for discovery, validation, and replay; the LLM
 artifact cannot expand that allowlist. A model ending its turn is not proof that
 the goal succeeded; failed or missing actions block compilation. Test 1 covers
@@ -195,6 +197,11 @@ records the earlier driver failure and a new Discovery with `selectOption` state
 captured. A compilation retry produced a validated artifact using the new action.
 Replay of that artifact was withheld because it unconditionally opens a new
 sub-account, contrary to the goal's existing-account branch.
+At the user's later request, a replay was run in a fresh isolated context. It
+selected Savings and clicked Continue, but its confirmation wait matched the
+transient `Loading...` status. The run failed at the next `clickBack` step while
+the page was still loading. No replay creation or success was verified; the
+failure screenshot and events are linked from the Case 2 evidence index.
 
 **Trade-offs and limits:** The new action covers a single native select choice;
 other custom widgets are separate work. Evidence for older runs lacks the
@@ -203,3 +210,161 @@ Case 2 still needs an explicit existing-Savings branch or a safe precondition
 before creation, since a linear artifact could create a duplicate. Fresh browser
 contexts also do not share the user's `localStorage`. Those business and session
 extensions are not part of this select slice.
+
+## D7 — Deterministic runtime outcomes and evidence-backed checkpoints
+
+**Status:** Implemented and tested for §3.3; final acceptance with a new Claude
+Discovery ? Compilation ? Replay run remains pending.
+
+**Decision:** Keep the existing pipeline and adapter boundary. Add `textContains`
+(literal/input) to wait/assert/checkpoints. Builder checks the cited success state
+and distinct earlier states since the preceding UI action. Reject a condition
+that already accepts a different intermediate value (`PREMATURE_CHECKPOINT`).
+Recompile from saved evidence; do not repeat Discovery merely to repair a candidate.
+
+Replay returns `SUCCESS`, `BUSINESS_OUTCOME`, `RECOVERABLE_ERROR`, `HARD_FAILURE`,
+or `OUTCOME_UNKNOWN`, with code, step, expected/observed state, retryability and
+an evidence reference. Business/authentication/permission outcomes require
+explicit policy detectors observing actual UI text. No banking strings or
+selectors are embedded in the engine. Conflicting terminal detectors fail closed.
+
+**Recovery rules:** Poll bounded waits; optionally retry only `extract` on a
+missing target (at most three attempts). Never retry click/fill/select/navigation.
+Mark persistent writes `effect: stateChanging`; a semantic wait/assert uses
+`confirms: stepId` after all required identity/type checks. Unconfirmed writes
+produce `OUTCOME_UNKNOWN` and require reconciliation, not replay restart.
+A trusted rejection detector may resolve only explicitly listed mutation IDs.
+Even after confirmation, a later timeout is not restartable if a write occurred.
+Unannotated interactions are conservatively potentially modifying on failure.
+
+**Why / alternative:** A fixed sleep or waiting for a visible status container
+cannot distinguish loading from success. Semantic checkpoints plus deterministic
+validation use the evidence already recorded. Automatic LLM recovery or blind
+whole-workflow retries would weaken determinism and risk duplicate operations.
+
+**Trade-offs:** Artifact v2 fields are additive; earlier artifacts still parse,
+but old weak checkpoints should be revalidated/recompiled. Result consumers must
+use the new uppercase statuses. Evidence checking finds known counterexamples;
+it cannot prove every future state or that an LLM's `readOnly` annotation is true.
+Action effects, confirmation semantics and conclusive rejection detectors need
+review against the application. Runtime waits have bounded browser calls, not
+hard real-time cancellation. Recovery does not resume a closed session, implement
+handoff, or add an existing-account conditional branch. Tests use synthetic data;
+production financial-data redaction remains separate work.
+
+**Evidence:** [§3.3 runtime evidence](evidence/runtime-3-3/README.md): 14 unit/regression
+checks and 12 isolated existing Banking Sandbox scenarios. The historical Case 2
+candidate is rejected on recorded `Loading…`; a manually strengthened candidate
+validates against the same evidence. That fixture is not a new Claude compilation.
+No new LLM Discovery was run and §3.3 is not declared finally accepted.
+
+## D8 — Output readiness belongs to the output contract
+
+**Status:** Implemented; tested through saved-evidence recompilation and live
+Awkward UI M-1007 replay. Section 3.3 acceptance remains broader than this fix.
+
+**Decision:** Add Capability v2.1 while continuing to read v2.0. Every extracted
+v2.1 output declares `validation.condition` and a bounded `timeoutMs`. Conditions
+are input/literal `textEquals` or a full-string `textMatches` pattern. New Claude
+compilations must emit v2.1. Validate the exact value during its extraction, save
+that same sample, and stop on timeout rather than return an unchecked string.
+No discovery changes, site-specific selectors or formats in the engine.
+
+**Why:** Awkward Test 3 checked member identity but extracted an asynchronously
+loading balance. A checkpoint on another element cannot establish output readiness.
+Fixed sleeps, rejecting specific placeholder strings, and freezing the observed
+zero would be brittle. A positive reusable output condition handles valid zero
+and remains part of the reviewable artifact.
+
+**Evidence validation:** Check the cited observed extraction against the condition
+and reject conditions that also accept distinct recorded intermediate output
+values after the preceding UI action. Save a separate readiness validation report.
+Absence of intermediate samples is an explicit limitation, not fabricated proof.
+
+**Trade-offs:** Require checks for all extracted v2.1 outputs because asynchronous
+behavior cannot reliably be inferred from sparse snapshots. Old v2.0 artifacts
+retain their behavior and explicitly report `legacy-unverified` output readiness;
+recompilation is needed for the new guarantee. Patterns are artifact data, bounded
+to 512 characters, 4096-character samples and 25 ms evaluation using Node's VM.
+Timeout gives `OUTPUT_VALIDATION_TIMEOUT`; an outstanding write still takes
+precedence as `OUTCOME_UNKNOWN`. No write is retried. Format validity does not
+prove freshness, identity, or a complete business-format grammar. Preserve the
+independent identity/checkpoint checks and review model-proposed patterns.
+
+**Evidence:** [Output readiness regression and recompilation](evidence/output-readiness/README.md).
+17 unit/regression tests and 12 existing sandbox tests passed. One compilation
+candidate was rejected for changing an output description; the next validated.
+Live replay rejected the placeholder before returning M-1007 and `$0.00`. The
+original discovery, failed candidate/artifact and false-success replay remain intact.
+
+## D9 — Selected option label extraction
+
+**Status:** Implemented; regression-tested. Test 4 recompilation/replay evidence
+is recorded in its [test index](evidence/e2e-round-2/test-4-modern-M1008-youth/README.md).
+
+**Decision:** Extend `extract` with optional `property: text|selectedOptionLabel`.
+Omitted property retains text extraction. For selectedOptionLabel the logical
+target is the visible native single select. Playwright reads its selected label;
+Builder checks its already recorded selectedOption metadata after the actual
+form_input on that target or a recorded textual observation. Hidden option nodes
+are not the target. Multiple selects, missing selection and unsupported controls
+fail closed. Existing output-readiness checks apply to the extracted label.
+
+**Why:** The recording already proves which native option was selected, but a
+visible-text-only extract cannot return its label through a hidden option node.
+Returning the entire confirmation changes the requested output meaning; copying
+an input as an output would not read the actual UI selection.
+
+**Trade-offs:** This adds one typed read property through the existing contract,
+Builder and Surface Adapter extension points. Replay only forwards the property;
+no new abstraction layer or site-specific logic. It is a concrete example of
+controlled extensibility for assignment §3.7. Selection is not proof of creation:
+post-action confirmation must separately verify success, member and account type.
+Older recordings without selectedOption metadata cannot validate this read.
+Multi-select and other control properties remain unsupported.
+
+## D10 — Recovered Discovery failures and staged acceptance
+
+**Status:** Implemented and regression-tested. Saved-evidence Test 6 compilation
+and replay outcomes are recorded in its [test index](evidence/e2e-round-2/test-6-awkward-M1010-youth/README.md).
+
+Test 6 replay succeeded with M-1010, Youth and reference M-1010-S1. Terminal
+sandbox state verified exactly one matching sub-account. Failed action 7 remains
+in the unchanged source audit and is absent from the artifact. All 24 tests pass.
+
+**Decision:** Replace the zero-failure admission rule with two stages. Safe
+recovery establishes eligibility for Compilation; deterministic Builder checks
+then establish agreement with the explicit goal contract. Preserve failed actions,
+original indices and audit files, but forbid failed actions as executable steps
+or successful evidence references. Every successful interaction must still be
+represented. Neither model completion nor later confirmation alone excuses a
+potentially modifying failed action.
+
+The initial allowlist covers only a form_input driver guard that runs before any
+browser mutation. Require normal termination, unchanged snapshots, a successful
+correction on the same recorded field before another interaction, an explicit
+request binding, and subsequent textual observations. New records carry typed
+failure phase/code and separate modelCompleted metadata. The observe/decide/act
+loop, prompts, limits and UI behavior do not change.
+
+**Legacy evidence:** Test 6 can use its companion structured audit to corroborate
+the exact known pre-dispatch driver diagnostic. A narrowly scoped diagnostic
+mapping plus unchanged snapshots and recorded correction is sufficient here;
+arbitrary error text or equal DOM alone is not. Save audit/source hashes and the
+admission proof without rewriting the historical completed=false flag.
+
+**Goal validation:** Recovered candidates require v2.1 output validation and
+semantic final checkpoints verifying every supplied input through input references.
+Builder checks them on successful observed states after the recorded interactions.
+Admission remains pending until these checks pass. This verifies the explicit
+request contract; it cannot prove unrestricted natural-language business intent.
+
+**Trade-offs:** Conservative and deliberately narrow. Failed clicks, unknown
+dispatch phases, changed states, missing audit or unproven corrections remain
+blocked even if a later message claims success. No generic recovery framework,
+automatic retry of writes, audit deletion, or replay-time model call is introduced.
+Support for another safe failure class requires a separate explicit proof rule.
+
+**Evidence:** [Recovery regression evidence](evidence/discovery-recovery/README.md)
+covers typed pre-dispatch guards, legacy audit, uncertain-write rejection, failed
+reference exclusion, required final goal evidence and the unchanged historical run.

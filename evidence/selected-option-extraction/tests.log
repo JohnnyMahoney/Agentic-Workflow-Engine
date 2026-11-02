@@ -1,0 +1,62 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (373.5684ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (400.4067ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (7.2923ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (357.6506ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (1820.0692ms)
+✔ builder verifies a native select's recorded chosen option (1087.5958ms)
+✔ replay selects by parameterized label or value (539.0964ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1461.0071ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1941.8908ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (36.8551ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1216.3076ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (121.5834ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (125.3256ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (109.8364ms)
+✔ native dialog and timeout are not guessed authentication failures (69.7665ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (72.4253ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (1715.5791ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (499.7247ms)
+✖ Builder validates selectedOptionLabel from native select metadata after form_input (1076.6583ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (1398.0409ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6606.7545
+
+✖ failing tests:
+
+test at dist\tests\selected-option.test.js:33:1
+✖ Builder validates selectedOptionLabel from native select metadata after form_input (1076.6583ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /recorded selectedOption evidence/. Input:
+  
+  'Error: Selected option is not supported by recorded state'
+  
+      at async TestContext.<anonymous> (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/tests/selected-option.test.js:54:9)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Selected option is not supported by recorded state
+        at fail (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/capability/builder.js:11:35)
+        at validateCandidate (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/capability/builder.js:159:25)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/tests/selected-option.test.js:54:9)
+        at async Test.run (node:internal/test_runner/test:1125:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:787:7),
+    expected: /recorded selectedOption evidence/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

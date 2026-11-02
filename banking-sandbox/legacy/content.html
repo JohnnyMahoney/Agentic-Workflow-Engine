@@ -1,0 +1,20 @@
+<html><head><script src="../shared.js"></script>
+<style>body{background:#fff;font:13px Arial}.b{background:#ddd;border:2px outset #fff;padding:3px 10px;cursor:pointer;display:inline-block}.sel{background:navy;color:#fff}</style></head>
+<body><div id="m"></div><script>
+const m=document.getElementById('m');let cur=null,type=null;
+const wait2=()=>m.innerHTML='<i>Please wait...</i>';
+const bad=r=>m.innerHTML=`<table bgcolor="#ffcccc" border="1"><tr><td><font color="red"><b>ERROR ${r.error}</b><br>${r.message}</font></td></tr></table><br>`+(r.error=='SESSION_EXPIRED'?'<span class="b" onclick="relog()">[ Log In ]</span> ':'')+'<span class="b" onclick="cur?pick(cur.id):go(\'search\')">[ Back ]</span>';
+async function relog(){await api('login');go('search')}
+function go(v){m.innerHTML='<table cellpadding=4><tr><td colspan=2><b>MEMBER SEARCH</b></td></tr><tr><td>Member ID / Name:</td><td><input name=qq size=20></td></tr><tr><td colspan=2><span class=b onclick="find()">[ Search ]</span></td></tr></table>'}
+async function find(){const v=document.getElementsByName('qq')[0].value;wait2();const r=await api('search',{q:v});if(r.error)return bad(r);
+ m.innerHTML='<table border=1 cellpadding=0 cellspacing=0 width=100%><tr><td><table width=100% cellpadding=3><tr bgcolor=#000080><td><font color=white>ID</font></td><td><font color=white>NAME</font></td><td><font color=white>TYPE</font></td></tr>'+r.data.map(c=>`<tr><td onclick="pick('${c.id}')"><font color=blue><u>${c.id}</u></font></td><td>${c.name}</td><td>${c.type}</td></tr>`).join('')+'</table></td></tr></table>'}
+async function pick(id){wait2();const r=await api('get',{id});if(r.error)return bad(r);cur=r.data;type=null;
+ m.innerHTML=`<table border=1 cellpadding=0 width=420><tr><td><table width=100% cellpadding=4><tr><td colspan=2 bgcolor=#000080><font color=white>CUSTOMER DETAILS</font></td></tr><tr><td>Member:</td><td><b>${cur.id}</b></td></tr><tr><td>Name:</td><td>${cur.name}</td></tr><tr><td>Acct Type:</td><td>${cur.type}</td></tr><tr><td>Balance:</td><td><table><tr><td><font color=green><b>${fmt(cur.bal)}</b></font></td></tr></table></td></tr><tr><td>Sub-accts:</td><td>${cur.subs.map(s=>s.ref).join(' ')||'-'}</td></tr></table></td></tr></table><br><span class=b onclick="go2()">[ Open Sub-Account ]</span> &nbsp;<canvas id=cv width=160 height=28></canvas><div id=st></div>`;
+ const cx=cv.getContext('2d');cx.fillStyle='#336';cx.fillRect(0,0,160,28);cx.fillStyle='#fff';cx.font='13px Arial';cx.fillText('Print Statement',28,18);
+ cv.onclick=()=>{st.innerHTML='<i>Statement queued (simulated) for '+cur.id+'</i>'}}
+function go2(){type=null;m.innerHTML='<b>OPEN SUB-ACCOUNT</b> for '+cur.name+'<br><br>Choose type:<table cellpadding=4>'+TYPES.map(t=>`<tr><td onclick="ch(this,'${t}')" style="cursor:pointer;border:1px solid #888">${t}</td></tr>`).join('')+'</table><br><span class=b onclick="conf()">[ Next ]</span> <span class=b onclick="pick(cur.id)">[ Cancel ]</span>'}
+const ch=(td,t)=>{document.querySelectorAll('td[onclick^=ch]').forEach(x=>x.className='');td.className='sel';type=t};
+async function conf(){wait2();const r=await api('open',{id:cur.id,type});if(r.error)return bad(r);
+ m.innerHTML=`<table border=1 bgcolor=#ffffcc cellpadding=8><tr><td><b>CONFIRMATION</b><br>Sub-account ${r.data.ref} (${r.data.type}) opened for ${r.data.owner}.<br><i>Simulated - no real transaction.</i></td></tr></table><br><span class=b onclick="pick(cur.id)">[ Done ]</span>`}
+go('search');
+</script></body></html>

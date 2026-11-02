@@ -1,0 +1,35 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "ASSERTION_FAILED",
+  "sessionId": "57a0c5c0-e2f1-4d07-b4c8-7e46e5fab5c2",
+  "stepId": "later",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\confirmed-then-failure\\events.jsonl",
+  "expected": {
+    "kind": "textEquals",
+    "target": "state",
+    "value": {
+      "literal": "different"
+    }
+  },
+  "observed": {
+    "visible": true,
+    "text": "Confirmed M-1001 Savings"
+  },
+  "message": "Expected state was not observed",
+  "details": {
+    "expected": {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "different"
+      }
+    },
+    "observed": {
+      "visible": true,
+      "text": "Confirmed M-1001 Savings"
+    },
+    "pendingMutations": [],
+    "writeDispatched": true
+  }
+}

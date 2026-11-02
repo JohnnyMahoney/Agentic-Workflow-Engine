@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { requestSchema } from "./evidence.js";
 import { CapabilityError, validateInputs, type Inputs } from "./contract.js";
 import { policySchema, testPolicy } from "../surfaces/playwright.js";
+import { checkDiscoveryEvidence, readDiscoveryAudit } from "../discovery/acceptance.js";
+import type { DiscoveryEvidence } from "./evidence.js";
 
 const args = process.argv.slice(2);
 const flag = (name: string) => args[args.indexOf(name) + 1];
@@ -26,8 +28,11 @@ async function main(): Promise<void> {
       return String(request.bindings[name]);
     });
     const result = await runDiscovery({ name: request.id, url: request.url, goal: `${goal}\nRead the relevant page text both before acting and after the final state appears.`, model: process.env.CLAUDE_MODEL ?? "claude-sonnet-5-5", headless: true, directory, compilationRequest: request, policy });
-    if (!(result.assessment as { completed: boolean }).completed || Number(result.toolFailures) > 0) throw new Error(`Discovery did not complete cleanly; inspect ${directory}`);
-    console.log(JSON.stringify({ status: "recorded", evidence: join(directory, "discovery-v2.json") }));
+    if (!(result.assessment as { completed: boolean }).completed) throw new Error(`Discovery did not complete; inspect ${directory}`);
+    const evidencePath = join(directory, "discovery-v2.json");
+    const admission = checkDiscoveryEvidence(JSON.parse(readFileSync(evidencePath, "utf8")) as DiscoveryEvidence, readDiscoveryAudit(evidencePath));
+    writeFileSync(join(directory, "discovery-admission.json"), JSON.stringify(admission, null, 2) + "\n");
+    console.log(JSON.stringify({ status: "recorded-for-compilation", goalVerified: false, evidence: evidencePath, recoveredFailures: admission.recoveredFailures.length }));
   } else if (command === "compile") {
     const { compileEvidence } = await import("./compile.js");
     await compileEvidence(required("--evidence"), directory, process.env.CLAUDE_MODEL ?? "claude-sonnet-5-5", policy, args.includes("--feedback") ? required("--feedback") : undefined);
@@ -47,7 +52,7 @@ async function main(): Promise<void> {
     const { replayCapability } = await import("../replay/engine.js");
     const result = await replayCapability(required("--artifact"), inputs, directory, policy);
     console.log(JSON.stringify(result, null, 2));
-    if (result.status !== "success") process.exitCode = 1;
+    if (result.status !== "SUCCESS") process.exitCode = 1;
   } else throw new Error("Expected discover, compile, validate, or replay");
 }
 main().catch((error) => {

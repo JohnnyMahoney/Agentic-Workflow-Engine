@@ -1,0 +1,11 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "baff6bc0-eb91-4cf5-ba4b-dba53232e538",
+  "stepId": "checkpoints",
+  "outputs": {
+    "status": "Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."
+  },
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\banking\\happy-M1001\\events.jsonl"
+}

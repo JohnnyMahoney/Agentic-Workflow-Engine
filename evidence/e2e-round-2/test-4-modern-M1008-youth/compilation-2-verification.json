@@ -1,0 +1,72 @@
+{
+  "status": "FAILED",
+  "stage": "Compilation / Evidence Validator",
+  "error": {
+    "status": "failure",
+    "code": "UNSUPPORTED_EVIDENCE",
+    "message": "Extraction was not observed in a textual browser result",
+    "details": {}
+  },
+  "outputMappingCorrected": true,
+  "failedExtraction": {
+    "step": {
+      "id": "extractType",
+      "action": "extract",
+      "target": "selectedAccountType",
+      "saveAs": "accountTypeSaved",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 500
+      }
+    },
+    "evidenceRef": {
+      "action": 22,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n27"
+      }
+    },
+    "actionName": "form_input",
+    "nodeFacts": {
+      "text": "Youth",
+      "visible": false
+    }
+  },
+  "exactYouthNodesInTextualEvidence": [
+    {
+      "action": 20,
+      "name": "get_page_text",
+      "frame": 0,
+      "node": "n27",
+      "text": "Youth",
+      "visible": false
+    },
+    {
+      "action": 21,
+      "name": "read_page",
+      "frame": 0,
+      "node": "n27",
+      "text": "Youth",
+      "visible": false
+    }
+  ],
+  "visibleExactYouthNodes": 0,
+  "diagnosis": "The only standalone Youth nodes are invisible native options. The candidate cites a form_input after-state, not an observed textual extraction. Current extract returns visible element text and outputs support only savedValue/page URL; selectedOption labels, input sources and string transformations are not supported output sources.",
+  "selectedOptionEvidence": [
+    {
+      "frame": 0,
+      "node": "n22",
+      "selectedOption": {
+        "label": "Youth",
+        "value": "Youth"
+      }
+    }
+  ],
+  "codeChanged": false,
+  "discoveryRepeated": false,
+  "manualArtifactEdits": false,
+  "artifactSaved": false,
+  "replayExecuted": false,
+  "conclusion": "Test 4 cannot be accepted. Discovery succeeded; both compilation candidates were rejected. Replay creation and M-1008-S1 (Youth) remain unverified."
+}

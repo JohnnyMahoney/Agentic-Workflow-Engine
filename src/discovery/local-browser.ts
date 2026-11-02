@@ -3,6 +3,7 @@ import type { BetaBrowserMemberResult, BetaToolsetCallContext } from "@anthropic
 import type { BetaBrowserClickTarget, BetaBrowserGetPageTextInput, BetaBrowserLeftClickInput, BetaBrowserMemberInput, BetaBrowserMemberName, BetaBrowserNavigateInput, BetaBrowserReadPageInput, BetaBrowserScreenshotInput, BetaBrowserWaitInput } from "@anthropic-ai/sdk/resources/beta";
 import { chromium, type Browser, type BrowserContext, type Frame, type Page } from "playwright";
 import { checkUrl, testPolicy, type Policy } from "../surfaces/playwright.js";
+import { BeforeDispatchError } from "./failures.js";
 
 export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   onExecute?: (context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput, run: () => Promise<BetaBrowserMemberResult>) => Promise<BetaBrowserMemberResult>;
@@ -182,7 +183,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   protected override async form_input(_context: BetaToolsetCallContext, input: import("@anthropic-ai/sdk/resources/beta").BetaBrowserFormInputInput): Promise<void> {
     this.checkTab(input.tab_id);
     const frame = this.refs.get(input.target.ref);
-    if (!frame || typeof input.value !== "string") throw new ToolError("Only string form input on an observed reference is supported");
+    if (!frame || typeof input.value !== "string") throw new BeforeDispatchError();
     const target = frame.locator(`[data-browser-ref="${input.target.ref}"]`);
     if (await target.getAttribute("type") === "password") throw new ToolError("Secret entry is outside this public-data slice");
     if (await target.evaluate((element) => element.tagName.toLowerCase()) === "select") {

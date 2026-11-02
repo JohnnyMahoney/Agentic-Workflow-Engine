@@ -1,0 +1,17 @@
+{"at":"2026-11-02T02:18:36.458Z","kind":"replay_start","sessionId":"949636ca-44a5-4e9a-8a8d-d5048c056fa1","capabilityId":"selection-confirmation-fixture","llmCalls":0}
+{"at":"2026-11-02T02:18:36.722Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-02T02:18:36.745Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T02:18:36.746Z","kind":"step_start","stepId":"choose","action":"selectOption"}
+{"at":"2026-11-02T02:18:36.779Z","kind":"step_end","stepId":"choose"}
+{"at":"2026-11-02T02:18:36.780Z","kind":"step_start","stepId":"readType","action":"extract"}
+{"at":"2026-11-02T02:18:36.787Z","kind":"output_validation","stepId":"readType","property":"selectedOptionLabel","output":"type","expected":{"kind":"textEquals","value":{"input":"choice"}},"observed":{"visible":true,"text":"Youth"},"matches":true,"elapsedMs":7}
+{"at":"2026-11-02T02:18:36.788Z","kind":"step_end","stepId":"readType"}
+{"at":"2026-11-02T02:18:36.788Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T02:18:36.817Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T02:18:36.818Z","kind":"step_start","stepId":"confirm","action":"wait"}
+{"at":"2026-11-02T02:18:36.819Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:36.889Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":false,"observed":{"visible":false,"text":""},"blocked":false}
+{"at":"2026-11-02T02:18:36.948Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"status","value":{"input":"choice"}},"matches":true,"observed":{"visible":true,"text":"Created Youth"},"blocked":false}
+{"at":"2026-11-02T02:18:36.948Z","kind":"step_end","stepId":"confirm"}
+{"at":"2026-11-02T02:18:36.952Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"status","value":{"literal":"Created"}},"matches":true,"observed":{"visible":true,"text":"Created Youth"},"blocked":false}
+{"at":"2026-11-02T02:18:36.984Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"949636ca-44a5-4e9a-8a8d-d5048c056fa1","stepId":"checkpoints","outputs":{"type":"Youth"},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\selected-option-extraction\\regression-2\\confirmed\\events.jsonl"}

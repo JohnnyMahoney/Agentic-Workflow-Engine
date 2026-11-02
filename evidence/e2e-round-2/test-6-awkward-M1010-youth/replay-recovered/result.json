@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "f4e65216-ba97-4c38-8df5-59c6ecdbee38",
+  "stepId": "checkpoints",
+  "outputs": {
+    "memberId": "M-1010",
+    "accountType": "Youth",
+    "status": "Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\e2e-round-2\\test-6-awkward-M1010-youth\\replay-recovered\\events.jsonl"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "UNEXPECTED_DIALOG",
+  "sessionId": "bd082885-bbf1-4d22-adf9-00cb943bb997",
+  "stepId": "read",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\native-dialog\\events.jsonl",
+  "expected": {
+    "id": "read",
+    "action": "extract",
+    "target": "state",
+    "saveAs": "v"
+  },
+  "observed": "alert: unexpected",
+  "message": "Unexpected browser dialog",
+  "details": {
+    "observed": "alert: unexpected",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

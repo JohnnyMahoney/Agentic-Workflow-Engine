@@ -1,0 +1,21 @@
+{
+  "model": "claude-sonnet-5-5",
+  "responseId": "msg_011CgdJQn6ju1jJR4oobkEnF",
+  "stopReason": "end_turn",
+  "usage": {
+    "input_tokens": 62729,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 5514,
+    "output_tokens_details": {
+      "thinking_tokens": 2999
+    },
+    "service_tier": "standard",
+    "inference_geo": "global",
+    "speed": "standard"
+  }
+}

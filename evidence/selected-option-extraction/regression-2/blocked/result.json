@@ -1,0 +1,39 @@
+{
+  "status": "OUTCOME_UNKNOWN",
+  "code": "WAIT_TIMEOUT",
+  "sessionId": "3b4a3b55-5056-4daa-b95d-70c29736df61",
+  "stepId": "confirm",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\selected-option-extraction\\regression-2\\blocked\\events.jsonl",
+  "expected": {
+    "kind": "textContains",
+    "target": "status",
+    "value": {
+      "input": "choice"
+    }
+  },
+  "observed": {
+    "visible": false,
+    "text": ""
+  },
+  "message": "Expected condition was not observed before timeout",
+  "details": {
+    "expected": {
+      "kind": "textContains",
+      "target": "status",
+      "value": {
+        "input": "choice"
+      }
+    },
+    "observed": {
+      "visible": false,
+      "text": ""
+    },
+    "timeoutMs": 500,
+    "pendingMutations": [
+      "create"
+    ],
+    "writeDispatched": true
+  },
+  "reconciliationRequired": true
+}

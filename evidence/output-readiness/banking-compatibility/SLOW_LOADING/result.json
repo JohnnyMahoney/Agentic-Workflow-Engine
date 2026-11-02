@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "ae488bd0-7b30-4b97-b456-2baaa961a52e",
+  "stepId": "checkpoints",
+  "outputs": {
+    "status": "M-1001"
+  },
+  "outputReadiness": "legacy-unverified",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\SLOW_LOADING\\events.jsonl"
+}

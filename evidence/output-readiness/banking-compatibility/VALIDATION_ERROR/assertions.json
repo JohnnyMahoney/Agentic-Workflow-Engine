@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "elapsedMs": 1393,
+  "creates": 1,
+  "finalState": {
+    "mode": "VALIDATION_ERROR",
+    "auth": true,
+    "subs": {}
+  },
+  "result": {
+    "status": "BUSINESS_OUTCOME",
+    "code": "VALIDATION_ERROR",
+    "sessionId": "ebccc8ce-310b-4584-b721-e3215e629165",
+    "stepId": "waitConfirmation",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\VALIDATION_ERROR\\events.jsonl",
+    "expected": "VALIDATION_ERROR",
+    "observed": "VALIDATION_ERROR: Select a valid account type.",
+    "message": "Explicit UI outcome detector matched",
+    "details": {
+      "code": "VALIDATION_ERROR",
+      "status": "BUSINESS_OUTCOME",
+      "expected": "VALIDATION_ERROR",
+      "observed": "VALIDATION_ERROR: Select a valid account type.",
+      "resolvesMutations": [
+        "create"
+      ],
+      "pendingMutations": [
+        "create"
+      ],
+      "writeDispatched": true
+    }
+  }
+}

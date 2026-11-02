@@ -1,0 +1,36 @@
+{
+  "id": "modern-open-youth-M1008",
+  "goal": "Find member {{memberId}}, open a new {{accountType}} sub-account, and verify successful creation. Return the member ID, selected account type, and confirmation status.",
+  "url": "http://localhost:8080/modern.html",
+  "dataMode": "synthetic-test",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID supplied by the user"
+    },
+    "accountType": {
+      "type": "string",
+      "required": true,
+      "description": "Sub-account type supplied by the user"
+    }
+  },
+  "bindings": {
+    "memberId": "M-1008",
+    "accountType": "Youth"
+  },
+  "outputs": {
+    "memberId": {
+      "type": "string",
+      "description": "Member ID confirmed for the sub-account creation"
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Selected sub-account type confirmed by the application"
+    },
+    "status": {
+      "type": "string",
+      "description": "Observed confirmation of successful sub-account creation"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "url": "http://localhost:8080/awkward.html",
+  "text": "Done\nSub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated.\nOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+  "localStorage": {
+    "sbx": "{\"mode\":\"NONE\",\"auth\":true,\"subs\":{\"M-1010\":[{\"ref\":\"M-1010-S1\",\"type\":\"Youth\"}]}}"
+  }
+}

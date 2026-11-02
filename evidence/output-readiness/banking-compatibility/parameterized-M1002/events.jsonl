@@ -1,0 +1,74 @@
+{"at":"2026-11-02T01:50:46.912Z","kind":"replay_start","sessionId":"76a97441-c568-4b6b-a606-2e871ab1522b","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:50:47.091Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:50:47.134Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:50:47.135Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:50:47.159Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:50:47.159Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:50:47.192Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T01:50:47.192Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T01:50:47.199Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.205Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.275Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.343Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.409Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.471Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.544Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1002"},"blocked":false}
+{"at":"2026-11-02T01:50:47.545Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-02T01:50:47.545Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-02T01:50:47.559Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-02T01:50:47.559Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-02T01:50:47.565Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.571Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.634Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.703Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.762Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.825Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.897Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1002"},"blocked":false}
+{"at":"2026-11-02T01:50:47.897Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-02T01:50:47.897Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-02T01:50:47.927Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T01:50:47.927Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-02T01:50:47.946Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-02T01:50:47.946Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T01:50:47.975Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T01:50:47.975Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-02T01:50:47.980Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.986Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:47.988Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.047Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.050Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.113Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.115Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.172Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.175Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.233Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.235Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.309Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-02T01:50:48.309Z","kind":"step_end","stepId":"waitConfirmation"}
+{"at":"2026-11-02T01:50:48.309Z","kind":"step_start","stepId":"verifyMember","action":"assert"}
+{"at":"2026-11-02T01:50:48.317Z","kind":"condition","stepId":"verifyMember","expected":{"kind":"textContains","target":"status","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."}}
+{"at":"2026-11-02T01:50:48.318Z","kind":"step_end","stepId":"verifyMember"}
+{"at":"2026-11-02T01:50:48.318Z","kind":"step_start","stepId":"verifyType","action":"assert"}
+{"at":"2026-11-02T01:50:48.326Z","kind":"condition","stepId":"verifyType","expected":{"kind":"textContains","target":"status","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."}}
+{"at":"2026-11-02T01:50:48.326Z","kind":"step_end","stepId":"verifyType"}
+{"at":"2026-11-02T01:50:48.326Z","kind":"step_start","stepId":"status","action":"extract"}
+{"at":"2026-11-02T01:50:48.331Z","kind":"attempt","stepId":"status","attempt":1}
+{"at":"2026-11-02T01:50:48.333Z","kind":"step_end","stepId":"status"}
+{"at":"2026-11-02T01:50:48.333Z","kind":"step_start","stepId":"back","action":"click"}
+{"at":"2026-11-02T01:50:48.359Z","kind":"step_end","stepId":"back"}
+{"at":"2026-11-02T01:50:48.359Z","kind":"step_start","stepId":"verifyCreated","action":"wait"}
+{"at":"2026-11-02T01:50:48.369Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.374Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.377Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.441Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.444Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.501Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.503Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.561Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.564Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.624Z","kind":"detector","stepId":"verifyCreated","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:48.626Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:48.697Z","kind":"condition","stepId":"verifyCreated","expected":{"kind":"textContains","target":"subs","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-accounts: M-1002-S1 (Savings)"},"blocked":false}
+{"at":"2026-11-02T01:50:48.698Z","kind":"step_end","stepId":"verifyCreated"}
+{"at":"2026-11-02T01:50:48.704Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"subs","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-accounts: M-1002-S1 (Savings)"},"blocked":false}
+{"at":"2026-11-02T01:50:48.727Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"76a97441-c568-4b6b-a606-2e871ab1522b","stepId":"checkpoints","outputs":{"status":"Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."},"outputReadiness":"legacy-unverified","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\parameterized-M1002\\events.jsonl"}

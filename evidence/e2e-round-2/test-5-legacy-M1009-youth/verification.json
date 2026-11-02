@@ -1,0 +1,46 @@
+{
+  "status": "FAILED",
+  "stage": "Discovery",
+  "code": "DISCOVERY_ACTION_LIMIT",
+  "goalAchieved": false,
+  "modelCompletedFlag": true,
+  "toolFailures": 2,
+  "attemptedActions": 37,
+  "failures": [
+    {
+      "index": 36,
+      "name": "read_page"
+    },
+    {
+      "index": 37,
+      "name": "screenshot"
+    }
+  ],
+  "businessFailure": {
+    "action": 28,
+    "name": "get_page_text",
+    "observation": "http://localhost:8080/legacy/index.html\nFIRST LEGACY SAVINGS   Member Services v2.1\n\nMember Search\n\t\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state\n\nhttp://localhost:8080/legacy/content.html\nERROR VALIDATION_ERROR\nSelect a valid account type.\n\n[ Back ]"
+  },
+  "selectionAttempt": {
+    "action": 24,
+    "frame": 1,
+    "node": "n19",
+    "facts": {
+      "text": "Youth",
+      "visible": true
+    },
+    "htmlContext": "888\" data-cap-node=\"n17\">Term Deposit</td></tr><tr data-cap-node=\"n18\"><td style=\"cursor:pointer;border:1px solid #888\" data-cap-node=\"n19\">Youth</td></tr></tbody></table><br data-cap-node=\"n20\"><span class=\"b\" data-cap-node=\"n21\">[ Next ]</span> <span class=\"b\" data-cap-node=\"n22\">[ Cancel ]</span></div>\n</body></html>",
+    "kind": "Non-semantic table cell; not native select",
+    "selectionRegistered": "Not confirmed; subsequent UI validation rejected account type"
+  },
+  "lastDetailsObservation": "frame-1 http://localhost:8080/legacy/index.html\nFIRST LEGACY SAVINGS   Member Services v2.1\n\nMember Search\n\t\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state\nselect \"NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\" [ref_10]\nbutton \"Reset state\" [ref_11]\n\nframe-2 http://localhost:8080/legacy/content.html\nCUSTOMER DETAILS\nMember:\tM-1009\nName:\tSam Rivera\nAcct Type:\tSavings\nBalance:\t\n$15,800.00\n\nSub-accts:\t-\n\n[ Open Sub-Account ]  ",
+  "creationConfirmed": false,
+  "compilationExecuted": false,
+  "replayExecuted": false,
+  "codeChangedForTest": false,
+  "automaticRepairs": false,
+  "limitations": [
+    "The exact reason the custom Youth click did not register was not diagnosed in this test",
+    "No final localStorage snapshot; account creation must not be claimed from model completion"
+  ]
+}

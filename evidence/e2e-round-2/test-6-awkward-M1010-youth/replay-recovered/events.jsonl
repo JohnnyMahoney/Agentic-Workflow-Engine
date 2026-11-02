@@ -1,0 +1,43 @@
+{"at":"2026-11-02T02:50:11.840Z","kind":"replay_start","sessionId":"f4e65216-ba97-4c38-8df5-59c6ecdbee38","capabilityId":"openSubAccountForMember","llmCalls":0}
+{"at":"2026-11-02T02:50:12.026Z","kind":"step_start","stepId":"navigateHome","action":"navigate"}
+{"at":"2026-11-02T02:50:12.052Z","kind":"step_end","stepId":"navigateHome"}
+{"at":"2026-11-02T02:50:12.052Z","kind":"step_start","stepId":"focusSearch","action":"click"}
+{"at":"2026-11-02T02:50:12.100Z","kind":"step_end","stepId":"focusSearch"}
+{"at":"2026-11-02T02:50:12.100Z","kind":"step_start","stepId":"fillSearch","action":"fill"}
+{"at":"2026-11-02T02:50:12.111Z","kind":"step_end","stepId":"fillSearch"}
+{"at":"2026-11-02T02:50:12.111Z","kind":"step_start","stepId":"waitRow","action":"wait"}
+{"at":"2026-11-02T02:50:12.934Z","kind":"condition","stepId":"waitRow","expected":{"kind":"visible","target":"rowOpen"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:50:12.934Z","kind":"step_end","stepId":"waitRow"}
+{"at":"2026-11-02T02:50:12.934Z","kind":"step_start","stepId":"extractMemberId","action":"extract"}
+{"at":"2026-11-02T02:50:12.938Z","kind":"output_validation","stepId":"extractMemberId","property":"text","output":"memberId","expected":{"kind":"textEquals","value":{"input":"memberId"}},"observed":{"visible":true,"text":"M-1010"},"matches":true,"elapsedMs":3}
+{"at":"2026-11-02T02:50:12.939Z","kind":"step_end","stepId":"extractMemberId"}
+{"at":"2026-11-02T02:50:12.939Z","kind":"step_start","stepId":"openRow","action":"click"}
+{"at":"2026-11-02T02:50:12.964Z","kind":"step_end","stepId":"openRow"}
+{"at":"2026-11-02T02:50:12.964Z","kind":"step_start","stepId":"waitDetail","action":"wait"}
+{"at":"2026-11-02T02:50:13.275Z","kind":"condition","stepId":"waitDetail","expected":{"kind":"visible","target":"detailOpen"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:50:13.275Z","kind":"step_end","stepId":"waitDetail"}
+{"at":"2026-11-02T02:50:13.275Z","kind":"step_start","stepId":"openDetail","action":"click"}
+{"at":"2026-11-02T02:50:13.298Z","kind":"step_end","stepId":"openDetail"}
+{"at":"2026-11-02T02:50:13.298Z","kind":"step_start","stepId":"waitOption","action":"wait"}
+{"at":"2026-11-02T02:50:14.431Z","kind":"condition","stepId":"waitOption","expected":{"kind":"visible","target":"accountOption"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:50:14.431Z","kind":"step_end","stepId":"waitOption"}
+{"at":"2026-11-02T02:50:14.431Z","kind":"step_start","stepId":"chooseAccountType","action":"click"}
+{"at":"2026-11-02T02:50:14.448Z","kind":"step_end","stepId":"chooseAccountType"}
+{"at":"2026-11-02T02:50:14.448Z","kind":"step_start","stepId":"waitNext","action":"wait"}
+{"at":"2026-11-02T02:50:14.450Z","kind":"condition","stepId":"waitNext","expected":{"kind":"visible","target":"nextButton"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:50:14.450Z","kind":"step_end","stepId":"waitNext"}
+{"at":"2026-11-02T02:50:14.450Z","kind":"step_start","stepId":"extractAccountType","action":"extract"}
+{"at":"2026-11-02T02:50:14.453Z","kind":"output_validation","stepId":"extractAccountType","property":"text","output":"accountType","expected":{"kind":"textEquals","value":{"input":"accountType"}},"observed":{"visible":true,"text":"Youth"},"matches":true,"elapsedMs":3}
+{"at":"2026-11-02T02:50:14.453Z","kind":"step_end","stepId":"extractAccountType"}
+{"at":"2026-11-02T02:50:14.453Z","kind":"step_start","stepId":"clickNext","action":"click"}
+{"at":"2026-11-02T02:50:14.481Z","kind":"step_end","stepId":"clickNext"}
+{"at":"2026-11-02T02:50:14.482Z","kind":"step_start","stepId":"waitDone","action":"wait"}
+{"at":"2026-11-02T02:50:14.792Z","kind":"condition","stepId":"waitDone","expected":{"kind":"textContains","target":"confirmation","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"blocked":false}
+{"at":"2026-11-02T02:50:14.792Z","kind":"step_end","stepId":"waitDone"}
+{"at":"2026-11-02T02:50:14.792Z","kind":"step_start","stepId":"extractStatus","action":"extract"}
+{"at":"2026-11-02T02:50:14.796Z","kind":"output_validation","stepId":"extractStatus","property":"text","output":"status","expected":{"kind":"textMatches","pattern":"Sub-account [A-Za-z0-9-]+ \\([^)]+\\) created for [^\\n]+"},"observed":{"visible":true,"text":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"matches":true,"elapsedMs":4}
+{"at":"2026-11-02T02:50:14.796Z","kind":"step_end","stepId":"extractStatus"}
+{"at":"2026-11-02T02:50:14.799Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"confirmation","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"blocked":false}
+{"at":"2026-11-02T02:50:14.801Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"confirmation","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"blocked":false}
+{"at":"2026-11-02T02:50:14.804Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"confirmation","value":{"literal":"created"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"blocked":false}
+{"at":"2026-11-02T02:50:14.852Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"f4e65216-ba97-4c38-8df5-59c6ecdbee38","stepId":"checkpoints","outputs":{"memberId":"M-1010","accountType":"Youth","status":"Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated."},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\e2e-round-2\\test-6-awkward-M1010-youth\\replay-recovered\\events.jsonl"}

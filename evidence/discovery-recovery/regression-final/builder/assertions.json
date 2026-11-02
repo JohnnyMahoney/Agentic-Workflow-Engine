@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "executableActionIndices": [
+    1,
+    3,
+    4
+  ],
+  "excludedFailedAction": 2,
+  "checks": [
+    "failed reference rejected",
+    "visibility-only goal rejected",
+    "contradicting output rejected",
+    "successful interaction cannot be dropped"
+  ]
+}

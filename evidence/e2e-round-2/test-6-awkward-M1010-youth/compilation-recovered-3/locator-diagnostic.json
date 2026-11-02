@@ -1,0 +1,44 @@
+{
+  "status": "rejected",
+  "origin": "Deterministic offline inspection of unmodified candidate against original snapshots",
+  "errors": [
+    {
+      "id": "selectType",
+      "target": "accountOption",
+      "ref": {
+        "action": 27,
+        "phase": "before",
+        "node": {
+          "frame": 0,
+          "node": "n13"
+        }
+      },
+      "strategies": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": ".o",
+            "frames": [],
+            "scope": {
+              "css": ".o",
+              "has": {
+                "css": ":scope",
+                "text": {
+                  "input": "accountType"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "code": "RECORDED_TARGET_ABSENT",
+      "message": "Locator is absent in recorded state",
+      "recordedFrameHtml": [
+        {
+          "id": 0,
+          "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">New sub-account: Yuri Savchenko</h2><div id=\"ops\" data-cap-node=\"n9\"><div class=\"o\" data-cap-node=\"n10\">Savings</div><div class=\"o\" data-cap-node=\"n11\">Checking</div><div class=\"o\" data-cap-node=\"n12\">Term Deposit</div><div class=\"o\" data-cap-node=\"n13\">Youth</div></div><div id=\"nx\" data-cap-node=\"n14\"></div></div>\n<div data-cap-node=\"n17\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n18\">TEST PANEL</b><br data-cap-node=\"n19\"><select data-cap-node=\"n20\" data-browser-ref=\"ref_16\"><option data-cap-node=\"n21\" selected=\"\">NONE</option><option data-cap-node=\"n22\">NOT_FOUND</option><option data-cap-node=\"n23\">VALIDATION_ERROR</option><option data-cap-node=\"n24\">PERMISSION_DENIED</option><option data-cap-node=\"n25\">SESSION_EXPIRED</option><option data-cap-node=\"n26\">SLOW_LOADING</option><option data-cap-node=\"n27\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n28\">TIMEOUT</option></select> <button data-cap-node=\"n29\" data-browser-ref=\"ref_17\">Reset state</button></div></body></html>"
+        }
+      ]
+    }
+  ]
+}

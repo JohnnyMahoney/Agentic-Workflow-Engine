@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "report": {
+    "status": "eligible-for-compilation",
+    "goalVerification": "pending-builder-validation",
+    "recoveredFailures": [
+      {
+        "action": 2,
+        "code": "FORM_INPUT_REJECTED",
+        "recoveryAction": 3,
+        "target": {
+          "frame": 0,
+          "node": "n1"
+        },
+        "proof": "typed-before-dispatch",
+        "unchangedSnapshotSha256": "7b52c5fe0e0d5d58366eeb8d2b96f7c6788431a84659197d88edf07aba6aae25"
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "scenario": "possible write",
+      "rejected": true
+    },
+    {
+      "scenario": "unknown fill timeout",
+      "rejected": true
+    },
+    {
+      "scenario": "changed snapshot",
+      "rejected": true
+    },
+    {
+      "scenario": "wrong recovery target",
+      "rejected": true
+    },
+    {
+      "scenario": "unbound recovery",
+      "rejected": true
+    },
+    {
+      "scenario": "missing final observation",
+      "rejected": true
+    },
+    {
+      "scenario": "no normal termination",
+      "rejected": true
+    },
+    {
+      "scenario": "missing action",
+      "rejected": true
+    }
+  ]
+}

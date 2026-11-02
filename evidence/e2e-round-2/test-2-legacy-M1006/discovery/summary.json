@@ -1,0 +1,12 @@
+{
+  "name": "legacy-member-M1006-balance",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Member M-1006 is Iryna Lysenko. Their account details are:\n\n- **Member ID:** M-1006\n- **Account type:** Savings\n- **Current balance:** $7,640.20\n\nI read the page text before I started (the Member Search form). I read it again after the final state appeared (the Customer Details page). The member ID and account type on that page matched the search result row.\n\nThe page didn't let me type into the search box in the frame, so I opened the content page directly (`/legacy/content.html`) and set the search field that way. I didn't use the \"Open Sub-Account\" or \"Print Statement\" buttons.",
+  "actionCount": 19
+}

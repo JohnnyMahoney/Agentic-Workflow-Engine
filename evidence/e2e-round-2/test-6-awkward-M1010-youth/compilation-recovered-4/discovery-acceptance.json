@@ -1,0 +1,25 @@
+{
+  "status": "accepted",
+  "goalVerification": "candidate-outputs-and-final-checkpoints-validated",
+  "recoveredFailures": [
+    {
+      "action": 7,
+      "code": "FORM_INPUT_REJECTED",
+      "recoveryAction": 10,
+      "target": {
+        "frame": 0,
+        "node": "n9"
+      },
+      "proof": "legacy-driver-guard-and-audit",
+      "unchangedSnapshotSha256": "67e3322e6ab1812fba2e28d4a81a224e3c21b9068c8a9d1bb9ce467d5b8412c0"
+    }
+  ],
+  "auditHashes": {
+    "events": "4c6e68a4c163d94fa6e3a83ffa95e2dccbe6cbea16813ed93017487a3531d1a7",
+    "summary": "a53733cd6decee7b2abd756f638afed1af5dc63cef452946dd50e09628772976"
+  },
+  "excludedFailedActions": [
+    7
+  ],
+  "limitation": "Goal verification is limited to the explicit request contract, observed outputs and checkpoints; it is not a general proof of arbitrary natural-language intent."
+}

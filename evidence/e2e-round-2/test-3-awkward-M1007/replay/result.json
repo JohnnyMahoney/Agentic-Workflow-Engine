@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "216f5737-e2ed-41ff-a1f7-bacbdce2063e",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "…",
+    "memberId": "M-1007"
+  },
+  "retryable": false,
+  "evidenceRef": "evidence\\e2e-round-2\\test-3-awkward-M1007\\replay\\events.jsonl"
+}

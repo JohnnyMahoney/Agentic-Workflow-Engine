@@ -1,0 +1,14 @@
+{
+  "origins": [
+    "http://localhost:8080"
+  ],
+  "actions": [
+    "navigate",
+    "click",
+    "fill",
+    "selectOption",
+    "extract",
+    "wait",
+    "assert"
+  ]
+}

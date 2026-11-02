@@ -1,0 +1,40 @@
+
+> agentic-workflow-engine@1.0.0 test:banking
+> npm run build && node --test dist/tests/integration/banking.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\happy-M1001
+✔ banking happy-M1001 (1819.6477ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\parameterized-M1002
+✔ banking parameterized-M1002 (1819.73ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\NOT_FOUND
+✔ banking NOT_FOUND (644.9258ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\VALIDATION_ERROR
+✔ banking VALIDATION_ERROR (1431.2013ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\PERMISSION_DENIED
+✔ banking PERMISSION_DENIED (1434.4989ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\SESSION_EXPIRED
+✔ banking SESSION_EXPIRED (701.7089ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\SLOW_LOADING
+✔ banking SLOW_LOADING (4340.7991ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\TIMEOUT
+✔ banking TIMEOUT (704.9622ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\UNEXPECTED_DIALOG
+✔ banking UNEXPECTED_DIALOG (672.3078ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\AMBIGUOUS_TARGET
+✔ banking AMBIGUOUS_TARGET (295.3293ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\committed-but-unverified
+✔ banking committed-but-unverified (1786.3703ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\runtime-3-3\2026-11-02-final\banking\unconfirmed-write
+✔ banking unconfirmed-write (1212.1827ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17233.0903

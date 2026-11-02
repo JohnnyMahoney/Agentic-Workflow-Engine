@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "mode": "zero",
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "f472d5b2-c952-431c-bc63-cfc64a8a031b",
+    "stepId": "checkpoints",
+    "outputs": {
+      "amount": "$0.00"
+    },
+    "outputReadiness": "validated",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\regression-2\\zero\\events.jsonl"
+  }
+}

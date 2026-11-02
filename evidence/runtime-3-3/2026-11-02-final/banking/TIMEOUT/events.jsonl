@@ -1,0 +1,17 @@
+{"at":"2026-11-02T01:05:19.052Z","kind":"replay_start","sessionId":"53e29f1a-52f9-4d21-89b2-81ee18b2a4ad","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:05:19.230Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:05:19.276Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:05:19.276Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:05:19.297Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:05:19.298Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:05:19.337Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T01:05:19.338Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T01:05:19.344Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.349Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.414Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.479Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.542Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.614Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.677Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:05:19.729Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T01:05:19.753Z","kind":"replay_end","status":"RECOVERABLE_ERROR","code":"WAIT_TIMEOUT","sessionId":"53e29f1a-52f9-4d21-89b2-81ee18b2a4ad","stepId":"waitSearch","retryable":true,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\banking\\TIMEOUT\\events.jsonl","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"observed":{"code":"TARGET_NOT_FOUND"},"message":"Expected condition was not observed before timeout","details":{"expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"observed":{"code":"TARGET_NOT_FOUND"},"timeoutMs":350,"pendingMutations":[],"writeDispatched":false}}

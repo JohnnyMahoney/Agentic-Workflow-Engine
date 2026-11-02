@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Modern Bank — Member Services</title>
+<style>body{font:16px system-ui;max-width:760px;margin:20px auto;padding:0 12px}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ccc;padding:6px;text-align:left}[role=alert]{background:#fde;padding:8px;border:1px solid #c33}button{padding:6px 12px}</style>
+<body><header><h1>Modern Bank</h1><nav><a href="./">Sandbox home</a></nav></header>
+<main><h2>Member Search</h2>
+<form id="f"><label for="q">Member ID or name</label> <input id="q" name="q"> <button type="submit">Search</button></form>
+<section id="out" aria-live="polite"></section></main>
+<script src="shared.js"></script><script>
+const out=document.getElementById('out');
+const load=()=>out.innerHTML='<p role="status">Loading…</p>';
+const bad=r=>{out.innerHTML=`<p role="alert">${r.error}: ${r.message}</p>`+(r.error=='SESSION_EXPIRED'?'<button id="rl">Log in again</button>':'');
+ const b=out.querySelector('#rl');if(b)b.onclick=async()=>{await api('login');out.innerHTML='<p role="status">Logged in. Retry your action.</p>'}};
+f.onsubmit=async e=>{e.preventDefault();load();const r=await api('search',{q:q.value});if(r.error)return bad(r);
+ out.innerHTML=`<table><caption>Search results</caption><thead><tr><th>Member ID</th><th>Name</th><th>Account type</th><th>Action</th></tr></thead><tbody>${r.data.map(c=>`<tr><td>${c.id}</td><td>${c.name}</td><td>${c.type}</td><td><button aria-label="View ${c.name} (${c.id})">View</button></td></tr>`).join('')}</tbody></table>`;
+ out.querySelectorAll('tbody button').forEach((b,i)=>b.onclick=()=>details(r.data[i].id))};
+async function details(id){load();const r=await api('get',{id});if(r.error)return bad(r);const c=r.data;
+ out.innerHTML=`<h2>Customer Details</h2><dl><dt>Member ID</dt><dd>${c.id}</dd><dt>Name</dt><dd>${c.name}</dd><dt>Account type</dt><dd>${c.type}</dd></dl><h3>Account Balance</h3><p><output>${fmt(c.bal)}</output></p><p>Sub-accounts: ${c.subs.map(s=>s.ref+' ('+s.type+')').join(', ')||'none'}</p><button id="o">Open sub-account</button>`;
+ out.querySelector('#o').onclick=()=>wizard(c)}
+function wizard(c,e){out.innerHTML=`<h2>Open Sub-Account</h2>${e?`<p role="alert">${e.error}: ${e.message}</p>`:''}<form id="w"><p>Customer: ${c.name} (${c.id})</p><label for="t">Account type</label> <select id="t"><option value="">— select —</option>${TYPES.map(t=>`<option>${t}</option>`).join('')}</select> <button>Continue</button> <button type="button" id="x">Cancel</button></form>`;
+ x.onclick=()=>details(c.id);
+ w.onsubmit=async e=>{e.preventDefault();const ty=t.value;load();const r=await api('open',{id:c.id,type:ty});
+  if(r.error)return r.error=='VALIDATION_ERROR'?wizard(c,r):bad(r);
+  out.innerHTML=`<h2>Confirmation</h2><p role="status">Sub-account ${r.data.ref} (${r.data.type}) opened for ${r.data.owner}. Simulated — no real transaction.</p><button id="b">Back to customer</button>`;b.onclick=()=>details(c.id)}}
+</script>

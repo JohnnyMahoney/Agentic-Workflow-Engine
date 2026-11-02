@@ -1,0 +1,315 @@
+{
+  "schemaVersion": "2.1",
+  "id": "openSubAccountForMember",
+  "version": "1.0.0",
+  "description": "Search for a member by ID in the NeoBank console, open the member, start a new sub-account, choose the requested account type, confirm with Next, and verify the application's success message. Limitation: the account-type option locator is positional (the 4th option, which was Youth in the recording), because the option element has no role and no descendants to anchor a parameterized text filter. If another type is requested, the final textContains checks on the confirmation fail instead of reporting success.",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Member ID supplied by the user"
+    },
+    "accountType": {
+      "type": "string",
+      "required": true,
+      "description": "Sub-account type supplied by the user"
+    }
+  },
+  "targets": {
+    "searchInput": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "textbox",
+          "name": {
+            "literal": "Search members"
+          },
+          "frames": []
+        },
+        {
+          "kind": "css",
+          "selector": "#sq",
+          "frames": []
+        }
+      ]
+    },
+    "rowMemberId": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "div:nth-child(2)",
+          "frames": [],
+          "scope": {
+            "css": ".r",
+            "has": {
+              "css": "div",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rowOpen": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "div:nth-child(3) > button:first-of-type",
+          "frames": [],
+          "scope": {
+            "css": ".r",
+            "has": {
+              "css": "div",
+              "text": {
+                "input": "memberId"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "detailOpen": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Open"
+          },
+          "frames": []
+        }
+      ]
+    },
+    "accountOption": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#ops > .o:nth-child(4)",
+          "frames": []
+        }
+      ]
+    },
+    "selectedAccount": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": ".o.s",
+          "frames": []
+        }
+      ]
+    },
+    "nextButton": {
+      "strategies": [
+        {
+          "kind": "role",
+          "role": "button",
+          "name": {
+            "literal": "Next"
+          },
+          "frames": []
+        }
+      ]
+    },
+    "confirmation": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": ".e",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navigateHome",
+      "action": "navigate",
+      "url": "http://localhost:8080/awkward.html"
+    },
+    {
+      "id": "focusSearch",
+      "action": "click",
+      "target": "searchInput"
+    },
+    {
+      "id": "fillSearch",
+      "action": "fill",
+      "target": "searchInput",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "id": "waitRow",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "rowOpen"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractMemberId",
+      "action": "extract",
+      "target": "rowMemberId",
+      "saveAs": "memberIdValue",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 300
+      }
+    },
+    {
+      "id": "openRow",
+      "action": "click",
+      "target": "rowOpen"
+    },
+    {
+      "id": "waitDetail",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "detailOpen"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "openDetail",
+      "action": "click",
+      "target": "detailOpen"
+    },
+    {
+      "id": "waitOption",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "accountOption"
+      },
+      "timeoutMs": 15000
+    },
+    {
+      "id": "chooseAccountType",
+      "action": "click",
+      "target": "accountOption"
+    },
+    {
+      "id": "waitNext",
+      "action": "wait",
+      "condition": {
+        "kind": "visible",
+        "target": "nextButton"
+      },
+      "timeoutMs": 10000
+    },
+    {
+      "id": "extractAccountType",
+      "action": "extract",
+      "target": "selectedAccount",
+      "saveAs": "accountTypeValue",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 300
+      }
+    },
+    {
+      "id": "clickNext",
+      "action": "click",
+      "target": "nextButton",
+      "effect": "stateChanging"
+    },
+    {
+      "id": "waitDone",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "confirmation",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      "timeoutMs": 15000,
+      "confirms": "clickNext"
+    },
+    {
+      "id": "extractStatus",
+      "action": "extract",
+      "target": "confirmation",
+      "saveAs": "statusValue",
+      "retry": {
+        "maxAttempts": 3,
+        "delayMs": 300
+      }
+    }
+  ],
+  "outputs": {
+    "memberId": {
+      "type": "string",
+      "description": "Member ID confirmed for the sub-account creation",
+      "source": {
+        "savedValue": "memberIdValue"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "input": "memberId"
+          }
+        },
+        "timeoutMs": 5000
+      }
+    },
+    "accountType": {
+      "type": "string",
+      "description": "Selected sub-account type confirmed by the application",
+      "source": {
+        "savedValue": "accountTypeValue"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "input": "accountType"
+          }
+        },
+        "timeoutMs": 5000
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Observed confirmation of successful sub-account creation",
+      "source": {
+        "savedValue": "statusValue"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textMatches",
+          "pattern": "Sub-account [A-Za-z0-9-]+ \\([^)]+\\) created for [^\\n]+"
+        },
+        "timeoutMs": 5000
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textContains",
+      "target": "confirmation",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    {
+      "kind": "textContains",
+      "target": "confirmation",
+      "value": {
+        "input": "accountType"
+      }
+    },
+    {
+      "kind": "textContains",
+      "target": "confirmation",
+      "value": {
+        "literal": "created"
+      }
+    }
+  ]
+}

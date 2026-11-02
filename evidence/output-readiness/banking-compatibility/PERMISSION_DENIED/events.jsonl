@@ -1,0 +1,48 @@
+{"at":"2026-11-02T01:50:50.779Z","kind":"replay_start","sessionId":"9d444942-c1d0-453f-912e-cae632ce9122","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:50:50.951Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:50:50.993Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:50:50.994Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:50:51.011Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:50:51.011Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:50:51.043Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-02T01:50:51.043Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-02T01:50:51.049Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.055Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.117Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.179Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.242Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.304Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.370Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T01:50:51.370Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-02T01:50:51.370Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-02T01:50:51.391Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-02T01:50:51.391Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-02T01:50:51.397Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.403Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.463Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.526Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.588Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.650Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.718Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-02T01:50:51.718Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-02T01:50:51.718Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-02T01:50:51.743Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-02T01:50:51.743Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-02T01:50:51.761Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-02T01:50:51.761Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-02T01:50:51.791Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-02T01:50:51.791Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-02T01:50:51.797Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.802Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.805Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:51.866Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.869Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:51.929Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.931Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:51.991Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:51.993Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:52.053Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-02T01:50:52.057Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-02T01:50:52.122Z","kind":"detector","stepId":"waitConfirmation","code":"PERMISSION_DENIED","observed":"PERMISSION_DENIED: You are not authorized to open sub-accounts."}
+{"at":"2026-11-02T01:50:52.153Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T01:50:52.175Z","kind":"replay_end","status":"HARD_FAILURE","code":"PERMISSION_DENIED","sessionId":"9d444942-c1d0-453f-912e-cae632ce9122","stepId":"waitConfirmation","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\banking-compatibility\\PERMISSION_DENIED\\events.jsonl","expected":"PERMISSION_DENIED","observed":"PERMISSION_DENIED: You are not authorized to open sub-accounts.","message":"Explicit UI outcome detector matched","details":{"code":"PERMISSION_DENIED","status":"HARD_FAILURE","expected":"PERMISSION_DENIED","observed":"PERMISSION_DENIED: You are not authorized to open sub-accounts.","resolvesMutations":["create"],"pendingMutations":["create"],"writeDispatched":true}}

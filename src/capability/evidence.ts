@@ -18,9 +18,10 @@ export interface RecordedAction {
   index: number; name: string; before: Snapshot; after: Snapshot;
   target: { frame: number; node: string } | null;
   input: Record<string, unknown>; observation?: string; success: boolean;
+  failure?: { phase: "beforeDispatch" | "unknown"; code: string };
 }
 export interface DiscoveryEvidence {
-  evidenceVersion: "2.0"; request: CompilationRequest; completed: boolean; actions: RecordedAction[];
+  evidenceVersion: "2.0"; request: CompilationRequest; completed: boolean; modelCompleted?: boolean; actions: RecordedAction[];
 }
 
 export async function captureSnapshot(page: Page): Promise<Snapshot> {

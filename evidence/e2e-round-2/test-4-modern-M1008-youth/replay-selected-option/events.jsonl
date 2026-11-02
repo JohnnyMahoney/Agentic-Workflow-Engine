@@ -1,0 +1,49 @@
+{"at":"2026-11-02T02:21:03.795Z","kind":"replay_start","sessionId":"958fc3c1-106e-42eb-b4f2-6ae8a2ef096b","capabilityId":"modernOpenSubAccount","llmCalls":0}
+{"at":"2026-11-02T02:21:03.990Z","kind":"step_start","stepId":"openApp","action":"navigate"}
+{"at":"2026-11-02T02:21:04.035Z","kind":"step_end","stepId":"openApp"}
+{"at":"2026-11-02T02:21:04.035Z","kind":"step_start","stepId":"focusSearch","action":"click"}
+{"at":"2026-11-02T02:21:04.079Z","kind":"step_end","stepId":"focusSearch"}
+{"at":"2026-11-02T02:21:04.079Z","kind":"step_start","stepId":"enterMemberId","action":"fill"}
+{"at":"2026-11-02T02:21:04.090Z","kind":"step_end","stepId":"enterMemberId"}
+{"at":"2026-11-02T02:21:04.090Z","kind":"step_start","stepId":"clickSearch","action":"click"}
+{"at":"2026-11-02T02:21:04.127Z","kind":"step_end","stepId":"clickSearch"}
+{"at":"2026-11-02T02:21:04.128Z","kind":"step_start","stepId":"waitResults","action":"wait"}
+{"at":"2026-11-02T02:21:04.489Z","kind":"condition","stepId":"waitResults","expected":{"kind":"visible","target":"viewButton"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:21:04.489Z","kind":"step_end","stepId":"waitResults"}
+{"at":"2026-11-02T02:21:04.489Z","kind":"step_start","stepId":"clickView","action":"click"}
+{"at":"2026-11-02T02:21:04.509Z","kind":"step_end","stepId":"clickView"}
+{"at":"2026-11-02T02:21:04.509Z","kind":"step_start","stepId":"waitDetails","action":"wait"}
+{"at":"2026-11-02T02:21:04.834Z","kind":"condition","stepId":"waitDetails","expected":{"kind":"visible","target":"openSubAccountButton"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:21:04.834Z","kind":"step_end","stepId":"waitDetails"}
+{"at":"2026-11-02T02:21:04.835Z","kind":"step_start","stepId":"extractMemberId","action":"extract"}
+{"at":"2026-11-02T02:21:04.838Z","kind":"output_validation","stepId":"extractMemberId","property":"text","output":"memberId","expected":{"kind":"textEquals","value":{"input":"memberId"}},"observed":{"visible":true,"text":"M-1008"},"matches":true,"elapsedMs":3}
+{"at":"2026-11-02T02:21:04.839Z","kind":"step_end","stepId":"extractMemberId"}
+{"at":"2026-11-02T02:21:04.839Z","kind":"step_start","stepId":"clickOpen","action":"click"}
+{"at":"2026-11-02T02:21:04.860Z","kind":"step_end","stepId":"clickOpen"}
+{"at":"2026-11-02T02:21:04.860Z","kind":"step_start","stepId":"waitForm","action":"wait"}
+{"at":"2026-11-02T02:21:04.867Z","kind":"condition","stepId":"waitForm","expected":{"kind":"visible","target":"accountTypeSelect"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-02T02:21:04.868Z","kind":"step_end","stepId":"waitForm"}
+{"at":"2026-11-02T02:21:04.868Z","kind":"step_start","stepId":"chooseType","action":"selectOption"}
+{"at":"2026-11-02T02:21:04.880Z","kind":"step_end","stepId":"chooseType"}
+{"at":"2026-11-02T02:21:04.880Z","kind":"step_start","stepId":"extractType","action":"extract"}
+{"at":"2026-11-02T02:21:04.897Z","kind":"output_validation","stepId":"extractType","property":"selectedOptionLabel","output":"accountType","expected":{"kind":"textEquals","value":{"input":"accountType"}},"observed":{"visible":true,"text":"Youth"},"matches":true,"elapsedMs":17}
+{"at":"2026-11-02T02:21:04.897Z","kind":"step_end","stepId":"extractType"}
+{"at":"2026-11-02T02:21:04.897Z","kind":"step_start","stepId":"clickContinue","action":"click"}
+{"at":"2026-11-02T02:21:04.926Z","kind":"step_end","stepId":"clickContinue"}
+{"at":"2026-11-02T02:21:04.926Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-02T02:21:04.929Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":false}
+{"at":"2026-11-02T02:21:04.994Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":false}
+{"at":"2026-11-02T02:21:05.049Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":false}
+{"at":"2026-11-02T02:21:05.115Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":false}
+{"at":"2026-11-02T02:21:05.173Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":false}
+{"at":"2026-11-02T02:21:05.237Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-02T02:21:05.237Z","kind":"step_end","stepId":"waitConfirmation"}
+{"at":"2026-11-02T02:21:05.238Z","kind":"step_start","stepId":"assertType","action":"assert"}
+{"at":"2026-11-02T02:21:05.240Z","kind":"condition","stepId":"assertType","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."}}
+{"at":"2026-11-02T02:21:05.240Z","kind":"step_end","stepId":"assertType"}
+{"at":"2026-11-02T02:21:05.240Z","kind":"step_start","stepId":"extractStatus","action":"extract"}
+{"at":"2026-11-02T02:21:05.244Z","kind":"output_validation","stepId":"extractStatus","property":"text","output":"status","expected":{"kind":"textMatches","pattern":"Sub-account \\S+ \\([^)]+\\) opened for .+"},"observed":{"visible":true,"text":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."},"matches":true,"elapsedMs":3}
+{"at":"2026-11-02T02:21:05.244Z","kind":"step_end","stepId":"extractStatus"}
+{"at":"2026-11-02T02:21:05.247Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-02T02:21:05.249Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"confirmationStatus","value":{"input":"accountType"}},"matches":true,"observed":{"visible":true,"text":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-02T02:21:05.295Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"958fc3c1-106e-42eb-b4f2-6ae8a2ef096b","stepId":"checkpoints","outputs":{"memberId":"M-1008","accountType":"Youth","status":"Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction."},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\e2e-round-2\\test-4-modern-M1008-youth\\replay-selected-option\\events.jsonl"}

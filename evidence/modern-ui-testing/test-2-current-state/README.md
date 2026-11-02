@@ -110,3 +110,20 @@ present could create a duplicate, contrary to the goal. This is a new business
 workflow limitation, separate from native select support. The
 [stage status](select-option-status.json) records the stop. The user's open
 browser state was not reused by the isolated test contexts.
+
+## User-authorized replay of the validated select artifact
+
+[Replay](replay-select-1/result.json) was run in a fresh isolated Playwright
+context with `memberId=M-1001` and `accountType=Savings`; it made zero LLM calls.
+The [event log](replay-select-1/events.jsonl) shows `selectAccountType` and
+`clickContinue` completed. The run then failed at `clickBack` with
+`TARGET_NOT_FOUND`.
+
+The [failure screenshot](replay-select-1/failure.png) shows `Loading...`, not a
+confirmation. The artifact's `waitConfirmation` target, `#out p[role=status]`,
+matched that transient loading message. `extractStatus` therefore completed too
+early, and the Back button did not exist yet. The browser context closed on
+failure. **This replay does not establish that a sub-account was created.** No
+success result was returned. The [stage report](replay-select-status.json)
+records the completed steps and the precise limitation. The artifact and code
+were not changed after this result.

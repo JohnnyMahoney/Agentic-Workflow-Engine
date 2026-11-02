@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "9dcb6b7e-777f-4552-a6a0-28bffb9f898b",
+  "stepId": "checkpoints",
+  "outputs": {
+    "amount": "$7.50"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\output-readiness\\regression-2\\delay\\events.jsonl"
+}

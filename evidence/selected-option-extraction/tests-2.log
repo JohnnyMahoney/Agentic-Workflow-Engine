@@ -1,0 +1,36 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (335.9781ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (473.1071ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (6.8756ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (361.2014ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (1883.458ms)
+✔ builder verifies a native select's recorded chosen option (977.4969ms)
+✔ replay selects by parameterized label or value (517.027ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1445.1513ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1713.8562ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (35.9558ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1307.8919ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (128.6516ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (124.445ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (94.7802ms)
+✔ native dialog and timeout are not guessed authentication failures (68.1111ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (78.359ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (1833.8494ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (333.0904ms)
+✔ Builder validates selectedOptionLabel from native select metadata after form_input (1788.3662ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (1404.2565ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6604.1273

@@ -1,0 +1,8 @@
+{"at":"2026-11-02T01:05:20.429Z","kind":"replay_start","sessionId":"586327ed-2ab2-4e0d-b7be-41bdd98c99e3","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-02T01:05:20.612Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-02T01:05:20.657Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-02T01:05:20.657Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-02T01:05:20.673Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-02T01:05:20.673Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-02T01:05:20.697Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-02T01:05:20.721Z","kind":"replay_end","status":"HARD_FAILURE","code":"AMBIGUOUS_TARGET","sessionId":"586327ed-2ab2-4e0d-b7be-41bdd98c99e3","stepId":"search","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\banking\\AMBIGUOUS_TARGET\\events.jsonl","expected":{"id":"search","action":"click","target":"ambiguous","effect":"readOnly"},"observed":{"code":"AMBIGUOUS_TARGET","count":2},"message":"Locator matches multiple elements","details":{"count":2,"pendingMutations":[],"writeDispatched":false}}

@@ -1,0 +1,34 @@
+{
+  "validationError": {
+    "status": "failure",
+    "code": "UNSUPPORTED_EVIDENCE",
+    "message": "Output definitions differ from the explicit compilation request",
+    "details": {}
+  },
+  "outputMismatch": [
+    {
+      "output": "accountType",
+      "expected": {
+        "type": "string",
+        "description": "Selected sub-account type confirmed by the application"
+      },
+      "proposed": {
+        "type": "string",
+        "description": "Confirmation message stating the selected sub-account type as confirmed by the application",
+        "source": {
+          "savedValue": "accountTypeText"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textMatches",
+            "pattern": "Sub-account \\S+ \\([^()]{1,64}\\) opened for .{1,200}"
+          },
+          "timeoutMs": 5000
+        }
+      }
+    }
+  ],
+  "requiredCorrection": "Preserve the exact requested output definitions. accountType must be the selected type itself (Youth for the demonstrated accountType input), not the full confirmation message. Use only actual recorded extraction evidence and supported contract operations; do not invent a locator, transform, or observation.",
+  "verificationRequirement": "The artifact must confirm the created sub-account belongs to the requested member and has the requested type. For the recorded M-1008 / Youth example, the observed confirmation identifies M-1008-S1 (Youth). A successful click alone is not proof of creation.",
+  "discoveryMustNotRepeat": true
+}

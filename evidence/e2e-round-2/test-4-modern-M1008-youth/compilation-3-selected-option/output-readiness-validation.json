@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "2.1",
+  "outputs": [
+    {
+      "output": "memberId",
+      "stepId": "extractMemberId",
+      "property": "text",
+      "condition": {
+        "kind": "textEquals",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "positiveSample": "M-1008",
+      "rejectedIntermediateValues": [],
+      "limitation": "No distinct intermediate value was recorded for this output; only positive-sample compatibility is proven."
+    },
+    {
+      "output": "accountType",
+      "stepId": "extractType",
+      "property": "selectedOptionLabel",
+      "condition": {
+        "kind": "textEquals",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      "positiveSample": "Youth",
+      "rejectedIntermediateValues": [
+        "— select —"
+      ],
+      "limitation": "Selected label proves selection only; creation requires a separate post-action confirmation."
+    },
+    {
+      "output": "status",
+      "stepId": "extractStatus",
+      "property": "text",
+      "condition": {
+        "kind": "textMatches",
+        "pattern": "Sub-account \\S+ \\([^)]+\\) opened for .+"
+      },
+      "positiveSample": "Sub-account M-1008-S1 (Youth) opened for Daria Petrenko. Simulated — no real transaction.",
+      "rejectedIntermediateValues": [
+        "Loading…"
+      ],
+      "limitation": "Only recorded intermediate values were checked; format does not prove freshness or business correctness."
+    }
+  ],
+  "legacyUnverifiedOutputs": []
+}

@@ -1,0 +1,19 @@
+{
+  "status": "validated",
+  "evidenceSha256": "7c4e32f0584c7de8124842450c8358803e9c4cdcbb7eb4e99e064d49968b77a4",
+  "candidateSha256": "828aab335d5d34115b7c387e655a30757387e9f1a3fb27fe12c9c1faa06e58c7",
+  "evidencePath": "evidence/e2e-round-2/test-3-awkward-M1007/discovery/discovery-v2.json",
+  "candidatePath": "evidence\\e2e-round-2\\test-3-awkward-M1007\\compilation-readiness-2\\candidate.json",
+  "checks": [
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-select-state",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

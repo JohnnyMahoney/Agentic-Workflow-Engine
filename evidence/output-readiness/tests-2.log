@@ -1,0 +1,33 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (292.4257ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (390.2284ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (4.9155ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (315.6502ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (1656.5922ms)
+✔ builder verifies a native select's recorded chosen option (951.1408ms)
+✔ replay selects by parameterized label or value (506.1136ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1495.4718ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (1540.226ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (32.1695ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1128.2527ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (125.9339ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (138.0596ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (103.4863ms)
+✔ native dialog and timeout are not guessed authentication failures (65.8661ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (58.8733ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (1255.7206ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6139.796

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "report": [
+    {
+      "output": "choice",
+      "stepId": "read",
+      "property": "selectedOptionLabel",
+      "condition": {
+        "kind": "textEquals",
+        "value": {
+          "input": "choice"
+        }
+      },
+      "positiveSample": "Youth",
+      "rejectedIntermediateValues": [
+        "Choose"
+      ],
+      "limitation": "Selected label proves selection only; creation requires a separate post-action confirmation."
+    }
+  ],
+  "checks": [
+    "native selected label accepted",
+    "missing selected facts rejected",
+    "wrong selection rejected",
+    "legacy text extraction rules unchanged"
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "capability": {
+    "schemaVersion": "2.0",
+    "id": "awkwardMemberBalanceLookup",
+    "version": "1.0.0",
+    "description": "Search for a member by ID in the NeoBank Console, open the member's account details, confirm the member ID, and return the displayed balance and member ID.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "targets": {
+      "searchInput": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#sq",
+            "frames": []
+          }
+        ]
+      },
+      "openButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "button:first-of-type",
+            "frames": [],
+            "scope": {
+              "css": ".r",
+              "has": {
+                "css": "div",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "resultId": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "div:nth-child(2)",
+            "frames": [],
+            "scope": {
+              "css": ".r",
+              "has": {
+                "css": "div",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "memberIdText": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#root > div:first-of-type span",
+            "frames": []
+          }
+        ]
+      },
+      "balanceValue": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#bal",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "navigateConsole",
+        "action": "navigate",
+        "url": "http://localhost:8080/awkward.html"
+      },
+      {
+        "id": "focusSearch",
+        "action": "click",
+        "target": "searchInput"
+      },
+      {
+        "id": "fillSearch",
+        "action": "fill",
+        "target": "searchInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "waitRow",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "openButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractMemberId",
+        "action": "extract",
+        "target": "resultId",
+        "saveAs": "memberIdValue"
+      },
+      {
+        "id": "openMember",
+        "action": "click",
+        "target": "openButton"
+      },
+      {
+        "id": "waitDetails",
+        "action": "wait",
+        "condition": {
+          "kind": "textContains",
+          "target": "memberIdText",
+          "value": {
+            "input": "memberId"
+          }
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractBalance",
+        "action": "extract",
+        "target": "balanceValue",
+        "saveAs": "balanceValue"
+      }
+    ],
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency",
+        "source": {
+          "savedValue": "balanceValue"
+        }
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the account details and confirmed against the supplied memberId",
+        "source": {
+          "savedValue": "memberIdValue"
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "textContains",
+        "target": "memberIdText",
+        "value": {
+          "input": "memberId"
+        }
+      }
+    ]
+  },
+  "stepEvidence": {
+    "navigateConsole": {
+      "action": 1,
+      "phase": "after"
+    },
+    "focusSearch": {
+      "action": 4,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "fillSearch": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n9"
+      }
+    },
+    "waitRow": {
+      "action": 8,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n18"
+      }
+    },
+    "extractMemberId": {
+      "action": 9,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n16"
+      }
+    },
+    "openMember": {
+      "action": 11,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n18"
+      }
+    },
+    "waitDetails": {
+      "action": 12,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    },
+    "extractBalance": {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n14"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 13,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n12"
+      }
+    }
+  ]
+}

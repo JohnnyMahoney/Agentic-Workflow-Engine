@@ -1,0 +1,3690 @@
+{
+  "evidenceVersion": "2.0",
+  "request": {
+    "id": "awkward-member-M1007-balance",
+    "goal": "Find member {{memberId}} and retrieve their current account balance. Confirm the member ID. Return the balance and member ID.",
+    "url": "http://localhost:8080/awkward.html",
+    "dataMode": "synthetic-test",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID to look up and confirm"
+      }
+    },
+    "bindings": {
+      "memberId": "M-1007"
+    },
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Current account balance as displayed by the application, including currency"
+      },
+      "memberId": {
+        "type": "string",
+        "description": "Member ID read from the account details and confirmed against the supplied memberId"
+      }
+    }
+  },
+  "completed": true,
+  "actions": [
+    {
+      "index": 1,
+      "name": "navigate",
+      "before": {
+        "url": "about:blank",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "url": "http://localhost:8080/awkward.html"
+      },
+      "success": true
+    },
+    {
+      "index": 2,
+      "name": "get_page_text",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "http://localhost:8080/awkward.html\nNeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+      "success": true
+    },
+    {
+      "index": 3,
+      "name": "screenshot",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "success": true
+    },
+    {
+      "index": 4,
+      "name": "left_click",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": {
+        "node": "n9",
+        "frame": 0
+      },
+      "input": {
+        "target": {
+          "type": "coordinate",
+          "x": 108,
+          "y": 71
+        }
+      },
+      "success": true
+    },
+    {
+      "index": 5,
+      "name": "read_page",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_1\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_2\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "filter": "interactive"
+      },
+      "observation": "frame-1 http://localhost:8080/awkward.html\nNeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state\nselect \"NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\" [ref_1]\nbutton \"Reset state\" [ref_2]",
+      "success": true
+    },
+    {
+      "index": 6,
+      "name": "read_page",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_1\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_2\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "filter": "all"
+      },
+      "observation": "frame-1 http://localhost:8080/awkward.html\nNeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state\ninput \"\" [ref_3]\nselect \"NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\" [ref_4]\nbutton \"Reset state\" [ref_5]",
+      "success": true
+    },
+    {
+      "index": 7,
+      "name": "form_input",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": {
+        "node": "n9",
+        "frame": 0
+      },
+      "input": {
+        "target": {
+          "type": "ref",
+          "ref": "ref_3"
+        },
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "success": true
+    },
+    {
+      "index": 8,
+      "name": "wait",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"></div></div>\n<div data-cap-node=\"n13\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n14\">TEST PANEL</b><br data-cap-node=\"n15\"><select data-cap-node=\"n16\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n17\" selected=\"\">NONE</option><option data-cap-node=\"n18\">NOT_FOUND</option><option data-cap-node=\"n19\">VALIDATION_ERROR</option><option data-cap-node=\"n20\">PERMISSION_DENIED</option><option data-cap-node=\"n21\">SESSION_EXPIRED</option><option data-cap-node=\"n22\">SLOW_LOADING</option><option data-cap-node=\"n23\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n24\">TIMEOUT</option></select> <button data-cap-node=\"n25\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "",
+                "visible": true
+              },
+              "n11": {
+                "text": "",
+                "visible": false
+              },
+              "n12": {
+                "text": "",
+                "visible": false
+              },
+              "n13": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n14": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n15": {
+                "text": "",
+                "visible": true
+              },
+              "n16": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n17": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n18": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n19": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n20": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n21": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n22": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n23": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n24": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n25": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "duration": 2
+      },
+      "success": true
+    },
+    {
+      "index": 9,
+      "name": "get_page_text",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "http://localhost:8080/awkward.html\nNeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+      "success": true
+    },
+    {
+      "index": 10,
+      "name": "screenshot",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "success": true
+    },
+    {
+      "index": 11,
+      "name": "left_click",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">NeoBank Console</h2><input id=\"sq\" placeholder=\"Search members\" data-cap-node=\"n9\" style=\"\" data-browser-ref=\"ref_3\"><div id=\"res\" data-cap-node=\"n10\"><div class=\"r\" data-cap-node=\"n11\"><div data-cap-node=\"n12\"><div class=\"w1\" data-cap-node=\"n13\"><div class=\"w2\" data-cap-node=\"n14\"><span data-cap-node=\"n15\">Maksym Tkach</span></div></div></div><div data-cap-node=\"n16\">M-1007</div><div data-cap-node=\"n17\"><button data-cap-node=\"n18\">Open</button><button data-cap-node=\"n19\">Open</button></div></div></div></div>\n<div data-cap-node=\"n22\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n23\">TEST PANEL</b><br data-cap-node=\"n24\"><select data-cap-node=\"n25\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n26\" selected=\"\">NONE</option><option data-cap-node=\"n27\">NOT_FOUND</option><option data-cap-node=\"n28\">VALIDATION_ERROR</option><option data-cap-node=\"n29\">PERMISSION_DENIED</option><option data-cap-node=\"n30\">SESSION_EXPIRED</option><option data-cap-node=\"n31\">SLOW_LOADING</option><option data-cap-node=\"n32\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n33\">TIMEOUT</option></select> <button data-cap-node=\"n34\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "NeoBank Console\nMaksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n8": {
+                "text": "NeoBank Console",
+                "visible": true
+              },
+              "n9": {
+                "text": "",
+                "visible": true
+              },
+              "n10": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n11": {
+                "text": "Maksym Tkach\nM-1007\nOpenOpen",
+                "visible": true
+              },
+              "n12": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n13": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n14": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n15": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n16": {
+                "text": "M-1007",
+                "visible": true
+              },
+              "n17": {
+                "text": "OpenOpen",
+                "visible": true
+              },
+              "n18": {
+                "text": "Open",
+                "visible": true
+              },
+              "n19": {
+                "text": "Open",
+                "visible": true
+              },
+              "n20": {
+                "text": "",
+                "visible": false
+              },
+              "n21": {
+                "text": "",
+                "visible": false
+              },
+              "n22": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n23": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n24": {
+                "text": "",
+                "visible": true
+              },
+              "n25": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n26": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n27": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n28": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n29": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n30": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n31": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n32": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n33": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n34": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\">Loading...</div>\n<div data-cap-node=\"n10\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n11\">TEST PANEL</b><br data-cap-node=\"n12\"><select data-cap-node=\"n13\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n14\" selected=\"\">NONE</option><option data-cap-node=\"n15\">NOT_FOUND</option><option data-cap-node=\"n16\">VALIDATION_ERROR</option><option data-cap-node=\"n17\">PERMISSION_DENIED</option><option data-cap-node=\"n18\">SESSION_EXPIRED</option><option data-cap-node=\"n19\">SLOW_LOADING</option><option data-cap-node=\"n20\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n21\">TIMEOUT</option></select> <button data-cap-node=\"n22\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Loading...\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Loading...\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Loading...",
+                "visible": true
+              },
+              "n8": {
+                "text": "",
+                "visible": false
+              },
+              "n9": {
+                "text": "",
+                "visible": false
+              },
+              "n10": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n11": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n12": {
+                "text": "",
+                "visible": true
+              },
+              "n13": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n14": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n15": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n16": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n17": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n18": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n19": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n20": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n21": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n22": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": {
+        "node": "n18",
+        "frame": 0
+      },
+      "input": {
+        "target": {
+          "type": "coordinate",
+          "x": 875,
+          "y": 96
+        }
+      },
+      "success": true
+    },
+    {
+      "index": 12,
+      "name": "wait",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\">Loading...</div>\n<div data-cap-node=\"n10\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n11\">TEST PANEL</b><br data-cap-node=\"n12\"><select data-cap-node=\"n13\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n14\" selected=\"\">NONE</option><option data-cap-node=\"n15\">NOT_FOUND</option><option data-cap-node=\"n16\">VALIDATION_ERROR</option><option data-cap-node=\"n17\">PERMISSION_DENIED</option><option data-cap-node=\"n18\">SESSION_EXPIRED</option><option data-cap-node=\"n19\">SLOW_LOADING</option><option data-cap-node=\"n20\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n21\">TIMEOUT</option></select> <button data-cap-node=\"n22\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Loading...\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Loading...\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Loading...",
+                "visible": true
+              },
+              "n8": {
+                "text": "",
+                "visible": false
+              },
+              "n9": {
+                "text": "",
+                "visible": false
+              },
+              "n10": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n11": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n12": {
+                "text": "",
+                "visible": true
+              },
+              "n13": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n14": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n15": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n16": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n17": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n18": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n19": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n20": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n21": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n22": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">Maksym Tkach</h2><div data-cap-node=\"n9\"><div class=\"w1\" data-cap-node=\"n10\"><div class=\"w2\" data-cap-node=\"n11\"><span data-cap-node=\"n12\">ID: M-1007</span></div></div></div><div data-cap-node=\"n13\">Balance: <b id=\"bal\" data-cap-node=\"n14\">$0.00</b></div><div data-cap-node=\"n15\">Sub-accounts: none</div><button data-cap-node=\"n16\">Open</button> <button data-cap-node=\"n17\">Back</button></div>\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back",
+                "visible": true
+              },
+              "n8": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n9": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n10": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n11": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n12": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n13": {
+                "text": "Balance: $0.00",
+                "visible": true
+              },
+              "n14": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n15": {
+                "text": "Sub-accounts: none",
+                "visible": true
+              },
+              "n16": {
+                "text": "Open",
+                "visible": true
+              },
+              "n17": {
+                "text": "Back",
+                "visible": true
+              },
+              "n18": {
+                "text": "",
+                "visible": false
+              },
+              "n19": {
+                "text": "",
+                "visible": false
+              },
+              "n20": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n21": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n22": {
+                "text": "",
+                "visible": true
+              },
+              "n23": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n24": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n25": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n26": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n27": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n28": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n29": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n30": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n31": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n32": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "duration": 2
+      },
+      "success": true
+    },
+    {
+      "index": 13,
+      "name": "get_page_text",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">Maksym Tkach</h2><div data-cap-node=\"n9\"><div class=\"w1\" data-cap-node=\"n10\"><div class=\"w2\" data-cap-node=\"n11\"><span data-cap-node=\"n12\">ID: M-1007</span></div></div></div><div data-cap-node=\"n13\">Balance: <b id=\"bal\" data-cap-node=\"n14\">$0.00</b></div><div data-cap-node=\"n15\">Sub-accounts: none</div><button data-cap-node=\"n16\">Open</button> <button data-cap-node=\"n17\">Back</button></div>\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back",
+                "visible": true
+              },
+              "n8": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n9": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n10": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n11": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n12": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n13": {
+                "text": "Balance: $0.00",
+                "visible": true
+              },
+              "n14": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n15": {
+                "text": "Sub-accounts: none",
+                "visible": true
+              },
+              "n16": {
+                "text": "Open",
+                "visible": true
+              },
+              "n17": {
+                "text": "Back",
+                "visible": true
+              },
+              "n18": {
+                "text": "",
+                "visible": false
+              },
+              "n19": {
+                "text": "",
+                "visible": false
+              },
+              "n20": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n21": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n22": {
+                "text": "",
+                "visible": true
+              },
+              "n23": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n24": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n25": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n26": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n27": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n28": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n29": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n30": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n31": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n32": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">Maksym Tkach</h2><div data-cap-node=\"n9\"><div class=\"w1\" data-cap-node=\"n10\"><div class=\"w2\" data-cap-node=\"n11\"><span data-cap-node=\"n12\">ID: M-1007</span></div></div></div><div data-cap-node=\"n13\">Balance: <b id=\"bal\" data-cap-node=\"n14\">$0.00</b></div><div data-cap-node=\"n15\">Sub-accounts: none</div><button data-cap-node=\"n16\">Open</button> <button data-cap-node=\"n17\">Back</button></div>\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back",
+                "visible": true
+              },
+              "n8": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n9": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n10": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n11": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n12": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n13": {
+                "text": "Balance: $0.00",
+                "visible": true
+              },
+              "n14": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n15": {
+                "text": "Sub-accounts: none",
+                "visible": true
+              },
+              "n16": {
+                "text": "Open",
+                "visible": true
+              },
+              "n17": {
+                "text": "Back",
+                "visible": true
+              },
+              "n18": {
+                "text": "",
+                "visible": false
+              },
+              "n19": {
+                "text": "",
+                "visible": false
+              },
+              "n20": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n21": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n22": {
+                "text": "",
+                "visible": true
+              },
+              "n23": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n24": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n25": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n26": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n27": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n28": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n29": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n30": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n31": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n32": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "http://localhost:8080/awkward.html\nMaksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+      "success": true
+    },
+    {
+      "index": 14,
+      "name": "screenshot",
+      "before": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">Maksym Tkach</h2><div data-cap-node=\"n9\"><div class=\"w1\" data-cap-node=\"n10\"><div class=\"w2\" data-cap-node=\"n11\"><span data-cap-node=\"n12\">ID: M-1007</span></div></div></div><div data-cap-node=\"n13\">Balance: <b id=\"bal\" data-cap-node=\"n14\">$0.00</b></div><div data-cap-node=\"n15\">Sub-accounts: none</div><button data-cap-node=\"n16\">Open</button> <button data-cap-node=\"n17\">Back</button></div>\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back",
+                "visible": true
+              },
+              "n8": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n9": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n10": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n11": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n12": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n13": {
+                "text": "Balance: $0.00",
+                "visible": true
+              },
+              "n14": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n15": {
+                "text": "Sub-accounts: none",
+                "visible": true
+              },
+              "n16": {
+                "text": "Open",
+                "visible": true
+              },
+              "n17": {
+                "text": "Back",
+                "visible": true
+              },
+              "n18": {
+                "text": "",
+                "visible": false
+              },
+              "n19": {
+                "text": "",
+                "visible": false
+              },
+              "n20": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n21": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n22": {
+                "text": "",
+                "visible": true
+              },
+              "n23": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n24": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n25": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n26": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n27": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n28": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n29": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n30": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n31": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n32": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://localhost:8080/awkward.html",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">NeoBank Console</title>\n<style data-cap-node=\"n5\">body{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}</style>\n</head><body data-cap-node=\"n6\"><div id=\"root\" data-cap-node=\"n7\"><h2 data-cap-node=\"n8\">Maksym Tkach</h2><div data-cap-node=\"n9\"><div class=\"w1\" data-cap-node=\"n10\"><div class=\"w2\" data-cap-node=\"n11\"><span data-cap-node=\"n12\">ID: M-1007</span></div></div></div><div data-cap-node=\"n13\">Balance: <b id=\"bal\" data-cap-node=\"n14\">$0.00</b></div><div data-cap-node=\"n15\">Sub-accounts: none</div><button data-cap-node=\"n16\">Open</button> <button data-cap-node=\"n17\">Back</button></div>\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\" data-browser-ref=\"ref_4\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\" data-browser-ref=\"ref_5\">Reset state</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n2": {
+                "text": "NeoBank Console\nbody{font:14px sans-serif;margin:20px}.r{display:flex;gap:10px;padding:4px;border-bottom:1px solid #ddd}.r>div{flex:1}.o{border:1px solid #888;padding:6px;margin:3px;cursor:pointer}.o.s{background:#cde}#toast{position:fixed;top:10px;right:10px;background:#333;color:#fff;padding:8px}.e{background:#fdd;padding:6px;margin:4px 0}",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": false
+              },
+              "n4": {
+                "text": "NeoBank Console",
+                "visible": false
+              },
+              "n5": {
+                "text": "",
+                "visible": false
+              },
+              "n6": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n7": {
+                "text": "Maksym Tkach\nID: M-1007\nBalance: $0.00\nSub-accounts: none\nOpen Back",
+                "visible": true
+              },
+              "n8": {
+                "text": "Maksym Tkach",
+                "visible": true
+              },
+              "n9": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n10": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n11": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n12": {
+                "text": "ID: M-1007",
+                "visible": true
+              },
+              "n13": {
+                "text": "Balance: $0.00",
+                "visible": true
+              },
+              "n14": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n15": {
+                "text": "Sub-accounts: none",
+                "visible": true
+              },
+              "n16": {
+                "text": "Open",
+                "visible": true
+              },
+              "n17": {
+                "text": "Back",
+                "visible": true
+              },
+              "n18": {
+                "text": "",
+                "visible": false
+              },
+              "n19": {
+                "text": "",
+                "visible": false
+              },
+              "n20": {
+                "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+                "visible": true
+              },
+              "n21": {
+                "text": "TEST PANEL",
+                "visible": true
+              },
+              "n22": {
+                "text": "",
+                "visible": true
+              },
+              "n23": {
+                "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+                "visible": true,
+                "selectedOption": {
+                  "label": "NONE",
+                  "value": "NONE"
+                }
+              },
+              "n24": {
+                "text": "NONE",
+                "visible": false
+              },
+              "n25": {
+                "text": "NOT_FOUND",
+                "visible": false
+              },
+              "n26": {
+                "text": "VALIDATION_ERROR",
+                "visible": false
+              },
+              "n27": {
+                "text": "PERMISSION_DENIED",
+                "visible": false
+              },
+              "n28": {
+                "text": "SESSION_EXPIRED",
+                "visible": false
+              },
+              "n29": {
+                "text": "SLOW_LOADING",
+                "visible": false
+              },
+              "n30": {
+                "text": "UNEXPECTED_DIALOG",
+                "visible": false
+              },
+              "n31": {
+                "text": "TIMEOUT",
+                "visible": false
+              },
+              "n32": {
+                "text": "Reset state",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "success": true
+    }
+  ]
+}

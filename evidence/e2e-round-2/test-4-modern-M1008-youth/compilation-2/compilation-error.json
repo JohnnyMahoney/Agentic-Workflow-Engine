@@ -1,0 +1,6 @@
+{
+  "status": "failure",
+  "code": "UNSUPPORTED_EVIDENCE",
+  "message": "Extraction was not observed in a textual browser result",
+  "details": {}
+}

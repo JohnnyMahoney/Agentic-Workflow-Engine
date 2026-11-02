@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { LocalPlaywrightBrowser } from "./local-browser.js";
 import { Journal, executeLogged, loggedInput, type Event } from "./recorder.js";
 import { captureSnapshot, type CompilationRequest, type DiscoveryEvidence, type Snapshot } from "../capability/evidence.js";
+import { BeforeDispatchError } from "./failures.js";
 import { type Policy } from "../surfaces/playwright.js";
 
 export interface DiscoveryTask {
@@ -72,7 +73,7 @@ export async function runDiscovery(task: DiscoveryTask): Promise<Event> {
         if (evidence && before) {
           let after = before;
           try { after = await captureSnapshot(active.page); } catch { /* Failed navigation may destroy the execution context. */ }
-          evidence.actions.push({ index: Math.max(journal.actionCount, (evidence.actions.at(-1)?.index ?? 0) + 1), name, before, after, target: null, input: {}, success: false });
+          evidence.actions.push({ index: Math.max(journal.actionCount, (evidence.actions.at(-1)?.index ?? 0) + 1), name, before, after, target: null, input: "target" in input ? {target: input.target} : {}, success: false, failure: error instanceof BeforeDispatchError ? {phase: error.phase, code: error.code} : {phase: "unknown", code: "TOOL_EXECUTION_FAILED"} });
           saveEvidence();
         }
         throw error;
@@ -92,7 +93,7 @@ export async function runDiscovery(task: DiscoveryTask): Promise<Event> {
       if (message.stop_reason === "end_turn") completed = true;
     }
     const assessment = task.assess ? task.assess(journal, finalText, completed) : { completed, goalVerified: false };
-    if (evidence) { evidence.completed = completed && toolFailures === 0; saveEvidence(); }
+    if (evidence) { evidence.modelCompleted = completed; evidence.completed = completed && toolFailures === 0; saveEvidence(); }
     const summary = { name: task.name, mode: "local", model: task.model, assessment, toolFailures, finalText, actionCount: journal.actionCount };
     writeFileSync(join(task.directory, "summary.json"), JSON.stringify(summary, null, 2) + "\n");
     journal.add("run_end", summary);

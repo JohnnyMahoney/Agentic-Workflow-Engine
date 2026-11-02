@@ -1,0 +1,456 @@
+{
+  "capability": {
+    "schemaVersion": "2.1",
+    "id": "openSubAccountForMember",
+    "version": "1.0.0",
+    "description": "Search for a member by ID, open their record, open a new sub-account of the requested type, and verify the confirmation message.",
+    "inputs": {
+      "memberId": {
+        "type": "string",
+        "required": true,
+        "description": "Member ID supplied by the user"
+      },
+      "accountType": {
+        "type": "string",
+        "required": true,
+        "description": "Sub-account type supplied by the user"
+      }
+    },
+    "targets": {
+      "searchInput": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "textbox",
+            "name": {
+              "literal": "Member ID or name"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#q",
+            "frames": []
+          }
+        ]
+      },
+      "searchButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Search"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#f button",
+            "frames": []
+          }
+        ]
+      },
+      "viewButton": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "button",
+            "frames": [],
+            "scope": {
+              "css": "tbody tr",
+              "has": {
+                "css": "td",
+                "text": {
+                  "input": "memberId"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "openButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Open sub-account"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#o",
+            "frames": []
+          }
+        ]
+      },
+      "memberIdCell": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out dl dd:first-of-type",
+            "frames": []
+          }
+        ]
+      },
+      "accountTypeSelect": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#t",
+            "frames": []
+          }
+        ]
+      },
+      "continueButton": {
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": {
+              "literal": "Continue"
+            },
+            "frames": []
+          },
+          {
+            "kind": "css",
+            "selector": "#w button:first-of-type",
+            "frames": []
+          }
+        ]
+      },
+      "confirmation": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#out [role=status]",
+            "frames": []
+          }
+        ]
+      }
+    },
+    "steps": [
+      {
+        "id": "navigateHome",
+        "action": "navigate",
+        "url": "http://localhost:8080/modern.html"
+      },
+      {
+        "id": "focusSearch",
+        "action": "click",
+        "target": "searchInput"
+      },
+      {
+        "id": "fillMemberId",
+        "action": "fill",
+        "target": "searchInput",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      {
+        "id": "clickSearch",
+        "action": "click",
+        "target": "searchButton"
+      },
+      {
+        "id": "waitResults",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "viewButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "clickView",
+        "action": "click",
+        "target": "viewButton"
+      },
+      {
+        "id": "waitDetails",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "openButton"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "extractMemberId",
+        "action": "extract",
+        "target": "memberIdCell",
+        "saveAs": "memberIdValue"
+      },
+      {
+        "id": "clickOpen",
+        "action": "click",
+        "target": "openButton"
+      },
+      {
+        "id": "waitForm",
+        "action": "wait",
+        "condition": {
+          "kind": "visible",
+          "target": "accountTypeSelect"
+        },
+        "timeoutMs": 10000
+      },
+      {
+        "id": "selectType",
+        "action": "selectOption",
+        "target": "accountTypeSelect",
+        "by": "label",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      {
+        "id": "clickContinue",
+        "action": "click",
+        "target": "continueButton",
+        "effect": "stateChanging"
+      },
+      {
+        "id": "waitConfirmation",
+        "action": "wait",
+        "condition": {
+          "kind": "textContains",
+          "target": "confirmation",
+          "value": {
+            "literal": "opened for"
+          }
+        },
+        "timeoutMs": 10000,
+        "confirms": "clickContinue"
+      },
+      {
+        "id": "extractStatus",
+        "action": "extract",
+        "target": "confirmation",
+        "saveAs": "statusText"
+      },
+      {
+        "id": "extractAccountType",
+        "action": "extract",
+        "target": "confirmation",
+        "saveAs": "accountTypeText"
+      }
+    ],
+    "outputs": {
+      "memberId": {
+        "type": "string",
+        "description": "Member ID confirmed for the sub-account creation",
+        "source": {
+          "savedValue": "memberIdValue"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textEquals",
+            "value": {
+              "input": "memberId"
+            }
+          },
+          "timeoutMs": 5000
+        }
+      },
+      "accountType": {
+        "type": "string",
+        "description": "Confirmation message stating the selected sub-account type as confirmed by the application",
+        "source": {
+          "savedValue": "accountTypeText"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textMatches",
+            "pattern": "Sub-account \\S+ \\([^()]{1,64}\\) opened for .{1,200}"
+          },
+          "timeoutMs": 5000
+        }
+      },
+      "status": {
+        "type": "string",
+        "description": "Observed confirmation of successful sub-account creation",
+        "source": {
+          "savedValue": "statusText"
+        },
+        "validation": {
+          "condition": {
+            "kind": "textMatches",
+            "pattern": "Sub-account \\S+ \\([^()]{1,64}\\) opened for .{1,200}"
+          },
+          "timeoutMs": 5000
+        }
+      }
+    },
+    "checkpoints": [
+      {
+        "kind": "textContains",
+        "target": "confirmation",
+        "value": {
+          "literal": "opened for"
+        }
+      },
+      {
+        "kind": "textContains",
+        "target": "confirmation",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      {
+        "kind": "textContains",
+        "target": "confirmation",
+        "value": {
+          "input": "memberId"
+        }
+      }
+    ]
+  },
+  "stepEvidence": {
+    "navigateHome": {
+      "action": 1,
+      "phase": "after"
+    },
+    "focusSearch": {
+      "action": 5,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "fillMemberId": {
+      "action": 7,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n15"
+      }
+    },
+    "clickSearch": {
+      "action": 8,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n16"
+      }
+    },
+    "waitResults": {
+      "action": 11,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "clickView": {
+      "action": 14,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n32"
+      }
+    },
+    "waitDetails": {
+      "action": 15,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n30"
+      }
+    },
+    "extractMemberId": {
+      "action": 16,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n21"
+      }
+    },
+    "clickOpen": {
+      "action": 18,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n30"
+      }
+    },
+    "waitForm": {
+      "action": 19,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n22"
+      }
+    },
+    "selectType": {
+      "action": 22,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n22"
+      }
+    },
+    "clickContinue": {
+      "action": 23,
+      "phase": "before",
+      "node": {
+        "frame": 0,
+        "node": "n28"
+      }
+    },
+    "waitConfirmation": {
+      "action": 24,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    "extractStatus": {
+      "action": 25,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    "extractAccountType": {
+      "action": 25,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    }
+  },
+  "checkpointEvidence": [
+    {
+      "action": 25,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    {
+      "action": 25,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    },
+    {
+      "action": 25,
+      "phase": "after",
+      "node": {
+        "frame": 0,
+        "node": "n19"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+
+> agentic-workflow-engine@1.0.0 test:banking
+> npm run build && node --test dist/tests/integration/banking.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\happy-M1001
+✔ banking happy-M1001 (1861.7891ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\parameterized-M1002
+✔ banking parameterized-M1002 (1818.2388ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\NOT_FOUND
+✔ banking NOT_FOUND (652.8689ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\VALIDATION_ERROR
+✔ banking VALIDATION_ERROR (1395.6072ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\PERMISSION_DENIED
+✔ banking PERMISSION_DENIED (1399.7678ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\SESSION_EXPIRED
+✔ banking SESSION_EXPIRED (666.2848ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\SLOW_LOADING
+✔ banking SLOW_LOADING (4356.2058ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\TIMEOUT
+✔ banking TIMEOUT (676.8656ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\UNEXPECTED_DIALOG
+✔ banking UNEXPECTED_DIALOG (650.3183ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\AMBIGUOUS_TARGET
+✔ banking AMBIGUOUS_TARGET (298.24ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\committed-but-unverified
+✔ banking committed-but-unverified (1817.1604ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\output-readiness\banking-compatibility\unconfirmed-write
+✔ banking unconfirmed-write (1165.9522ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17076.1159

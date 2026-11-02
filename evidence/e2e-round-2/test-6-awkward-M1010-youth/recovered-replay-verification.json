@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "test": "6/6",
+  "newDiscovery": false,
+  "sourceEvidenceModified": false,
+  "manualArtifactEdits": false,
+  "originalHashesVerified": true,
+  "recoveredFailure": {
+    "action": 7,
+    "code": "FORM_INPUT_REJECTED",
+    "recoveryAction": 10,
+    "target": {
+      "frame": 0,
+      "node": "n9"
+    },
+    "proof": "legacy-driver-guard-and-audit",
+    "unchangedSnapshotSha256": "67e3322e6ab1812fba2e28d4a81a224e3c21b9068c8a9d1bb9ce467d5b8412c0"
+  },
+  "failedExecutableActions": [],
+  "failedActionsPreservedInAudit": [
+    7
+  ],
+  "allSuccessfulInteractionsPreserved": true,
+  "compilationHistory": [
+    {
+      "directory": "compilation-recovered",
+      "status": "incomplete",
+      "reason": "max_tokens 10000"
+    },
+    {
+      "directory": "compilation-recovered-2",
+      "status": "incomplete",
+      "reason": "max_tokens 10000"
+    },
+    {
+      "directory": "compilation-recovered-3",
+      "status": "rejected",
+      "reason": "Recorded target absent at selectType",
+      "maxTokens": 20000
+    },
+    {
+      "directory": "compilation-recovered-4",
+      "status": "validated",
+      "maxTokens": 20000
+    }
+  ],
+  "comparisons": {
+    "memberId": {
+      "discovery": "M-1010",
+      "replay": "M-1010",
+      "matches": true
+    },
+    "accountType": {
+      "discovery": "Youth",
+      "replay": "Youth",
+      "matches": true
+    },
+    "status": {
+      "discovery": "Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated.",
+      "replay": "Sub-account M-1010-S1 (Youth) created for Yuri Savchenko. Simulated.",
+      "matches": true
+    }
+  },
+  "actualSandboxSubAccounts": [
+    {
+      "ref": "M-1010-S1",
+      "type": "Youth"
+    }
+  ],
+  "terminalConfirmationVerified": true,
+  "creationDispatches": 1,
+  "creationRetries": 0,
+  "replayLlmCalls": 0,
+  "outputReadiness": "validated",
+  "testsPassed": 24,
+  "administratorAcceptance": "pending",
+  "limitations": [
+    "Admission currently allows only proven pre-dispatch form_input guard recovery",
+    "Unknown dispatch and potentially modifying failures remain blocked",
+    "Goal validation proves the explicit output/checkpoint contract, not arbitrary natural-language meaning",
+    "Isolated synthetic sandbox state; no user Chrome state was changed"
+  ]
+}

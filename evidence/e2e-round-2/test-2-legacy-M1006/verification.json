@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "stages": [
+    "new Claude Discovery",
+    "separate Claude Compilation",
+    "Evidence Validation",
+    "fresh-session Playwright Replay"
+  ],
+  "discoveryActions": 19,
+  "replaySteps": 11,
+  "replayLlmCalls": 0,
+  "comparisons": {
+    "balance": {
+      "discovery": "$7,640.20",
+      "replay": "$7,640.20",
+      "matches": true
+    },
+    "accountType": {
+      "discovery": "Savings",
+      "replay": "Savings",
+      "matches": true
+    },
+    "memberId": {
+      "discovery": "M-1006",
+      "replay": "M-1006",
+      "matches": true
+    }
+  },
+  "sourceEvidenceHashVerified": true,
+  "codeChangedForTest": false,
+  "navigation": [
+    "http://localhost:8080/legacy/index.html",
+    "http://localhost:8080/legacy/content.html"
+  ],
+  "limitations": [
+    "Claude navigated from legacy/index.html to legacy/content.html; this run does not prove the entire lookup stays inside the frame",
+    "Fresh isolated browser contexts",
+    "No runtime detectors configured for this happy-path run"
+  ],
+  "administratorAcceptance": "pending"
+}
