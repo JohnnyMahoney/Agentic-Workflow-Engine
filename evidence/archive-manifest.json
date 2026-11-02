@@ -1,0 +1,846 @@
+{
+  "reason": "Repeated real-browser runtime suites; original runtime-3-3 suite and run-specific summary logs retained. These are separate executions, not necessarily byte-identical duplicates.",
+  "disposition": "Move to ignored local backup; no irreversible deletion. Historical log paths remain original provenance. Backup is not available in a fresh clone; runtime suites are reproducible using npm run test:banking.",
+  "files": [
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/artifact.json",
+      "bytes": 3415,
+      "sha256": "9080890e6f3793c13870709e1bc4af344c816ce77b0038d10321a56327b9cec7"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/assertions.json",
+      "bytes": 819,
+      "sha256": "2ffa4b16fb22ce17497153b089ef11a746b4f025eb0b1627917466db77ebd586"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/events.jsonl",
+      "bytes": 1235,
+      "sha256": "07efb0776849ecbe33a8a66ccd7215e781292f7c869f1757ddae96aa8cd71a85"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/failure.png",
+      "bytes": 13893,
+      "sha256": "d307a0a297e803b88c69099aa1b2d02a23913e798963c4ccec7a5f96655d066d"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/AMBIGUOUS_TARGET/result.json",
+      "bytes": 628,
+      "sha256": "a696d8004b8a9802fd4b3d8e7cae1bc6f8e9a7c8adc7b19e6a11e25023daa0bb"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/artifact.json",
+      "bytes": 5256,
+      "sha256": "86af16aea78ed6f88a732340875b6eb9e0c454ad16042165db52655426816d84"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/assertions.json",
+      "bytes": 1482,
+      "sha256": "14627286f465d1a6e4b94a241e83aebd8f2f42199a3e7c1da426c9c6ad8d38f9"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/events.jsonl",
+      "bytes": 8898,
+      "sha256": "e5d9efb770e63a7f4b15301ab7ee9f1a2afdc89252d6e5ef4240ed1d51781eab"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/failure.png",
+      "bytes": 18918,
+      "sha256": "4e9d444fd9b4e443076126f645c71e13c8d0e83b717a0fe88854aa174e7d52b9"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/committed-but-unverified/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/committed-but-unverified/result.json",
+      "bytes": 1151,
+      "sha256": "769a4cbccb6b17245bf0fd9ba856bc803e2bdda909ca7e91f70ee1a4f7c19deb"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/happy-M1001/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/happy-M1001/artifact.json",
+      "bytes": 5238,
+      "sha256": "450c7a43b46c92efb3bad3e6beabad9adeeaf34bdcaa4d3ba6af69ac08d2249f"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/happy-M1001/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/happy-M1001/assertions.json",
+      "bytes": 736,
+      "sha256": "bbe6bc0dddf7142368e47639bebb1f588a96cf69502c30c5c47760577cb9ca36"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/happy-M1001/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/happy-M1001/events.jsonl",
+      "bytes": 10449,
+      "sha256": "815b9af7af27919c4364c8001ae0c156f889c5259eacb20a05ef1944b6ccfbd6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/happy-M1001/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/happy-M1001/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/happy-M1001/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/happy-M1001/result.json",
+      "bytes": 459,
+      "sha256": "cf581a2f65c7f1d4853afd14e459482b10d409d8f0410fe630b859269041ce40"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/artifact.json",
+      "bytes": 3417,
+      "sha256": "4a215f50343edb1648cb4bef4415c8d9f90b9d094f88a91139bd7abbcd924374"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/assertions.json",
+      "bytes": 875,
+      "sha256": "a680960591473124cea68fc1830389658179389d4b505310b142b7f16a470eb4"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/events.jsonl",
+      "bytes": 2313,
+      "sha256": "43dda0ae840566a26c73bc60f5c48ac4ba22e25c4a7bff1d102d3c0893c33b8e"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/failure.png",
+      "bytes": 15514,
+      "sha256": "e519865add764d406d423e3d23d4acff28f94310d5b03d3e0343dfdc05a3193d"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/NOT_FOUND/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/NOT_FOUND/result.json",
+      "bytes": 683,
+      "sha256": "34b02c67bfcabbcc401d3732a16cb592cc317ab8747e43008a37d9b6ae5a088f"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/parameterized-M1002/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/parameterized-M1002/artifact.json",
+      "bytes": 5238,
+      "sha256": "450c7a43b46c92efb3bad3e6beabad9adeeaf34bdcaa4d3ba6af69ac08d2249f"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/parameterized-M1002/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/parameterized-M1002/assertions.json",
+      "bytes": 743,
+      "sha256": "b44612a491840c94a447d0008fd0a92d20d876c4317eca3682414fa257771b3e"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/parameterized-M1002/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/parameterized-M1002/events.jsonl",
+      "bytes": 10453,
+      "sha256": "b12b82c9613644d1e2554961d26cf4a8fac854572591c03fda76e86f04a5bf15"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/parameterized-M1002/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/parameterized-M1002/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/parameterized-M1002/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/parameterized-M1002/result.json",
+      "bytes": 466,
+      "sha256": "04203ccf7a419f90562d10f12d6a9f05a466d2944d84b832d86db69d044835cb"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/artifact.json",
+      "bytes": 5251,
+      "sha256": "f289d24a510e9e50f90511ab994a91c971506cac8b72707d742114b6ca644a25"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/assertions.json",
+      "bytes": 1015,
+      "sha256": "69a1a0a276b523eef84e7bdf98cef583fc4c1396c06a2e66306dcf606aeb18d7"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/events.jsonl",
+      "bytes": 6615,
+      "sha256": "55742875552d6c8267ebac9d5ef7bbac4f0c113ea30fa76b09ee3d37c61e3770"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/failure.png",
+      "bytes": 17188,
+      "sha256": "5fcb3ae1407402d2dfc8cbc5cd3bb394499bf193b6d48aea09181145b36f2177"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/PERMISSION_DENIED/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/PERMISSION_DENIED/result.json",
+      "bytes": 810,
+      "sha256": "dd23c541ae1bcaf54a50dd8a0506a31bc7d813e54131f6d101d80d2290252adb"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/README.md",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/README.md",
+      "bytes": 285,
+      "sha256": "0c9e9c2107361fbfdb9bfec84c2ba3c0b7794775c246a50d3378137fc8186746"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/artifact.json",
+      "bytes": 3423,
+      "sha256": "4c8e8149552fa194922d79be914bfff2733645632360d2e89a30852cbf7f1f37"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/assertions.json",
+      "bytes": 956,
+      "sha256": "dd41eee8d7079e6daee0bf44cc072d44632103944c523d81568eadac2fb45d99"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/events.jsonl",
+      "bytes": 2419,
+      "sha256": "3268017300ba03388d4294fd3f6906a30030e27875739f60dfb857412db1bc82"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/failure.png",
+      "bytes": 17462,
+      "sha256": "b5a9d5f8cad97fa36a5e53b4f9a92c093ed16fea12d9e8c84a8f556c31601724"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SESSION_EXPIRED/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SESSION_EXPIRED/result.json",
+      "bytes": 757,
+      "sha256": "12d228e489a8636f190719735311f4ee1468ed416550d01f25e466012f64468a"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SLOW_LOADING/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SLOW_LOADING/artifact.json",
+      "bytes": 3420,
+      "sha256": "799ef753c60435b860cdfa959d0ce863e347c9b1e3e73396472a39011f418417"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SLOW_LOADING/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SLOW_LOADING/assertions.json",
+      "bytes": 549,
+      "sha256": "e1eb41a29707b1cfa757ab14f747a7aaef94fbf70b91233a7a4c37c77c288c1a"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SLOW_LOADING/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SLOW_LOADING/events.jsonl",
+      "bytes": 9572,
+      "sha256": "55168513dc8732aa5eacccd40fd99239e30b7e62d599c5f4a6e76a19d06673f1"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SLOW_LOADING/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SLOW_LOADING/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/SLOW_LOADING/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/SLOW_LOADING/result.json",
+      "bytes": 373,
+      "sha256": "167a7d95c436e5e5f5a6c3f35cdbe72a1a1ce83e13a2bb513eb030f5f9e95db6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/artifact.json",
+      "bytes": 3414,
+      "sha256": "4621216c91d7ffc22f3a5964561e6caa4d9f7df8155ef9d895162887e1d50204"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/assertions.json",
+      "bytes": 1034,
+      "sha256": "95a581164b556c2ac5cbb45ae62f73cdcc0cd2e1214d9e673edee24246f8d04b"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/events.jsonl",
+      "bytes": 2357,
+      "sha256": "f175182526c19267d8ecb5985d43281802642e0d8e05699932d0898a89453e20"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/failure.png",
+      "bytes": 14155,
+      "sha256": "f2ea58ce82a2b086fc4b93f9bbbab3e2be44558165eb04f19dd9b91e7b6323aa"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/TIMEOUT/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/TIMEOUT/result.json",
+      "bytes": 820,
+      "sha256": "93498e121e8a09eeff8ce190caf11643e2c117ce01bee63675ca631b4e5c3bd0"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/artifact.json",
+      "bytes": 5237,
+      "sha256": "512bbf189725f6b6b290f730d67c47f5abb40e7609db9aadaecdbf5ab76cb8af"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/assertions.json",
+      "bytes": 1156,
+      "sha256": "6680f250fe1a6e38dd5baf025e7f0dd3a033775e589248e564c3c008fc707d3f"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/events.jsonl",
+      "bytes": 5343,
+      "sha256": "8fd82efc42f804799d94fb55d6bfbd2bb2073c325580b303fd564b68adf8fcd7"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/failure.png",
+      "bytes": 14010,
+      "sha256": "b3ceb9b8314315ce788ded99e249ed2a566dffdf5662d23b60dc6c208b461626"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/unconfirmed-write/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/unconfirmed-write/result.json",
+      "bytes": 934,
+      "sha256": "4854327da955469b340ebc01ee025064aa9ee9f10c7f85ce08bae2eaf0efc933"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/artifact.json",
+      "bytes": 3425,
+      "sha256": "88ab1527e65a448a1087644088ecfe64e6e8c920291530856a60dae4ff434d60"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/assertions.json",
+      "bytes": 929,
+      "sha256": "cf46d10e69a1d8a81ddb4def47f6b0c7a831b882b17cf5a5595432f7c2e65869"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/events.jsonl",
+      "bytes": 2510,
+      "sha256": "474ff237305dd6832a5c457f5b97be2730ea2d52a0d6a7182f9eeeb65c44fe69"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/failure.png",
+      "bytes": 17276,
+      "sha256": "d0936d405c07dee9be7c5b94ee813d5dd95d1b719e754713866b504ed6f35f14"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/UNEXPECTED_DIALOG/result.json",
+      "bytes": 733,
+      "sha256": "aa4ab00282eea2dcdd028a3ee844f2bda26d67858dd86a50dd4f0cbfaa2dce8f"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/artifact.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/artifact.json",
+      "bytes": 5250,
+      "sha256": "788be380e05c60003656f2a3e38e655b281bdddc81013e121cc200c0592cfa11"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/assertions.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/assertions.json",
+      "bytes": 983,
+      "sha256": "167a980a74c3287d452d5e6431de2d05a79dc27bf82f9223b11d0c0a403036f8"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/events.jsonl",
+      "bytes": 6566,
+      "sha256": "ddf0dd4f183a5d83bdcf28ae2321ece4a6c4953d64ca984803bb49867e1744f8"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/failure.png",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/failure.png",
+      "bytes": 22789,
+      "sha256": "732a50ec3f78177c3c0f74bb998afbe3de8e53d2d972ee712e98b2f2dae610b6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/policy.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/policy.json",
+      "bytes": 2372,
+      "sha256": "9459dc6429113d169c8b3356ac85396ef2774babc754b3b479fe5820e5d71be6"
+    },
+    {
+      "source": "evidence/reviewer-readiness/banking/VALIDATION_ERROR/result.json",
+      "destination": ".local-evidence-archive/evidence/reviewer-readiness/banking/VALIDATION_ERROR/result.json",
+      "bytes": 779,
+      "sha256": "11b8ea1fa312dddd6932ac98a72730531b52171a63b083b072f9870e550358b4"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/artifact.json",
+      "bytes": 3414,
+      "sha256": "9cc6317080852cea0596988e3db3b5cd585a07a1a58597cf756fc4ec29514cc4"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/assertions.json",
+      "bytes": 831,
+      "sha256": "90142d7879107017ab4e3504bd0d16b81455097816c31d6711ab9c0586e0b744"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/events.jsonl",
+      "bytes": 1247,
+      "sha256": "02ccc2680c5449c663fce8e0ab68ee955ac6f4e8f86613d2dac9b9a67e54edea"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/failure.png",
+      "bytes": 13893,
+      "sha256": "d307a0a297e803b88c69099aa1b2d02a23913e798963c4ccec7a5f96655d066d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/AMBIGUOUS_TARGET/result.json",
+      "bytes": 640,
+      "sha256": "83d009228046a9c4f491d75b90e92f666ea7c4425f79e38546297c31311ecb57"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/artifact.json",
+      "bytes": 5255,
+      "sha256": "a94bb7ea09bcd0920794dbb6fc6f8fd601faa1fee2131e4d544fddcc0ed8b934"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/assertions.json",
+      "bytes": 1494,
+      "sha256": "00f94da44e8ba867dd7a0d19912ecbb69f351bdfaf8888e2ca6f77f8334b33d6"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/events.jsonl",
+      "bytes": 9262,
+      "sha256": "5b34dbf1637b0e5e5b41f2e7bfbd733effbb24e0b96aa2860fd82f073e3f9c4f"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/failure.png",
+      "bytes": 18918,
+      "sha256": "4e9d444fd9b4e443076126f645c71e13c8d0e83b717a0fe88854aa174e7d52b9"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/committed-but-unverified/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/committed-but-unverified/result.json",
+      "bytes": 1163,
+      "sha256": "a51443b7102209be0ba29c2bdd7ffa79d2a29cd9dbf489ee8ee1f61f5b4b972b"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/happy-M1001/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/happy-M1001/artifact.json",
+      "bytes": 5237,
+      "sha256": "cfa2f1e8560b836b89cafac57006c9c322e7f070717ab5eb0a1c3a307b455b5d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/happy-M1001/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/happy-M1001/assertions.json",
+      "bytes": 748,
+      "sha256": "3759a8c1ccde3e6b74676fd44a01252b325591d4b6d1583b6699a8b2183c78c4"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/happy-M1001/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/happy-M1001/events.jsonl",
+      "bytes": 10461,
+      "sha256": "163037a95764da6ee81bddf0e9627b6e6f9c2c313399e557951c2a2e8d37763f"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/happy-M1001/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/happy-M1001/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/happy-M1001/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/happy-M1001/result.json",
+      "bytes": 471,
+      "sha256": "8c06ac78718daef205c76de481866848b462208fc74565ce0d495f73a3583957"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/artifact.json",
+      "bytes": 3416,
+      "sha256": "8f8d1159eba14024669bae18e62b7c7798ba85d17048a837d7baa76e6a8e7ea0"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/assertions.json",
+      "bytes": 887,
+      "sha256": "f88f81a81e09c7ce00c2ad1e8c3596bb3e99ac1bf1e1de4b98f12acc4faee204"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/events.jsonl",
+      "bytes": 2325,
+      "sha256": "f1f32ccb3d73b3485727e047d919231fd03a49f96a5deddd7e519782689e3aab"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/failure.png",
+      "bytes": 15514,
+      "sha256": "e519865add764d406d423e3d23d4acff28f94310d5b03d3e0343dfdc05a3193d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/NOT_FOUND/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/NOT_FOUND/result.json",
+      "bytes": 695,
+      "sha256": "fcc9e18e24dd79043f3b20bae7bac3b77c6b440b67cde6d571f290f43f588c9e"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/parameterized-M1002/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/parameterized-M1002/artifact.json",
+      "bytes": 5237,
+      "sha256": "cfa2f1e8560b836b89cafac57006c9c322e7f070717ab5eb0a1c3a307b455b5d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/parameterized-M1002/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/parameterized-M1002/assertions.json",
+      "bytes": 755,
+      "sha256": "57b8bc26255866bd2b7c407ae27bfea182651516cd95de07747a2cfdb6c1c6a9"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/parameterized-M1002/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/parameterized-M1002/events.jsonl",
+      "bytes": 10465,
+      "sha256": "599c40b361576cfd7df75362fe9aa054225d25feb3247130484bdc74ce8b30ce"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/parameterized-M1002/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/parameterized-M1002/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/parameterized-M1002/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/parameterized-M1002/result.json",
+      "bytes": 478,
+      "sha256": "9dbac87516d9fab282032c983c14a5e395d3f534b0e5a5ddabb8dcf4aade2fda"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/artifact.json",
+      "bytes": 5250,
+      "sha256": "cc2babfb9be4e9c216c4c86ba2678e7c09c1c0bd8d728f9fb21cd58cc6bdafdc"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/assertions.json",
+      "bytes": 1027,
+      "sha256": "e06835606b985557a5011a124e40f2be61dd10d555cbad8eb42a8882888b6bd0"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/events.jsonl",
+      "bytes": 6627,
+      "sha256": "6cc0e3c7d01b2f2ab82fa5c3d675ff0f61b616ee04ec07622c8eb00bd0adb8b3"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/failure.png",
+      "bytes": 17188,
+      "sha256": "5fcb3ae1407402d2dfc8cbc5cd3bb394499bf193b6d48aea09181145b36f2177"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/PERMISSION_DENIED/result.json",
+      "bytes": 822,
+      "sha256": "eb52698e69aa42a4e6523243523a28cde7e01eb44341dde5e3dd41f4ce092cb1"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/README.md",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/README.md",
+      "bytes": 285,
+      "sha256": "0c9e9c2107361fbfdb9bfec84c2ba3c0b7794775c246a50d3378137fc8186746"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/artifact.json",
+      "bytes": 3422,
+      "sha256": "a9b37ba383f82d4267251999f6c5795e86e9e4c6f865d777286d3effb33f1812"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/assertions.json",
+      "bytes": 968,
+      "sha256": "33ff948d6cab81628084fa3289cdbc8fe00524e00775b93d5bcd4d00c46f3241"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/events.jsonl",
+      "bytes": 2431,
+      "sha256": "e47c2d76a475cac5d514f6450e7fd5f6a1e3a5d5b6ab6b6fc5856c87f2134a0c"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/failure.png",
+      "bytes": 17462,
+      "sha256": "b5a9d5f8cad97fa36a5e53b4f9a92c093ed16fea12d9e8c84a8f556c31601724"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SESSION_EXPIRED/result.json",
+      "bytes": 769,
+      "sha256": "360d865032527b3f1110ecb1faac0a8950652277fe68299006d034a2c167195a"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SLOW_LOADING/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SLOW_LOADING/artifact.json",
+      "bytes": 3419,
+      "sha256": "2e47c7b3b84cd1a8619498b5dc5a1f24aa1a5007087b87f45333011598a50edc"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SLOW_LOADING/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SLOW_LOADING/assertions.json",
+      "bytes": 561,
+      "sha256": "c587cd9e04d11d8c35df9e2b4b340650ea4e4bc527bcea1b9f9810d6956e24c3"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SLOW_LOADING/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SLOW_LOADING/events.jsonl",
+      "bytes": 9824,
+      "sha256": "f604c2237a252281c850a6f513e38d1d671b5341e33e830cc08036253fc2f51d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SLOW_LOADING/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SLOW_LOADING/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/SLOW_LOADING/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/SLOW_LOADING/result.json",
+      "bytes": 385,
+      "sha256": "b18383effb9768b715cb5dffc4080684b688fe7d31e65a3bd1153cfe47ab6929"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/artifact.json",
+      "bytes": 3413,
+      "sha256": "8abca3347e9ef115c47ebba94d96f89771deecde33376b75cda7533e383c8bd6"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/assertions.json",
+      "bytes": 1046,
+      "sha256": "224dd43147c7955dcf6d0bab14e51f4a8b779ed932dede86ec9dbefdf39fe401"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/events.jsonl",
+      "bytes": 2369,
+      "sha256": "84669b8f1ccd86f67a965fb6049363f4dfc2f873e92b80d4b34b9187aa5a8404"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/failure.png",
+      "bytes": 14155,
+      "sha256": "f2ea58ce82a2b086fc4b93f9bbbab3e2be44558165eb04f19dd9b91e7b6323aa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/TIMEOUT/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/TIMEOUT/result.json",
+      "bytes": 832,
+      "sha256": "6a5276aedec29d9da345dfae92fbb86ab254332fa4569cb75a13fded090c352f"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/artifact.json",
+      "bytes": 5236,
+      "sha256": "bfbeff0c0528cbbb1190e72c3af6d861d8bce11b691d10b98a0a5feac9122697"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/assertions.json",
+      "bytes": 1168,
+      "sha256": "42efd298a993441ac742a6dedbbb8175c13eb9e76403b531a5a202752ef37ce4"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/events.jsonl",
+      "bytes": 5355,
+      "sha256": "915463f5c7ba4d224e95aa6b09402ef589339f2f0ec6d95450a6e3e46bd87df1"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/failure.png",
+      "bytes": 14010,
+      "sha256": "b3ceb9b8314315ce788ded99e249ed2a566dffdf5662d23b60dc6c208b461626"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/unconfirmed-write/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/unconfirmed-write/result.json",
+      "bytes": 946,
+      "sha256": "f9b216146bce540266b8e2fa30b9a17f3a31fea728b05ee7cbb32f00d694f07a"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/artifact.json",
+      "bytes": 3424,
+      "sha256": "0b1bd451fe04fc9df3ed42c2f0d257f48c7c8bcbb090f46f6d89d70c037a4263"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/assertions.json",
+      "bytes": 941,
+      "sha256": "4f0a48f763e1cb0236d4b99693727390a2192450285ba5c98cb65d001b84c1a4"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/events.jsonl",
+      "bytes": 2522,
+      "sha256": "325b65e64a8eb5c9fde7beb33f72f03089120b2f97dda943595492a57b95cdc9"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/failure.png",
+      "bytes": 17276,
+      "sha256": "d0936d405c07dee9be7c5b94ee813d5dd95d1b719e754713866b504ed6f35f14"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/UNEXPECTED_DIALOG/result.json",
+      "bytes": 745,
+      "sha256": "a07b7c02c9abe265a1c409785debe5caac888a6a4f04044847f1231332883a7d"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/artifact.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/artifact.json",
+      "bytes": 5249,
+      "sha256": "23b47ae5a849c076b310362585b32ba3521f89465350d0d406caf2a590dd34b0"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/assertions.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/assertions.json",
+      "bytes": 995,
+      "sha256": "66be12800e295f7d6bf0d3c6e3d918118a9c34512509716921845d6bae87dc0a"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/events.jsonl",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/events.jsonl",
+      "bytes": 6578,
+      "sha256": "84bbb2c2f769c6163b19b20feabe56b2bb331fd7564aa3e3c34e9cc0cb295982"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/failure.png",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/failure.png",
+      "bytes": 22789,
+      "sha256": "732a50ec3f78177c3c0f74bb998afbe3de8e53d2d972ee712e98b2f2dae610b6"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/policy.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/policy.json",
+      "bytes": 2371,
+      "sha256": "6142ad885407329711e5e2bdfca578ad0c728582982e4583fe3f3513b1e0bbfa"
+    },
+    {
+      "source": "evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/result.json",
+      "destination": ".local-evidence-archive/evidence/output-readiness/banking-compatibility/VALIDATION_ERROR/result.json",
+      "bytes": 791,
+      "sha256": "50f73f8790ca186e87ce598266bd0f991f780066cffb36bfa2bda486407341fd"
+    }
+  ]
+}

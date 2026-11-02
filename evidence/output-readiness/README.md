@@ -19,7 +19,9 @@ were checked after the new compilation and replay.
 - Pattern tests cover malformed/blank patterns, full-string matching, parameter
   equality and bounded evaluation of a pathological expression.
 - [12 passing existing Banking Sandbox compatibility cases](banking-tests.log)
-  with isolated state in [banking-compatibility](banking-compatibility/).
+  with isolated state. Detailed compatibility rerun files were moved to the ignored
+  local archive ([manifest](../archive-manifest.json)); the summary log above remains.
+  The [original runtime suite](../runtime-3-3/README.md) is retained in full.
 
 `tests.log` and `regression/` retain an earlier harness failure: screenshot capture
 inherited the expired output-read timeout. The final implementation resets the

@@ -59,5 +59,7 @@ verification files support diagnosis. A test index explains retries and limitati
 
 Historical indexes: [initial spike](browser-use-spike/), [v1 slice](vertical-slice/README.md),
 [Modern](modern-ui-testing/), [Legacy](legacy-ui-testing/), [Awkward](awkward-ui-testing/).
-No historical files were removed or moved during reviewer cleanup: audit references
-and regression dependencies take priority over reducing an approximately 16 MB archive.
+The initial reviewer cleanup retained all files. A subsequent cleanup moved 140
+repeat-run files into an ignored local archive; see the file-by-file
+[manifest](archive-manifest.json). Run-specific summary logs and the original runtime
+suite remain. Genuine Claude runs, failure/fix evidence and test dependencies are retained.

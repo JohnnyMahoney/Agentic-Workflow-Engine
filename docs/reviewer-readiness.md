@@ -32,15 +32,17 @@ representatives are linked from [evidence/README.md](../evidence/README.md): Mod
 and Legacy lookups, Awkward zero/readiness recovery, Modern/Awkward Youth creation,
 original negative Case 2 replay and the structured runtime-error suite.
 
-Moved files: **none**. Removed files: **none**. No backup was necessary. Historical
-failures and intermediate compilations remain because they explain validation
-rejections, recovery and test dependencies. Navigation was simplified instead.
+Subsequent cleanup archived 140 files from evidence/reviewer-readiness/banking and
+evidence/output-readiness/banking-compatibility to .local-evidence-archive/ (ignored).
+The [file-by-file manifest](../evidence/archive-manifest.json) records original and
+backup paths, sizes and SHA-256 hashes. These separate repeat executions add little
+to the reviewer view; their summary logs remain, and the original runtime-3-3 suite
+retains full artifacts/results/diagnostics. Historical log paths are left unchanged
+as provenance. A fresh clone does not contain the local backup; rerun test:banking
+for new detailed evidence. No genuine Claude runs or failure/fix regressions moved.
 
-The tracked root debug.log is browser diagnostic noise, not curated evidence.
-It was retained, including browser-generated additions during verification. Suggested
-future cleanup, requiring deletion approval: remove only debug.log from Git tracking
-while keeping a local copy, then ignore /debug.log. No such removal was performed.
-Do not blanket-ignore evidence logs, since they are required audit material.
+Removed debug.log from the repository root and added /debug.log to .gitignore.
+The local archive is ignored too. No historical evidence was permanently deleted.
 
 .gitignore already excludes .env/.env.*, dependencies, build output and assignment,
 while retaining .env.example. A recognized-secret-pattern scan found no matches in
@@ -68,3 +70,13 @@ acknowledges stopped pipelines rather than claiming every stage ran for every ca
 Remaining gaps: same-session handoff, production safety/redaction, conditional
 existing-account handling, desktop and tenant-specific reuse. This cleanup does
 not close those assignment requirements or certify arbitrary-site reliability.
+
+## Follow-up archive verification
+
+140 repeat-run files were archived with matching SHA-256 hashes; 721 files remain
+in evidence, including the archive manifest. All checked Markdown links resolve.
+Build passed. Two npm test runs each passed 23/24 tests: the output-readiness
+delayed-value test failed timing assertions (first: no intermediate nonmatching
+sample; second: last sample elapsedMs below 150). No code/tests were changed.
+The earlier 24/24 cleanup result above remains historical, not the current result.
+Timing sensitivity needs separate investigation; no claim of a passing suite here.

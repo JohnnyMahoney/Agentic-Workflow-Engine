@@ -10,3 +10,7 @@ test-results/
 !.env.example
 
 assignment/
+
+# Local diagnostics and archived repeat test runs
+/debug.log
+/.local-evidence-archive/
