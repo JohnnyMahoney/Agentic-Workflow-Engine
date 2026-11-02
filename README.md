@@ -6,9 +6,9 @@ A TypeScript/Node.js MVP for turning UI-only business tasks into reviewable,
 parameterized automation. Claude explores a real application; deterministic
 validation gates the saved workflow that Playwright executes.
 
-## Our Banking Sandbox and verified scenarios
+## Banking Sandbox and verified scenarios
 
-We built a [synthetic Banking Sandbox](banking-sandbox/README.md) with three UIs
+I built a [synthetic Banking Sandbox](banking-sandbox/README.md) with three UIs
 for the same member-service tasks: Modern forms, Legacy tables/iframes, and an
 intentionally Awkward interface with ambiguous controls and delayed values.
 
