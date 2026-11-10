@@ -3,7 +3,9 @@
 [Section 3.4 safety verification](safety-3-4/README.md) covers route/action/risk
 denials, side-effect checks, sanitization and the Banking Sandbox regression.
 
-Start here rather than reading every historical run. All banking data is synthetic.
+Start with [the latest genuine full E2E](safety-3-4/final-live-e2e/README.md),
+[real human handoff acceptance](discovery-handoff/manual/README.md), and
+[final offline verification](final-review/README.md), rather than reading every historical run. All banking data is synthetic.
 Original logs and failures are preserved; a later fix does not change an earlier result.
 
 [Discovery handoff verification](discovery-handoff/README.md) contains automated
@@ -22,7 +24,8 @@ which closes Section 3.6 for the current web MVP.
 | Awkward M-1010 Youth creation | Recovered pre-dispatch failure audited, excluded from artifact; recompiled and Replay independently confirms M-1010-S1 | [Test 6](e2e-round-2/test-6-awkward-M1010-youth/README.md) |
 | Parameterized public workflows | Real discovery/compilation and table artifact replay with two row inputs | [Capability v2](capability-v2/README.md) |
 
-For the shortest audit, inspect Modern Test 1:
+For the current safety-policy audit, inspect the [latest genuine E2E](safety-3-4/final-live-e2e/README.md).
+The older Modern Test 1 provenance remains below:
 [Discovery](e2e-round-2/test-1-modern-M1005/discovery-2/discovery-v2.json),
 [events](e2e-round-2/test-1-modern-M1005/discovery-2/events.jsonl),
 [candidate](e2e-round-2/test-1-modern-M1005/compilation/candidate.json),
@@ -43,10 +46,10 @@ is not proof of creation. Test 6 also preserves rejected/truncated compilations.
 - [Runtime §3.3](runtime-3-3/README.md): hand-authored artifacts run in real browsers,
   including NOT_FOUND, VALIDATION_ERROR, SLOW_LOADING, TIMEOUT, permission/session
   errors, unexpected dialog, ambiguous target and safe OUTCOME_UNKNOWN.
-- [Committed-but-unverified result](runtime-3-3/2026-11-02-final/banking/committed-but-unverified/result.json):
+- [Retained committed-but-unverified regression](safety-3-4/banking/committed-but-unverified/result.json):
   one actual sandbox write, no retry, no declared success. Its directory includes
-  artifact, policy, events, screenshot and assertions checking actual storage.
-- [Weak checkpoint rejection](runtime-3-3/2026-11-02-final/unit/historical-checkpoint/rejection.json):
+  artifact, policy, events, sanitized diagnostic and assertions checking actual storage.
+- [Weak checkpoint regression source](../src/tests/runtime.test.ts):
   validates historical Discovery; manually strengthened candidate is a labeled
   regression fixture, not Claude output.
 - [Output readiness](output-readiness/README.md): delayed valid values, permanent
@@ -76,4 +79,5 @@ suite remain. Genuine Claude runs, failure/fix evidence and test dependencies ar
 
 [Handoff verification](handoff/README.md) covers same-session continuation,
 unresolved recovery, uncertain writes and CLI abort. Real-browser tests use a
-simulated operator; live human acceptance remains pending. No new Claude run.
+simulated operator. The later [genuine live acceptance](discovery-handoff/manual/README.md)
+records human-assisted Discovery, separate Compilation and successful fresh Replay.

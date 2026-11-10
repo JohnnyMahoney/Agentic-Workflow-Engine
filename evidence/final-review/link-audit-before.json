@@ -1,0 +1,86 @@
+[
+  {
+    "file": "evidence/README.md",
+    "target": "runtime-3-3/2026-11-02-final/banking/committed-but-unverified/result.json"
+  },
+  {
+    "file": "evidence/README.md",
+    "target": "runtime-3-3/2026-11-02-final/unit/historical-checkpoint/rejection.json"
+  },
+  {
+    "file": "evidence/reviewer-readiness/README.md",
+    "target": "../runtime-3-3/2026-11-02-final/banking/AMBIGUOUS_TARGET/artifact.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/unit-tests.log"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking-tests.log"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/summary.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/unit/historical-checkpoint/rejection.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/unit/historical-checkpoint/manually-strengthened-candidate.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/unit/historical-checkpoint/validation.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/AMBIGUOUS_TARGET/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/committed-but-unverified/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/happy-M1001/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/NOT_FOUND/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/parameterized-M1002/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/PERMISSION_DENIED/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/SESSION_EXPIRED/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/SLOW_LOADING/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/TIMEOUT/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/unconfirmed-write/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/UNEXPECTED_DIALOG/result.json"
+  },
+  {
+    "file": "evidence/runtime-3-3/README.md",
+    "target": "2026-11-02-final/banking/VALIDATION_ERROR/result.json"
+  }
+]

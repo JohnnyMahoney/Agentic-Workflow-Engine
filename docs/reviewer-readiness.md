@@ -1,3 +1,45 @@
+# Final reviewer readiness
+
+The [README Quick Start](../README.md#quick-start--no-api-key-required) is the
+canonical onboarding path. It uses the latest genuine saved artifact and current
+trusted policy, requires no API key for Replay, and documents fresh output paths.
+Paid Discovery/Compilation is a separate optional path. No new functionality was
+added by this pass.
+
+## Verified now
+
+- Lockfile install, Chromium install, build and typecheck completed.
+- Standard parallel npm test: **49/50 passed**; one bounded pattern-validation failure.
+- Recommended sequential suite: **50/50 passed**. Banking Sandbox: **12/12 passed**.
+- README no-key Replay returned M-1005 / Term Deposit / $50,000.00 with validated outputs.
+- Saved handoff artifact also returned SUCCESS in real Chromium with a simulated
+  operator. This is distinct from retained genuine Claude/live-human evidence.
+- No paid API calls, source logic changes, contract changes, assertion changes,
+  dependency updates or evidence deletion. Local screenshot placeholders have no
+  broken image links. REPORT retains its required seven headings.
+
+[Logs, audits, smoke evidence and limitations](../evidence/final-review/README.md).
+
+## Before submission
+
+The dependency audit reports one **high** Zod advisory, and parallel test timing
+remains sensitive. Both are explicitly recorded as separate follow-up concerns;
+no automatic dependency or runtime fix was attempted in this documentation pass.
+Capture the optional [three handoff images](media/handoff/README.md), inspect the
+final Git diff, and publish only the intended files. Linux execution was not tested.
+The ignored assignment PDF is intentionally absent from the public clone.
+
+## Historical cleanup record
+
+The notes below describe earlier repository snapshots and their then-current
+counts/limitations. Later Safety and live Handoff work supersedes those status
+statements. They are retained for provenance rather than presented as current
+verification. Some original historical runtime files are absent; see the current
+[evidence availability note](../evidence/runtime-3-3/README.md).
+
+<details>
+<summary>Earlier cleanup results and archive disposition (superseded)</summary>
+
 # Reviewer readiness cleanup
 
 Documentation/navigation only. No source, contract, test or CLI changes; no new
@@ -80,3 +122,5 @@ delayed-value test failed timing assertions (first: no intermediate nonmatching
 sample; second: last sample elapsedMs below 150). No code/tests were changed.
 The earlier 24/24 cleanup result above remains historical, not the current result.
 Timing sensitivity needs separate investigation; no claim of a passing suite here.
+
+</details>

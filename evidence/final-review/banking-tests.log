@@ -1,0 +1,40 @@
+
+> agentic-workflow-engine@1.0.0 test:banking
+> npm run build && node --test dist/tests/integration/banking.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\happy-M1001
+✔ banking happy-M1001 (2023.9481ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\parameterized-M1002
+✔ banking parameterized-M1002 (2004.5192ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\NOT_FOUND
+✔ banking NOT_FOUND (795.492ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\VALIDATION_ERROR
+✔ banking VALIDATION_ERROR (1607.9085ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\PERMISSION_DENIED
+✔ banking PERMISSION_DENIED (1643.6746ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\SESSION_EXPIRED
+✔ banking SESSION_EXPIRED (787.6037ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\SLOW_LOADING
+✔ banking SLOW_LOADING (4468.3368ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\TIMEOUT
+✔ banking TIMEOUT (813.5259ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\UNEXPECTED_DIALOG
+✔ banking UNEXPECTED_DIALOG (785.8681ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\AMBIGUOUS_TARGET
+✔ banking AMBIGUOUS_TARGET (408.839ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\committed-but-unverified
+✔ banking committed-but-unverified (2158.3775ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\evidence\final-review\banking\unconfirmed-write
+✔ banking unconfirmed-write (1414.8883ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19247.4712

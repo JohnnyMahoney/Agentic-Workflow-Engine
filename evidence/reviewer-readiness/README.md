@@ -1,4 +1,8 @@
-# Cleanup verification
+# Cleanup verification - historical
+
+For current results, see [final reviewer verification](../final-review/README.md).
+The counts and limitations below describe the earlier cleanup, before Safety and
+Handoff were completed.
 
 No new Claude calls. Source and tests unchanged.
 
@@ -12,4 +16,4 @@ See [cleanup disposition and limits](../../docs/reviewer-readiness.md).
 
 The reintroduced AMBIGUOUS_TARGET artifact was removed from this directory and
 preserved separately in the ignored local archive. See the retained
-[original runtime fixture](../runtime-3-3/2026-11-02-final/banking/AMBIGUOUS_TARGET/artifact.json).
+[current retained runtime fixture](../safety-3-4/banking/AMBIGUOUS_TARGET/artifact.json).

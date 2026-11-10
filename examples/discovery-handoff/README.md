@@ -43,7 +43,8 @@ The fresh Replay session shows the overlay again. Repeat take-control, click the
 acknowledgement, resume. The expected outputs are M-1001, Checking and $2,450.75;
 these outputs were verified in the saved successful live Replay.
 
-Inspect each run's `events.jsonl`, screenshots and results. Discovery also saves
+Inspect each run's `events.jsonl`, sanitized DOM diagnostics and results.
+Historical runs may retain synthetic screenshots; current raw images are omitted. Discovery also saves
 `discovery-v2.json` with separate interventions. Compilation saves its request,
 response, candidate and validation artifacts. Never overwrite an earlier run.
 

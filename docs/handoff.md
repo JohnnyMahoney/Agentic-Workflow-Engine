@@ -59,7 +59,8 @@ intervention and one safe recovery attempt.
   contiguous wait/assert conditions with a confirms link. Every associated check
   must pass, including identity/type conditions. Every pending write must be covered
   by a verified confirms relationship before human completion is accepted.
-- SAFE_RETRY: only extract/wait/assert, with no pending mutations. This is one
+- SAFE_RETRY: extract/wait/assert, or a proven beforeDispatch operation after policy,
+  detector and target checks, with no pending mutations. This is one
   additional bounded execution; extract's normal retry budget is not restarted.
 - HANDOFF_UNRESOLVED: insufficient postconditions, failed verification/retry,
   invalid current origin, an ongoing detector, a closed session or operator timeout.
@@ -67,8 +68,8 @@ intervention and one safe recovery attempt.
 - HANDOFF_ABORTED: operator/terminal abort; pending mutations still take precedence
   for OUTCOME_UNKNOWN. All unresolved/aborted results are non-retryable.
 
-Clicks, navigation, fill and select are never repeated by handoff, even if annotated
-readOnly. A generic click has no explicit postcondition link in this contract, so
+Started or unknown-dispatch clicks/navigation/fill/select are never repeated by
+this recovery path; proven beforeDispatch operations may execute once. A generic click has no explicit postcondition link in this contract, so
 an arbitrary later global checkpoint is not used to pretend it completed.
 Missing/ambiguous targets, wait/output timeouts, failed assertions, transient
 loading, session expiry and unexpected dialogs are eligible. Policy denial,
@@ -77,12 +78,12 @@ Final checkpoint failures outside the step loop do not request handoff in this s
 
 ## Evidence and scope
 
-Each intervention writes handoff-<step>-request.json and before/after screenshots
-when capture is available. events.jsonl records ownership, rejected commands,
+Each intervention writes handoff-<step>-request.json and sanitized before/after
+DOM diagnostics as handoff-<step>-<phase>.png.json; raw images are omitted. events.jsonl records ownership, rejected commands,
 manual clicks/input/change/submit/navigation metadata, verification observations
 and the recovery decision. Manual event records omit values, keystrokes, target text
-and URL query strings. Screenshots and existing output logs remain restricted to
-synthetic/public fixtures; this is not complete production PII sanitization.
+and URL query strings. Current persistence is sanitized and restricted to trusted
+synthetic/public fixtures; see [Safety](safety.md) for classification limits.
 
 The observer covers the controlled page and its frames, including subsequent
 navigations. It does not capture OS actions, developer-tools changes or other tabs.
@@ -96,11 +97,13 @@ browser toolbar, window closing and developer tools are outside the page lock. T
 The existing native-dialog handler dismisses dialogs before escalation; this slice
 does not replace it with a native-dialog operator UI. Recovery conditions establish
 the artifact's declared state, not every possible hidden backend side effect.
-Discovery handoff, a dashboard and risky-action approval are separate work.
+[Discovery handoff](discovery-handoff.md) uses the same controller. A dashboard
+and additional approval UI are outside scope.
 
 ## Verification
 
 npm.cmd test includes the handoff regressions. Set HANDOFF_EVIDENCE_DIR to a fresh
 directory to retain generated test artifacts. The real-browser tests use a
 simulated operator; they do not constitute a live human acceptance run or new
-Claude Discovery. See [retained results](../evidence/handoff/README.md).
+Claude Discovery. See [retained test results](../evidence/handoff/README.md) and
+[separate live operator acceptance](../evidence/discovery-handoff/manual/README.md).

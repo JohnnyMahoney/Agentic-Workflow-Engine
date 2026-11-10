@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "elapsedMs": 406,
+  "creates": 0,
+  "finalState": {
+    "mode": "NONE",
+    "auth": true,
+    "subs": {}
+  },
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "AMBIGUOUS_TARGET",
+    "sessionId": "[REDACTED]",
+    "stepId": "search",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\AMBIGUOUS_TARGET\\events.jsonl",
+    "expected": {
+      "id": "search",
+      "action": "click",
+      "target": "ambiguous",
+      "effect": "readOnly"
+    },
+    "observed": {
+      "code": "AMBIGUOUS_TARGET",
+      "count": 2
+    },
+    "message": "Locator matches multiple elements",
+    "details": {
+      "count": 2,
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "elapsedMs": 792,
+  "creates": 0,
+  "finalState": {
+    "mode": "NOT_FOUND",
+    "auth": true,
+    "subs": {}
+  },
+  "result": {
+    "status": "BUSINESS_OUTCOME",
+    "code": "NOT_FOUND",
+    "sessionId": "[REDACTED]",
+    "stepId": "waitSearch",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\NOT_FOUND\\events.jsonl",
+    "expected": "NOT_FOUND",
+    "observed": "NOT_FOUND: No members found.",
+    "message": "Explicit UI outcome detector matched",
+    "details": {
+      "code": "NOT_FOUND",
+      "status": "BUSINESS_OUTCOME",
+      "expected": "NOT_FOUND",
+      "observed": "NOT_FOUND: No members found.",
+      "resolvesMutations": [
+        "create"
+      ],
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

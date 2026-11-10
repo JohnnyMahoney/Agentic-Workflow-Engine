@@ -1,29 +1,35 @@
-# Section 3.3 runtime evidence
+# Section 3.3 runtime evidence - historical index
+
+**Historical record:** the linked `2026-11-02-final/` files are not present in the
+current checkout. Their paths and reported outcomes are retained below as provenance,
+not as accessible current evidence. No files were deleted by the final readiness pass.
+For inspectable current results use [the safety Banking regression](../safety-3-4/banking/README.md)
+and [final review verification](../final-review/README.md).
 
 Implementation verification on the existing Banking Sandbox at http://localhost:8080/modern.html.
 **These are hand-authored runtime fixtures, not new Claude Discovery/Compilation runs.**
 All browser contexts were isolated. No Reset or banking UI source changes occurred.
 
-- [14 unit/regression checks](2026-11-02-final/unit-tests.log)
-- [12 Banking Sandbox checks](2026-11-02-final/banking-tests.log)
-- [Machine-readable summary](2026-11-02-final/summary.json)
-- [Historical Case 2 rejection](2026-11-02-final/unit/historical-checkpoint/rejection.json)
-- [Manually strengthened candidate](2026-11-02-final/unit/historical-checkpoint/manually-strengthened-candidate.json) and [validation](2026-11-02-final/unit/historical-checkpoint/validation.json). Reuses original discovery-5; NOT a new Claude response and NOT replayed.
+- 14 unit/regression checks (`2026-11-02-final/unit-tests.log`, unavailable in this checkout)
+- 12 Banking Sandbox checks (`2026-11-02-final/banking-tests.log`, unavailable in this checkout)
+- Machine-readable summary (`2026-11-02-final/summary.json`, unavailable in this checkout)
+- Historical Case 2 rejection (`2026-11-02-final/unit/historical-checkpoint/rejection.json`, unavailable in this checkout)
+- Manually strengthened candidate (`2026-11-02-final/unit/historical-checkpoint/manually-strengthened-candidate.json`, unavailable in this checkout) and validation (`2026-11-02-final/unit/historical-checkpoint/validation.json`, unavailable in this checkout). Reuses original discovery-5; NOT a new Claude response and NOT replayed.
 
 | Scenario | Status | Cause code | Step |
 | --- | --- | --- | --- |
-| [AMBIGUOUS_TARGET](2026-11-02-final/banking/AMBIGUOUS_TARGET/result.json) | HARD_FAILURE | AMBIGUOUS_TARGET | search |
-| [committed-but-unverified](2026-11-02-final/banking/committed-but-unverified/result.json) | OUTCOME_UNKNOWN | WAIT_TIMEOUT | waitConfirmation |
-| [happy-M1001](2026-11-02-final/banking/happy-M1001/result.json) | SUCCESS | SUCCESS | checkpoints |
-| [NOT_FOUND](2026-11-02-final/banking/NOT_FOUND/result.json) | BUSINESS_OUTCOME | NOT_FOUND | waitSearch |
-| [parameterized-M1002](2026-11-02-final/banking/parameterized-M1002/result.json) | SUCCESS | SUCCESS | checkpoints |
-| [PERMISSION_DENIED](2026-11-02-final/banking/PERMISSION_DENIED/result.json) | HARD_FAILURE | PERMISSION_DENIED | waitConfirmation |
-| [SESSION_EXPIRED](2026-11-02-final/banking/SESSION_EXPIRED/result.json) | HARD_FAILURE | SESSION_EXPIRED | waitSearch |
-| [SLOW_LOADING](2026-11-02-final/banking/SLOW_LOADING/result.json) | SUCCESS | SUCCESS | checkpoints |
-| [TIMEOUT](2026-11-02-final/banking/TIMEOUT/result.json) | RECOVERABLE_ERROR | WAIT_TIMEOUT | waitSearch |
-| [unconfirmed-write](2026-11-02-final/banking/unconfirmed-write/result.json) | OUTCOME_UNKNOWN | WAIT_TIMEOUT | waitConfirmation |
-| [UNEXPECTED_DIALOG](2026-11-02-final/banking/UNEXPECTED_DIALOG/result.json) | HARD_FAILURE | UNEXPECTED_DIALOG | waitSearch |
-| [VALIDATION_ERROR](2026-11-02-final/banking/VALIDATION_ERROR/result.json) | BUSINESS_OUTCOME | VALIDATION_ERROR | waitConfirmation |
+| AMBIGUOUS_TARGET (`2026-11-02-final/banking/AMBIGUOUS_TARGET/result.json`, unavailable in this checkout) | HARD_FAILURE | AMBIGUOUS_TARGET | search |
+| committed-but-unverified (`2026-11-02-final/banking/committed-but-unverified/result.json`, unavailable in this checkout) | OUTCOME_UNKNOWN | WAIT_TIMEOUT | waitConfirmation |
+| happy-M1001 (`2026-11-02-final/banking/happy-M1001/result.json`, unavailable in this checkout) | SUCCESS | SUCCESS | checkpoints |
+| NOT_FOUND (`2026-11-02-final/banking/NOT_FOUND/result.json`, unavailable in this checkout) | BUSINESS_OUTCOME | NOT_FOUND | waitSearch |
+| parameterized-M1002 (`2026-11-02-final/banking/parameterized-M1002/result.json`, unavailable in this checkout) | SUCCESS | SUCCESS | checkpoints |
+| PERMISSION_DENIED (`2026-11-02-final/banking/PERMISSION_DENIED/result.json`, unavailable in this checkout) | HARD_FAILURE | PERMISSION_DENIED | waitConfirmation |
+| SESSION_EXPIRED (`2026-11-02-final/banking/SESSION_EXPIRED/result.json`, unavailable in this checkout) | HARD_FAILURE | SESSION_EXPIRED | waitSearch |
+| SLOW_LOADING (`2026-11-02-final/banking/SLOW_LOADING/result.json`, unavailable in this checkout) | SUCCESS | SUCCESS | checkpoints |
+| TIMEOUT (`2026-11-02-final/banking/TIMEOUT/result.json`, unavailable in this checkout) | RECOVERABLE_ERROR | WAIT_TIMEOUT | waitSearch |
+| unconfirmed-write (`2026-11-02-final/banking/unconfirmed-write/result.json`, unavailable in this checkout) | OUTCOME_UNKNOWN | WAIT_TIMEOUT | waitConfirmation |
+| UNEXPECTED_DIALOG (`2026-11-02-final/banking/UNEXPECTED_DIALOG/result.json`, unavailable in this checkout) | HARD_FAILURE | UNEXPECTED_DIALOG | waitSearch |
+| VALIDATION_ERROR (`2026-11-02-final/banking/VALIDATION_ERROR/result.json`, unavailable in this checkout) | BUSINESS_OUTCOME | VALIDATION_ERROR | waitConfirmation |
 
 Each banking scenario directory contains artifact.json, policy.json, events.jsonl,
 result.json, assertions.json (including actual isolated localStorage state), and

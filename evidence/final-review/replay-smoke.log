@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "[REDACTED]",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "$50,000.00",
+    "accountType": "Term Deposit",
+    "memberId": "M-1005"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "evidence\\final-review\\saved-replay\\events.jsonl"
+}

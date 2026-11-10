@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "elapsedMs": 783,
+  "creates": 0,
+  "finalState": {
+    "mode": "UNEXPECTED_DIALOG",
+    "auth": true,
+    "subs": {}
+  },
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "UNEXPECTED_DIALOG",
+    "sessionId": "[REDACTED]",
+    "stepId": "waitSearch",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\UNEXPECTED_DIALOG\\events.jsonl",
+    "expected": "Scheduled maintenance notice.",
+    "observed": "Scheduled maintenance notice.\n\nOK",
+    "message": "Explicit UI outcome detector matched",
+    "details": {
+      "code": "UNEXPECTED_DIALOG",
+      "status": "HARD_FAILURE",
+      "expected": "Scheduled maintenance notice.",
+      "observed": "Scheduled maintenance notice.\n\nOK",
+      "resolvesMutations": [],
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

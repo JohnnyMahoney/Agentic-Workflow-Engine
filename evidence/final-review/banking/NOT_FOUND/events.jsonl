@@ -1,0 +1,22 @@
+{"at":"2026-11-10T05:08:27.870Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T05:08:28.048Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T05:08:28.067Z","kind":"step_dispatch","stepId":"navigate","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T05:08:28.100Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T05:08:28.102Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T05:08:28.131Z","kind":"step_dispatch","stepId":"query","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T05:08:28.143Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T05:08:28.145Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T05:08:28.162Z","kind":"step_dispatch","stepId":"search","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:08:28.192Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T05:08:28.194Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T05:08:28.202Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.203Z","kind":"step_dispatch","stepId":"waitSearch","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T05:08:28.212Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.272Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.345Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.405Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.473Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:28.534Z","kind":"detector","stepId":"waitSearch","code":"NOT_FOUND","observed":"NOT_FOUND: No members found."}
+{"at":"2026-11-10T05:08:28.545Z","kind":"step_failure","stepId":"waitSearch","dispatch":"started"}
+{"at":"2026-11-10T05:08:28.621Z","kind":"failure_evidence","screenshotOmitted":true,"diagnostic":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\NOT_FOUND\\failure.png.json"}
+{"at":"2026-11-10T05:08:28.650Z","kind":"replay_end","status":"BUSINESS_OUTCOME","code":"NOT_FOUND","sessionId":"[REDACTED]","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\NOT_FOUND\\events.jsonl","expected":"NOT_FOUND","observed":"NOT_FOUND: No members found.","message":"Explicit UI outcome detector matched","details":{"code":"NOT_FOUND","status":"BUSINESS_OUTCOME","expected":"NOT_FOUND","observed":"NOT_FOUND: No members found.","resolvesMutations":["create"],"pendingMutations":[],"writeDispatched":false}}

@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "elapsedMs": 1412,
+  "creates": 1,
+  "finalState": {
+    "mode": "NONE",
+    "auth": true,
+    "subs": {}
+  },
+  "result": {
+    "status": "OUTCOME_UNKNOWN",
+    "code": "WAIT_TIMEOUT",
+    "sessionId": "[REDACTED]",
+    "stepId": "waitConfirmation",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\unconfirmed-write\\events.jsonl",
+    "expected": {
+      "kind": "textContains",
+      "target": "status",
+      "value": {
+        "literal": "opened for"
+      }
+    },
+    "observed": {
+      "visible": true,
+      "text": "Loading…"
+    },
+    "message": "Expected condition was not observed before timeout",
+    "details": {
+      "expected": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "literal": "opened for"
+        }
+      },
+      "observed": {
+        "visible": true,
+        "text": "Loading…"
+      },
+      "timeoutMs": 100,
+      "pendingMutations": [
+        "create"
+      ],
+      "writeDispatched": true
+    },
+    "reconciliationRequired": true
+  }
+}

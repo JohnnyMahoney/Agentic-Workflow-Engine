@@ -1,11 +1,15 @@
-# Design report — Work in Progress
+# Design report
 
 ## Architecture
 
 A modular TypeScript/Node.js monolith implements Claude Discovery → Discovery
 Acceptance → separate Claude Compilation → Evidence Validator → Capability Artifact
-→ deterministic Playwright Replay. Sections 3.1-3.3 are implemented and tested for
-the current web MVP scope; this is not a completed assignment submission.
+→ deterministic Playwright Replay. The MVP is completed and validated within its
+documented synthetic/public web scope: Sections 3.1–3.6 have implementation and
+test evidence, and Section 3.7 is covered by the extension design below.
+This does not imply production readiness or implemented desktop/multi-tenant
+support. The [final review](docs/reviewer-readiness.md) records remaining
+pre-submission concerns separately.
 
 Claude Browser Use operates through a small local Playwright driver. Separate
 compilation receives the goal, explicit parameter/output definitions, recorded
@@ -162,5 +166,5 @@ Section 3.7's design is documented above; desktop and multi-tenant implementatio
 remain deliberate cuts. Final live E2E acceptance with the current safety policy
 is recorded under Safety. Section 3.4 is implemented and regression-tested
 within the documented synthetic/public MVP boundary.
-Section 3.6 is closed for the documented web MVP; the full assignment remains open. Reviewer cleanup
-changes documentation/navigation only and does not substitute for those deliverables.
+Section 3.6 is closed for the documented web MVP. Final reviewer checks and
+remaining pre-submission concerns are recorded in [reviewer readiness](docs/reviewer-readiness.md).

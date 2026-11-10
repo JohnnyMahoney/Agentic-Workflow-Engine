@@ -1,0 +1,92 @@
+
+> agentic-workflow-engine@1.0.0 test
+> npm run build && node --test dist/tests/*.test.js
+
+
+> agentic-workflow-engine@1.0.0 build
+> tsc
+
+✔ discovery form_input selects a native option and still fills text fields (776.6405ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (694.5826ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (8.241ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (1311.182ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (3181.3525ms)
+✔ builder verifies a native select's recorded chosen option (1331.522ms)
+✔ replay selects by parameterized label or value (780.9175ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (2221.4076ms)
+✔ pre-dispatch guard is typed and does not modify the field (818.6895ms)
+✔ admission requires safe recovery, preserves failures, and rejects uncertain writes (13.3179ms)
+✔ Builder excludes failed actions but still requires final goal evidence and all successful interactions (2867.0097ms)
+✔ legacy audit safely admits Test 6 unchanged and rejects missing or contradictory proof (12.4271ms)
+✔ Discovery active budget pauses without losing its bound; shared queue serializes tools (352.8469ms)
+✔ Discovery SDK integration: dismiss (scripted API, real browser) (6091.9002ms)
+✔ Discovery SDK integration: policy-guard (scripted API, real browser) (2997.2264ms)
+✔ Discovery SDK integration: stale-action (scripted API, real browser) (2566.5049ms)
+✔ Discovery SDK integration: driver-fallback (scripted API, real browser) (3626.9034ms)
+✔ Discovery SDK integration: business-action (scripted API, real browser) (1689.0466ms)
+✔ Discovery SDK integration: abort (scripted API, real browser) (619.6724ms)
+✔ Discovery SDK integration: unresolved (scripted API, real browser) (1185.7758ms)
+✔ Discovery SDK integration: unresolved-stop (scripted API, real browser) (1478.0226ms)
+✔ Discovery SDK integration: network-outage (scripted API, real browser) (232.3126ms)
+✔ before-dispatch blocker: same-session handoff retries click once after target validation (4209.9929ms)
+✔ handoff preserves five-step execution and saved output; resume alone is rejected (164.5039ms)
+✔ Chromium handoff input lock blocks clicks and typing, including frames, and restores interaction (757.917ms)
+✔ unresolved wait retries once, abort and operator deadline close cleanly (457.0238ms)
+✔ uncertain write never repeats; completion requires all associated confirmation conditions (366.5345ms)
+✔ missing click postcondition cannot be invented; policy failure cannot request handoff (138.1152ms)
+✔ safe read retry keeps outputs and does not restart earlier steps (122.9666ms)
+✔ closed browser and navigation outside policy stop recovery (442.5708ms)
+✔ real browser handoff retains context, records operator events without typed values, and completes five steps (579.8717ms)
+✔ Banking Sandbox session expiry resumes in the same page after operator login and search (1900.8757ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (3014.0208ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (44.5805ms)
+✖ Builder checks positive output evidence and rejects known premature or contradicting conditions (1861.244ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (187.4923ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (431.9572ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (244.9227ms)
+✔ native dialog and timeout are not guessed authentication failures (172.6142ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (289.5388ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (3758.5761ms)
+✔ Safety: origin/route/action and mutation denials have no side effects; narrow risky permission works (4099.3278ms)
+✔ Safety: sensitive DOM/URL/tool output never reaches text evidence; raw screenshots are omitted (629.2036ms)
+✔ Safety: secret-key values echoed in unstructured text are redacted (2.4265ms)
+✔ Safety: Discovery dispatch denies unknown mutations and reuses trusted risk rules (438.1051ms)
+✔ Safety: missing classification and sensitive applications fail closed before execution (0.2758ms)
+✔ Safety: Replay policy denial before browser mutation is POLICY_DENIED without uncertain outcome (513.3627ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (868.2566ms)
+✔ Builder validates selectedOptionLabel from native select metadata after form_input (3386.9273ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (2075.58ms)
+ℹ tests 50
+ℹ suites 0
+ℹ pass 49
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21629.8902
+
+✖ failing tests:
+
+test at dist\tests\output-readiness.test.js:82:1
+✖ Builder checks positive output evidence and rejects known premature or contradicting conditions (1861.244ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /distinct earlier recorded value/. Input:
+  
+  'Error: Output pattern exceeded evaluation limits or is invalid'
+  
+      at async TestContext.<anonymous> (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/tests/output-readiness.test.js:101:9)
+      at async Test.run (node:internal/test_runner/test:1125:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Output pattern exceeded evaluation limits or is invalid
+        at outputMatches (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/capability/contract.js:55:15)
+        at validateCandidate (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/capability/builder.js:183:26)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (file:///C:/Users/User/BankGPT/Agentic-Workflow-Engine/dist/tests/output-readiness.test.js:101:9)
+        at async Test.run (node:internal/test_runner/test:1125:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:787:7),
+    expected: /distinct earlier recorded value/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

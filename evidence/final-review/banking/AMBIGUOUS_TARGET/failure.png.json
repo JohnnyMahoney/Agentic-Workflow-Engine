@@ -1,0 +1,149 @@
+{
+  "kind": "sanitized-dom-diagnostic",
+  "screenshotOmitted": true,
+  "snapshot": {
+    "url": "http://localhost:8080/modern.html?mode=[REDACTED]",
+    "frames": [
+      {
+        "id": 0,
+        "parent": null,
+        "elementNode": null,
+        "html": "<!doctype html><html lang=\"en\" data-cap-node=\"n1\"><head data-cap-node=\"n2\"><meta charset=\"utf-8\" data-cap-node=\"n3\"><title data-cap-node=\"n4\">Modern Bank — Member Services</title>\n<style data-cap-node=\"n5\">body{font:16px system-ui;max-width:760px;margin:20px auto;padding:0 12px}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ccc;padding:6px;text-align:left}[role=alert]{background:#fde;padding:8px;border:1px solid #c33}button{padding:6px 12px}</style>\n</head><body data-cap-node=\"n6\"><header data-cap-node=\"n7\"><h1 data-cap-node=\"n8\">Modern Bank</h1><nav data-cap-node=\"n9\"><a href=\"./\" data-cap-node=\"n10\">Sandbox home</a></nav></header>\n<main data-cap-node=\"n11\"><h2 data-cap-node=\"n12\">Member Search</h2>\n<form id=\"f\" data-cap-node=\"n13\"><label for=\"q\" data-cap-node=\"n14\">Member ID or name</label> <input id=\"q\" name=\"q\" data-cap-node=\"n15\"> <button type=\"submit\" data-cap-node=\"n16\">Search</button></form>\n<section id=\"out\" aria-live=\"polite\" data-cap-node=\"n17\"></section></main>\n\n<div data-cap-node=\"n20\" style=\"position: fixed; right: 8px; bottom: 8px; background: rgb(34, 34, 34); color: rgb(238, 238, 238); padding: 8px; font: 12px monospace; z-index: 50;\"><b data-cap-node=\"n21\">TEST PANEL</b><br data-cap-node=\"n22\"><select data-cap-node=\"n23\"><option data-cap-node=\"n24\" selected=\"\">NONE</option><option data-cap-node=\"n25\">NOT_FOUND</option><option data-cap-node=\"n26\">VALIDATION_ERROR</option><option data-cap-node=\"n27\">PERMISSION_DENIED</option><option data-cap-node=\"n28\">SESSION_EXPIRED</option><option data-cap-node=\"n29\">SLOW_LOADING</option><option data-cap-node=\"n30\">UNEXPECTED_DIALOG</option><option data-cap-node=\"n31\">TIMEOUT</option></select> <button data-cap-node=\"n32\">Reset state</button></div></body></html>",
+        "nodes": {
+          "n1": {
+            "text": "Modern Bank\nSandbox home\nMember Search\nMember ID or name  Search\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+            "visible": true
+          },
+          "n2": {
+            "text": "Modern Bank — Member Services\nbody{font:16px system-ui;max-width:760px;margin:20px auto;padding:0 12px}table{border-collapse:collapse;width:100%}th,td{border-bottom:1px solid #ccc;padding:6px;text-align:left}[role=alert]{background:#fde;padding:8px;border:1px solid #c33}button{padding:6px 12px}",
+            "visible": false
+          },
+          "n3": {
+            "text": "",
+            "visible": false
+          },
+          "n4": {
+            "text": "Modern Bank — Member Services",
+            "visible": false
+          },
+          "n5": {
+            "text": "",
+            "visible": false
+          },
+          "n6": {
+            "text": "Modern Bank\nSandbox home\nMember Search\nMember ID or name  Search\nTEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+            "visible": true
+          },
+          "n7": {
+            "text": "Modern Bank\nSandbox home",
+            "visible": true
+          },
+          "n8": {
+            "text": "Modern Bank",
+            "visible": true
+          },
+          "n9": {
+            "text": "Sandbox home",
+            "visible": true
+          },
+          "n10": {
+            "text": "Sandbox home",
+            "visible": true
+          },
+          "n11": {
+            "text": "Member Search\nMember ID or name  Search",
+            "visible": true
+          },
+          "n12": {
+            "text": "Member Search",
+            "visible": true
+          },
+          "n13": {
+            "text": "Member ID or name  Search",
+            "visible": true
+          },
+          "n14": {
+            "text": "Member ID or name",
+            "visible": true
+          },
+          "n15": {
+            "text": "",
+            "visible": true
+          },
+          "n16": {
+            "text": "Search",
+            "visible": true
+          },
+          "n17": {
+            "text": "",
+            "visible": true
+          },
+          "n18": {
+            "text": "",
+            "visible": false
+          },
+          "n19": {
+            "text": "",
+            "visible": false
+          },
+          "n20": {
+            "text": "TEST PANEL\n\nNONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT\n Reset state",
+            "visible": true
+          },
+          "n21": {
+            "text": "TEST PANEL",
+            "visible": true
+          },
+          "n22": {
+            "text": "",
+            "visible": true
+          },
+          "n23": {
+            "text": "NONE\nNOT_FOUND\nVALIDATION_ERROR\nPERMISSION_DENIED\nSESSION_EXPIRED\nSLOW_LOADING\nUNEXPECTED_DIALOG\nTIMEOUT",
+            "visible": true,
+            "selectedOption": {
+              "label": "NONE",
+              "value": "NONE"
+            }
+          },
+          "n24": {
+            "text": "NONE",
+            "visible": false
+          },
+          "n25": {
+            "text": "NOT_FOUND",
+            "visible": false
+          },
+          "n26": {
+            "text": "VALIDATION_ERROR",
+            "visible": false
+          },
+          "n27": {
+            "text": "PERMISSION_DENIED",
+            "visible": false
+          },
+          "n28": {
+            "text": "SESSION_EXPIRED",
+            "visible": false
+          },
+          "n29": {
+            "text": "SLOW_LOADING",
+            "visible": false
+          },
+          "n30": {
+            "text": "UNEXPECTED_DIALOG",
+            "visible": false
+          },
+          "n31": {
+            "text": "TIMEOUT",
+            "visible": false
+          },
+          "n32": {
+            "text": "Reset state",
+            "visible": true
+          }
+        }
+      }
+    ]
+  }
+}

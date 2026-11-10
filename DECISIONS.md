@@ -3,6 +3,10 @@
 This records the engineering choices behind the current web slice. The
 interface.ai assignment defines the requirements.
 
+Entries record decisions at their original slice. Later decisions supersede earlier
+limits: D11-D12 cover live handoff, D13 covers current safety. Use the
+[README](README.md) and [final review](docs/reviewer-readiness.md) for current status.
+
 | Area | Current choice | Reason and limit |
 | --- | --- | --- |
 | Architecture | **Chosen:** TypeScript and Node.js in one modular application. | Simple to run and review. Distributed execution and scaling infrastructure are outside the MVP. |

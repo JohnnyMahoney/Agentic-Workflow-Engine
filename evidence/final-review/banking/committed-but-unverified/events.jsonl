@@ -1,0 +1,62 @@
+{"at":"2026-11-10T05:08:39.181Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T05:08:39.431Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T05:08:39.450Z","kind":"step_dispatch","stepId":"navigate","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.485Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T05:08:39.487Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T05:08:39.518Z","kind":"step_dispatch","stepId":"query","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.533Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T05:08:39.534Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T05:08:39.553Z","kind":"step_dispatch","stepId":"search","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.575Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T05:08:39.577Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T05:08:39.584Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.586Z","kind":"step_dispatch","stepId":"waitSearch","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.593Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.658Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.719Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.786Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.844Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.916Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T05:08:39.920Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-10T05:08:39.921Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-10T05:08:39.937Z","kind":"step_dispatch","stepId":"view","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.973Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-10T05:08:39.974Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-10T05:08:39.981Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:39.983Z","kind":"step_dispatch","stepId":"waitMember","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T05:08:39.992Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.052Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.114Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.183Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.247Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.318Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T05:08:40.322Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-10T05:08:40.323Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-10T05:08:40.367Z","kind":"step_dispatch","stepId":"open","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:08:40.409Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-10T05:08:40.410Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-10T05:08:40.429Z","kind":"step_dispatch","stepId":"select","action":"selectOption","dispatch":"started"}
+{"at":"2026-11-10T05:08:40.454Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-10T05:08:40.455Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-10T05:08:40.472Z","kind":"step_dispatch","stepId":"create","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:08:40.490Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-10T05:08:40.492Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-10T05:08:40.499Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.501Z","kind":"step_dispatch","stepId":"waitConfirmation","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T05:08:40.508Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.512Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T05:08:40.580Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.584Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T05:08:40.651Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.659Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T05:08:40.734Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T05:08:40.739Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T05:08:40.811Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:40.886Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:40.957Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:41.028Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:41.103Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:41.181Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"matches":false,"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"blocked":false}
+{"at":"2026-11-10T05:08:41.203Z","kind":"step_failure","stepId":"waitConfirmation","dispatch":"started"}
+{"at":"2026-11-10T05:08:41.285Z","kind":"failure_evidence","screenshotOmitted":true,"diagnostic":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\committed-but-unverified\\failure.png.json"}
+{"at":"2026-11-10T05:08:41.321Z","kind":"replay_end","status":"OUTCOME_UNKNOWN","code":"WAIT_TIMEOUT","sessionId":"[REDACTED]","stepId":"waitConfirmation","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\final-review\\banking\\committed-but-unverified\\events.jsonl","expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"message":"Expected condition was not observed before timeout","details":{"expected":{"kind":"textContains","target":"status","value":{"literal":"Deliberately absent confirmation"}},"observed":{"visible":true,"text":"Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."},"timeoutMs":700,"pendingMutations":["create"],"writeDispatched":true},"reconciliationRequired":true}
