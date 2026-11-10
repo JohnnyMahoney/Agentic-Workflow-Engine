@@ -43,6 +43,12 @@ proposes JSON; Zod, semantic checks and recorded-state validation decide whether
 to save it. Replay has no model in its decision loop. See [decisions](DECISIONS.md)
 and the [design report](REPORT.md).
 
+The web implementation has been exercised on Modern, Legacy and Awkward fixtures,
+with outcomes and limitations recorded in evidence. The capability contract,
+logical targets and `SurfaceAdapter` provide extension points for additional surfaces.
+Desktop adapters, tenant-specific overrides and version compatibility checks are
+proposed extensions; see [§3.7 design and trade-offs](REPORT.md#heterogeneity--multi-tenant).
+
 ## Current status — work in progress
 
 | Assignment area | Current scope |
@@ -53,7 +59,7 @@ and the [design report](REPORT.md).
 | §3.4 Safety | Implemented/tested for trusted synthetic/public fixtures: route/action/operation policy, conservative risk blocking and centralized persistence sanitization. Sensitive applications refused; see [limits](docs/safety.md). |
 | §3.5 Evidence | Structured logs, snapshots, validation reports and failure screenshots available for synthetic fixtures. |
 | §3.6 Handoff | Accepted for the current web MVP: genuine Claude Discovery, separate Compilation and fresh Replay with a real operator; success, unresolved, abort and rejected manual actions verified. [Live acceptance](evidence/discovery-handoff/manual/README.md). |
-| §3.7 Heterogeneity | Web adapter seam and three web surfaces demonstrated; desktop and tenant reuse remain design work. |
+| §3.7 Heterogeneity | Design documented: surface seams, tenant reuse, version drift and trade-offs. Web evidence available; desktop/tenant infrastructure intentionally unimplemented. [Report](REPORT.md#heterogeneity--multi-tenant). |
 
 ## Prerequisites and setup
 

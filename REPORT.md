@@ -60,23 +60,60 @@ presented as Claude-generated capabilities. Original failures remain available.
 
 ## Heterogeneity & multi-tenant
 
-Modern, iframe/table-based Legacy and non-semantic Awkward UIs share the same web
-adapter. The contract → target registry → resolver → adapter boundary keeps browser
-handles out of the workflow. CSS and roles remain web strategies, not universal
-cross-surface locators. A desktop implementation would require explicit supported
-strategies, observation evidence and an adapter; none exists yet.
+This section addresses assignment §3.7, Design for Heterogeneity & Scale.
 
-A future tenant reuse design would separate vendor workflow/version from trusted
-tenant entry points, policy and reviewed target overrides. Compatibility probes and
-checkpoint validation would reject unknown variants instead of silently guessing;
-changed versions would require evidence-backed revalidation or discovery. This is
-a proposed direction, not an implemented registry, override system or drift service.
+**Surface abstraction and extensibility.** Discovery, admission, separate Claude
+Compilation, evidence validation and deterministic Replay have distinct roles.
+`LocalPlaywrightBrowser` supplies Claude Browser Use with live observations/actions;
+`replayCapability` executes the saved Capability v2.1 contract through
+`SurfaceAdapter`, currently implemented by `PlaywrightAdapter`. Logical targets
+live in the artifact's target registry; the resolver interprets their strategies.
+Browser handles and session refs do not enter the reusable flow. Replacing a model
+or driver still requires integration and evidence tests, but not a new workflow engine.
+
+[Modern, Legacy and Awkward evidence](evidence/e2e-round-2/README.md) demonstrates
+different web structures, including non-semantic controls and table-based layouts.
+The Legacy lookup used a direct content page; frame handling has separate driver
+tests, and Legacy account creation exposed a real fixture defect. These results
+do not establish compatibility with arbitrary applications or current safety
+permissions for every surface.
+
+A desktop extension would need an adapter for accessibility or screenshot-based
+observation and mouse/keyboard actions, new typed target strategies, and matching
+Discovery/Builder validation. CSS and roles are web-specific; existing selectors
+would not transfer unchanged. Ordered actions, typed inputs/outputs, checkpoints
+and dispatch/recovery concepts could remain. Desktop support is not implemented.
+
+**Multi-tenant reuse.** A proposed capability family would identify vendor product,
+supported application version and capability version. Each tenant would supply a
+trusted entry URL, policy and reviewed logical-target overrides. Institutions using
+the same vendor workflow could share its steps and input/output contract while
+specializing locators and configuration. Overrides must not silently change business
+semantics or expand policy; changed steps require a separately validated capability
+version. No tenant registry or override loader exists today.
+
+**Drift and compatibility.** Current Replay fails closed on missing/ambiguous targets
+and unmet semantic/output conditions; these signals can also indicate runtime faults,
+so they do not automatically identify version drift. A future compatibility probe
+would check version/surface markers and required targets before modifying actions.
+Tenant-specific changes would require recorded evidence and regression Replay;
+reuse saved evidence for recompilation when sufficient, otherwise run targeted
+Discovery. Quarantine an incompatible configuration rather than guess or invoke
+an LLM during Replay. Cross-tenant reuse still requires independent validation.
+
+**Trade-offs.** The MVP demonstrates a modular web implementation and extensible
+contract without a desktop runtime, fleet management platform or distributed
+infrastructure. Shared capability families could reduce repeated discovery across
+many tenants and apps, but compatibility review, policy isolation and evidence
+validation remain essential costs. This describes a future deployment path,
+not demonstrated multi-tenant scaling.
 
 ## Escalation & handoff
 
 Replay now supports opt-in CLI handoff: take-control, resume, abort. Eligible step
 failures pause in the same browser/context, preserving completed steps, outputs
-and pending writes. Manual event metadata and before/after screenshots are recorded.
+and pending writes. Manual event metadata and before/after diagnostics are recorded;
+current safety policy persists sanitized DOM instead of raw screenshots.
 Resume checks existing artifact conditions and confirms relationships. Only safe
 reads/checks or proven beforeDispatch operations may retry once; insufficient
 proof stops unresolved or OUTCOME_UNKNOWN.
@@ -121,8 +158,9 @@ No distributed services, database, plugin framework, desktop automation, tenant
 infrastructure or conditional workflow engine. The Banking Sandbox is a local,
 client-storage fixture with known defects preserved, not a banking backend.
 
-Next priorities are Section 3.7 design review and final live E2E acceptance with
-the current trusted safety policies. Section 3.4 is implemented and regression-tested
+Section 3.7's design is documented above; desktop and multi-tenant implementations
+remain deliberate cuts. Final live E2E acceptance with the current safety policy
+is recorded under Safety. Section 3.4 is implemented and regression-tested
 within the documented synthetic/public MVP boundary.
 Section 3.6 is closed for the documented web MVP; the full assignment remains open. Reviewer cleanup
 changes documentation/navigation only and does not substitute for those deliverables.
