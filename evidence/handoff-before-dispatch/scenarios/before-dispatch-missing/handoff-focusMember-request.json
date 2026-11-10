@@ -1,0 +1,19 @@
+{
+  "sessionId": "b1829cb2-940e-4971-9e09-2b70f253bd06",
+  "capabilityId": "before-dispatch",
+  "description": "Hand-authored regression; simulated operator",
+  "stepId": "focusMember",
+  "reason": "UNEXPECTED_DIALOG",
+  "completedSteps": [
+    "open"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "member",
+    "effect": "readOnly"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-missing\\events.jsonl"
+}

@@ -1,0 +1,18 @@
+{"at":"2026-11-10T01:30:21.983Z","kind":"replay_start","sessionId":"dff5f51f-6194-4cf1-ac22-55813f86f533","capabilityId":"scripted-compilation-fixture","llmCalls":0}
+{"at":"2026-11-10T01:30:22.268Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-10T01:30:22.302Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-10T01:30:22.302Z","kind":"step_start","stepId":"read","action":"extract"}
+{"at":"2026-11-10T01:30:22.323Z","kind":"detector","stepId":"read","code":"UNEXPECTED_DIALOG","observed":"Operator acknowledgement required\n\nAcknowledge"}
+{"at":"2026-11-10T01:30:22.326Z","kind":"handoff_requested","sessionId":"dff5f51f-6194-4cf1-ac22-55813f86f533","capabilityId":"scripted-compilation-fixture","description":"Hand-authored candidate for Builder regression; not Claude compilation","stepId":"read","reason":"UNEXPECTED_DIALOG","completedSteps":["open"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"read","action":"extract","target":"balance","saveAs":"value"},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\dismiss\\fresh-replay\\events.jsonl","owner":"paused"}
+{"at":"2026-11-10T01:30:22.352Z","kind":"handoff_evidence","stepId":"read","phase":"before","screenshot":"handoff-read-before.png"}
+{"at":"2026-11-10T01:30:22.367Z","kind":"handoff_control","stepId":"read","owner":"human"}
+{"at":"2026-11-10T01:30:22.405Z","kind":"human_action","stepId":"read","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T01:30:22.409Z","kind":"handoff_control","stepId":"read","owner":"verifying"}
+{"at":"2026-11-10T01:30:22.433Z","kind":"handoff_evidence","stepId":"read","phase":"after","screenshot":"handoff-read-after.png"}
+{"at":"2026-11-10T01:30:22.435Z","kind":"handoff_decision","stepId":"read","decision":"SAFE_RETRY","reason":"Observation-only operation; no pending mutations","maxAttempts":1}
+{"at":"2026-11-10T01:30:22.435Z","kind":"step_start","stepId":"read","action":"extract"}
+{"at":"2026-11-10T01:30:22.447Z","kind":"output_validation","stepId":"read","property":"text","output":"balance","expected":{"kind":"textEquals","value":{"literal":"$0.00"}},"observed":{"visible":true,"text":"$0.00"},"matches":true,"elapsedMs":9}
+{"at":"2026-11-10T01:30:22.448Z","kind":"handoff_control","stepId":"read","owner":"automation"}
+{"at":"2026-11-10T01:30:22.448Z","kind":"step_end","stepId":"read"}
+{"at":"2026-11-10T01:30:22.454Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textEquals","target":"balance","value":{"literal":"$0.00"}},"matches":true,"observed":{"visible":true,"text":"$0.00"},"blocked":false}
+{"at":"2026-11-10T01:30:22.495Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"dff5f51f-6194-4cf1-ac22-55813f86f533","stepId":"checkpoints","outputs":{"balance":"$0.00"},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\dismiss\\fresh-replay\\events.jsonl"}

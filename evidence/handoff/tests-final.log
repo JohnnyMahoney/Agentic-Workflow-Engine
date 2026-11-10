@@ -1,0 +1,16 @@
+✔ handoff preserves five-step execution and saved output; resume alone is rejected (16.1336ms)
+✔ unresolved wait retries once, abort and operator deadline close cleanly (81.1328ms)
+✔ uncertain write never repeats; completion requires all associated confirmation conditions (19.3809ms)
+✔ missing click postcondition cannot be invented; policy failure cannot request handoff (9.0778ms)
+✔ safe read retry keeps outputs and does not restart earlier steps (7.0188ms)
+✔ closed browser and navigation outside policy stop recovery (270.8149ms)
+✔ real browser handoff retains context, records operator events without typed values, and completes five steps (404.2951ms)
+✔ Banking Sandbox session expiry resumes in the same page after operator login and search (1320.613ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2436.9358

@@ -1,0 +1,20 @@
+{"at":"2026-11-08T23:20:46.958Z","kind":"replay_start","sessionId":"1d6e25b6-60d9-423e-85be-fed749b071dc","capabilityId":"sandbox-handoff-fixture","llmCalls":0}
+{"at":"2026-11-08T23:20:47.135Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-08T23:20:47.199Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-08T23:20:47.200Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-08T23:20:47.215Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-08T23:20:47.215Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-08T23:20:47.245Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-08T23:20:47.245Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-08T23:20:47.595Z","kind":"detector","stepId":"waitMember","code":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again."}
+{"at":"2026-11-08T23:20:47.596Z","kind":"handoff_requested","sessionId":"1d6e25b6-60d9-423e-85be-fed749b071dc","capabilityId":"sandbox-handoff-fixture","description":"Hand-authored sandbox session-expiry test; simulated operator","stepId":"waitMember","reason":"SESSION_EXPIRED","completedSteps":["open","query","search"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"waitMember","action":"wait","condition":{"kind":"textEquals","target":"member","value":{"literal":"M-1005"}},"timeoutMs":2000},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression\\banking-session-expired\\events.jsonl","owner":"paused"}
+{"at":"2026-11-08T23:20:47.618Z","kind":"handoff_evidence","stepId":"waitMember","phase":"before","screenshot":"handoff-waitMember-before.png"}
+{"at":"2026-11-08T23:20:47.623Z","kind":"handoff_control","stepId":"waitMember","owner":"human"}
+{"at":"2026-11-08T23:20:47.657Z","kind":"human_action","stepId":"waitMember","action":"click","tag":"BUTTON","inputType":"","mainFrame":true}
+{"at":"2026-11-08T23:20:48.474Z","kind":"human_action","stepId":"waitMember","action":"click","tag":"BUTTON","inputType":"","mainFrame":true}
+{"at":"2026-11-08T23:20:48.474Z","kind":"human_action","stepId":"waitMember","action":"submit","tag":"FORM","inputType":"","mainFrame":true}
+{"at":"2026-11-08T23:20:53.486Z","kind":"handoff_stopped","stepId":"waitMember","code":"HANDOFF_UNRESOLVED"}
+{"at":"2026-11-08T23:20:53.518Z","kind":"handoff_evidence","stepId":"waitMember","phase":"after","screenshot":"handoff-waitMember-after.png"}
+{"at":"2026-11-08T23:20:53.518Z","kind":"handoff_decision","stepId":"waitMember","decision":"HANDOFF_UNRESOLVED","cause":"SESSION_EXPIRED","pendingMutations":[]}
+{"at":"2026-11-08T23:20:53.550Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-08T23:20:53.573Z","kind":"replay_end","status":"HARD_FAILURE","code":"HANDOFF_UNRESOLVED","sessionId":"1d6e25b6-60d9-423e-85be-fed749b071dc","stepId":"waitMember","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression\\banking-session-expired\\events.jsonl","expected":{"id":"waitMember","action":"wait","condition":{"kind":"textEquals","target":"member","value":{"literal":"M-1005"}},"timeoutMs":2000},"observed":{"code":"HANDOFF_UNRESOLVED","cause":"SESSION_EXPIRED","recoveryCode":"HANDOFF_UNRESOLVED","recoveryMessage":"Intervention controller failed"},"message":"Replay could not safely resume","details":{"cause":"SESSION_EXPIRED","recoveryCode":"HANDOFF_UNRESOLVED","recoveryMessage":"Intervention controller failed","pendingMutations":[],"writeDispatched":false}}

@@ -1,0 +1,12 @@
+{
+  "name": "driver-fallback",
+  "mode": "local",
+  "model": "scripted",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Done",
+  "actionCount": 9
+}

@@ -1,0 +1,23 @@
+{
+  "phase": "Discovery",
+  "currentUrl": "http://127.0.0.1:50331/",
+  "sessionId": "1a378d95-9442-4d05-b184-d8f3e61e6fbc",
+  "capabilityId": "policy-guard",
+  "description": "Read member and balance after operator acknowledgement\nPolicy requires a human\nPreceding action: {\"index\":2,\"name\":\"read_page\",\"success\":true,\"dispatch\":\"completed\"}",
+  "stepId": "discovery-1",
+  "reason": "AUTH_REQUIRED",
+  "completedSteps": [],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "action": "human-intervention",
+    "browserActionExecutedByThisTool": false,
+    "precedingAction": {
+      "index": 2,
+      "name": "read_page",
+      "success": true,
+      "dispatch": "completed"
+    }
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\policy-guard\\events.jsonl"
+}

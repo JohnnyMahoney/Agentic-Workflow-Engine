@@ -1,3 +1,4 @@
+import { validateHumanEvidence } from "../discovery/human-evidence.js";
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -50,7 +51,8 @@ export async function validateCandidate(raw: unknown, evidence: DiscoveryEvidenc
   const candidate = parsed.data;
   const cap = validateCapability(candidate.capability);
   const request = requestSchema.parse(evidence.request);
-  const admission = checkDiscoveryEvidence(evidence, audit);
+  const admission = checkDiscoveryEvidence(evidence, audit, policy);
+  await validateHumanEvidence(evidence, policy);
   if (admission.recoveredFailures.length) {
     if (cap.schemaVersion !== "2.1" || !Object.keys(cap.outputs).length || !cap.checkpoints.some(condition => condition.kind !== "visible")) throw new CapabilityError("DISCOVERY_GOAL_UNPROVEN", "Recovered discovery requires validated outputs and semantic final checkpoints");
     for (const name of Object.keys(request.inputs)) if (!cap.checkpoints.some(condition => (condition.kind === "textContains" || condition.kind === "textEquals") && "input" in condition.value && condition.value.input === name)) throw new CapabilityError("DISCOVERY_GOAL_UNPROVEN", "Recovered discovery requires final semantic verification of every supplied input", {input: name});
@@ -174,11 +176,11 @@ export async function buildArtifact(candidatePath: string, evidencePath: string,
   const readinessEvidence: Record<string, unknown>[] = [];
   const evidence = JSON.parse(evidenceText) as DiscoveryEvidence;
   const audit = readDiscoveryAudit(evidencePath);
-  const admission = checkDiscoveryEvidence(evidence, audit);
+  const admission = checkDiscoveryEvidence(evidence, audit, policy);
   const capability = await validateCandidate(JSON.parse(candidateText), evidence, policy, readinessEvidence, audit);
   writeFileSync(join(directory, "discovery-acceptance.json"), JSON.stringify({...admission, status: "accepted", goalVerification: "candidate-outputs-and-final-checkpoints-validated", excludedFailedActions: admission.recoveredFailures.map(failure => failure.action), limitation: "Goal verification is limited to the explicit request contract, observed outputs and checkpoints; it is not a general proof of arbitrary natural-language intent."}, null, 2) + "\n");
   writeFileSync(join(directory, "artifact.json"), JSON.stringify(capability, null, 2) + "\n");
   writeFileSync(join(directory, "output-readiness-validation.json"), JSON.stringify({schemaVersion: capability.schemaVersion, outputs: readinessEvidence, legacyUnverifiedOutputs: Object.entries(capability.outputs).filter(([,output]) => "savedValue" in output.source && !output.validation).map(([name]) => name)}, null, 2) + "\n");
-  writeFileSync(join(directory, "validation.json"), JSON.stringify({ status: "validated", evidenceSha256: createHash("sha256").update(evidenceText).digest("hex"), candidateSha256: createHash("sha256").update(candidateText).digest("hex"), evidencePath, candidatePath, checks: ["schema", "semantic", "explicit-bindings", "recorded-dom-targets", "action-identity-and-order", "observed-select-state", "observed-extraction", "observed-checkpoints", "policy"], limitation: "Recorded states prove observed identity; fresh-session replay must separately test stability." }, null, 2) + "\n");
+  writeFileSync(join(directory, "validation.json"), JSON.stringify({ status: "validated", evidenceSha256: createHash("sha256").update(evidenceText).digest("hex"), candidateSha256: createHash("sha256").update(candidateText).digest("hex"), evidencePath, candidatePath, humanInterventionsVerified: (evidence.interventions ?? []).map(item => item.id), policySha256: createHash("sha256").update(JSON.stringify(policy)).digest("hex"), checks: ["human-blocker-policy-and-dom", "schema", "semantic", "explicit-bindings", "recorded-dom-targets", "action-identity-and-order", "observed-select-state", "observed-extraction", "observed-checkpoints", "policy"], limitation: "Recorded states prove observed identity; fresh-session replay must separately test stability." }, null, 2) + "\n");
   return capability;
 }

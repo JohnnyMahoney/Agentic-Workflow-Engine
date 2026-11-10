@@ -1,0 +1,16 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "1cbcea1b-86d9-42d3-9fa0-98c6d587eb6e",
+    "stepId": "checkpoints",
+    "outputs": {
+      "before": "Loading",
+      "after": "Confirmed member-1 Youth"
+    },
+    "outputReadiness": "legacy-unverified",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\five-step\\events.jsonl"
+  }
+}

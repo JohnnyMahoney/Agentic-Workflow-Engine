@@ -1,0 +1,34 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "1d6e25b6-60d9-423e-85be-fed749b071dc",
+  "stepId": "waitMember",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression\\banking-session-expired\\events.jsonl",
+  "expected": {
+    "id": "waitMember",
+    "action": "wait",
+    "condition": {
+      "kind": "textEquals",
+      "target": "member",
+      "value": {
+        "literal": "M-1005"
+      }
+    },
+    "timeoutMs": 2000
+  },
+  "observed": {
+    "code": "HANDOFF_UNRESOLVED",
+    "cause": "SESSION_EXPIRED",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "Intervention controller failed"
+  },
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "SESSION_EXPIRED",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "Intervention controller failed",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

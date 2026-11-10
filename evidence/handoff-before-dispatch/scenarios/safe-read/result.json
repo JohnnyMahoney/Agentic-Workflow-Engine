@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "4598d580-aa2d-4125-a2c1-d5a8be5c2f6c",
+  "stepId": "checkpoints",
+  "outputs": {
+    "value": "Confirmed member-1 Youth"
+  },
+  "outputReadiness": "legacy-unverified",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\safe-read\\events.jsonl"
+}

@@ -1,5 +1,10 @@
 # Discovery acceptance and recovered failures
 
+Human-assisted runs additionally require matching intervention audit records.
+Compilation preflight and Builder verify any human changes against the approved
+trusted blocker policy; manual business actions are not executable evidence.
+See [Discovery handoff](discovery-handoff.md) for the narrow proof and its limits.
+
 The pipeline is unchanged. Acceptance is staged:
 
 1. Discovery ends and saves all actions, including failures.

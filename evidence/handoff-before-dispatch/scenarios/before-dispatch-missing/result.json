@@ -1,0 +1,32 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "b1829cb2-940e-4971-9e09-2b70f253bd06",
+  "stepId": "focusMember",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-missing\\events.jsonl",
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "member",
+    "effect": "readOnly"
+  },
+  "observed": {
+    "code": "HANDOFF_UNRESOLVED",
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "TARGET_NOT_FOUND",
+    "recoveryMessage": "No strategy resolved the target"
+  },
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "TARGET_NOT_FOUND",
+    "recoveryMessage": "No strategy resolved the target",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

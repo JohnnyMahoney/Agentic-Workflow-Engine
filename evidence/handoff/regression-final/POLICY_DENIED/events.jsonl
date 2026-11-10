@@ -1,0 +1,4 @@
+{"at":"2026-11-08T23:25:04.142Z","kind":"replay_start","sessionId":"6ae52b69-56f3-4b42-a2a0-816d884baad5","capabilityId":"handoff-fixture","llmCalls":0}
+{"at":"2026-11-08T23:25:04.142Z","kind":"step_start","stepId":"three","action":"click"}
+{"at":"2026-11-08T23:25:04.143Z","kind":"failure_capture_error","message":"Error: Mock: no browser screenshot"}
+{"at":"2026-11-08T23:25:04.143Z","kind":"replay_end","status":"HARD_FAILURE","code":"POLICY_DENIED","sessionId":"6ae52b69-56f3-4b42-a2a0-816d884baad5","stepId":"three","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\POLICY_DENIED\\events.jsonl","expected":{"id":"three","action":"click","target":"state","effect":"readOnly"},"observed":{"code":"POLICY_DENIED"},"message":"fixture","details":{"pendingMutations":[],"writeDispatched":false}}

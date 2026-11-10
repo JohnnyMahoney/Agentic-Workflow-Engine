@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "2.1",
+  "id": "sandbox-handoff-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored sandbox session-expiry test; simulated operator",
+  "inputs": {},
+  "targets": {
+    "query": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#q",
+          "frames": []
+        }
+      ]
+    },
+    "search": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#f button",
+          "frames": []
+        }
+      ]
+    },
+    "member": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out tbody tr td:first-child",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "open",
+      "action": "navigate",
+      "url": "http://127.0.0.1:54928/modern.html?mode=SESSION_EXPIRED"
+    },
+    {
+      "id": "query",
+      "action": "fill",
+      "target": "query",
+      "value": {
+        "literal": "M-1005"
+      },
+      "effect": "readOnly"
+    },
+    {
+      "id": "search",
+      "action": "click",
+      "target": "search",
+      "effect": "readOnly"
+    },
+    {
+      "id": "waitMember",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "member",
+        "value": {
+          "literal": "M-1005"
+        }
+      },
+      "timeoutMs": 2000
+    },
+    {
+      "id": "read",
+      "action": "extract",
+      "target": "member",
+      "saveAs": "member"
+    }
+  ],
+  "outputs": {
+    "member": {
+      "type": "string",
+      "description": "Observed ID",
+      "source": {
+        "savedValue": "member"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "literal": "M-1005"
+          }
+        },
+        "timeoutMs": 1000
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "member",
+      "value": {
+        "literal": "M-1005"
+      }
+    }
+  ]
+}

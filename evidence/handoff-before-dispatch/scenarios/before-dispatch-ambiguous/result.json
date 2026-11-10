@@ -1,0 +1,32 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "87a57c23-d2e6-4333-892b-255771f1a366",
+  "stepId": "focusMember",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-ambiguous\\events.jsonl",
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "member",
+    "effect": "readOnly"
+  },
+  "observed": {
+    "code": "HANDOFF_UNRESOLVED",
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "AMBIGUOUS_TARGET",
+    "recoveryMessage": "Locator matches multiple elements"
+  },
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "AMBIGUOUS_TARGET",
+    "recoveryMessage": "Locator matches multiple elements",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

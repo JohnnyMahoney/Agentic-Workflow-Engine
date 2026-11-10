@@ -1,0 +1,8 @@
+{
+  "status": "rejected",
+  "code": "HUMAN_EVIDENCE_UNVERIFIED",
+  "message": "Human action is not a proven policy-scoped blocker dismissal; cannot compile essential human-only steps",
+  "details": {
+    "intervention": "discovery-1"
+  }
+}

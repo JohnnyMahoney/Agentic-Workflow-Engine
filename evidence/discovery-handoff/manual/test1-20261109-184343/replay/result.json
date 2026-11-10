@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "fc75b434-4c64-45a0-82d5-9c952ae3f03a",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "$50,000.00",
+    "accountType": "Term Deposit",
+    "memberId": "M-1005"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test1-20261109-184343\\replay\\events.jsonl"
+}

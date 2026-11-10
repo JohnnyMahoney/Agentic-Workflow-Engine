@@ -369,3 +369,224 @@ Support for another safe failure class requires a separate explicit proof rule.
 **Evidence:** [Recovery regression evidence](evidence/discovery-recovery/README.md)
 covers typed pre-dispatch guards, legacy audit, uncertain-write rejection, failed
 reference exclusion, required final goal evidence and the unchanged historical run.
+
+## Visible browser runs
+
+Discovery and Replay CLI commands now open a visible browser by default for local
+observation. `--headless` opts out; adapter defaults and automated tests remain
+headless. Runs still use isolated sessions and close on completion. This is a
+viewing convenience, not same-session human handoff or permission to act concurrently.
+
+## D11 - Deterministic Replay and human handoff
+
+**Status:** Implemented for Replay. Automated tests cover recovery and input locking.
+A live operator also demonstrated successful session-expiry recovery and rejection
+of Resume without remediation. This does not establish Discovery handoff or safe
+recovery for every artifact. See [handoff evidence](evidence/handoff/README.md).
+
+**Decision:** Preserve the existing pipeline and artifact contract. Replay runs
+ordered steps through the Surface Adapter with no LLM. Add opt-in CLI handoff
+inside the step loop, keeping the same browser/context and in-memory execution
+state. Use existing conditions to verify recovery; never invent a postcondition,
+rewrite the artifact, trigger Discovery or restart the entire workflow.
+
+**Why:** The previous outer catch/finally closed the browser immediately on failure.
+Handling eligible failures within the step loop makes manual remediation possible
+without losing completed steps or introducing an orchestrator. A local CLI provides
+a small operator interface; a dashboard is unnecessary for this slice.
+
+### Core Replay, step by step
+
+1. Validate artifact schema/references, supplied inputs and trusted origin/action
+   policy. Open one browser/context and create the execution journal.
+2. Execute steps in order. Resolve logical targets uniquely through the adapter;
+   check configured UI outcome detectors before actions and during bounded waits.
+3. Keep extracted values in memory. For v2.1 declared outputs, wait for the value
+   to satisfy its readiness condition and save that exact sample. Existing v2.0
+   artifacts remain compatible and may report legacy-unverified readiness.
+4. Track potentially modifying dispatches in pending mutations. Semantic conditions
+   with explicit confirms relationships establish confirmation. A known pre-dispatch
+   target error can remove the current pending marker; arbitrary timeouts cannot.
+5. On an eligible step failure with --handoff, pause at that step. Preserve completed
+   step IDs, saved outputs and pending mutations; do not execute later steps.
+   Without handoff, or for an ineligible error, return the structured failure.
+6. After a successful step or verified recovery, continue with the next step.
+   Previously completed steps are not replayed.
+7. Verify final checkpoints and reject unresolved explicit state-changing operations.
+   Return declared outputs only on SUCCESS. Otherwise report status, code, step,
+   expected/observed state, retryability and evidence. Close the browser on final
+   success, failure or abort, rather than closing it while intervention is pending.
+
+### Control transfer and UI input
+
+| Phase | Behavior |
+| --- | --- |
+| Running | Playwright executes the workflow. |
+| Paused | Save intervention request and before screenshot; block page mouse/keyboard input. |
+| take-control | Start manual-event recording, enable page input, acknowledge human ownership. Automation waits. |
+| resume | Block page input again, stop manual-event recording, capture after evidence, verify current state. |
+| Verified continuation | Enable input for subsequent Playwright operations and return ownership to automation. |
+| abort / unresolved | Return a structured result and close the session. |
+
+Resume before take-control is rejected. Waiting for the operator is bounded to
+five minutes. EOF/Ctrl+C while awaiting input aborts; a closed browser stops recovery.
+Chromium input blocking includes the page and same-page frames. It does not block
+the browser toolbar, window closing or developer tools. Input must be enabled for
+running automation because the Chromium switch also blocks Playwright clicks.
+This is a paused/verifying input lock, not exclusive OS-level ownership throughout
+execution; page scripts and timers continue running while input is blocked.
+
+### Recovery decision after Resume
+
+| Decision | Required evidence | Execution |
+| --- | --- | --- |
+| HUMAN_COMPLETED | Existing associated conditions all match; every pending mutation has a verified confirms relationship | Complete the failed step and continue in order |
+| SAFE_RETRY | Failed operation is extract/wait/assert and there are no pending mutations | Execute that observation-only step once more with bounded waits |
+| HANDOFF_UNRESOLVED | Insufficient conditions, blocked UI, invalid origin, ambiguity, failed retry or operator timeout | Stop without skipping or repeating a modifying action |
+| OUTCOME_UNKNOWN | Failure leaves a potentially modifying operation unconfirmed | Stop with reconciliationRequired; never automatically repeat the write |
+
+A failed wait/assert uses its contiguous condition group. An explicit stateChanging
+step requires following contiguous wait/assert checks with a confirms link to that
+step. Identity/type checks in the group must all pass. Global final checkpoints
+are not assumed to be postconditions for an arbitrary click. Generic actions without
+sufficient associations stop unresolved. Click, fill, selectOption and navigate
+are never retried by handoff, even when marked readOnly. One intervention and at
+most one safe recovery attempt are allowed per failed step.
+
+Eligible cases include missing/ambiguous targets, condition/output timeouts,
+assertion failure, transient loading, session expiry and unexpected dialogs.
+Policy denial, expected business refusal, invalid artifacts and unknown programming
+errors follow normal failure handling. Final checkpoint failures outside the step
+loop are not handoff entry points in this implementation.
+
+### Evidence and limits
+
+The request records capability description, session, step, reason, completed steps,
+pending mutations and saved-output names. The journal records ownership changes,
+manual action metadata, verification observations and HUMAN_COMPLETED / SAFE_RETRY /
+HANDOFF_UNRESOLVED decisions. Before/after screenshots are captured when available.
+Manual event records omit entered values and keystrokes; screenshots and output
+logs still require synthetic/public fixtures because production PII redaction is
+incomplete. New tabs, OS actions, crash-resume and Discovery handoff remain outside
+this slice. Existing native-dialog dismissal behavior is retained.
+
+The session-expiry example is a hand-authored runtime fixture, not a new Claude
+Discovery result. Automated real-browser tests use simulated operators. The two
+live operator runs separately demonstrated positive and negative recovery; they do
+not prove full-pipeline discovery-to-handoff generalization or write recovery.
+
+### Reproduce the handoff demo
+
+From the repository root, start the sandbox in one PowerShell terminal if needed:
+
+```powershell
+npm.cmd run sandbox:serve
+```
+
+In a second interactive PowerShell terminal:
+
+```powershell
+$run = Join-Path 'evidence/handoff-demo' (Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')
+npm.cmd run capability:replay -- --artifact examples/handoff/artifact.json --input memberId=M-1001 --input accountType=Savings --policy examples/handoff/policy.json --out "$run" --handoff
+```
+
+After Replay paused, confirm that page clicks are blocked. Type take-control in
+the terminal. In the browser click Log in again, change TEST PANEL to NONE without
+Reset, click Search and wait for M-1001. Then type resume. Expected: HUMAN_COMPLETED
+followed by SUCCESS. The test mode repeatedly injects expiry until it is disabled;
+removing that injected fault through the UI is part of this sandbox demonstration.
+
+For the negative test, use a fresh output directory, take-control, and resume
+without fixing the UI. Expected: HARD_FAILURE / HANDOFF_UNRESOLVED. Use abort to
+terminate explicitly. --handoff requires an interactive terminal and visible
+browser; it cannot be combined with --headless.
+
+```powershell
+npm.cmd test
+# Focused handoff regression suite:
+npm.cmd run build
+node --test dist/tests/handoff.test.js
+```
+
+See [operator details](docs/handoff.md) and [the stable example](examples/handoff/README.md).
+
+## D12 - Discovery handoff and trusted blocker admission
+
+**Replay recovery amendment (approved):** Track each attempt as beforeDispatch,
+started, or completed. Only failures before the adapter operation begins provide
+beforeDispatch proof; never infer it from the disappearance of a blocker or an
+exception's message. After handoff, recheck current origin, action policy,
+navigation destination where applicable, outcome detectors, and unique visible
+target. With no pending mutations, allow one execution of the blocked step.
+Enable browser input for this execution after verification; do not restart the
+workflow or request a second intervention if it fails. Started modifying actions
+still require existing confirmation, otherwise stop with OUTCOME_UNKNOWN.
+The original Test 2 failure and artifact remain unchanged. Regression evidence:
+[before-dispatch recovery](evidence/handoff-before-dispatch/README.md).
+
+**Input-lock correction:** The operator reported that page clicks were possible
+before take-control. The later live run `test2-fixed-20261109-185329` contains no
+handoff request: the blocker disappeared during normal Discovery, before the
+pause-only lock could activate. Declared human blockers now get an input guard
+installed before application scripts, active while the configured blocker exists.
+Only recorded human ownership enables interaction. Regression coverage attempts
+dismissal and a business click before the first request_human. This closes the
+pre-pause window for configured blockers, not arbitrary UI during automation.
+
+The earlier report concerned clicks possible
+without take-control. CDP-only input suppression was insufficient evidence of
+desktop input isolation. The shared adapter now also captures and cancels page
+input events while paused/verifying, including frames, and releases that guard
+on take-control. It adds no DOM elements or attributes, preserving admission
+snapshots. Regression coverage dispatches DOM clicks independently of CDP and
+checks locked/unlocked behavior. All 42 tests passed after the correction;
+physical mouse acceptance remains to be repeated by the operator. This protects
+page interaction during handoff, not browser chrome, devtools or arbitrary scripts.
+
+**Status:** Accepted implementation strategy; genuine Claude full-pipeline human
+acceptance pending, deferred at the author's request.
+
+**Decision:** Reuse the same-session CLI controller from D11 in Discovery. Register
+the typed request_human tool through the official SDK helper alongside Browser Use.
+Keep the existing conversation and browser/context/page alive. Serialize both tool
+paths, pause the active Discovery budget during bounded operator waits, invalidate
+refs and require fresh observation on return. Driver-detected repeated failures or
+unchanged observations can also request intervention; API outages remain failures.
+Preserve original action indices and record manual intervention separately.
+
+**Why:** Discovery needs flexible reassessment after human assistance, whereas
+Replay must verify deterministic artifact conditions. Sharing control transfer
+without sharing these decision rules preserves that architectural boundary. No
+dashboard, capability schema change, new framework or automatic rediscovery is needed.
+
+**Approved admission rule:** A trusted policy may declare an exact URL, temporary
+blocker container and human-only dismissal control. Before Compilation, verify the
+manual action ledger against the audit and offline DOM: only clicks on the declared
+control, blocker removed, remaining DOM/frames unchanged. Builder repeats this
+validation. Reject unverified changes and essential human-only business actions;
+never synthesize them into executable steps. Fresh Replay independently handles any
+new blocker via its existing handoff. Approval never expands action/origin policy.
+
+**Alternatives:** Trusting Claude's success claim or accepting arbitrary manual
+changes would allow unrepeatable artifacts. Rejecting every intervention would
+prevent even a proven temporary-blocker dismissal. The approved narrow policy
+keeps a useful MVP path with explicit trust rather than inferring hidden effects.
+
+**Trade-offs and limits:** DOM comparison cannot establish absence of server-side
+effects; the policy author certifies the dismissal semantics. Main-document click
+dismissals only are supported for changed-state admission. Credential entry,
+human-only business work, iframe dismissals and unrelated asynchronous DOM changes
+fail closed. The input lock applies while paused/verifying, not to the toolbar,
+devtools or running scripts. Three interventions maximum, five minutes each;
+180 seconds of active Discovery time. Unknown prior action effects remain subject
+to conservative admission. Existing data-capture limitations still apply.
+
+**Validation:** The 42-test regression suite passed, including nine Discovery
+handoff tests. These use real Chromium and the installed SDK runner with scripted
+API responses and simulated operators. The successful test validates a hand-authored
+candidate and performs a fresh Replay with a second intervention; it is not proof
+of genuine LLM compilation. Abort, unresolved blocker, policy guard, stale refs,
+driver fallback, human business-action rejection and API outage are covered.
+See [verification evidence](evidence/discovery-handoff/README.md),
+[control flow and limits](docs/discovery-handoff.md), and
+[exact live acceptance commands](examples/discovery-handoff/README.md).

@@ -3,6 +3,10 @@
 Start here rather than reading every historical run. All banking data is synthetic.
 Original logs and failures are preserved; a later fix does not change an earlier result.
 
+[Discovery handoff verification](discovery-handoff/README.md) contains automated
+SDK/real-browser tests with scripted model responses and simulated operators.
+It is separate from genuine model-driven evidence; live acceptance is pending.
+
 ## Genuine model-driven workflows
 
 | Example | What it demonstrates | Entry point |
@@ -63,3 +67,9 @@ The initial reviewer cleanup retained all files. A subsequent cleanup moved 140
 repeat-run files into an ignored local archive; see the file-by-file
 [manifest](archive-manifest.json). Run-specific summary logs and the original runtime
 suite remain. Genuine Claude runs, failure/fix evidence and test dependencies are retained.
+
+## Replay human handoff
+
+[Handoff verification](handoff/README.md) covers same-session continuation,
+unresolved recovery, uncertain writes and CLI abort. Real-browser tests use a
+simulated operator; live human acceptance remains pending. No new Claude run.

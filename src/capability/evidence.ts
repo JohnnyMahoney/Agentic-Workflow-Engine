@@ -22,6 +22,12 @@ export interface RecordedAction {
 }
 export interface DiscoveryEvidence {
   evidenceVersion: "2.0"; request: CompilationRequest; completed: boolean; modelCompleted?: boolean; actions: RecordedAction[];
+  interventions?: DiscoveryIntervention[];
+}
+export interface DiscoveryIntervention {
+  id: string; source: "model" | "driver"; reason: string; description: string;
+  afterAction: number; outcome: "pending" | "resumed" | "aborted" | "unresolved";
+  before: Snapshot; after?: Snapshot; humanActions: Record<string, unknown>[];
 }
 
 export async function captureSnapshot(page: Page): Promise<Snapshot> {

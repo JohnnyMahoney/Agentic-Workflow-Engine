@@ -2,13 +2,39 @@ import { BetaAbstractBrowserToolset20260801, ToolError } from "@anthropic-ai/sdk
 import type { BetaBrowserMemberResult, BetaToolsetCallContext } from "@anthropic-ai/sdk/helpers/beta/toolsets";
 import type { BetaBrowserClickTarget, BetaBrowserGetPageTextInput, BetaBrowserLeftClickInput, BetaBrowserMemberInput, BetaBrowserMemberName, BetaBrowserNavigateInput, BetaBrowserReadPageInput, BetaBrowserScreenshotInput, BetaBrowserWaitInput } from "@anthropic-ai/sdk/resources/beta";
 import { chromium, type Browser, type BrowserContext, type Frame, type Page } from "playwright";
-import { checkUrl, testPolicy, type Policy } from "../surfaces/playwright.js";
+import { checkUrl, testPolicy, PlaywrightAdapter, installHumanBlockerGuard, type Policy } from "../surfaces/playwright.js";
 import { BeforeDispatchError } from "./failures.js";
 
 export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   onExecute?: (context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput, run: () => Promise<BetaBrowserMemberResult>) => Promise<BetaBrowserMemberResult>;
   private readonly refs = new Map<string, Frame>();
   private nextRef = 0;
+  private handoffAdapter: PlaywrightAdapter | undefined;
+  async isHumanOnlyTarget(target: BetaBrowserClickTarget): Promise<boolean> {
+    for (const rule of this.policy.humanBlockers ?? []) {
+      if (rule.url !== this.page.url()) continue;
+      const container = this.page.locator(rule.container);
+      if (await container.count() !== 1) continue;
+      if (target.type === "coordinate") {
+        if (await container.evaluate((root, point) => root.contains(document.elementFromPoint(point.x, point.y)), target)) return true;
+      } else {
+        const frame = this.refs.get(target.ref);
+        if (frame !== this.page.mainFrame()) continue;
+        const element = await frame.locator(`[data-browser-ref="${target.ref}"]`).elementHandle();
+        if (element && await container.evaluate((root, candidate) => root.contains(candidate), element)) return true;
+      }
+    }
+    return false;
+  }
+
+  handoffSurface(): PlaywrightAdapter {
+    return this.handoffAdapter ??= new PlaywrightAdapter(this.browser, this.page, {}, this.policy);
+  }
+  async refreshAfterHuman(): Promise<string> {
+    this.refs.clear();
+    for (const frame of this.page.frames()) await frame.locator("[data-browser-ref]").evaluateAll(elements => elements.forEach(element => element.removeAttribute("data-browser-ref")));
+    return this.get_page_text({} as BetaToolsetCallContext, {tab_id: "tab-1"});
+  }
 
   protected constructor(private readonly browser: Browser, private readonly context: BrowserContext, readonly page: Page, private readonly policy: Policy) {
     super({
@@ -32,6 +58,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
     const browser = await chromium.launch({ headless });
     try {
       const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+      await context.addInitScript(installHumanBlockerGuard, policy.humanBlockers ?? []);
       await context.route("**/*", (route) => {
         const url = new URL(route.request().url());
         try { checkUrl(url.href, policy); return route.continue(); } catch { return route.abort(); }

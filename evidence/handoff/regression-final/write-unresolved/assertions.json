@@ -1,0 +1,64 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "OUTCOME_UNKNOWN",
+    "code": "HANDOFF_UNRESOLVED",
+    "sessionId": "cfb2d169-a02b-4599-8274-c4e41eba1522",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\write-unresolved\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "click",
+      "target": "state",
+      "effect": "stateChanging"
+    },
+    "observed": [
+      {
+        "conditionStepId": "identity",
+        "matches": false,
+        "observed": {
+          "visible": true,
+          "text": "Loading"
+        }
+      },
+      {
+        "conditionStepId": "type",
+        "matches": false,
+        "observed": {
+          "visible": true,
+          "text": "Loading"
+        }
+      }
+    ],
+    "message": "Replay could not safely resume",
+    "details": {
+      "cause": "TIMEOUT",
+      "recoveryCode": "HANDOFF_UNRESOLVED",
+      "recoveryMessage": "No sufficient recorded postcondition or safe retry proof",
+      "observed": [
+        {
+          "conditionStepId": "identity",
+          "matches": false,
+          "observed": {
+            "visible": true,
+            "text": "Loading"
+          }
+        },
+        {
+          "conditionStepId": "type",
+          "matches": false,
+          "observed": {
+            "visible": true,
+            "text": "Loading"
+          }
+        }
+      ],
+      "pendingMutations": [
+        "three"
+      ],
+      "writeDispatched": true
+    },
+    "reconciliationRequired": true
+  }
+}

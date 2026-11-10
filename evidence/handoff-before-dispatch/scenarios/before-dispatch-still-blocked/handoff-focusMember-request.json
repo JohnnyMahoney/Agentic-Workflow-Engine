@@ -1,0 +1,19 @@
+{
+  "sessionId": "30578ff5-b458-43f9-a844-bb6f19da2d42",
+  "capabilityId": "before-dispatch",
+  "description": "Hand-authored regression; simulated operator",
+  "stepId": "focusMember",
+  "reason": "UNEXPECTED_DIALOG",
+  "completedSteps": [
+    "open"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "member",
+    "effect": "readOnly"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-still-blocked\\events.jsonl"
+}

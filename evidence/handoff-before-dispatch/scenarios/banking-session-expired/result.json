@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "90b38569-1183-45a4-a864-c05b9909f2d1",
+  "stepId": "checkpoints",
+  "outputs": {
+    "member": "M-1005"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\banking-session-expired\\events.jsonl"
+}

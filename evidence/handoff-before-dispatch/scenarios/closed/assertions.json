@@ -1,0 +1,41 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "HANDOFF_UNRESOLVED",
+    "sessionId": "55505fc9-123e-411d-9130-56f42b6b35e8",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\closed\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "state",
+        "value": {
+          "literal": "Confirmed member-1 Youth"
+        }
+      },
+      "timeoutMs": 1
+    },
+    "observed": {
+      "code": "HANDOFF_UNRESOLVED",
+      "cause": "WAIT_TIMEOUT",
+      "failedDispatch": "started",
+      "dispatch": "started",
+      "recoveryCode": "HANDOFF_UNRESOLVED",
+      "recoveryMessage": "Browser session was closed"
+    },
+    "message": "Replay could not safely resume",
+    "details": {
+      "cause": "WAIT_TIMEOUT",
+      "failedDispatch": "started",
+      "dispatch": "started",
+      "recoveryCode": "HANDOFF_UNRESOLVED",
+      "recoveryMessage": "Browser session was closed",
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

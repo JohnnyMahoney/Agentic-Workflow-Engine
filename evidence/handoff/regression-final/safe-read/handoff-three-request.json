@@ -1,0 +1,19 @@
+{
+  "sessionId": "f0b4e21e-e5c2-4176-844e-8e841e275a90",
+  "capabilityId": "handoff-fixture",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "stepId": "three",
+  "reason": "TARGET_NOT_FOUND",
+  "completedSteps": [
+    "one"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "three",
+    "action": "extract",
+    "target": "state",
+    "saveAs": "value"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\safe-read\\events.jsonl"
+}

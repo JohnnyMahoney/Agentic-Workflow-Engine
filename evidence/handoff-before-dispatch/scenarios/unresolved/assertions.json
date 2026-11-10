@@ -1,0 +1,41 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "HANDOFF_UNRESOLVED",
+    "sessionId": "9909337f-7591-41f6-a349-a34d8bf38bc4",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\unresolved\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "state",
+        "value": {
+          "literal": "Confirmed member-1 Youth"
+        }
+      },
+      "timeoutMs": 1
+    },
+    "observed": {
+      "visible": true,
+      "text": "Loading"
+    },
+    "message": "Replay could not safely resume",
+    "details": {
+      "cause": "WAIT_TIMEOUT",
+      "failedDispatch": "started",
+      "dispatch": "started",
+      "recoveryCode": "WAIT_TIMEOUT",
+      "recoveryMessage": "Expected condition was not observed before timeout",
+      "observed": {
+        "visible": true,
+        "text": "Loading"
+      },
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

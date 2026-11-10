@@ -1,0 +1,28 @@
+{"at":"2026-11-08T23:25:04.831Z","kind":"replay_start","sessionId":"dfea6bf7-8dee-4b01-88d8-6effea7664e3","capabilityId":"sandbox-handoff-fixture","llmCalls":0}
+{"at":"2026-11-08T23:25:05.004Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-08T23:25:05.045Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-08T23:25:05.045Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-08T23:25:05.058Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-08T23:25:05.058Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-08T23:25:05.083Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-08T23:25:05.083Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-08T23:25:05.389Z","kind":"detector","stepId":"waitMember","code":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again."}
+{"at":"2026-11-08T23:25:05.389Z","kind":"handoff_requested","sessionId":"dfea6bf7-8dee-4b01-88d8-6effea7664e3","capabilityId":"sandbox-handoff-fixture","description":"Hand-authored sandbox session-expiry test; simulated operator","stepId":"waitMember","reason":"SESSION_EXPIRED","completedSteps":["open","query","search"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"waitMember","action":"wait","condition":{"kind":"textEquals","target":"member","value":{"literal":"M-1005"}},"timeoutMs":2000},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\banking-session-expired\\events.jsonl","owner":"paused"}
+{"at":"2026-11-08T23:25:05.407Z","kind":"handoff_evidence","stepId":"waitMember","phase":"before","screenshot":"handoff-waitMember-before.png"}
+{"at":"2026-11-08T23:25:05.413Z","kind":"handoff_control","stepId":"waitMember","owner":"human"}
+{"at":"2026-11-08T23:25:05.447Z","kind":"human_action","stepId":"waitMember","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-08T23:25:05.752Z","kind":"human_action","stepId":"waitMember","action":"input","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":false,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-08T23:25:05.752Z","kind":"human_action","stepId":"waitMember","action":"change","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":false,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-08T23:25:05.779Z","kind":"human_action","stepId":"waitMember","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-08T23:25:05.780Z","kind":"human_action","stepId":"waitMember","action":"submit","tag":"FORM","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > form:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-08T23:25:06.084Z","kind":"handoff_control","stepId":"waitMember","owner":"verifying"}
+{"at":"2026-11-08T23:25:06.107Z","kind":"handoff_evidence","stepId":"waitMember","phase":"after","screenshot":"handoff-waitMember-after.png"}
+{"at":"2026-11-08T23:25:06.111Z","kind":"handoff_verification","stepId":"waitMember","conditionStepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"literal":"M-1005"}},"matches":true,"observed":{"visible":true,"text":"M-1005"}}
+{"at":"2026-11-08T23:25:06.111Z","kind":"handoff_decision","stepId":"waitMember","decision":"HUMAN_COMPLETED","verifiedSteps":["waitMember"]}
+{"at":"2026-11-08T23:25:06.111Z","kind":"handoff_control","stepId":"waitMember","owner":"automation"}
+{"at":"2026-11-08T23:25:06.112Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-08T23:25:06.112Z","kind":"step_start","stepId":"read","action":"extract"}
+{"at":"2026-11-08T23:25:06.116Z","kind":"output_validation","stepId":"read","property":"text","output":"member","expected":{"kind":"textEquals","value":{"literal":"M-1005"}},"observed":{"visible":true,"text":"M-1005"},"matches":true,"elapsedMs":3}
+{"at":"2026-11-08T23:25:06.117Z","kind":"step_end","stepId":"read"}
+{"at":"2026-11-08T23:25:06.120Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textEquals","target":"member","value":{"literal":"M-1005"}},"matches":true,"observed":{"visible":true,"text":"M-1005"},"blocked":false}
+{"at":"2026-11-08T23:25:06.146Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"dfea6bf7-8dee-4b01-88d8-6effea7664e3","stepId":"checkpoints","outputs":{"member":"M-1005"},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\banking-session-expired\\events.jsonl"}

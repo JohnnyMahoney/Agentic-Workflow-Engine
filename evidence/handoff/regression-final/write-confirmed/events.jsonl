@@ -1,0 +1,21 @@
+{"at":"2026-11-08T23:25:04.130Z","kind":"replay_start","sessionId":"85a8c744-0f18-4c2f-a68f-8bd412dc9020","capabilityId":"handoff-fixture","llmCalls":0}
+{"at":"2026-11-08T23:25:04.130Z","kind":"step_start","stepId":"three","action":"click"}
+{"at":"2026-11-08T23:25:04.130Z","kind":"handoff_requested","sessionId":"85a8c744-0f18-4c2f-a68f-8bd412dc9020","capabilityId":"handoff-fixture","description":"Hand-authored handoff regression fixture; no Claude run","stepId":"three","reason":"TIMEOUT","completedSteps":[],"pendingMutations":["three"],"savedOutputNames":[],"expected":{"id":"three","action":"click","target":"state","effect":"stateChanging"},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\write-confirmed\\events.jsonl","owner":"paused"}
+{"at":"2026-11-08T23:25:04.131Z","kind":"handoff_evidence_unavailable","stepId":"three","phase":"before"}
+{"at":"2026-11-08T23:25:04.131Z","kind":"human_action","stepId":"three","action":"mock-operator"}
+{"at":"2026-11-08T23:25:04.131Z","kind":"handoff_control","stepId":"three","owner":"human"}
+{"at":"2026-11-08T23:25:04.131Z","kind":"handoff_control","stepId":"three","owner":"verifying"}
+{"at":"2026-11-08T23:25:04.132Z","kind":"handoff_evidence_unavailable","stepId":"three","phase":"after"}
+{"at":"2026-11-08T23:25:04.132Z","kind":"handoff_verification","stepId":"three","conditionStepId":"identity","expected":{"kind":"textContains","target":"state","value":{"literal":"member-1"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"}}
+{"at":"2026-11-08T23:25:04.132Z","kind":"handoff_verification","stepId":"three","conditionStepId":"type","expected":{"kind":"textContains","target":"state","value":{"literal":"Youth"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"}}
+{"at":"2026-11-08T23:25:04.132Z","kind":"handoff_decision","stepId":"three","decision":"HUMAN_COMPLETED","verifiedSteps":["identity","type"]}
+{"at":"2026-11-08T23:25:04.132Z","kind":"handoff_control","stepId":"three","owner":"automation"}
+{"at":"2026-11-08T23:25:04.132Z","kind":"step_end","stepId":"three"}
+{"at":"2026-11-08T23:25:04.133Z","kind":"step_start","stepId":"identity","action":"assert"}
+{"at":"2026-11-08T23:25:04.133Z","kind":"condition","stepId":"identity","expected":{"kind":"textContains","target":"state","value":{"literal":"member-1"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"}}
+{"at":"2026-11-08T23:25:04.133Z","kind":"step_end","stepId":"identity"}
+{"at":"2026-11-08T23:25:04.133Z","kind":"step_start","stepId":"type","action":"assert"}
+{"at":"2026-11-08T23:25:04.133Z","kind":"condition","stepId":"type","expected":{"kind":"textContains","target":"state","value":{"literal":"Youth"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"}}
+{"at":"2026-11-08T23:25:04.133Z","kind":"step_end","stepId":"type"}
+{"at":"2026-11-08T23:25:04.133Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textEquals","target":"state","value":{"literal":"Confirmed member-1 Youth"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"},"blocked":false}
+{"at":"2026-11-08T23:25:04.134Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"85a8c744-0f18-4c2f-a68f-8bd412dc9020","stepId":"checkpoints","outputs":{},"outputReadiness":"validated","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\write-confirmed\\events.jsonl"}

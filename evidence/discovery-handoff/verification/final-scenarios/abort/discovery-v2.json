@@ -1,0 +1,339 @@
+{
+  "evidenceVersion": "2.0",
+  "request": {
+    "id": "abort",
+    "goal": "Read member and balance",
+    "url": "http://127.0.0.1:61842/",
+    "dataMode": "synthetic-test",
+    "inputs": {},
+    "bindings": {},
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Observed balance"
+      }
+    }
+  },
+  "completed": false,
+  "actions": [
+    {
+      "index": 1,
+      "name": "navigate",
+      "before": {
+        "url": "about:blank",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://127.0.0.1:61842/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"><main data-cap-node=\"n4\"><p id=\"member\" data-cap-node=\"n5\">M-1001</p><p id=\"balance\" data-cap-node=\"n6\">$0.00</p><button id=\"business\" data-cap-node=\"n7\">Business action</button></main><div id=\"blocker\" role=\"dialog\" data-cap-node=\"n8\"><p data-cap-node=\"n9\">Operator acknowledgement required</p><button id=\"dismiss\" data-cap-node=\"n10\">Acknowledge</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n4": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action",
+                "visible": true
+              },
+              "n5": {
+                "text": "M-1001",
+                "visible": true
+              },
+              "n6": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n7": {
+                "text": "Business action",
+                "visible": true
+              },
+              "n8": {
+                "text": "Operator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n9": {
+                "text": "Operator acknowledgement required",
+                "visible": true
+              },
+              "n10": {
+                "text": "Acknowledge",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {
+        "url": "http://127.0.0.1:61842/"
+      },
+      "success": true
+    },
+    {
+      "index": 2,
+      "name": "read_page",
+      "before": {
+        "url": "http://127.0.0.1:61842/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"><main data-cap-node=\"n4\"><p id=\"member\" data-cap-node=\"n5\">M-1001</p><p id=\"balance\" data-cap-node=\"n6\">$0.00</p><button id=\"business\" data-cap-node=\"n7\">Business action</button></main><div id=\"blocker\" role=\"dialog\" data-cap-node=\"n8\"><p data-cap-node=\"n9\">Operator acknowledgement required</p><button id=\"dismiss\" data-cap-node=\"n10\">Acknowledge</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n4": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action",
+                "visible": true
+              },
+              "n5": {
+                "text": "M-1001",
+                "visible": true
+              },
+              "n6": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n7": {
+                "text": "Business action",
+                "visible": true
+              },
+              "n8": {
+                "text": "Operator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n9": {
+                "text": "Operator acknowledgement required",
+                "visible": true
+              },
+              "n10": {
+                "text": "Acknowledge",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "after": {
+        "url": "http://127.0.0.1:61842/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"><main data-cap-node=\"n4\"><p id=\"member\" data-cap-node=\"n5\">M-1001</p><p id=\"balance\" data-cap-node=\"n6\">$0.00</p><button id=\"business\" data-cap-node=\"n7\" data-browser-ref=\"ref_1\">Business action</button></main><div id=\"blocker\" role=\"dialog\" data-cap-node=\"n8\"><p data-cap-node=\"n9\">Operator acknowledgement required</p><button id=\"dismiss\" data-cap-node=\"n10\" data-browser-ref=\"ref_2\">Acknowledge</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n4": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action",
+                "visible": true
+              },
+              "n5": {
+                "text": "M-1001",
+                "visible": true
+              },
+              "n6": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n7": {
+                "text": "Business action",
+                "visible": true
+              },
+              "n8": {
+                "text": "Operator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n9": {
+                "text": "Operator acknowledgement required",
+                "visible": true
+              },
+              "n10": {
+                "text": "Acknowledge",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "target": null,
+      "input": {},
+      "observation": "frame-1 http://127.0.0.1:61842/\nM-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge\nbutton \"Business action\" [ref_1]\nbutton \"Acknowledge\" [ref_2]",
+      "success": true
+    }
+  ],
+  "interventions": [
+    {
+      "id": "discovery-1",
+      "source": "model",
+      "reason": "AUTH_REQUIRED",
+      "description": "Operator is required",
+      "afterAction": 2,
+      "outcome": "aborted",
+      "before": {
+        "url": "http://127.0.0.1:61842/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"><main data-cap-node=\"n4\"><p id=\"member\" data-cap-node=\"n5\">M-1001</p><p id=\"balance\" data-cap-node=\"n6\">$0.00</p><button id=\"business\" data-cap-node=\"n7\" data-browser-ref=\"ref_1\">Business action</button></main><div id=\"blocker\" role=\"dialog\" data-cap-node=\"n8\"><p data-cap-node=\"n9\">Operator acknowledgement required</p><button id=\"dismiss\" data-cap-node=\"n10\" data-browser-ref=\"ref_2\">Acknowledge</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n4": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action",
+                "visible": true
+              },
+              "n5": {
+                "text": "M-1001",
+                "visible": true
+              },
+              "n6": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n7": {
+                "text": "Business action",
+                "visible": true
+              },
+              "n8": {
+                "text": "Operator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n9": {
+                "text": "Operator acknowledgement required",
+                "visible": true
+              },
+              "n10": {
+                "text": "Acknowledge",
+                "visible": true
+              }
+            }
+          }
+        ]
+      },
+      "humanActions": [],
+      "after": {
+        "url": "http://127.0.0.1:61842/",
+        "frames": [
+          {
+            "id": 0,
+            "parent": null,
+            "elementNode": null,
+            "html": "<!doctype html><html data-cap-node=\"n1\"><head data-cap-node=\"n2\"></head><body data-cap-node=\"n3\"><main data-cap-node=\"n4\"><p id=\"member\" data-cap-node=\"n5\">M-1001</p><p id=\"balance\" data-cap-node=\"n6\">$0.00</p><button id=\"business\" data-cap-node=\"n7\" data-browser-ref=\"ref_1\">Business action</button></main><div id=\"blocker\" role=\"dialog\" data-cap-node=\"n8\"><p data-cap-node=\"n9\">Operator acknowledgement required</p><button id=\"dismiss\" data-cap-node=\"n10\" data-browser-ref=\"ref_2\">Acknowledge</button></div></body></html>",
+            "nodes": {
+              "n1": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n2": {
+                "text": "",
+                "visible": false
+              },
+              "n3": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action\n\nOperator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n4": {
+                "text": "M-1001\n\n$0.00\n\nBusiness action",
+                "visible": true
+              },
+              "n5": {
+                "text": "M-1001",
+                "visible": true
+              },
+              "n6": {
+                "text": "$0.00",
+                "visible": true
+              },
+              "n7": {
+                "text": "Business action",
+                "visible": true
+              },
+              "n8": {
+                "text": "Operator acknowledgement required\n\nAcknowledge",
+                "visible": true
+              },
+              "n9": {
+                "text": "Operator acknowledgement required",
+                "visible": true
+              },
+              "n10": {
+                "text": "Acknowledge",
+                "visible": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "modelCompleted": false
+}

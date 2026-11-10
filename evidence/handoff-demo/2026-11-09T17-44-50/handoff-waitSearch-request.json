@@ -1,0 +1,27 @@
+{
+  "sessionId": "c93ffdbc-eab5-46fb-8248-5fb04cfde6ce",
+  "capabilityId": "banking-runtime-fixture",
+  "description": "Hand-authored isolated runtime test fixture; not LLM discovery evidence",
+  "stepId": "waitSearch",
+  "reason": "SESSION_EXPIRED",
+  "completedSteps": [
+    "navigate",
+    "query",
+    "search"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "waitSearch",
+    "action": "wait",
+    "condition": {
+      "kind": "textContains",
+      "target": "row",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    "timeoutMs": 2500
+  },
+  "evidenceRef": "evidence\\handoff-demo\\2026-11-09T17-44-50\\events.jsonl"
+}

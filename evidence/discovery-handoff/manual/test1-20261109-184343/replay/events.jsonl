@@ -1,0 +1,30 @@
+{"at":"2026-11-10T01:45:04.569Z","kind":"replay_start","sessionId":"fc75b434-4c64-45a0-82d5-9c952ae3f03a","capabilityId":"modernBankMemberBalanceLookup","llmCalls":0}
+{"at":"2026-11-10T01:45:04.831Z","kind":"step_start","stepId":"openApp","action":"navigate"}
+{"at":"2026-11-10T01:45:04.884Z","kind":"step_end","stepId":"openApp"}
+{"at":"2026-11-10T01:45:04.884Z","kind":"step_start","stepId":"focusSearch","action":"click"}
+{"at":"2026-11-10T01:45:04.978Z","kind":"step_end","stepId":"focusSearch"}
+{"at":"2026-11-10T01:45:04.978Z","kind":"step_start","stepId":"enterMemberId","action":"fill"}
+{"at":"2026-11-10T01:45:04.990Z","kind":"step_end","stepId":"enterMemberId"}
+{"at":"2026-11-10T01:45:04.990Z","kind":"step_start","stepId":"submitSearch","action":"click"}
+{"at":"2026-11-10T01:45:05.135Z","kind":"step_end","stepId":"submitSearch"}
+{"at":"2026-11-10T01:45:05.135Z","kind":"step_start","stepId":"waitResults","action":"wait"}
+{"at":"2026-11-10T01:45:05.446Z","kind":"condition","stepId":"waitResults","expected":{"kind":"visible","target":"viewButton"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-10T01:45:05.446Z","kind":"step_end","stepId":"waitResults"}
+{"at":"2026-11-10T01:45:05.446Z","kind":"step_start","stepId":"openDetails","action":"click"}
+{"at":"2026-11-10T01:45:05.457Z","kind":"step_end","stepId":"openDetails"}
+{"at":"2026-11-10T01:45:05.458Z","kind":"step_start","stepId":"waitDetails","action":"wait"}
+{"at":"2026-11-10T01:45:05.810Z","kind":"condition","stepId":"waitDetails","expected":{"kind":"textContains","target":"memberIdValue","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1005"},"blocked":false}
+{"at":"2026-11-10T01:45:05.810Z","kind":"step_end","stepId":"waitDetails"}
+{"at":"2026-11-10T01:45:05.810Z","kind":"step_start","stepId":"extractBalance","action":"extract"}
+{"at":"2026-11-10T01:45:05.815Z","kind":"output_validation","stepId":"extractBalance","property":"text","output":"balance","expected":{"kind":"textMatches","pattern":"\\$[0-9]{1,3}(,[0-9]{3})*\\.[0-9]{2}"},"observed":{"visible":true,"text":"$50,000.00"},"matches":true,"elapsedMs":5}
+{"at":"2026-11-10T01:45:05.815Z","kind":"step_end","stepId":"extractBalance"}
+{"at":"2026-11-10T01:45:05.815Z","kind":"step_start","stepId":"extractAccountType","action":"extract"}
+{"at":"2026-11-10T01:45:05.820Z","kind":"output_validation","stepId":"extractAccountType","property":"text","output":"accountType","expected":{"kind":"textMatches","pattern":"[A-Za-z]+( [A-Za-z]+)*"},"observed":{"visible":true,"text":"Term Deposit"},"matches":true,"elapsedMs":5}
+{"at":"2026-11-10T01:45:05.820Z","kind":"step_end","stepId":"extractAccountType"}
+{"at":"2026-11-10T01:45:05.820Z","kind":"step_start","stepId":"extractMemberId","action":"extract"}
+{"at":"2026-11-10T01:45:05.823Z","kind":"output_validation","stepId":"extractMemberId","property":"text","output":"memberId","expected":{"kind":"textEquals","value":{"input":"memberId"}},"observed":{"visible":true,"text":"M-1005"},"matches":true,"elapsedMs":2}
+{"at":"2026-11-10T01:45:05.823Z","kind":"step_end","stepId":"extractMemberId"}
+{"at":"2026-11-10T01:45:05.826Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"memberIdValue","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1005"},"blocked":false}
+{"at":"2026-11-10T01:45:05.827Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"visible","target":"detailsHeading"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-10T01:45:05.829Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"visible","target":"balanceValue"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-10T01:45:05.969Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"fc75b434-4c64-45a0-82d5-9c952ae3f03a","stepId":"checkpoints","outputs":{"balance":"$50,000.00","accountType":"Term Deposit","memberId":"M-1005"},"outputReadiness":"validated","retryable":false,"evidenceRef":"evidence\\discovery-handoff\\manual\\test1-20261109-184343\\replay\\events.jsonl"}

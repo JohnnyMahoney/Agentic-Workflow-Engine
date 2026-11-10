@@ -1,0 +1,11 @@
+{
+  "name": "unresolved",
+  "mode": "local",
+  "model": "scripted",
+  "assessment": {
+    "passed": false,
+    "completed": false
+  },
+  "error": "Request was aborted.",
+  "actionCount": 2
+}

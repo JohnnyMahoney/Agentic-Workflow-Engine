@@ -1,0 +1,24 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "0772d5ca-7ad9-4522-a386-a5df049ff247",
+  "stepId": "three",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\TARGET_NOT_FOUND\\events.jsonl",
+  "expected": {
+    "id": "three",
+    "action": "click",
+    "target": "state",
+    "effect": "readOnly"
+  },
+  "observed": [],
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "TARGET_NOT_FOUND",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "No sufficient recorded postcondition or safe retry proof",
+    "observed": [],
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status": "validated",
+  "evidenceSha256": "f949fd36d5846f77f6886740e3bc6ebbb8c46b8a525274f6419819316abb8ace",
+  "candidateSha256": "fb851bafe6fb10291bd73726151bda819fec2719eed6592ec6bdc228b88c0d0b",
+  "evidencePath": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\driver-fallback\\discovery-v2.json",
+  "candidatePath": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\driver-fallback\\builder\\candidate.json",
+  "humanInterventionsVerified": [
+    "discovery-1"
+  ],
+  "policySha256": "806269d6d35a6ffbf1efc6381793674d7cced89bd4078e077561cbf6bc0dd533",
+  "checks": [
+    "human-blocker-policy-and-dom",
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-select-state",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

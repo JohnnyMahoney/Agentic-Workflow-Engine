@@ -1,0 +1,11 @@
+{
+  "name": "discovery-human-member-lookup",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "passed": false,
+    "completed": false
+  },
+  "error": "Request was aborted.",
+  "actionCount": 2
+}

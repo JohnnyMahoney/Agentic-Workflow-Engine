@@ -1,0 +1,32 @@
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\happy-M1001
+✔ banking happy-M1001 (1812.6548ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\parameterized-M1002
+✔ banking parameterized-M1002 (1798.7392ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\NOT_FOUND
+✔ banking NOT_FOUND (679.1556ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\VALIDATION_ERROR
+✔ banking VALIDATION_ERROR (1449.6121ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\PERMISSION_DENIED
+✔ banking PERMISSION_DENIED (1465.784ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\SESSION_EXPIRED
+✔ banking SESSION_EXPIRED (701.3629ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\SLOW_LOADING
+✔ banking SLOW_LOADING (4311.6949ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\TIMEOUT
+✔ banking TIMEOUT (686.6998ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\UNEXPECTED_DIALOG
+✔ banking UNEXPECTED_DIALOG (667.4227ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\AMBIGUOUS_TARGET
+✔ banking AMBIGUOUS_TARGET (300.9123ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\committed-but-unverified
+✔ banking committed-but-unverified (1817.0858ms)
+Evidence: C:\Users\User\BankGPT\Agentic-Workflow-Engine\.local-evidence-archive\handoff-banking-compatibility\unconfirmed-write
+✔ banking unconfirmed-write (1163.5197ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17169.3499

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "simulatedOperator": true,
+  "launches": 1,
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "dfea6bf7-8dee-4b01-88d8-6effea7664e3",
+    "stepId": "checkpoints",
+    "outputs": {
+      "member": "M-1005"
+    },
+    "outputReadiness": "validated",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\banking-session-expired\\events.jsonl"
+  }
+}

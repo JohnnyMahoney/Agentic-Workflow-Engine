@@ -1,0 +1,11 @@
+{
+  "name": "network-outage",
+  "mode": "local",
+  "model": "scripted",
+  "assessment": {
+    "passed": false,
+    "completed": false
+  },
+  "error": "Connection error.",
+  "actionCount": 0
+}

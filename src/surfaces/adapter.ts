@@ -12,5 +12,8 @@ export interface SurfaceAdapter {
   visible(target: Target): Promise<boolean>;
   url(): string;
   captureFailure(path: string): Promise<void>;
+  observeHuman?(record: (event: Record<string, unknown>) => void): Promise<() => Promise<void>>;
+  isClosed?(): boolean;
+  setHumanInputEnabled?(enabled: boolean): Promise<void>;
   close(): Promise<void>;
 }

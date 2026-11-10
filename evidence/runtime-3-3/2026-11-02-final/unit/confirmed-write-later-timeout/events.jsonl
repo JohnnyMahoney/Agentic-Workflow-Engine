@@ -1,9 +1,0 @@
-{"at":"2026-11-02T01:04:55.589Z","kind":"replay_start","sessionId":"fa1f9c1f-6de9-41ba-87a7-a08b508c8a4a","capabilityId":"runtime-fixture","llmCalls":0}
-{"at":"2026-11-02T01:04:55.590Z","kind":"step_start","stepId":"write","action":"click"}
-{"at":"2026-11-02T01:04:55.590Z","kind":"step_end","stepId":"write"}
-{"at":"2026-11-02T01:04:55.590Z","kind":"step_start","stepId":"confirm","action":"assert"}
-{"at":"2026-11-02T01:04:55.590Z","kind":"condition","stepId":"confirm","expected":{"kind":"textContains","target":"state","value":{"input":"id"}},"matches":true,"observed":{"visible":true,"text":"Confirmed M-1001 Savings"}}
-{"at":"2026-11-02T01:04:55.591Z","kind":"step_end","stepId":"confirm"}
-{"at":"2026-11-02T01:04:55.591Z","kind":"step_start","stepId":"later","action":"wait"}
-{"at":"2026-11-02T01:04:55.591Z","kind":"condition","stepId":"later","expected":{"kind":"textEquals","target":"state","value":{"literal":"unobserved"}},"matches":false,"observed":{"visible":true,"text":"Confirmed M-1001 Savings"},"blocked":false}
-{"at":"2026-11-02T01:04:55.644Z","kind":"replay_end","status":"RECOVERABLE_ERROR","code":"WAIT_TIMEOUT","sessionId":"fa1f9c1f-6de9-41ba-87a7-a08b508c8a4a","stepId":"later","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\confirmed-write-later-timeout\\events.jsonl","expected":{"kind":"textEquals","target":"state","value":{"literal":"unobserved"}},"observed":{"visible":true,"text":"Confirmed M-1001 Savings"},"message":"Expected condition was not observed before timeout","details":{"expected":{"kind":"textEquals","target":"state","value":{"literal":"unobserved"}},"observed":{"visible":true,"text":"Confirmed M-1001 Savings"},"timeoutMs":50,"pendingMutations":[],"writeDispatched":true}}

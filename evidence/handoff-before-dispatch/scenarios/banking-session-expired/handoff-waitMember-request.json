@@ -1,0 +1,27 @@
+{
+  "sessionId": "90b38569-1183-45a4-a864-c05b9909f2d1",
+  "capabilityId": "sandbox-handoff-fixture",
+  "description": "Hand-authored sandbox session-expiry test; simulated operator",
+  "stepId": "waitMember",
+  "reason": "SESSION_EXPIRED",
+  "completedSteps": [
+    "open",
+    "query",
+    "search"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "waitMember",
+    "action": "wait",
+    "condition": {
+      "kind": "textEquals",
+      "target": "member",
+      "value": {
+        "literal": "M-1005"
+      }
+    },
+    "timeoutMs": 2000
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\banking-session-expired\\events.jsonl"
+}

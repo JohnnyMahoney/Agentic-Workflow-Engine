@@ -1,0 +1,66 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "OUTCOME_UNKNOWN",
+    "code": "HANDOFF_UNRESOLVED",
+    "sessionId": "1aad114d-cee3-47c9-98c6-6d5738a99c34",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\write-wrong-identity\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "click",
+      "target": "state",
+      "effect": "stateChanging"
+    },
+    "observed": [
+      {
+        "conditionStepId": "identity",
+        "matches": false,
+        "observed": {
+          "visible": true,
+          "text": "Confirmed other Youth"
+        }
+      },
+      {
+        "conditionStepId": "type",
+        "matches": true,
+        "observed": {
+          "visible": true,
+          "text": "Confirmed other Youth"
+        }
+      }
+    ],
+    "message": "Replay could not safely resume",
+    "details": {
+      "cause": "TIMEOUT",
+      "failedDispatch": "started",
+      "dispatch": "started",
+      "recoveryCode": "HANDOFF_UNRESOLVED",
+      "recoveryMessage": "No sufficient recorded postcondition or safe retry proof",
+      "observed": [
+        {
+          "conditionStepId": "identity",
+          "matches": false,
+          "observed": {
+            "visible": true,
+            "text": "Confirmed other Youth"
+          }
+        },
+        {
+          "conditionStepId": "type",
+          "matches": true,
+          "observed": {
+            "visible": true,
+            "text": "Confirmed other Youth"
+          }
+        }
+      ],
+      "pendingMutations": [
+        "three"
+      ],
+      "writeDispatched": true
+    },
+    "reconciliationRequired": true
+  }
+}

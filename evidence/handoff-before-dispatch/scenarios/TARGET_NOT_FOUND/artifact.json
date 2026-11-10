@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "2.0",
+  "id": "handoff-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "inputs": {},
+  "targets": {
+    "state": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#state",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "three",
+      "action": "click",
+      "target": "state",
+      "effect": "readOnly"
+    }
+  ],
+  "outputs": {},
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "Confirmed member-1 Youth"
+      }
+    }
+  ]
+}

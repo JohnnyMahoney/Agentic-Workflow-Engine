@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "9c0d8c27-7d1c-458c-8709-8deeff27efa8",
+  "stepId": "checkpoints",
+  "outputs": {},
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\write-confirmed\\events.jsonl"
+}

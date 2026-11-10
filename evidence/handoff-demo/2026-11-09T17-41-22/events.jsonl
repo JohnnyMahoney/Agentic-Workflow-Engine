@@ -1,0 +1,37 @@
+{"at":"2026-11-10T00:41:26.708Z","kind":"replay_start","sessionId":"28a650a0-26b4-44f6-9f79-39ffbca2b717","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T00:41:26.987Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T00:41:27.044Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T00:41:27.044Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T00:41:27.065Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T00:41:27.065Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T00:41:27.120Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T00:41:27.121Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T00:41:27.129Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.135Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.198Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.262Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.323Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.385Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T00:41:27.448Z","kind":"detector","stepId":"waitSearch","code":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again."}
+{"at":"2026-11-10T00:41:27.451Z","kind":"handoff_requested","sessionId":"28a650a0-26b4-44f6-9f79-39ffbca2b717","capabilityId":"banking-runtime-fixture","description":"Hand-authored isolated runtime test fixture; not LLM discovery evidence","stepId":"waitSearch","reason":"SESSION_EXPIRED","completedSteps":["navigate","query","search"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"waitSearch","action":"wait","condition":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"timeoutMs":2500},"evidenceRef":"evidence\\handoff-demo\\2026-11-09T17-41-22\\events.jsonl","owner":"paused"}
+{"at":"2026-11-10T00:41:27.475Z","kind":"handoff_evidence","stepId":"waitSearch","phase":"before","screenshot":"handoff-waitSearch-before.png"}
+{"at":"2026-11-10T00:41:34.491Z","kind":"handoff_control","stepId":"waitSearch","owner":"human"}
+{"at":"2026-11-10T00:41:59.704Z","kind":"human_action","stepId":"waitSearch","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > section:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:03.053Z","kind":"human_action","stepId":"waitSearch","action":"click","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:04.158Z","kind":"human_action","stepId":"waitSearch","action":"input","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:04.159Z","kind":"human_action","stepId":"waitSearch","action":"change","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:04.159Z","kind":"human_action","stepId":"waitSearch","action":"click","tag":"SELECT","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > select:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:04.741Z","kind":"human_action","stepId":"waitSearch","action":"click","tag":"HTML","inputType":"","targetPath":"html:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:08.991Z","kind":"human_action","stepId":"waitSearch","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > form:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:08.992Z","kind":"human_action","stepId":"waitSearch","action":"submit","tag":"FORM","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > main:nth-of-type(1) > form:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T00:42:11.728Z","kind":"handoff_control","stepId":"waitSearch","owner":"verifying"}
+{"at":"2026-11-10T00:42:11.751Z","kind":"handoff_evidence","stepId":"waitSearch","phase":"after","screenshot":"handoff-waitSearch-after.png"}
+{"at":"2026-11-10T00:42:11.760Z","kind":"handoff_verification","stepId":"waitSearch","conditionStepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"}}
+{"at":"2026-11-10T00:42:11.760Z","kind":"handoff_decision","stepId":"waitSearch","decision":"HUMAN_COMPLETED","verifiedSteps":["waitSearch"]}
+{"at":"2026-11-10T00:42:11.760Z","kind":"handoff_control","stepId":"waitSearch","owner":"automation"}
+{"at":"2026-11-10T00:42:11.761Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-10T00:42:11.761Z","kind":"step_start","stepId":"status","action":"extract"}
+{"at":"2026-11-10T00:42:11.765Z","kind":"attempt","stepId":"status","attempt":1}
+{"at":"2026-11-10T00:42:11.766Z","kind":"step_end","stepId":"status"}
+{"at":"2026-11-10T00:42:11.774Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T00:42:11.895Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"28a650a0-26b4-44f6-9f79-39ffbca2b717","stepId":"checkpoints","outputs":{"status":"M-1001"},"outputReadiness":"legacy-unverified","retryable":false,"evidenceRef":"evidence\\handoff-demo\\2026-11-09T17-41-22\\events.jsonl"}

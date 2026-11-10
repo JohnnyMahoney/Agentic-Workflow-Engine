@@ -1,0 +1,19 @@
+{
+  "sessionId": "87a57c23-d2e6-4333-892b-255771f1a366",
+  "capabilityId": "before-dispatch",
+  "description": "Hand-authored regression; simulated operator",
+  "stepId": "focusMember",
+  "reason": "UNEXPECTED_DIALOG",
+  "completedSteps": [
+    "open"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "member",
+    "effect": "readOnly"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-ambiguous\\events.jsonl"
+}

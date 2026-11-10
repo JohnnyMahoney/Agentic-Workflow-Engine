@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "2.0",
+  "id": "handoff-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "inputs": {},
+  "targets": {
+    "state": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#state",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "one",
+      "action": "navigate",
+      "url": "https://the-internet.herokuapp.com"
+    },
+    {
+      "id": "two",
+      "action": "extract",
+      "target": "state",
+      "saveAs": "before"
+    },
+    {
+      "id": "three",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "state",
+        "value": {
+          "literal": "Confirmed member-1 Youth"
+        }
+      },
+      "timeoutMs": 1
+    },
+    {
+      "id": "four",
+      "action": "extract",
+      "target": "state",
+      "saveAs": "after"
+    },
+    {
+      "id": "five",
+      "action": "assert",
+      "condition": {
+        "kind": "textEquals",
+        "target": "state",
+        "value": {
+          "literal": "Confirmed member-1 Youth"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "before": {
+      "type": "string",
+      "description": "Pre-handoff sample",
+      "source": {
+        "savedValue": "before"
+      }
+    },
+    "after": {
+      "type": "string",
+      "description": "Post-handoff sample",
+      "source": {
+        "savedValue": "after"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "Confirmed member-1 Youth"
+      }
+    }
+  ]
+}

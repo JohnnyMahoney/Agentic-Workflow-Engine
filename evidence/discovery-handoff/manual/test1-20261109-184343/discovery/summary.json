@@ -1,0 +1,12 @@
+{
+  "name": "modern-member-M1005-balance",
+  "mode": "local",
+  "model": "claude-sonnet-5-5",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Member M-1005 is Taras Bondar. I read the page text before searching and again after opening the details page. The final page confirms:\n\n- **Member ID:** M-1005\n- **Account type:** Term Deposit\n- **Current account balance:** $50,000.00\n\nThe page also shows no sub-accounts. I didn't click \"Open sub-account\" or change anything.",
+  "actionCount": 12
+}

@@ -1,0 +1,19 @@
+{
+  "sessionId": "1aad114d-cee3-47c9-98c6-6d5738a99c34",
+  "capabilityId": "handoff-fixture",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "stepId": "three",
+  "reason": "TIMEOUT",
+  "completedSteps": [],
+  "pendingMutations": [
+    "three"
+  ],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "three",
+    "action": "click",
+    "target": "state",
+    "effect": "stateChanging"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\write-wrong-identity\\events.jsonl"
+}

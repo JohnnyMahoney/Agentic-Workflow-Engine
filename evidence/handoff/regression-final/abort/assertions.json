@@ -1,0 +1,37 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "HANDOFF_ABORTED",
+    "sessionId": "51a21f70-d746-4d69-a49d-5976b21eaf58",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\abort\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "state",
+        "value": {
+          "literal": "Confirmed member-1 Youth"
+        }
+      },
+      "timeoutMs": 1
+    },
+    "observed": {
+      "code": "HANDOFF_ABORTED",
+      "cause": "WAIT_TIMEOUT",
+      "recoveryCode": "HANDOFF_ABORTED",
+      "recoveryMessage": "Operator aborted replay"
+    },
+    "message": "Replay could not safely resume",
+    "details": {
+      "cause": "WAIT_TIMEOUT",
+      "recoveryCode": "HANDOFF_ABORTED",
+      "recoveryMessage": "Operator aborted replay",
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

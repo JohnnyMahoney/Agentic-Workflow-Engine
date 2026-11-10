@@ -1,0 +1,2 @@
+{"at":"2026-11-10T01:30:29.592Z","kind":"run_start","name":"network-outage","mode":"local","model":"scripted","url":"http://127.0.0.1:51508/","goal":"Read member and balance after operator acknowledgement","intent":"injected_client_test"}
+{"at":"2026-11-10T01:30:29.771Z","kind":"run_failure","name":"network-outage","mode":"local","model":"scripted","assessment":{"passed":false,"completed":false},"error":"Connection error.","actionCount":0}

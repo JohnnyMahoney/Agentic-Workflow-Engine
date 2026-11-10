@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "simulatedOperator": true,
+  "sameContext": true,
+  "launches": 1,
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "8891a233-22a4-407b-a6ff-e3d67395c2ea",
+    "stepId": "checkpoints",
+    "outputs": {
+      "before": "Loading",
+      "after": "Confirmed member-1 Youth"
+    },
+    "outputReadiness": "legacy-unverified",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\real-browser\\events.jsonl"
+  }
+}

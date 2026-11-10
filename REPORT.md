@@ -4,7 +4,7 @@
 
 A modular TypeScript/Node.js monolith implements Claude Discovery → Discovery
 Acceptance → separate Claude Compilation → Evidence Validator → Capability Artifact
-→ deterministic Playwright Replay. Sections 3.1§3.3 are implemented and tested for
+→ deterministic Playwright Replay. Sections 3.1-3.3 are implemented and tested for
 the current web MVP scope; this is not a completed assignment submission.
 
 Claude Browser Use operates through a small local Playwright driver. Separate
@@ -73,14 +73,23 @@ a proposed direction, not an implemented registry, override system or drift serv
 
 ## Escalation & handoff
 
-Blocking conditions are reported with step context and diagnostics. Real same-session
-human handoff (§3.6) is **not implemented**: the current runner closes the browser.
-An error result is not an intervention session.
+Replay now supports opt-in CLI handoff: take-control, resume, abort. Eligible step
+failures pause in the same browser/context, preserving completed steps, outputs
+and pending writes. Manual event metadata and before/after screenshots are recorded.
+Resume checks existing artifact conditions and confirms relationships. Only safe
+reads/checks may retry once; insufficient proof stops unresolved or OUTCOME_UNKNOWN.
 
-The next slice needs explicit automation/human ownership, pausing before further
-actions, exposing the same live session, recording human intervention and explicit
-resume with state verification. A minimal operator interface is sufficient; no
-co-browsing platform is planned. This remains a required assignment gap.
+Automated tests cover five-step continuation, unresolved/aborted handoff, uncertain
+writes and real-browser session-expiry remediation with a simulated operator.
+Live Replay operator runs demonstrate successful and unresolved recovery. Discovery
+now registers a typed request_human SDK tool, serializes tool execution, pauses its
+active budget during bounded human control, and requires fresh refs on return.
+Compilation admits human changes only under a trusted temporary-blocker dismissal
+policy with audit and offline DOM checks. Human-only business steps are rejected;
+DOM checks cannot prove hidden server effects. Automated tests use scripted API
+responses and simulated operators, not genuine Claude acceptance. Full live
+Discovery -> Compilation -> Replay handoff acceptance remains pending. Other tabs,
+crash-resume and OS-level control locking remain out of scope; no dashboard was added.
 
 ## Safety
 
@@ -100,6 +109,6 @@ No distributed services, database, plugin framework, desktop automation, tenant
 infrastructure or conditional workflow engine. The Banking Sandbox is a local,
 client-storage fixture with known defects preserved, not a banking backend.
 
-Next priorities are real human handoff, safety completion and focused acceptance
-coverage. Sections 3.4§3.7 are not collectively claimed complete. Reviewer cleanup
+Next priorities are live full-pipeline handoff acceptance, safety completion and focused acceptance
+coverage. Sections 3.4-3.7 are not collectively claimed complete. Reviewer cleanup
 changes documentation/navigation only and does not substitute for those deliverables.

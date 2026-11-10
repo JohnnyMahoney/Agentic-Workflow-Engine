@@ -1,0 +1,24 @@
+{
+  "status": "validated",
+  "evidenceSha256": "44be46ad778d2481dd8117d715dd7554c63214141ab8bb009083d17f2a6e837b",
+  "candidateSha256": "59147cf1d7f2f2cda16c049ccfc055c3b00250831cd787026377ac01eb3db2f7",
+  "evidencePath": "evidence/discovery-handoff/manual/test2-guard-20261109-185606/discovery/discovery-v2.json",
+  "candidatePath": "evidence\\discovery-handoff\\manual\\test2-guard-20261109-185606\\compilation\\candidate.json",
+  "humanInterventionsVerified": [
+    "discovery-1"
+  ],
+  "policySha256": "b3fd5c24b97d416ff45b161993ce9cea54f55e4a4a2989e10db09ca64af804d5",
+  "checks": [
+    "human-blocker-policy-and-dom",
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-select-state",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

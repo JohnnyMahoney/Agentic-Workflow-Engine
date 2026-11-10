@@ -97,7 +97,7 @@ validation does not prove business intent, arbitrary-site compatibility, or futu
 stability. The tested table locator still depends on its sixth column position.
 
 Runtime outcomes and bounded recovery are implemented; see [runtime contract](runtime-3-3.md).
-Real same-session human handoff remains future work.
+Opt-in [Replay handoff](handoff.md) retains the same session; Discovery handoff remains future work.
 CSS and frame strategies do not automatically work on a desktop adapter.
 
 ## Tests

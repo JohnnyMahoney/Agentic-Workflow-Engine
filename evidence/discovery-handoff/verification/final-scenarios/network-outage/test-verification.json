@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "scriptedAPI": true,
+  "realBrowser": true,
+  "simulatedOperator": true,
+  "launchCount": 1,
+  "calls": 0,
+  "humanRequests": 0
+}

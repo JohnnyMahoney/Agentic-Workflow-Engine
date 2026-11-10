@@ -1,0 +1,16 @@
+{"at":"2026-11-10T02:08:12.206Z","kind":"replay_start","sessionId":"87a57c23-d2e6-4333-892b-255771f1a366","capabilityId":"before-dispatch","llmCalls":0}
+{"at":"2026-11-10T02:08:12.383Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-10T02:08:12.397Z","kind":"step_dispatch","stepId":"open","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T02:08:12.410Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-10T02:08:12.410Z","kind":"step_start","stepId":"focusMember","action":"click"}
+{"at":"2026-11-10T02:08:12.422Z","kind":"detector","stepId":"focusMember","code":"UNEXPECTED_DIALOG","observed":"Operator requiredDismiss"}
+{"at":"2026-11-10T02:08:12.422Z","kind":"step_failure","stepId":"focusMember","dispatch":"beforeDispatch"}
+{"at":"2026-11-10T02:08:12.425Z","kind":"handoff_requested","sessionId":"87a57c23-d2e6-4333-892b-255771f1a366","capabilityId":"before-dispatch","description":"Hand-authored regression; simulated operator","stepId":"focusMember","reason":"UNEXPECTED_DIALOG","completedSteps":["open"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"focusMember","action":"click","target":"member","effect":"readOnly"},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-ambiguous\\events.jsonl","owner":"paused"}
+{"at":"2026-11-10T02:08:12.447Z","kind":"handoff_evidence","stepId":"focusMember","phase":"before","screenshot":"handoff-focusMember-before.png"}
+{"at":"2026-11-10T02:08:12.452Z","kind":"handoff_control","stepId":"focusMember","owner":"human"}
+{"at":"2026-11-10T02:08:12.489Z","kind":"human_action","stepId":"focusMember","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T02:08:12.503Z","kind":"handoff_control","stepId":"focusMember","owner":"verifying"}
+{"at":"2026-11-10T02:08:12.528Z","kind":"handoff_evidence","stepId":"focusMember","phase":"after","screenshot":"handoff-focusMember-after.png"}
+{"at":"2026-11-10T02:08:12.530Z","kind":"handoff_decision","stepId":"focusMember","decision":"HANDOFF_UNRESOLVED","cause":"UNEXPECTED_DIALOG","pendingMutations":[]}
+{"at":"2026-11-10T02:08:12.545Z","kind":"failure_evidence","screenshot":"failure.png"}
+{"at":"2026-11-10T02:08:12.568Z","kind":"replay_end","status":"HARD_FAILURE","code":"HANDOFF_UNRESOLVED","sessionId":"87a57c23-d2e6-4333-892b-255771f1a366","stepId":"focusMember","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-ambiguous\\events.jsonl","expected":{"id":"focusMember","action":"click","target":"member","effect":"readOnly"},"observed":{"code":"HANDOFF_UNRESOLVED","cause":"UNEXPECTED_DIALOG","failedDispatch":"beforeDispatch","dispatch":"beforeDispatch","recoveryCode":"AMBIGUOUS_TARGET","recoveryMessage":"Locator matches multiple elements"},"message":"Replay could not safely resume","details":{"cause":"UNEXPECTED_DIALOG","failedDispatch":"beforeDispatch","dispatch":"beforeDispatch","recoveryCode":"AMBIGUOUS_TARGET","recoveryMessage":"Locator matches multiple elements","pendingMutations":[],"writeDispatched":false}}

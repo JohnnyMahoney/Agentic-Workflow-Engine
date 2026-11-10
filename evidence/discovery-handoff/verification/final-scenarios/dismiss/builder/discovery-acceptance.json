@@ -1,0 +1,11 @@
+{
+  "status": "accepted",
+  "goalVerification": "candidate-outputs-and-final-checkpoints-validated",
+  "recoveredFailures": [],
+  "auditHashes": {
+    "events": "b56789ba2d5c17f73794e75af7f90f02cecc515d87d6af767884700889d58d9a",
+    "summary": "d5b08e11b3d41cb2f3e609c2fd071b36c276f9fd58f381e64aa38057d03bb99b"
+  },
+  "excludedFailedActions": [],
+  "limitation": "Goal verification is limited to the explicit request contract, observed outputs and checkpoints; it is not a general proof of arbitrary natural-language intent."
+}

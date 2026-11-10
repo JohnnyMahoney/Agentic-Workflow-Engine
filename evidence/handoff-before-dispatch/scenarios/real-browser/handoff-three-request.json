@@ -1,0 +1,28 @@
+{
+  "sessionId": "f497a2a9-3dfd-4ea7-a2f3-9f4ac1f3422f",
+  "capabilityId": "handoff-fixture",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "stepId": "three",
+  "reason": "TIMEOUT",
+  "completedSteps": [
+    "one",
+    "two"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [
+    "before"
+  ],
+  "expected": {
+    "id": "three",
+    "action": "wait",
+    "condition": {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "Confirmed member-1 Youth"
+      }
+    },
+    "timeoutMs": 1
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\real-browser\\events.jsonl"
+}

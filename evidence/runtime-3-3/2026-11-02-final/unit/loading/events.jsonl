@@ -1,8 +1,0 @@
-{"at":"2026-11-02T01:04:55.161Z","kind":"replay_start","sessionId":"c485095a-fbd0-4228-b789-6259be7a911d","capabilityId":"runtime-fixture","llmCalls":0}
-{"at":"2026-11-02T01:04:55.162Z","kind":"step_start","stepId":"confirmation","action":"wait"}
-{"at":"2026-11-02T01:04:55.162Z","kind":"condition","stepId":"confirmation","expected":{"kind":"textContains","target":"state","value":{"input":"id"}},"matches":false,"observed":{"visible":true,"text":"Loading..."},"blocked":false}
-{"at":"2026-11-02T01:04:55.222Z","kind":"condition","stepId":"confirmation","expected":{"kind":"textContains","target":"state","value":{"input":"id"}},"matches":false,"observed":{"visible":true,"text":"Loading..."},"blocked":false}
-{"at":"2026-11-02T01:04:55.284Z","kind":"condition","stepId":"confirmation","expected":{"kind":"textContains","target":"state","value":{"input":"id"}},"matches":true,"observed":{"visible":true,"text":"Confirmed M-1001 Savings"},"blocked":false}
-{"at":"2026-11-02T01:04:55.285Z","kind":"step_end","stepId":"confirmation"}
-{"at":"2026-11-02T01:04:55.285Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"state","value":{"input":"id"}},"matches":true,"observed":{"visible":true,"text":"Confirmed M-1001 Savings"},"blocked":false}
-{"at":"2026-11-02T01:04:55.286Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"c485095a-fbd0-4228-b789-6259be7a911d","stepId":"checkpoints","outputs":{},"retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\runtime-3-3\\2026-11-02-final\\unit\\loading\\events.jsonl"}

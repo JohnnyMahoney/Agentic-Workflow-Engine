@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "2.1",
+  "outputs": [
+    {
+      "output": "balance",
+      "stepId": "read",
+      "property": "text",
+      "condition": {
+        "kind": "textEquals",
+        "value": {
+          "literal": "$0.00"
+        }
+      },
+      "positiveSample": "$0.00",
+      "rejectedIntermediateValues": [],
+      "limitation": "No distinct intermediate value was recorded for this output; only positive-sample compatibility is proven."
+    }
+  ],
+  "legacyUnverifiedOutputs": []
+}

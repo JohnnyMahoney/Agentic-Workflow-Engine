@@ -1,0 +1,13 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "85a8c744-0f18-4c2f-a68f-8bd412dc9020",
+    "stepId": "checkpoints",
+    "outputs": {},
+    "outputReadiness": "validated",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\write-confirmed\\events.jsonl"
+  }
+}

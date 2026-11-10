@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "2.0",
+  "id": "handoff-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored handoff regression fixture; no Claude run",
+  "inputs": {},
+  "targets": {
+    "state": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#state",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "one",
+      "action": "navigate",
+      "url": "https://the-internet.herokuapp.com"
+    },
+    {
+      "id": "three",
+      "action": "extract",
+      "target": "state",
+      "saveAs": "value"
+    }
+  ],
+  "outputs": {
+    "value": {
+      "type": "string",
+      "description": "Read result",
+      "source": {
+        "savedValue": "value"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "state",
+      "value": {
+        "literal": "Confirmed member-1 Youth"
+      }
+    }
+  ]
+}

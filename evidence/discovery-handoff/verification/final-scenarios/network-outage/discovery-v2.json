@@ -1,0 +1,20 @@
+{
+  "evidenceVersion": "2.0",
+  "request": {
+    "id": "network-outage",
+    "goal": "Read member and balance",
+    "url": "http://127.0.0.1:51508/",
+    "dataMode": "synthetic-test",
+    "inputs": {},
+    "bindings": {},
+    "outputs": {
+      "balance": {
+        "type": "string",
+        "description": "Observed balance"
+      }
+    }
+  },
+  "completed": false,
+  "actions": [],
+  "modelCompleted": false
+}

@@ -1,0 +1,13 @@
+{
+  "id": "discovery-human-member-lookup",
+  "goal": "Find member {{memberId}} and retrieve their current account balance. Confirm the member ID and account type. Return the balance, account type, and member ID.",
+  "url": "http://localhost:8081/",
+  "dataMode": "synthetic-test",
+  "inputs": {"memberId": {"type": "string", "required": true, "description": "Member ID to look up"}},
+  "bindings": {"memberId": "M-1001"},
+  "outputs": {
+    "memberId": {"type": "string", "description": "Member ID observed in the result"},
+    "accountType": {"type": "string", "description": "Current account type displayed for the member"},
+    "balance": {"type": "string", "description": "Current account balance displayed for the member"}
+  }
+}

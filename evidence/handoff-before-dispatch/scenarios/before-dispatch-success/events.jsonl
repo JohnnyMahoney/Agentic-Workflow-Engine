@@ -1,0 +1,28 @@
+{"at":"2026-11-10T02:08:11.429Z","kind":"replay_start","sessionId":"6a4400c8-e53b-4e6b-864b-6744b514ec18","capabilityId":"before-dispatch","llmCalls":0}
+{"at":"2026-11-10T02:08:11.615Z","kind":"step_start","stepId":"open","action":"navigate"}
+{"at":"2026-11-10T02:08:11.630Z","kind":"step_dispatch","stepId":"open","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T02:08:11.647Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-10T02:08:11.647Z","kind":"step_start","stepId":"focusMember","action":"click"}
+{"at":"2026-11-10T02:08:11.659Z","kind":"detector","stepId":"focusMember","code":"UNEXPECTED_DIALOG","observed":"Operator requiredDismiss"}
+{"at":"2026-11-10T02:08:11.659Z","kind":"step_failure","stepId":"focusMember","dispatch":"beforeDispatch"}
+{"at":"2026-11-10T02:08:11.664Z","kind":"handoff_requested","sessionId":"6a4400c8-e53b-4e6b-864b-6744b514ec18","capabilityId":"before-dispatch","description":"Hand-authored regression; simulated operator","stepId":"focusMember","reason":"UNEXPECTED_DIALOG","completedSteps":["open"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"focusMember","action":"click","target":"member","effect":"readOnly"},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-success\\events.jsonl","owner":"paused"}
+{"at":"2026-11-10T02:08:11.680Z","kind":"handoff_evidence","stepId":"focusMember","phase":"before","screenshot":"handoff-focusMember-before.png"}
+{"at":"2026-11-10T02:08:11.686Z","kind":"handoff_control","stepId":"focusMember","owner":"human"}
+{"at":"2026-11-10T02:08:11.723Z","kind":"human_action","stepId":"focusMember","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T02:08:11.726Z","kind":"handoff_control","stepId":"focusMember","owner":"verifying"}
+{"at":"2026-11-10T02:08:11.746Z","kind":"handoff_evidence","stepId":"focusMember","phase":"after","screenshot":"handoff-focusMember-after.png"}
+{"at":"2026-11-10T02:08:11.749Z","kind":"handoff_decision","stepId":"focusMember","decision":"SAFE_RETRY","dispatch":"beforeDispatch","reason":"Action never started; policy, detectors and target revalidated; no pending mutations","maxAttempts":1}
+{"at":"2026-11-10T02:08:11.750Z","kind":"step_start","stepId":"focusMember","action":"click"}
+{"at":"2026-11-10T02:08:11.750Z","kind":"step_dispatch","stepId":"focusMember","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:08:11.788Z","kind":"handoff_control","stepId":"focusMember","owner":"automation"}
+{"at":"2026-11-10T02:08:11.789Z","kind":"step_end","stepId":"focusMember"}
+{"at":"2026-11-10T02:08:11.789Z","kind":"step_start","stepId":"read","action":"extract"}
+{"at":"2026-11-10T02:08:11.790Z","kind":"step_dispatch","stepId":"read","action":"extract","dispatch":"started"}
+{"at":"2026-11-10T02:08:11.790Z","kind":"attempt","stepId":"read","attempt":1}
+{"at":"2026-11-10T02:08:11.792Z","kind":"step_end","stepId":"read"}
+{"at":"2026-11-10T02:08:11.792Z","kind":"step_start","stepId":"verify","action":"assert"}
+{"at":"2026-11-10T02:08:11.793Z","kind":"step_dispatch","stepId":"verify","action":"assert","dispatch":"started"}
+{"at":"2026-11-10T02:08:11.796Z","kind":"condition","stepId":"verify","expected":{"kind":"textEquals","target":"state","value":{"literal":"focused"}},"matches":true,"observed":{"visible":true,"text":"focused"}}
+{"at":"2026-11-10T02:08:11.796Z","kind":"step_end","stepId":"verify"}
+{"at":"2026-11-10T02:08:11.800Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textEquals","target":"state","value":{"literal":"focused"}},"matches":true,"observed":{"visible":true,"text":"focused"},"blocked":false}
+{"at":"2026-11-10T02:08:11.823Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"6a4400c8-e53b-4e6b-864b-6744b514ec18","stepId":"checkpoints","outputs":{"state":"focused"},"outputReadiness":"legacy-unverified","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\before-dispatch-success\\events.jsonl"}

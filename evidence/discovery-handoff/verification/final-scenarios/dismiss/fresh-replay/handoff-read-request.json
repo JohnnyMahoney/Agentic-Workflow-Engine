@@ -1,0 +1,19 @@
+{
+  "sessionId": "dff5f51f-6194-4cf1-ac22-55813f86f533",
+  "capabilityId": "scripted-compilation-fixture",
+  "description": "Hand-authored candidate for Builder regression; not Claude compilation",
+  "stepId": "read",
+  "reason": "UNEXPECTED_DIALOG",
+  "completedSteps": [
+    "open"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "read",
+    "action": "extract",
+    "target": "balance",
+    "saveAs": "value"
+  },
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\dismiss\\fresh-replay\\events.jsonl"
+}

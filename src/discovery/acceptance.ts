@@ -4,6 +4,8 @@ import { createHash } from "node:crypto";
 import { CapabilityError } from "../capability/contract.js";
 import type { DiscoveryEvidence, Snapshot } from "../capability/evidence.js";
 import { FORM_INPUT_REJECTED_MESSAGE } from "./failures.js";
+import { sameObservedState } from "./human-evidence.js";
+import type { Policy } from "../surfaces/playwright.js";
 
 export interface DiscoveryAudit { events: Record<string, unknown>[]; summary: {assessment?: {completed?: boolean}; toolFailures?: number}; sourceHashes?: Record<string, string> }
 export interface DiscoveryAdmission {
@@ -36,7 +38,21 @@ function referenceTarget(snapshot: Snapshot, raw: unknown): {frame: number; node
 
 // This is eligibility, not a declaration that an arbitrary natural-language goal succeeded.
 // Builder must still verify the candidate's outputs and post-action checkpoints.
-export function checkDiscoveryEvidence(evidence: DiscoveryEvidence, audit?: DiscoveryAudit): DiscoveryAdmission {
+export function checkDiscoveryEvidence(evidence: DiscoveryEvidence, audit?: DiscoveryAudit, policy?: Policy): DiscoveryAdmission {
+  const interventions = evidence.interventions ?? [];
+  const requests = audit?.events.filter(event => event.kind === "discovery_intervention") ?? [];
+  if (requests.length !== interventions.length) reject("DISCOVERY_HANDOFF_AUDIT_MISMATCH", "Interventions cannot be omitted from discovery evidence or its audit");
+  if (new Set(interventions.map(item => item.id)).size !== interventions.length) reject("DISCOVERY_HANDOFF_AUDIT_MISMATCH", "Duplicate intervention IDs");
+  for (const intervention of evidence.interventions ?? []) {
+    if (!Number.isInteger(intervention.afterAction) || intervention.afterAction < 0 || intervention.afterAction > evidence.actions.length || !requests.some(event => event.id === intervention.id && event.source === intervention.source && event.afterAction === intervention.afterAction)) reject("DISCOVERY_HANDOFF_AUDIT_MISMATCH", "Intervention does not match its chronological audit position");
+    if (intervention.outcome !== "resumed" || !intervention.after) reject("DISCOVERY_HANDOFF_INCOMPLETE", "Human intervention did not resume normally", {intervention: intervention.id});
+    if (!audit || !audit.events.some(event => event.kind === "discovery_handoff_resumed" && event.id === intervention.id)) reject("DISCOVERY_HANDOFF_AUDIT_MISSING", "Intervention requires corroborating audit", {intervention: intervention.id});
+    const recorded = audit.events.filter(event => event.kind === "human_action" && event.stepId === intervention.id).map(({at, kind, ...fields}) => fields);
+    if (JSON.stringify(recorded) !== JSON.stringify(intervention.humanActions)) reject("DISCOVERY_HANDOFF_AUDIT_MISMATCH", "Manual action ledger differs from companion audit");
+    if (intervention.humanActions.length || !sameObservedState(intervention.before, intervention.after)) {
+      if (!policy?.humanBlockers?.some(rule => rule.url === intervention.before.url) || intervention.humanActions.some(event => event.action !== "click")) reject("HUMAN_EVIDENCE_UNVERIFIED", "Human changes lack a trusted temporary-blocker rule; essential human-only steps cannot be compiled", {intervention: intervention.id});
+    }
+  }
   if (evidence.evidenceVersion !== "2.0" || !evidence.actions.length) reject("UNSUPPORTED_EVIDENCE", "Requires completed v2 discovery evidence");
   if (evidence.actions.some((action, index) => action.index !== index + 1)) reject("UNSUPPORTED_EVIDENCE", "Discovery has failed or missing actions; preserve original consecutive audit indices");
   if (!evidence.actions.some(action => action.success && action.name === "navigate" && action.after.url === evidence.request.url)) reject("UNSUPPORTED_EVIDENCE", "Discovery never reached the requested entry point");

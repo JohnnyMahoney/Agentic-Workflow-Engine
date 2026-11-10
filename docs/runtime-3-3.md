@@ -88,10 +88,11 @@ execution stops; this is not human handoff or a generic dialog recovery routine.
   potentially modifying. DOM evidence cannot prove absence of server side effects.
 - `retryable` is false after any potentially modifying dispatch, even if its
   confirmation succeeded before a later failure. No automatic workflow restart.
-  OUTCOME_UNKNOWN closes the test browser and requires external reconciliation.
+  OUTCOME_UNKNOWN requires reconciliation. Without --handoff, failure closes the browser.
+  Opt-in [Replay handoff](handoff.md) can pause eligible steps before final cleanup.
 
 The engine records conditions, attempts, retry delays, detector observations and
 results. Screenshots are from the synthetic/public test surfaces only. Unit mocks
 are labeled diagnostic fixtures and do not pretend to provide browser screenshots.
-No human handoff, resume, conditional workflow engine, database, or production
-redaction system is introduced here.
+Replay handoff is documented separately in [handoff.md](handoff.md). No conditional
+workflow engine, database or production redaction system is implemented.

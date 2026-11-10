@@ -1,0 +1,23 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "d8fcadfe-470f-422d-ae03-699adb073b70",
+  "stepId": "focusMember",
+  "retryable": false,
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test2-guard-20261109-185606\\replay\\events.jsonl",
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "memberInput"
+  },
+  "observed": [],
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "UNEXPECTED_DIALOG",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "No sufficient recorded postcondition or safe retry proof",
+    "observed": [],
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

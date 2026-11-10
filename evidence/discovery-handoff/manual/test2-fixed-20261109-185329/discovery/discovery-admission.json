@@ -1,0 +1,9 @@
+{
+  "status": "eligible-for-compilation",
+  "goalVerification": "pending-builder-validation",
+  "recoveredFailures": [],
+  "auditHashes": {
+    "events": "a6f91f36ebc5ab2e892d77f58032a1853ee1c7ce91db62300c0431c6335ab9d2",
+    "summary": "a34b493979e0c94b2967fd8cd76e0d47a2d31cab31d50e2006493d7fc8fcf2fa"
+  }
+}

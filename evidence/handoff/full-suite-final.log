@@ -1,0 +1,40 @@
+✔ discovery form_input selects a native option and still fills text fields (410.2101ms)
+✔ coordinate recorder identifies actual targets inside bordered nested frames (669.4554ms)
+✔ semantic validation rejects missing targets, outputs, duplicate IDs and session locators (7.8484ms)
+✔ resolver supports frame-aware role, scoped parameter binding, and rejects ambiguous/conflicting targets (465.2202ms)
+✔ builder validates recorded identity and rejects invented actions, locators, values and checkpoints (2203.2846ms)
+✔ builder verifies a native select's recorded chosen option (994.283ms)
+✔ replay selects by parameterized label or value (505.0823ms)
+✔ generic replay executes fill, click, wait, extract, assert; returns structured failures (1451.4174ms)
+✔ pre-dispatch guard is typed and does not modify the field (377.4521ms)
+✔ admission requires safe recovery, preserves failures, and rejects uncertain writes (7.9846ms)
+✔ Builder excludes failed actions but still requires final goal evidence and all successful interactions (1983.8857ms)
+✔ legacy audit safely admits Test 6 unchanged and rejects missing or contradictory proof (10.0875ms)
+✔ handoff preserves five-step execution and saved output; resume alone is rejected (23.3926ms)
+✔ unresolved wait retries once, abort and operator deadline close cleanly (67.929ms)
+✔ uncertain write never repeats; completion requires all associated confirmation conditions (21.1047ms)
+✔ missing click postcondition cannot be invented; policy failure cannot request handoff (9.8093ms)
+✔ safe read retry keeps outputs and does not restart earlier steps (6.8232ms)
+✔ closed browser and navigation outside policy stop recovery (287.0898ms)
+✔ real browser handoff retains context, records operator events without typed values, and completes five steps (760.0101ms)
+✔ Banking Sandbox session expiry resumes in the same page after operator login and search (1587.0045ms)
+✔ output readiness waits for delayed values, preserves zero, times out on permanent placeholders (2457.7145ms)
+✔ v2.1 requires output conditions; v2.0 stays readable; patterns are bounded and full-string (36.6198ms)
+✔ Builder checks positive output evidence and rejects known premature or contradicting conditions (1342.6994ms)
+✔ textContains rejects loading, waits for actual input-bound confirmation (126.4202ms)
+✔ safe extract retries are bounded; missing target and ambiguous target fail closed (182.8228ms)
+✔ write timeout is unknown, never repeats; explicit confirmation clears uncertainty (93.9505ms)
+✔ native dialog and timeout are not guessed authentication failures (63.6315ms)
+✔ explicit writes require confirmation and prohibit restart after later timeout (64.3197ms)
+✔ Builder rejects historical Case 2 premature confirmation using real saved evidence (2458.7057ms)
+✔ selectedOptionLabel reads the selected label, preserves text extraction, rejects unsupported controls (445.2664ms)
+✔ Builder validates selectedOptionLabel from native select metadata after form_input (2323.8433ms)
+✔ Replay extracts selected label but still requires post-write creation confirmation (1414.2376ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7332.6181

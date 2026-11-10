@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "dff5f51f-6194-4cf1-ac22-55813f86f533",
+  "stepId": "checkpoints",
+  "outputs": {
+    "balance": "$0.00"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\discovery-handoff\\verification\\final-scenarios\\dismiss\\fresh-replay\\events.jsonl"
+}

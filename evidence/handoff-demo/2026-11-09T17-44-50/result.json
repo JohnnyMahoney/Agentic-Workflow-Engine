@@ -1,0 +1,30 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "c93ffdbc-eab5-46fb-8248-5fb04cfde6ce",
+  "stepId": "waitSearch",
+  "retryable": false,
+  "evidenceRef": "evidence\\handoff-demo\\2026-11-09T17-44-50\\events.jsonl",
+  "expected": {
+    "id": "waitSearch",
+    "action": "wait",
+    "condition": {
+      "kind": "textContains",
+      "target": "row",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    "timeoutMs": 2500
+  },
+  "observed": "SESSION_EXPIRED: Session expired. Please log in again.",
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "SESSION_EXPIRED",
+    "recoveryCode": "SESSION_EXPIRED",
+    "recoveryMessage": "Explicit UI outcome detector matched",
+    "observed": "SESSION_EXPIRED: Session expired. Please log in again.",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "origins": [
+    "http://127.0.0.1:59712"
+  ],
+  "actions": [
+    "navigate",
+    "click",
+    "fill",
+    "selectOption",
+    "extract",
+    "wait",
+    "assert"
+  ],
+  "detectors": [
+    {
+      "code": "SESSION_EXPIRED",
+      "status": "HARD_FAILURE",
+      "target": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "[role=\"alert\"]",
+            "frames": []
+          }
+        ]
+      },
+      "value": {
+        "literal": "SESSION_EXPIRED"
+      }
+    }
+  ]
+}

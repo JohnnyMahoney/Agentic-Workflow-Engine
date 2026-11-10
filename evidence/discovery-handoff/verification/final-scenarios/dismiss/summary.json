@@ -1,0 +1,12 @@
+{
+  "name": "dismiss",
+  "mode": "local",
+  "model": "scripted",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Observed M-1001 and $0.00",
+  "actionCount": 4
+}

@@ -1,0 +1,23 @@
+{
+  "phase": "Discovery",
+  "currentUrl": "chrome-error://chromewebdata/",
+  "sessionId": "6e66edf8-704f-4c52-ba78-f21f15d1d5b8",
+  "capabilityId": "discovery-human-member-lookup",
+  "description": "Find member M-1001 and retrieve their current account balance. Confirm the member ID and account type. Return the balance, account type, and member ID.\nRead the relevant page text both before acting and after the final state appears.\nDriver detected repeated tool failures or repeated unchanged textual observations.\nPreceding action: {\"index\":2,\"name\":\"navigate\",\"success\":false,\"dispatch\":\"unknown\"}",
+  "stepId": "discovery-1",
+  "reason": "ACTION_STUCK",
+  "completedSteps": [],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "action": "human-intervention",
+    "browserActionExecutedByThisTool": false,
+    "precedingAction": {
+      "index": 2,
+      "name": "navigate",
+      "success": false,
+      "dispatch": "unknown"
+    }
+  },
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test2-20261109-184549\\discovery\\events.jsonl"
+}

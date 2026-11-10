@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "7092efbd-b53a-4634-a939-a6cd3b686ff8",
+  "stepId": "checkpoints",
+  "outputs": {
+    "status": "M-1001"
+  },
+  "outputReadiness": "legacy-unverified",
+  "retryable": false,
+  "evidenceRef": "evidence\\handoff-demo\\2026-11-09T17-50-45\\events.jsonl"
+}

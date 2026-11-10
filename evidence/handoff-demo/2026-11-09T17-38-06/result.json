@@ -1,0 +1,34 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "a5a850e9-ea23-4085-8280-ea6e092fee9f",
+  "stepId": "waitSearch",
+  "retryable": false,
+  "evidenceRef": "evidence\\handoff-demo\\2026-11-09T17-38-06\\events.jsonl",
+  "expected": {
+    "id": "waitSearch",
+    "action": "wait",
+    "condition": {
+      "kind": "textContains",
+      "target": "row",
+      "value": {
+        "input": "memberId"
+      }
+    },
+    "timeoutMs": 2500
+  },
+  "observed": {
+    "code": "HANDOFF_UNRESOLVED",
+    "cause": "SESSION_EXPIRED",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "Browser session was closed"
+  },
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "SESSION_EXPIRED",
+    "recoveryCode": "HANDOFF_UNRESOLVED",
+    "recoveryMessage": "Browser session was closed",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

@@ -1,0 +1,18 @@
+{"at":"2026-11-08T23:25:04.146Z","kind":"replay_start","sessionId":"f0b4e21e-e5c2-4176-844e-8e841e275a90","capabilityId":"handoff-fixture","llmCalls":0}
+{"at":"2026-11-08T23:25:04.146Z","kind":"step_start","stepId":"one","action":"navigate"}
+{"at":"2026-11-08T23:25:04.147Z","kind":"step_end","stepId":"one"}
+{"at":"2026-11-08T23:25:04.147Z","kind":"step_start","stepId":"three","action":"extract"}
+{"at":"2026-11-08T23:25:04.147Z","kind":"attempt","stepId":"three","attempt":1}
+{"at":"2026-11-08T23:25:04.148Z","kind":"handoff_requested","sessionId":"f0b4e21e-e5c2-4176-844e-8e841e275a90","capabilityId":"handoff-fixture","description":"Hand-authored handoff regression fixture; no Claude run","stepId":"three","reason":"TARGET_NOT_FOUND","completedSteps":["one"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"three","action":"extract","target":"state","saveAs":"value"},"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\safe-read\\events.jsonl","owner":"paused"}
+{"at":"2026-11-08T23:25:04.148Z","kind":"handoff_evidence_unavailable","stepId":"three","phase":"before"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"human_action","stepId":"three","action":"mock-operator"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"handoff_control","stepId":"three","owner":"human"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"handoff_control","stepId":"three","owner":"verifying"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"handoff_evidence_unavailable","stepId":"three","phase":"after"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"handoff_decision","stepId":"three","decision":"SAFE_RETRY","reason":"Observation-only operation; no pending mutations","maxAttempts":1}
+{"at":"2026-11-08T23:25:04.149Z","kind":"step_start","stepId":"three","action":"extract"}
+{"at":"2026-11-08T23:25:04.149Z","kind":"attempt","stepId":"three","attempt":1}
+{"at":"2026-11-08T23:25:04.150Z","kind":"handoff_control","stepId":"three","owner":"automation"}
+{"at":"2026-11-08T23:25:04.150Z","kind":"step_end","stepId":"three"}
+{"at":"2026-11-08T23:25:04.150Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textEquals","target":"state","value":{"literal":"Confirmed member-1 Youth"}},"matches":true,"observed":{"visible":true,"text":"Confirmed member-1 Youth"},"blocked":false}
+{"at":"2026-11-08T23:25:04.150Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"f0b4e21e-e5c2-4176-844e-8e841e275a90","stepId":"checkpoints","outputs":{"value":"Confirmed member-1 Youth"},"outputReadiness":"legacy-unverified","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff\\regression-final\\safe-read\\events.jsonl"}

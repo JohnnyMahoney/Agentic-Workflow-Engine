@@ -1,0 +1,25 @@
+{
+  "artifactUnchanged": true,
+  "result": {
+    "status": "HARD_FAILURE",
+    "code": "POLICY_DENIED",
+    "sessionId": "2f9877bb-1fef-4c72-b02b-7dde1b3c0990",
+    "stepId": "three",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\handoff-before-dispatch\\scenarios\\POLICY_DENIED\\events.jsonl",
+    "expected": {
+      "id": "three",
+      "action": "click",
+      "target": "state",
+      "effect": "readOnly"
+    },
+    "observed": {
+      "code": "POLICY_DENIED"
+    },
+    "message": "fixture",
+    "details": {
+      "pendingMutations": [],
+      "writeDispatched": false
+    }
+  }
+}

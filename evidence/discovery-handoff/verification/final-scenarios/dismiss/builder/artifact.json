@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "2.1",
+  "id": "scripted-compilation-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored candidate for Builder regression; not Claude compilation",
+  "inputs": {},
+  "targets": {
+    "balance": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#balance",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "open",
+      "action": "navigate",
+      "url": "http://127.0.0.1:50061/"
+    },
+    {
+      "id": "read",
+      "action": "extract",
+      "target": "balance",
+      "saveAs": "value"
+    }
+  ],
+  "outputs": {
+    "balance": {
+      "type": "string",
+      "description": "Observed balance",
+      "source": {
+        "savedValue": "value"
+      },
+      "validation": {
+        "condition": {
+          "kind": "textEquals",
+          "value": {
+            "literal": "$0.00"
+          }
+        },
+        "timeoutMs": 1000
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textEquals",
+      "target": "balance",
+      "value": {
+        "literal": "$0.00"
+      }
+    }
+  ]
+}

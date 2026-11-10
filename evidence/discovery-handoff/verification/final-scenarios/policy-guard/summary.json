@@ -1,0 +1,12 @@
+{
+  "name": "policy-guard",
+  "mode": "local",
+  "model": "scripted",
+  "assessment": {
+    "completed": true,
+    "goalVerified": false
+  },
+  "toolFailures": 0,
+  "finalText": "Done",
+  "actionCount": 4
+}
