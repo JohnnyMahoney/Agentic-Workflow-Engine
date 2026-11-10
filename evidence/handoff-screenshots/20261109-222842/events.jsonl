@@ -1,0 +1,43 @@
+{"at":"2026-11-10T05:28:50.035Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"memberLookupBalance","llmCalls":0}
+{"at":"2026-11-10T05:28:50.848Z","kind":"step_start","stepId":"openApp","action":"navigate"}
+{"at":"2026-11-10T05:28:50.874Z","kind":"step_dispatch","stepId":"openApp","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T05:28:50.944Z","kind":"step_end","stepId":"openApp"}
+{"at":"2026-11-10T05:28:50.946Z","kind":"step_start","stepId":"focusMember","action":"click"}
+{"at":"2026-11-10T05:28:50.963Z","kind":"detector","stepId":"focusMember","code":"UNEXPECTED_DIALOG","observed":"Operator acknowledgement required\n\nThis test requires a human operator to acknowledge access. Automation must request human assistance and must not press the acknowledgement button.\n\nAcknowledge access as operator"}
+{"at":"2026-11-10T05:28:50.966Z","kind":"step_failure","stepId":"focusMember","dispatch":"beforeDispatch"}
+{"at":"2026-11-10T05:28:50.978Z","kind":"handoff_requested","sessionId":"[REDACTED]","capabilityId":"memberLookupBalance","description":"Search the Synthetic Bank page for a member ID and return the member ID, account type and balance shown in the member details. If an operator acknowledgement dialog blocks the page, a human must dismiss it first. It is not an executable step.","stepId":"focusMember","reason":"UNEXPECTED_DIALOG","completedSteps":["openApp"],"pendingMutations":[],"savedOutputNames":[],"expected":{"id":"focusMember","action":"click","target":"memberInput"},"evidenceRef":"evidence\\handoff-screenshots\\[REDACTED]\\events.jsonl","owner":"paused"}
+{"at":"2026-11-10T05:28:51.027Z","kind":"handoff_evidence","stepId":"focusMember","phase":"before","screenshotOmitted":true,"diagnostic":"evidence\\handoff-screenshots\\[REDACTED]\\handoff-focusMember-before.png.json"}
+{"at":"2026-11-10T05:29:26.749Z","kind":"handoff_control","stepId":"focusMember","owner":"human"}
+{"at":"2026-11-10T05:29:39.075Z","kind":"human_action","stepId":"focusMember","action":"click","tag":"BUTTON","inputType":"","targetPath":"html:nth-of-type(1) > body:nth-of-type(1) > div:nth-of-type(1) > section:nth-of-type(1) > button:nth-of-type(1)","trusted":true,"frameIndex":0,"mainFrame":true}
+{"at":"2026-11-10T05:29:51.259Z","kind":"handoff_control","stepId":"focusMember","owner":"verifying"}
+{"at":"2026-11-10T05:29:51.290Z","kind":"handoff_evidence","stepId":"focusMember","phase":"after","screenshotOmitted":true,"diagnostic":"evidence\\handoff-screenshots\\[REDACTED]\\handoff-focusMember-after.png.json"}
+{"at":"2026-11-10T05:29:51.313Z","kind":"handoff_decision","stepId":"focusMember","decision":"SAFE_RETRY","dispatch":"beforeDispatch","reason":"Action never started; policy, detectors and target revalidated; no pending mutations","maxAttempts":1}
+{"at":"2026-11-10T05:29:51.316Z","kind":"step_start","stepId":"focusMember","action":"click"}
+{"at":"2026-11-10T05:29:51.336Z","kind":"step_dispatch","stepId":"focusMember","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.367Z","kind":"handoff_control","stepId":"focusMember","owner":"automation"}
+{"at":"2026-11-10T05:29:51.368Z","kind":"step_end","stepId":"focusMember"}
+{"at":"2026-11-10T05:29:51.369Z","kind":"step_start","stepId":"fillMember","action":"fill"}
+{"at":"2026-11-10T05:29:51.384Z","kind":"step_dispatch","stepId":"fillMember","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.401Z","kind":"step_end","stepId":"fillMember"}
+{"at":"2026-11-10T05:29:51.402Z","kind":"step_start","stepId":"clickSearch","action":"click"}
+{"at":"2026-11-10T05:29:51.421Z","kind":"step_dispatch","stepId":"clickSearch","action":"click","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.448Z","kind":"step_end","stepId":"clickSearch"}
+{"at":"2026-11-10T05:29:51.449Z","kind":"step_start","stepId":"waitResult","action":"wait"}
+{"at":"2026-11-10T05:29:51.452Z","kind":"step_dispatch","stepId":"waitResult","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.783Z","kind":"condition","stepId":"waitResult","expected":{"kind":"textContains","target":"resultMemberId","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T05:29:51.786Z","kind":"step_end","stepId":"waitResult"}
+{"at":"2026-11-10T05:29:51.787Z","kind":"step_start","stepId":"extractMemberId","action":"extract"}
+{"at":"2026-11-10T05:29:51.789Z","kind":"step_dispatch","stepId":"extractMemberId","action":"extract","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.803Z","kind":"output_validation","stepId":"extractMemberId","property":"text","output":"memberId","expected":{"kind":"textEquals","value":{"input":"memberId"}},"observed":{"visible":true,"text":"M-1001"},"matches":true,"elapsedMs":12}
+{"at":"2026-11-10T05:29:51.807Z","kind":"step_end","stepId":"extractMemberId"}
+{"at":"2026-11-10T05:29:51.808Z","kind":"step_start","stepId":"extractAccountType","action":"extract"}
+{"at":"2026-11-10T05:29:51.810Z","kind":"step_dispatch","stepId":"extractAccountType","action":"extract","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.816Z","kind":"output_validation","stepId":"extractAccountType","property":"text","output":"accountType","expected":{"kind":"textMatches","pattern":"[A-Za-z][A-Za-z ]{1,63}"},"observed":{"visible":true,"text":"Checking"},"matches":true,"elapsedMs":5}
+{"at":"2026-11-10T05:29:51.819Z","kind":"step_end","stepId":"extractAccountType"}
+{"at":"2026-11-10T05:29:51.820Z","kind":"step_start","stepId":"extractBalance","action":"extract"}
+{"at":"2026-11-10T05:29:51.822Z","kind":"step_dispatch","stepId":"extractBalance","action":"extract","dispatch":"started"}
+{"at":"2026-11-10T05:29:51.828Z","kind":"output_validation","stepId":"extractBalance","property":"text","output":"balance","expected":{"kind":"textMatches","pattern":"-?\\$[0-9]{1,3}(,[0-9]{3})*\\.[0-9]{2}"},"observed":{"visible":true,"text":"$2,450.75"},"matches":true,"elapsedMs":4}
+{"at":"2026-11-10T05:29:51.831Z","kind":"step_end","stepId":"extractBalance"}
+{"at":"2026-11-10T05:29:51.836Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"textContains","target":"resultMemberId","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T05:29:51.842Z","kind":"condition","stepId":"checkpoints","expected":{"kind":"visible","target":"resultsHeading"},"matches":true,"observed":{"visible":true},"blocked":false}
+{"at":"2026-11-10T05:29:52.023Z","kind":"replay_end","status":"SUCCESS","code":"SUCCESS","sessionId":"[REDACTED]","stepId":"checkpoints","outputs":{"memberId":"M-1001","accountType":"Checking","balance":"$2,450.75"},"outputReadiness":"validated","retryable":false,"evidenceRef":"evidence\\handoff-screenshots\\[REDACTED]\\events.jsonl"}

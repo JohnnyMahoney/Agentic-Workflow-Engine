@@ -1,9 +1,10 @@
 # Human Handoff documentation screenshots
 
-These are placeholders for real screenshots to be captured by the author.
-No images have been generated or supplied for these three stages yet.
+These are real screenshots captured manually by the author during the synthetic
+Replay run `evidence/handoff-screenshots/20261109-222842/`. Original image bytes
+were copied without editing; no images were generated.
 
-| Suggested file | Capture and caption |
+| File | Capture and caption |
 | --- | --- |
 | `01-paused.png` | Automation browser and terminal showing the intervention reason, step and paused ownership. |
 | `02-human-control.png` | After `take-control`, the same browser while the operator dismisses the synthetic access blocker. |
@@ -14,7 +15,9 @@ Use synthetic data only; exclude keys, personal information, unrelated windows a
 terminal history containing secrets. Runtime screenshot persistence remains disabled;
 these are deliberate manual documentation captures, not engine-generated evidence.
 
-Once captured, replace the corresponding textual README placeholders with relative
-image links and retain accurate captions. Until then, README embeds no missing images.
-The existing [live acceptance evidence](../../../evidence/discovery-handoff/manual/README.md)
-is the proof of execution; placeholders are not evidence.
+The root README embeds all three files. The terminal shows the ordered lifecycle
+and final SUCCESS with M-1001 / Checking / $2,450.75 and validated output readiness.
+The [run events](../../../evidence/handoff-screenshots/20261109-222842/events.jsonl)
+and [result](../../../evidence/handoff-screenshots/20261109-222842/result.json)
+provide structured evidence. Earlier [live acceptance](../../../evidence/discovery-handoff/manual/README.md)
+also remains available independently.

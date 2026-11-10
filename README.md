@@ -155,14 +155,15 @@ then enter `resume`. Expected: `SAFE_RETRY` followed by `SUCCESS` with M-1001,
 Checking and $2,450.75. `abort` stops the run. `--handoff` requires a visible browser
 and an interactive terminal; it cannot be combined with `--headless`.
 
-| Screenshot placeholder | Caption |
+| Live demonstration | Caption |
 | --- | --- |
-| 1 — Not captured yet | Automation paused with intervention reason and current step. |
-| 2 — Not captured yet | After take-control, the human operates the same browser session. |
-| 3 — Not captured yet | After Resume, verification allows continuation and returns SUCCESS. |
+| ![Automation paused](docs/media/handoff/01-paused.png) | Automation paused at focusMember with UNEXPECTED_DIALOG and the intervention controls. |
+| ![Human control active](docs/media/handoff/02-human-control.png) | After take-control, the operator has control of the same browser session. |
+| ![Replay resumed successfully](docs/media/handoff/03-resumed-success.png) | After resume, SAFE_RETRY continues execution and returns SUCCESS with validated outputs. |
 
-The author will add real screenshots under [docs/media/handoff](docs/media/handoff/README.md).
-No missing image files are embedded. [Replay recovery rules](docs/handoff.md) and
+These real screenshots were captured manually by the author during the same
+synthetic Replay run; [capture provenance](docs/media/handoff/README.md).
+[Replay recovery rules](docs/handoff.md) and
 [Discovery admission limits](docs/discovery-handoff.md) explain the implementation.
 
 ## Scope and known limitations

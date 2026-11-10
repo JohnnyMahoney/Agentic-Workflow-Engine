@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "[REDACTED]",
+  "stepId": "checkpoints",
+  "outputs": {
+    "memberId": "M-1001",
+    "accountType": "Checking",
+    "balance": "$2,450.75"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "evidence\\handoff-screenshots\\[REDACTED]\\events.jsonl"
+}
