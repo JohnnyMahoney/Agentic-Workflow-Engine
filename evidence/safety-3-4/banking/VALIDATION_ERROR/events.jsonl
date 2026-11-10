@@ -1,0 +1,59 @@
+{"at":"2026-11-10T02:53:11.935Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T02:53:12.115Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T02:53:12.131Z","kind":"step_dispatch","stepId":"navigate","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.160Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T02:53:12.161Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T02:53:12.187Z","kind":"step_dispatch","stepId":"query","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.198Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T02:53:12.199Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T02:53:12.215Z","kind":"step_dispatch","stepId":"search","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.243Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T02:53:12.244Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T02:53:12.250Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.252Z","kind":"step_dispatch","stepId":"waitSearch","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.258Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.326Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.387Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.457Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.526Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.589Z","kind":"condition","stepId":"waitSearch","expected":{"kind":"textContains","target":"row","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T02:53:12.592Z","kind":"step_end","stepId":"waitSearch"}
+{"at":"2026-11-10T02:53:12.592Z","kind":"step_start","stepId":"view","action":"click"}
+{"at":"2026-11-10T02:53:12.613Z","kind":"step_dispatch","stepId":"view","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.641Z","kind":"step_end","stepId":"view"}
+{"at":"2026-11-10T02:53:12.641Z","kind":"step_start","stepId":"waitMember","action":"wait"}
+{"at":"2026-11-10T02:53:12.648Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.649Z","kind":"step_dispatch","stepId":"waitMember","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T02:53:12.656Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.726Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.790Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.858Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.922Z","kind":"detector","stepId":"waitMember","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:12.994Z","kind":"condition","stepId":"waitMember","expected":{"kind":"textEquals","target":"member","value":{"input":"memberId"}},"matches":true,"observed":{"visible":true,"text":"M-1001"},"blocked":false}
+{"at":"2026-11-10T02:53:12.997Z","kind":"step_end","stepId":"waitMember"}
+{"at":"2026-11-10T02:53:12.998Z","kind":"step_start","stepId":"open","action":"click"}
+{"at":"2026-11-10T02:53:13.013Z","kind":"step_dispatch","stepId":"open","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:13.042Z","kind":"step_end","stepId":"open"}
+{"at":"2026-11-10T02:53:13.043Z","kind":"step_start","stepId":"select","action":"selectOption"}
+{"at":"2026-11-10T02:53:13.058Z","kind":"step_dispatch","stepId":"select","action":"selectOption","dispatch":"started"}
+{"at":"2026-11-10T02:53:13.070Z","kind":"step_end","stepId":"select"}
+{"at":"2026-11-10T02:53:13.071Z","kind":"step_start","stepId":"create","action":"click"}
+{"at":"2026-11-10T02:53:13.087Z","kind":"step_dispatch","stepId":"create","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:13.107Z","kind":"step_end","stepId":"create"}
+{"at":"2026-11-10T02:53:13.108Z","kind":"step_start","stepId":"waitConfirmation","action":"wait"}
+{"at":"2026-11-10T02:53:13.115Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.116Z","kind":"step_dispatch","stepId":"waitConfirmation","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T02:53:13.124Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.128Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T02:53:13.192Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.196Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T02:53:13.255Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.259Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T02:53:13.325Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.329Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T02:53:13.387Z","kind":"detector","stepId":"waitConfirmation","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:13.391Z","kind":"condition","stepId":"waitConfirmation","expected":{"kind":"textContains","target":"status","value":{"literal":"opened for"}},"matches":false,"observed":{"visible":true,"text":"Loading…"},"blocked":true}
+{"at":"2026-11-10T02:53:13.454Z","kind":"detector","stepId":"waitConfirmation","code":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type."}
+{"at":"2026-11-10T02:53:13.466Z","kind":"step_failure","stepId":"waitConfirmation","dispatch":"started"}
+{"at":"2026-11-10T02:53:13.537Z","kind":"failure_capture_error","message":"Error: Screenshot omitted; sanitized DOM diagnostic saved"}
+{"at":"2026-11-10T02:53:13.564Z","kind":"replay_end","status":"BUSINESS_OUTCOME","code":"VALIDATION_ERROR","sessionId":"[REDACTED]","stepId":"waitConfirmation","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\safety-3-4\\banking\\VALIDATION_ERROR\\events.jsonl","expected":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type.","message":"Explicit UI outcome detector matched","details":{"code":"VALIDATION_ERROR","status":"BUSINESS_OUTCOME","expected":"VALIDATION_ERROR","observed":"VALIDATION_ERROR: Select a valid account type.","resolvesMutations":["create"],"pendingMutations":["create"],"writeDispatched":true}}

@@ -618,3 +618,46 @@ prevent secrets/raw sensitive data from entering every persisted evidence channe
 Validate policy denial before dispatch and redaction with synthetic sensitive-data
 fixtures. Human approval must not bypass these controls. Concrete behavior choices
 will be proposed before implementing that safety slice.
+
+## D13 - Minimal safety policy and sanitized persistence
+
+**Status:** Implemented, regression-tested and live-validated for the synthetic/public
+web MVP, following the approved Section 3.4 implementation prompt. The final genuine
+Claude Discovery -> separate Compilation -> validated artifact -> fresh Replay
+passed with the unchanged policy: M-1005 / Term Deposit / $50,000.00, validated
+outputs and zero Replay LLM calls. See [live evidence](evidence/safety-3-4/final-live-e2e/README.md).
+
+**Decision:** Extend trusted policy with explicit routes, actual-target operation
+rules and data classification. Unknown mutations and blocked operations deny by
+default; risky operations require a narrow explicit permission. Enforce in both
+Discovery and Replay, including navigation/redirect boundaries. Distinguish page
+navigation routes from allowed-origin JS/CSS resource loading. No approval workflow
+or new policy framework is introduced. Artifact/LLM risk labels grant no authority.
+
+**Persistence:** Use one text/JSON sanitization boundary for production writers.
+Learn classified DOM/input secret values, redact sensitive fields and their echoes,
+known environment secrets, URL query values and common sensitive patterns. Refuse
+raw image persistence; save sanitized DOM diagnostics instead. Refuse compilation
+when redaction removes necessary evidence. Require trusted synthetic/public data
+classification and refuse sensitive applications in this MVP.
+
+**Why and trade-offs:** Blocking risky operations unless explicitly permitted is
+smaller and easier to test than another approval system. Omitting screenshots is
+more conservative than claiming reliable pixel redaction. It sacrifices persisted
+visual diagnostics; structured DOM evidence remains. Route/operation/selector rules
+require review when a UI changes; existing artifacts remain readable, but legacy
+policy copies need explicit migration. No broad click permission is inferred.
+
+**Limits:** Arbitrary PII still requires trusted classification; patterns are not
+universal detection. A falsely classified sensitive application is outside the
+supported boundary. Browser chrome, manual operator actions, arbitrary application
+scripts and unrelated caller filesystem writes are not adversarially isolated.
+Historical evidence uses synthetic fixtures and is not retroactively rewritten.
+This is an automation safety boundary, not production DLP or a secrets vault.
+
+**Verification:** Negative real-browser tests prove denied requests/mutations have
+no side effects, including redirects, unknown risk, blocked risk and action denial.
+Narrow risky permission still executes. Secret echoes, DOM, URL and tool-response
+capture are checked for raw values; screenshots are refused. Discovery and Replay
+deny independently. Regression covers handoff and the existing Banking Sandbox.
+See [test evidence](evidence/safety-3-4/README.md) and [exact guarantees](docs/safety.md).

@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "elapsedMs": 1974,
+  "creates": 1,
+  "finalState": {
+    "mode": "NONE",
+    "auth": true,
+    "subs": {
+      "M-1001": [
+        {
+          "ref": "M-1001-S1",
+          "type": "Savings"
+        }
+      ]
+    }
+  },
+  "result": {
+    "status": "OUTCOME_UNKNOWN",
+    "code": "WAIT_TIMEOUT",
+    "sessionId": "[REDACTED]",
+    "stepId": "waitConfirmation",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\safety-3-4\\banking\\committed-but-unverified\\events.jsonl",
+    "expected": {
+      "kind": "textContains",
+      "target": "status",
+      "value": {
+        "literal": "Deliberately absent confirmation"
+      }
+    },
+    "observed": {
+      "visible": true,
+      "text": "Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."
+    },
+    "message": "Expected condition was not observed before timeout",
+    "details": {
+      "expected": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "literal": "Deliberately absent confirmation"
+        }
+      },
+      "observed": {
+        "visible": true,
+        "text": "Sub-account M-1001-S1 (Savings) opened for Anna Kovalenko. Simulated — no real transaction."
+      },
+      "timeoutMs": 700,
+      "pendingMutations": [
+        "create"
+      ],
+      "writeDispatched": true
+    },
+    "reconciliationRequired": true
+  }
+}

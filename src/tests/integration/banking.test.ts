@@ -1,4 +1,5 @@
 import test from "node:test";
+import {fixtureSafety} from '../fixture-safety.js';
 import assert from "node:assert/strict";
 import {mkdirSync, readFileSync, writeFileSync} from "node:fs";
 import {join, resolve} from "node:path";
@@ -10,7 +11,7 @@ const root = resolve(process.env.RUNTIME_EVIDENCE_DIR ?? `evidence/runtime-3-3/$
 const base = process.env.BANKING_SANDBOX_URL ?? "http://localhost:8080/modern.html";
 const css = (selector: string): Target => ({strategies: [{kind:"css",selector,frames:[]}]});
 const targets = {q:css("#q"),search:css("#f button"),row:css("#out tbody tr td:first-child"),view:css("#out tbody button"),member:css("#out dd:first-of-type"),open:css("#o"),type:css("#t"),continue:css("#w button:not([type])"),status:css('#out p[role="status"]'),back:css("#b"),subs:css("#out > p:last-of-type"),ambiguous:css("button")};
-const policy: Policy = {origins:[new URL(base).origin],actions:testPolicy.actions,detectors:[
+const policy: Policy = {...fixtureSafety,origins:[new URL(base).origin],actions:testPolicy.actions,detectors:[
  ...["NOT_FOUND","VALIDATION_ERROR","PERMISSION_DENIED","SESSION_EXPIRED"].map(code => ({code,status: (code === "NOT_FOUND" || code === "VALIDATION_ERROR" ? "BUSINESS_OUTCOME" : "HARD_FAILURE") as "BUSINESS_OUTCOME" | "HARD_FAILURE", target:css('[role="alert"]'),value:{literal:code},resolvesMutations:["create"]})),
  {code:"UNEXPECTED_DIALOG",status:"HARD_FAILURE",target:css('body > div:has(> div > button)'),value:{literal:"Scheduled maintenance notice."}},
  {code:"SLOW_LOADING",status:"RECOVERABLE_ERROR",target:targets.status,value:{literal:"Loading"}},
@@ -80,7 +81,7 @@ for (const scenario of scenarios) test(`banking ${scenario.name}`, async () => {
  assert.equal(events.filter(e=>e.kind==="retry").length,0);
  assert.ok(creates<=1);assert.equal(events.filter(e=>e.kind==="step_start"&&e.stepId==="search").length,1);
  if(scenario.create) assert.equal(creates,1);
- if(scenario.status!=="SUCCESS") {assert.ok(result.expected);assert.ok(result.observed);assert.ok(readFileSync(join(directory,"failure.png")).length>0);}
+ if(scenario.status!=="SUCCESS") {assert.ok(result.expected);assert.ok(result.observed);assert.ok(readFileSync(join(directory,"failure.png.json")).length>0);}
  if(scenario.name==="SLOW_LOADING") {assert.ok(elapsedMs>=4000);assert.ok(events.some(e=>e.code==="SLOW_LOADING"));}
  if(scenario.name==="TIMEOUT") {assert.ok(elapsedMs>=350);assert.ok(elapsedMs<5000);}
  if(scenario.name==="unconfirmed-write") {assert.equal(result.reconciliationRequired,true);assert.ok(JSON.stringify(result.observed).includes("Loading"));}

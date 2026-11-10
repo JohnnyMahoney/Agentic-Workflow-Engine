@@ -1,0 +1,22 @@
+{
+  "status": "validated",
+  "evidenceSha256": "aad0d3ec791960d7f6ef499d3d14609df0c7bdbd756504c2dbfdc28af3411477",
+  "candidateSha256": "debf27d2c7c50af8f250f62f996c862887cc6ebf63ef0a9ab88b479cda0d207f",
+  "evidencePath": "evidence/safety-3-4/final-live-e2e/discovery/discovery-v2.json",
+  "candidatePath": "evidence\\safety-3-4\\final-live-e2e\\compilation\\candidate.json",
+  "humanInterventionsVerified": [],
+  "policySha256": "b100e2709395aa73ff9610f31f9f5dc094755826e05b848111ab6d97f297a3e1",
+  "checks": [
+    "human-blocker-policy-and-dom",
+    "schema",
+    "semantic",
+    "explicit-bindings",
+    "recorded-dom-targets",
+    "action-identity-and-order",
+    "observed-select-state",
+    "observed-extraction",
+    "observed-checkpoints",
+    "policy"
+  ],
+  "limitation": "Recorded states prove observed identity; fresh-session replay must separately test stability."
+}

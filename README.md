@@ -50,7 +50,7 @@ and the [design report](REPORT.md).
 | §3.1 Discovery | Implemented/tested with genuine Claude runs on Modern, Legacy and Awkward web UIs. |
 | §3.2 Capability | Implemented/tested: versioned schema, explicit inputs, targets, outputs and checkpoints. |
 | §3.3 Replay | Implemented/tested for this web MVP: parameterization, output readiness, typed outcomes and bounded recovery. Evidence includes failed runs and subsequent fixes; not universal reliability or final assignment acceptance. |
-| §3.4 Safety | Partial: origin/action policy and conservative write handling; production redaction and comprehensive risky-action controls remain. |
+| §3.4 Safety | Implemented/tested for trusted synthetic/public fixtures: route/action/operation policy, conservative risk blocking and centralized persistence sanitization. Sensitive applications refused; see [limits](docs/safety.md). |
 | §3.5 Evidence | Structured logs, snapshots, validation reports and failure screenshots available for synthetic fixtures. |
 | §3.6 Handoff | Accepted for the current web MVP: genuine Claude Discovery, separate Compilation and fresh Replay with a real operator; success, unresolved, abort and rejected manual actions verified. [Live acceptance](evidence/discovery-handoff/manual/README.md). |
 | §3.7 Heterogeneity | Web adapter seam and three web surfaces demonstrated; desktop and tenant reuse remain design work. |
@@ -155,9 +155,25 @@ The [six-case index](evidence/e2e-round-2/README.md) distinguishes successful
 pipelines, recompilations and the administrator-confirmed Legacy UI defect.
 Historical failures remain unchanged and are not counted as successful runs.
 
+## Safety checks
+
+Use updated trusted policy files in `examples/`. Old policy copies without routes,
+operation permissions and privacy classification fail closed. Artifacts cannot
+authorize their own operations. To verify:
+
+```powershell
+npm.cmd run build
+node --test --test-concurrency=1 dist/tests/safety.test.js
+node --test --test-concurrency=1 dist/tests/*.test.js
+```
+
+[Section 3.4 details](docs/safety.md) and [verification evidence](evidence/safety-3-4/README.md).
+
 ## Limitations and next steps
 
-- Synthetic/public test data only; DOM, screenshots and outputs are not fully PII-redacted.
+- Trusted synthetic/public data classification is required. Sensitive applications
+  are refused. New raw screenshots are omitted; sanitized DOM diagnostics are saved.
+  Unknown PII needs trusted classification; see [safety guarantees](docs/safety.md).
 - Handoff is opt-in and requires an interactive terminal. Discovery compilation
   admits only proven, trusted-policy blocker dismissals; arbitrary human business
   actions fail closed. Live full-pipeline acceptance covers the controlled demo;

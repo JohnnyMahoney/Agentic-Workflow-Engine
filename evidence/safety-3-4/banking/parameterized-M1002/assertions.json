@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "elapsedMs": 1991,
+  "creates": 1,
+  "finalState": {
+    "mode": "NONE",
+    "auth": true,
+    "subs": {
+      "M-1002": [
+        {
+          "ref": "M-1002-S1",
+          "type": "Savings"
+        }
+      ]
+    }
+  },
+  "result": {
+    "status": "SUCCESS",
+    "code": "SUCCESS",
+    "sessionId": "[REDACTED]",
+    "stepId": "checkpoints",
+    "outputs": {
+      "status": "Sub-account M-1002-S1 (Savings) opened for Bohdan Melnyk. Simulated — no real transaction."
+    },
+    "outputReadiness": "legacy-unverified",
+    "retryable": false,
+    "evidenceRef": "C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\safety-3-4\\banking\\parameterized-M1002\\events.jsonl"
+  }
+}

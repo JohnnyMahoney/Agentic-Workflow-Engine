@@ -1,4 +1,6 @@
-import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { withSafety, sanitize } from "../safety/persistence.js";
+import { appendFileSync, writeFileSync } from "../safety/persistence.js";
+import { mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { CapabilityError, validateCapability, validateInputs, valueOf, outputMatches, type Capability, type Condition, type Inputs, type Target, type ExtractProperty } from "../capability/contract.js";
 import type { SurfaceAdapter } from "../surfaces/adapter.js";
@@ -25,8 +27,9 @@ async function extractReady(adapter: SurfaceAdapter, target: Target, outputs: [s
     for (const [name, output] of outputs) {
       const validation = output.validation!;
       const matches = !blocked && text !== undefined && outputMatches(validation.condition, text, inputs);
-      record({output: name, expected: validation.condition, observed, matches, elapsedMs: Date.now() - started});
-      if (!matches && Date.now() - started >= validation.timeoutMs) throw new CapabilityError("OUTPUT_VALIDATION_TIMEOUT", "Extracted output did not satisfy its declared readiness condition", {output: name, expected: validation.condition, observed, timeoutMs: validation.timeoutMs});
+      const elapsedMs = Date.now() - started;
+      record({output: name, expected: validation.condition, observed, matches, elapsedMs});
+      if (!matches && elapsedMs >= validation.timeoutMs) throw new CapabilityError("OUTPUT_VALIDATION_TIMEOUT", "Extracted output did not satisfy its declared readiness condition", {output: name, expected: validation.condition, observed, timeoutMs: validation.timeoutMs});
       ready = ready && matches;
     }
     // Save this exact validated sample; never re-read after checking readiness.
@@ -60,7 +63,7 @@ export async function waitForCondition(adapter: SurfaceAdapter, capability: Capa
 export type ExecutionStatus = "SUCCESS" | "BUSINESS_OUTCOME" | "RECOVERABLE_ERROR" | "HARD_FAILURE" | "OUTCOME_UNKNOWN";
 export interface ExecutionResult { status: ExecutionStatus; sessionId: string; code: string; stepId: string; retryable: boolean; evidenceRef: string; expected?: unknown; observed?: unknown; outputs?: Record<string, string>; message?: string; details?: Record<string, unknown>; reconciliationRequired?: boolean; outputReadiness?: "validated" | "legacy-unverified" }
 export type ReplayResult = ExecutionResult;
-export async function replayCapability(artifactPath: string, inputs: Inputs, directory: string, policy: Policy = testPolicy, createAdapter: (inputs: Inputs, policy: Policy) => Promise<SurfaceAdapter> = PlaywrightAdapter.launch, handoff?: HandoffOptions): Promise<ExecutionResult> {
+async function replayInternal(artifactPath: string, inputs: Inputs, directory: string, policy: Policy = testPolicy, createAdapter: (inputs: Inputs, policy: Policy) => Promise<SurfaceAdapter> = PlaywrightAdapter.launch, handoff?: HandoffOptions): Promise<ExecutionResult> {
   mkdirSync(directory, { recursive: true });
   const sessionId = crypto.randomUUID();
   const log = (kind: string, fields: Record<string, unknown>) => appendFileSync(join(directory, "events.jsonl"), JSON.stringify({ at: new Date().toISOString(), kind, ...fields }) + "\n");
@@ -116,6 +119,7 @@ export async function replayCapability(artifactPath: string, inputs: Inputs, dir
         if (transient && step.action !== "wait" && !outputChecks.length) throw new CapabilityError("SLOW_LOADING", "Transient UI blocks action", {observed: "Configured transient detector matched"});
         const mutating = ["click", "fill", "selectOption"].includes(step.action) && (!("effect" in step) || step.effect !== "readOnly");
         const previouslyDispatched = writeDispatched;
+        if (step.action === "click" || step.action === "fill" || step.action === "selectOption") await active.authorize?.(step.action, capability.targets[step.target]!);
         execution.dispatch = "started";
         log("step_dispatch", {stepId, action: step.action, dispatch: execution.dispatch});
         if (mutating) writeDispatched = true;
@@ -215,10 +219,17 @@ export async function replayCapability(artifactPath: string, inputs: Inputs, dir
     const status: ExecutionStatus = unknown ? "OUTCOME_UNKNOWN" : details.status === "BUSINESS_OUTCOME" ? "BUSINESS_OUTCOME" : details.status === "HARD_FAILURE" ? "HARD_FAILURE" : ["WAIT_TIMEOUT", "TIMEOUT", "SLOW_LOADING", "OUTPUT_VALIDATION_TIMEOUT"].includes(code) ? "RECOVERABLE_ERROR" : "HARD_FAILURE";
     result = {status, code, sessionId, stepId, retryable: status === "RECOVERABLE_ERROR" && !writeDispatched, evidenceRef: join(directory, "events.jsonl"), expected: details.expected ?? expected, observed: details.observed ?? {code, ...details}, message: error instanceof Error ? error.message : String(error), details: {...details, pendingMutations: [...pending], writeDispatched}, ...(unknown ? {reconciliationRequired: true} : {})};
     if (adapter) {
-      try { adapter.setOperationTimeout?.(5000); await adapter.captureFailure(join(directory, "failure.png")); log("failure_evidence", { screenshot: "failure.png" }); } catch (error) { log("failure_capture_error", {message: String(error)}); }
+      try { adapter.setOperationTimeout?.(5000); await adapter.captureFailure(join(directory, "failure.png")); log("failure_evidence", { screenshot: "failure.png" }); } catch (error) {
+        if (error instanceof CapabilityError && error.code === "UNSAFE_IMAGE_OMITTED") log("failure_evidence", {screenshotOmitted: true, diagnostic: error.details.diagnostic});
+        else log("failure_capture_error", {message: String(error)});
+      }
     }
   } finally { try { await adapter?.close(); } catch (error) { log("cleanup_error", {message: String(error)}); } }
   writeFileSync(join(directory, "result.json"), JSON.stringify(result, null, 2) + "\n");
   log("replay_end", { ...result });
   return result;
+}
+
+export async function replayCapability(...args: Parameters<typeof replayInternal>): Promise<ExecutionResult> {
+  return withSafety(args[3] ?? testPolicy, args[1], async () => sanitize(await replayInternal(...args)));
 }

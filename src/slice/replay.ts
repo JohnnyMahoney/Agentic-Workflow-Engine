@@ -1,4 +1,5 @@
-import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, writeFileSync } from "../safety/persistence.js";
+import { mkdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium, errors, type Browser, type Locator, type Page } from "playwright";

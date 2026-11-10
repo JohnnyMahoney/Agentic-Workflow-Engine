@@ -1,5 +1,8 @@
 # Reviewer evidence index
 
+[Section 3.4 safety verification](safety-3-4/README.md) covers route/action/risk
+denials, side-effect checks, sanitization and the Banking Sandbox regression.
+
 Start here rather than reading every historical run. All banking data is synthetic.
 Original logs and failures are preserved; a later fix does not change an earlier result.
 

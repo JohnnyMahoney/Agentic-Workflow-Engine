@@ -120,5 +120,83 @@
         "literal": "Loading"
       }
     }
+  ],
+  "privacy": {
+    "dataClass": "synthetic",
+    "sensitiveInputs": [],
+    "sensitiveSelectors": [],
+    "secretEnv": []
+  },
+  "routes": [
+    "/",
+    "/modern.html",
+    "/legacy/index.html",
+    "/legacy/content.html",
+    "/awkward.html"
+  ],
+  "operations": [
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#q",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "fill",
+      "path": "/modern.html",
+      "selector": "#q",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#f button[type=submit]",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#out tbody button",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#o",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "selectOption",
+      "path": "/modern.html",
+      "selector": "#t",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#w button:not([type])",
+      "risk": "risky",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#x",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/modern.html",
+      "selector": "#b",
+      "risk": "safe",
+      "allow": true
+    }
   ]
 }

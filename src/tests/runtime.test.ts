@@ -1,3 +1,4 @@
+import {fixtureSafety} from "./fixture-safety.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import {mkdirSync,mkdtempSync,readFileSync,writeFileSync} from "node:fs";
@@ -59,7 +60,7 @@ test("Builder rejects historical Case 2 premature confirmation using real saved 
  const source="evidence/modern-ui-testing/test-2-current-state";
  const candidate=JSON.parse(readFileSync(join(source,"compilation-4/candidate.json"),"utf8"));
  const evidence=JSON.parse(readFileSync(join(source,"discovery-5/discovery-v2.json"),"utf8"));
- const policy=JSON.parse(readFileSync(join(source,"policy-select.json"),"utf8"));
+ const policy={...JSON.parse(readFileSync(join(source,"policy-select.json"),"utf8")),...fixtureSafety};
  const dir=join(root,"historical-checkpoint");mkdirSync(dir,{recursive:true});
  await assert.rejects(validateCandidate(candidate,evidence,policy),error=>{
   assert.ok(error instanceof CapabilityError);assert.equal(error.code,"PREMATURE_CHECKPOINT");assert.ok(JSON.stringify(error.details.observed).includes("Loading"));

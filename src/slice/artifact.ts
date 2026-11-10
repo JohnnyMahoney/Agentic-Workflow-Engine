@@ -1,5 +1,6 @@
+import { writeFileSync } from "../safety/persistence.js";
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { z } from "zod";
 

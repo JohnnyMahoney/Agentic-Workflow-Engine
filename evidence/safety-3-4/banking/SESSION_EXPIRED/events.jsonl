@@ -1,0 +1,22 @@
+{"at":"2026-11-10T02:53:15.241Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T02:53:15.430Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T02:53:15.447Z","kind":"step_dispatch","stepId":"navigate","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T02:53:15.477Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T02:53:15.478Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T02:53:15.507Z","kind":"step_dispatch","stepId":"query","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T02:53:15.518Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T02:53:15.519Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T02:53:15.537Z","kind":"step_dispatch","stepId":"search","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:15.558Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T02:53:15.558Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T02:53:15.565Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.567Z","kind":"step_dispatch","stepId":"waitSearch","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T02:53:15.573Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.636Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.699Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.762Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.825Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:15.899Z","kind":"detector","stepId":"waitSearch","code":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again."}
+{"at":"2026-11-10T02:53:15.902Z","kind":"step_failure","stepId":"waitSearch","dispatch":"started"}
+{"at":"2026-11-10T02:53:15.957Z","kind":"failure_capture_error","message":"Error: Screenshot omitted; sanitized DOM diagnostic saved"}
+{"at":"2026-11-10T02:53:15.989Z","kind":"replay_end","status":"HARD_FAILURE","code":"SESSION_EXPIRED","sessionId":"[REDACTED]","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\safety-3-4\\banking\\SESSION_EXPIRED\\events.jsonl","expected":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again.","message":"Explicit UI outcome detector matched","details":{"code":"SESSION_EXPIRED","status":"HARD_FAILURE","expected":"SESSION_EXPIRED","observed":"SESSION_EXPIRED: Session expired. Please log in again.","resolvesMutations":["create"],"pendingMutations":[],"writeDispatched":false}}

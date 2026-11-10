@@ -1,0 +1,23 @@
+{"at":"2026-11-10T02:53:21.154Z","kind":"replay_start","sessionId":"[REDACTED]","capabilityId":"banking-runtime-fixture","llmCalls":0}
+{"at":"2026-11-10T02:53:21.332Z","kind":"step_start","stepId":"navigate","action":"navigate"}
+{"at":"2026-11-10T02:53:21.348Z","kind":"step_dispatch","stepId":"navigate","action":"navigate","dispatch":"started"}
+{"at":"2026-11-10T02:53:21.376Z","kind":"step_end","stepId":"navigate"}
+{"at":"2026-11-10T02:53:21.377Z","kind":"step_start","stepId":"query","action":"fill"}
+{"at":"2026-11-10T02:53:21.404Z","kind":"step_dispatch","stepId":"query","action":"fill","dispatch":"started"}
+{"at":"2026-11-10T02:53:21.415Z","kind":"step_end","stepId":"query"}
+{"at":"2026-11-10T02:53:21.416Z","kind":"step_start","stepId":"search","action":"click"}
+{"at":"2026-11-10T02:53:21.432Z","kind":"step_dispatch","stepId":"search","action":"click","dispatch":"started"}
+{"at":"2026-11-10T02:53:21.457Z","kind":"step_end","stepId":"search"}
+{"at":"2026-11-10T02:53:21.458Z","kind":"step_start","stepId":"waitSearch","action":"wait"}
+{"at":"2026-11-10T02:53:21.465Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.466Z","kind":"step_dispatch","stepId":"waitSearch","action":"wait","dispatch":"started"}
+{"at":"2026-11-10T02:53:21.473Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.532Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.594Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.657Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.727Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.799Z","kind":"detector","stepId":"waitSearch","code":"UNEXPECTED_DIALOG","observed":"Scheduled maintenance notice.\n\nOK"}
+{"at":"2026-11-10T02:53:21.803Z","kind":"detector","stepId":"waitSearch","code":"SLOW_LOADING","observed":"Loading…"}
+{"at":"2026-11-10T02:53:21.805Z","kind":"step_failure","stepId":"waitSearch","dispatch":"started"}
+{"at":"2026-11-10T02:53:21.871Z","kind":"failure_capture_error","message":"Error: Screenshot omitted; sanitized DOM diagnostic saved"}
+{"at":"2026-11-10T02:53:21.900Z","kind":"replay_end","status":"HARD_FAILURE","code":"UNEXPECTED_DIALOG","sessionId":"[REDACTED]","stepId":"waitSearch","retryable":false,"evidenceRef":"C:\\Users\\User\\BankGPT\\Agentic-Workflow-Engine\\evidence\\safety-3-4\\banking\\UNEXPECTED_DIALOG\\events.jsonl","expected":"Scheduled maintenance notice.","observed":"Scheduled maintenance notice.\n\nOK","message":"Explicit UI outcome detector matched","details":{"code":"UNEXPECTED_DIALOG","status":"HARD_FAILURE","expected":"Scheduled maintenance notice.","observed":"Scheduled maintenance notice.\n\nOK","resolvesMutations":[],"pendingMutations":[],"writeDispatched":false}}

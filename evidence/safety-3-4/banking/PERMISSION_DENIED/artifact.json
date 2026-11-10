@@ -1,0 +1,279 @@
+{
+  "schemaVersion": "2.0",
+  "id": "banking-runtime-fixture",
+  "version": "1.0.0",
+  "description": "Hand-authored isolated runtime test fixture; not LLM discovery evidence",
+  "inputs": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "Synthetic member"
+    },
+    "accountType": {
+      "type": "string",
+      "required": true,
+      "description": "Synthetic type"
+    }
+  },
+  "targets": {
+    "q": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#q",
+          "frames": []
+        }
+      ]
+    },
+    "search": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#f button",
+          "frames": []
+        }
+      ]
+    },
+    "row": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out tbody tr td:first-child",
+          "frames": []
+        }
+      ]
+    },
+    "view": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out tbody button",
+          "frames": []
+        }
+      ]
+    },
+    "member": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out dd:first-of-type",
+          "frames": []
+        }
+      ]
+    },
+    "open": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#o",
+          "frames": []
+        }
+      ]
+    },
+    "type": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#t",
+          "frames": []
+        }
+      ]
+    },
+    "continue": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#w button:not([type])",
+          "frames": []
+        }
+      ]
+    },
+    "status": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out p[role=\"status\"]",
+          "frames": []
+        }
+      ]
+    },
+    "back": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#b",
+          "frames": []
+        }
+      ]
+    },
+    "subs": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "#out > p:last-of-type",
+          "frames": []
+        }
+      ]
+    },
+    "ambiguous": {
+      "strategies": [
+        {
+          "kind": "css",
+          "selector": "button",
+          "frames": []
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "id": "navigate",
+      "action": "navigate",
+      "url": "http://localhost:8093/modern.html?mode=PERMISSION_DENIED"
+    },
+    {
+      "id": "query",
+      "action": "fill",
+      "target": "q",
+      "value": {
+        "input": "memberId"
+      },
+      "effect": "readOnly"
+    },
+    {
+      "id": "search",
+      "action": "click",
+      "target": "search",
+      "effect": "readOnly"
+    },
+    {
+      "id": "waitSearch",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "row",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "timeoutMs": 2500
+    },
+    {
+      "id": "view",
+      "action": "click",
+      "target": "view",
+      "effect": "readOnly"
+    },
+    {
+      "id": "waitMember",
+      "action": "wait",
+      "condition": {
+        "kind": "textEquals",
+        "target": "member",
+        "value": {
+          "input": "memberId"
+        }
+      },
+      "timeoutMs": 2500
+    },
+    {
+      "id": "open",
+      "action": "click",
+      "target": "open",
+      "effect": "readOnly"
+    },
+    {
+      "id": "select",
+      "action": "selectOption",
+      "target": "type",
+      "by": "label",
+      "value": {
+        "input": "accountType"
+      },
+      "effect": "readOnly"
+    },
+    {
+      "id": "create",
+      "action": "click",
+      "target": "continue",
+      "effect": "stateChanging"
+    },
+    {
+      "id": "waitConfirmation",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "literal": "opened for"
+        }
+      },
+      "timeoutMs": 2500
+    },
+    {
+      "id": "verifyMember",
+      "action": "assert",
+      "condition": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "input": "memberId"
+        }
+      }
+    },
+    {
+      "id": "verifyType",
+      "action": "assert",
+      "condition": {
+        "kind": "textContains",
+        "target": "status",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      "confirms": "create"
+    },
+    {
+      "id": "status",
+      "action": "extract",
+      "target": "status",
+      "saveAs": "status"
+    },
+    {
+      "id": "back",
+      "action": "click",
+      "target": "back",
+      "effect": "readOnly"
+    },
+    {
+      "id": "verifyCreated",
+      "action": "wait",
+      "condition": {
+        "kind": "textContains",
+        "target": "subs",
+        "value": {
+          "input": "accountType"
+        }
+      },
+      "timeoutMs": 2500
+    }
+  ],
+  "outputs": {
+    "status": {
+      "type": "string",
+      "description": "Observed UI result",
+      "source": {
+        "savedValue": "status"
+      }
+    }
+  },
+  "checkpoints": [
+    {
+      "kind": "textContains",
+      "target": "subs",
+      "value": {
+        "input": "memberId"
+      }
+    }
+  ]
+}

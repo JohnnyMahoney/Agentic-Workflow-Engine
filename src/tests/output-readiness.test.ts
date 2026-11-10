@@ -1,3 +1,4 @@
+import {fixtureSafety} from "./fixture-safety.js";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
@@ -19,7 +20,7 @@ function capability(url:string,timeoutMs=1500):Capability {
 async function fixture() {
  const server=createServer((req,res)=>{const mode=new URL(req.url!,'http://local').searchParams.get('mode');res.setHeader('Content-Type','text/html; charset=utf-8');res.end(`<div id="value">&#8230;</div><div id="done">Ready</div><script>${mode==='permanent'?'':`setTimeout(()=>document.querySelector('#value').textContent=${JSON.stringify(mode==='zero'?'$0.00':'$7.50')},250)`}</script>`);});
  await new Promise<void>(r=>server.listen(0,'127.0.0.1',r));const address=server.address() as {port:number};const origin=`http://127.0.0.1:${address.port}`;
- return {origin,policy:{origins:[origin],actions:testPolicy.actions} satisfies Policy,close:()=>new Promise<void>((r,j)=>server.close(e=>e?j(e):r()))};
+ return {origin,policy:{...fixtureSafety,origins:[origin],actions:testPolicy.actions} satisfies Policy,close:()=>new Promise<void>((r,j)=>server.close(e=>e?j(e):r()))};
 }
 test('output readiness waits for delayed values, preserves zero, times out on permanent placeholders',async()=>{
  const host=await fixture();
@@ -27,7 +28,7 @@ test('output readiness waits for delayed values, preserves zero, times out on pe
   const directory=join(root,mode);mkdirSync(directory,{recursive:true});const cap=capability(`${host.origin}/?mode=${mode}`,mode==='permanent'?150:1500);const path=join(directory,'artifact.json');writeFileSync(path,JSON.stringify(cap,null,2));
   const result=await replayCapability(path,{},directory,host.policy);const events=readFileSync(result.evidenceRef,'utf8').trim().split('\n').map(l=>JSON.parse(l));const checks=events.filter(e=>e.kind==='output_validation');
   assert.ok(checks.some(e=>e.matches===false));
-  if(mode==='permanent') {assert.equal(result.status,'RECOVERABLE_ERROR');assert.equal(result.code,'OUTPUT_VALIDATION_TIMEOUT');assert.equal(result.stepId,'extract');assert.equal(result.retryable,true);assert.deepEqual(result.expected,{kind:'textMatches',pattern});assert.deepEqual(result.observed,{visible:true,text:'\u2026'});assert.equal(result.outputs,undefined);assert.ok(checks.at(-1).elapsedMs>=150);assert.ok(checks.at(-1).elapsedMs<1500);assert.ok(readFileSync(join(directory,'failure.png')).length);}
+  if(mode==='permanent') {assert.equal(result.status,'RECOVERABLE_ERROR');assert.equal(result.code,'OUTPUT_VALIDATION_TIMEOUT');assert.equal(result.stepId,'extract');assert.equal(result.retryable,true);assert.deepEqual(result.expected,{kind:'textMatches',pattern});assert.deepEqual(result.observed,{visible:true,text:'\u2026'});assert.equal(result.outputs,undefined);assert.ok(checks.at(-1).elapsedMs>=150);assert.ok(checks.at(-1).elapsedMs<1500);assert.ok(readFileSync(join(directory,'failure.png.json')).length);}
   else {assert.equal(result.status,'SUCCESS',JSON.stringify(result));assert.equal(result.outputs?.amount,mode==='zero'?'$0.00':'$7.50');assert.equal(result.outputReadiness,'validated');assert.equal(checks.at(-1).matches,true);assert.equal(checks.at(-1).observed.text,result.outputs?.amount);}
   writeFileSync(join(directory,'assertions.json'),JSON.stringify({passed:true,mode,result},null,2));
  }}finally{await host.close();}

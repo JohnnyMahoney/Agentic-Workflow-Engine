@@ -1,6 +1,8 @@
+import { withSafety, sanitize, assertUnredacted } from "../safety/persistence.js";
+import { writeFileSync } from "../safety/persistence.js";
 import { validateHumanEvidence } from "../discovery/human-evidence.js";
 import Anthropic from "@anthropic-ai/sdk";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { z } from "zod";
 import { buildArtifact, candidateSchema } from "./builder.js";
@@ -25,11 +27,12 @@ export function compilationEvidence(evidence: DiscoveryEvidence) {
 }
 
 // This is a separate API call. It does not have browser tools or execute actions.
-export async function compileEvidence(evidencePath: string, directory: string, model = "claude-sonnet-5-5", policy: Policy = testPolicy, replayFeedbackPath?: string): Promise<void> {
+async function compileInternal(evidencePath: string, directory: string, model = "claude-sonnet-5-5", policy: Policy = testPolicy, replayFeedbackPath?: string): Promise<void> {
   mkdirSync(directory, { recursive: true });
   const maxTokens = Number(process.env.CLAUDE_COMPILATION_MAX_TOKENS ?? 10000);
   if (!Number.isInteger(maxTokens) || maxTokens < 1000 || maxTokens > 32000) throw new CapabilityError("INVALID_COMPILATION_CONFIG", "CLAUDE_COMPILATION_MAX_TOKENS must be an integer from 1000 to 32000");
-  const evidence = JSON.parse(readFileSync(evidencePath, "utf8")) as DiscoveryEvidence;
+  const evidence = sanitize(JSON.parse(readFileSync(evidencePath, "utf8"))) as DiscoveryEvidence;
+  assertUnredacted(evidence);
   let admission;
   try {
     admission = checkDiscoveryEvidence(evidence, readDiscoveryAudit(evidencePath), policy);
@@ -74,4 +77,8 @@ description explains the capability; id and version identify it, schemaVersion i
     writeFileSync(join(directory, "compilation-error.json"), JSON.stringify({ status: "failure", code: error instanceof CapabilityError ? error.code : "COMPILATION_FAILED", message: error instanceof Error ? error.message : String(error), ...(error instanceof CapabilityError ? { details: error.details } : {}) }, null, 2) + "\n");
     throw error;
   }
+}
+
+export async function compileEvidence(...args: Parameters<typeof compileInternal>): Promise<void> {
+  return withSafety(args[3] ?? testPolicy, {}, () => compileInternal(...args));
 }

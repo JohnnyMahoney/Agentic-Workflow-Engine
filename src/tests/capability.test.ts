@@ -1,3 +1,4 @@
+import {fixtureSafety} from "./fixture-safety.js";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
@@ -8,15 +9,17 @@ import { chromium } from "playwright";
 import { validateCapability, type Capability } from "../capability/contract.js";
 import { captureSnapshot, type DiscoveryEvidence } from "../capability/evidence.js";
 import { validateCandidate, checkDiscoveryEvidence, type Candidate } from "../capability/builder.js";
-import { PlaywrightAdapter, resolveTarget, type Policy } from "../surfaces/playwright.js";
+import { PlaywrightAdapter, resolveTarget, type Policy, testPolicy } from "../surfaces/playwright.js";
 import { replayCapability } from "../replay/engine.js";
 import { compilationEvidence } from "../capability/compile.js";
 import { LocalPlaywrightBrowser } from "../discovery/local-browser.js";
 
 test("discovery form_input selects a native option and still fills text fields", async () => {
-  const driver = await LocalPlaywrightBrowser.launch(true);
+  const driver = await LocalPlaywrightBrowser.launch(true, {...testPolicy,...fixtureSafety});
   try {
     const page = driver.page;
+    await page.route("https://the-internet.herokuapp.com/**", route => route.fulfill({body:"<html></html>"}));
+    await page.goto("https://the-internet.herokuapp.com/");
     await page.setContent('<input id="name"><select id="type"><option value="">Choose</option><option value="sav">Savings</option></select>');
     const tool = driver as unknown as {
       read_page: (context: unknown, input: unknown) => Promise<string>;
@@ -120,7 +123,7 @@ test("builder validates recorded identity and rejects invented actions, locators
       assert.deepEqual(compact.states[action.before], evidence.actions[index]!.before);
       assert.deepEqual(compact.states[action.after], evidence.actions[index]!.after);
     });
-    const policy: Policy = { origins: ["https://example.test"], actions: ["navigate", "click", "extract"] };
+    const policy: Policy = {...fixtureSafety, origins: ["https://example.test"], actions: ["navigate", "click", "extract"] };
     // A model end_turn after navigation failure must not make this compilable.
     assert.throws(() => checkDiscoveryEvidence({ ...evidence, actions: evidence.actions.slice(1) }), /failed or missing actions/);
     const unreachable = structuredClone(evidence); unreachable.actions[0]!.after.url = "chrome-error://chromewebdata/";
@@ -168,7 +171,7 @@ test("builder verifies a native select's recorded chosen option", async () => {
       ],
     };
     const candidate: Candidate = { capability: cap, stepEvidence: { open: { action: 1, phase: "after" }, choose: { action: 2, phase: "before", node: { frame: 0, node } } }, checkpointEvidence: [{ action: 2, phase: "after", node: { frame: 0, node } }] };
-    const policy: Policy = { origins: ["https://example.test"], actions: ["navigate", "selectOption"] };
+    const policy: Policy = {...fixtureSafety, origins: ["https://example.test"], actions: ["navigate", "selectOption"] };
     await validateCandidate(candidate, evidence, policy);
     const forged = structuredClone(evidence); forged.actions[1]!.after.frames[0]!.nodes[node]!.selectedOption = { label: "Checking", value: "chk" };
     await assert.rejects(validateCandidate(candidate, forged, policy), /Selected option is not supported/);
@@ -187,7 +190,7 @@ test("replay selects by parameterized label or value", async () => {
   assert.ok(address && typeof address !== "string");
   const url = `http://127.0.0.1:${address.port}/`;
   const directory = mkdtempSync(join(tmpdir(), "select-replay-"));
-  const policy: Policy = { origins: [new URL(url).origin], actions: ["navigate", "selectOption", "extract"] };
+  const policy: Policy = {...fixtureSafety, origins: [new URL(url).origin], actions: ["navigate", "selectOption", "extract"] };
   try {
     const cap: Capability = {
       schemaVersion: "2.0", id: "selectReplay", version: "1.0.0", description: "Synthetic select replay",
@@ -211,13 +214,13 @@ test("replay selects by parameterized label or value", async () => {
 test("generic replay executes fill, click, wait, extract, assert; returns structured failures", async () => {
   const server = createServer((_request, response) => {
     response.setHeader("content-type", "text/html");
-    response.end('<input aria-label="Name"><button onclick="setTimeout(() => {document.querySelector(\'#result\').textContent = document.querySelector(\'input\').value}, 80)">Show</button><div id="result"></div>');
+    response.end('<input aria-label="Name"><button id="show" onclick="setTimeout(() => {document.querySelector(\'#result\').textContent = document.querySelector(\'input\').value}, 80)">Show</button><div id="result"></div>');
   });
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   const address = server.address();
   assert.ok(address && typeof address !== "string");
   const url = `http://127.0.0.1:${address.port}/`;
-  const policy: Policy = { origins: [new URL(url).origin], actions: ["navigate", "fill", "click", "wait", "extract", "assert"] };
+  const policy: Policy = {...fixtureSafety, origins: [new URL(url).origin], actions: ["navigate", "fill", "click", "wait", "extract", "assert"] };
   const directory = mkdtempSync(join(tmpdir(), "capability-test-"));
   try {
     const cap: Capability = {
@@ -249,6 +252,6 @@ test("generic replay executes fill, click, wait, extract, assert; returns struct
     writeFileSync(path, JSON.stringify(missing));
     const timeout = await replayCapability(path, { name: "Alice-test" }, join(directory, "timeout"), policy);
     assert.equal(timeout.code, "WAIT_TIMEOUT");
-    assert.ok(readFileSync(join(directory, "timeout", "failure.png")).length > 0);
+    assert.ok(readFileSync(join(directory, "timeout", "failure.png.json")).length > 0);
   } finally { await new Promise<void>((resolve) => server.close(() => resolve())); }
 });

@@ -1,5 +1,5 @@
+import { writeFileSync, sanitizeText } from "../safety/persistence.js";
 import { createInterface } from "node:readline";
-import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { CapabilityError, type Capability } from "../capability/contract.js";
 import type { SurfaceAdapter } from "../surfaces/adapter.js";
@@ -29,7 +29,7 @@ export function cliHandoffController(): HandoffController {
   return {
     open(request) {
       ended = false;
-      console.log(`\n${request.description}\n${request.phase ?? "Replay"} paused at ${request.stepId}: ${request.reason}\n${request.currentUrl ? `URL: ${request.currentUrl}\n` : ""}Evidence: ${request.evidenceRef}\nScreenshot: handoff-${request.stepId}-before.png (beside events.jsonl, if capture succeeded)\nCommands: take-control, resume, abort. Resume requires take-control first.`);
+      console.log(sanitizeText(`\n${request.description}\n${request.phase ?? "Replay"} paused at ${request.stepId}: ${request.reason}\n${request.currentUrl ? `URL: ${request.currentUrl}\n` : ""}Evidence: ${request.evidenceRef}\nDiagnostic: handoff-${request.stepId}-before.png.json (sanitized DOM; raw screenshot omitted)\nCommands: take-control, resume, abort. Resume requires take-control first.`));
       reader = createInterface({ input: process.stdin, output: process.stdout });
       reader.on("line", line => { const done = resolve; resolve = undefined; done?.(line.trim()); });
       reader.on("close", () => { ended = true; resolve?.("abort"); resolve = undefined; });
@@ -70,7 +70,10 @@ export async function requestIntervention(options: HandoffOptions, adapter: Surf
   const prefix = `handoff-${request.stepId}`;
   const snapshot = async (phase: string) => {
     try { adapter.setOperationTimeout?.(5000); await adapter.captureFailure(join(directory, `${prefix}-${phase}.png`)); log("handoff_evidence", {stepId: request.stepId, phase, screenshot: `${prefix}-${phase}.png`}); }
-    catch { log("handoff_evidence_unavailable", {stepId: request.stepId, phase}); }
+    catch (error) {
+      if (error instanceof CapabilityError && error.code === "UNSAFE_IMAGE_OMITTED") log("handoff_evidence", {stepId: request.stepId, phase, screenshotOmitted: true, diagnostic: error.details.diagnostic});
+      else log("handoff_evidence_unavailable", {stepId: request.stepId, phase});
+    }
   };
   writeFileSync(join(directory, `${prefix}-request.json`), JSON.stringify(request, null, 2) + "\n");
   await adapter.setHumanInputEnabled?.(false);

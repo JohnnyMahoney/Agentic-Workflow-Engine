@@ -1,0 +1,39 @@
+{
+  "kind": "genuine-claude-e2e",
+  "target": "http://localhost:8080/modern.html",
+  "discovery": {
+    "completed": true,
+    "toolFailures": 0,
+    "actionCount": 15
+  },
+  "compilation": {
+    "status": "validated",
+    "separateCall": true
+  },
+  "replay": {
+    "freshSession": true,
+    "llmCalls": 0,
+    "status": "SUCCESS",
+    "outputs": {
+      "balance": "$50,000.00",
+      "accountType": "Term Deposit",
+      "memberId": "M-1005"
+    },
+    "outputReadiness": "validated"
+  },
+  "policyComparisons": [
+    {
+      "stage": "discovery",
+      "equal": true
+    },
+    {
+      "stage": "compilation",
+      "equal": true
+    },
+    {
+      "stage": "replay",
+      "equal": true
+    }
+  ],
+  "artifactSha256": "28c39e5fdfbb5de94cdaac67b3195588e8c54b714ac1c845b283e8d75bc2d768"
+}

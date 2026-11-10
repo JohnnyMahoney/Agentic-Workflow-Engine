@@ -97,15 +97,23 @@ crash-resume and OS-level control locking remain out of scope; no dashboard was 
 
 ## Safety
 
-Trusted origin/action allowlists apply to discovery and replay; model artifacts
-cannot expand them. Mutation uncertainty is handled conservatively. This is partial
-§3.4 coverage, not a production safety boundary: comprehensive risky-action approval,
-route-level restrictions and sensitive-data sanitization need further work.
+Trusted origins, page routes, action types and operation rules apply in both
+Discovery and Replay. Actual resolved targets need narrow safe/risky permission;
+unknown or blocked operations are denied before dispatch. Redirect destinations
+are checked before following them; allowed JS/CSS resources do not need page routes.
+Artifact effect annotations cannot grant permission. Risky operations are blocked
+unless a trusted rule explicitly permits them; no approval UI was added.
 
-Form-input scrubbing is incomplete protection. Page text, screenshots, model replies
-and declared outputs may contain data. Current evidence uses synthetic banking or
-public demo data only. Keys belong in ignored .env files, not artifacts. Do not use
-this capture pipeline with real credentials or financial PII.
+Centralized text/JSON persistence removes known secrets, sensitive-key values and
+echoes, classified inputs/DOM values and common sensitive patterns. Raw screenshots
+are omitted, with sanitized DOM diagnostics retained. Compilation fails if redaction
+removes required evidence. Trusted synthetic/public classification is required;
+sensitive applications are refused. Classification remains necessary for arbitrary
+PII: this is not universal detection or production DLP. Deterministic/real-browser
+verification passed, including permitted synthetic account creation. A final genuine
+Claude Discovery -> separate Compilation -> fresh deterministic Replay also passed
+with the unchanged current policy: M-1005, Term Deposit, $50,000.00. See
+[live evidence](evidence/safety-3-4/final-live-e2e/README.md) and [safety limits](docs/safety.md).
 
 ## Cuts
 
@@ -113,7 +121,8 @@ No distributed services, database, plugin framework, desktop automation, tenant
 infrastructure or conditional workflow engine. The Banking Sandbox is a local,
 client-storage fixture with known defects preserved, not a banking backend.
 
-Next priority is Section 3.4: trusted route/action enforcement, conservative
-risky-action policy and sensitive-data handling with adversarial fixture tests.
+Next priorities are Section 3.7 design review and final live E2E acceptance with
+the current trusted safety policies. Section 3.4 is implemented and regression-tested
+within the documented synthetic/public MVP boundary.
 Section 3.6 is closed for the documented web MVP; the full assignment remains open. Reviewer cleanup
 changes documentation/navigation only and does not substitute for those deliverables.

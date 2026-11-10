@@ -1,10 +1,71 @@
 {
-  "origins": ["http://localhost:8081"],
-  "actions": ["navigate", "click", "fill", "selectOption", "extract", "wait", "assert"],
-  "humanBlockers": [{"url": "http://localhost:8081/", "container": "#operator-blocker", "dismiss": "#operator-acknowledge"}],
-  "detectors": [{
-    "code": "UNEXPECTED_DIALOG", "status": "HARD_FAILURE",
-    "target": {"strategies": [{"kind": "css", "selector": "#operator-blocker", "frames": []}]},
-    "value": {"literal": "Operator acknowledgement required"}
-  }]
+  "origins": [
+    "http://localhost:8081"
+  ],
+  "actions": [
+    "navigate",
+    "click",
+    "fill",
+    "selectOption",
+    "extract",
+    "wait",
+    "assert"
+  ],
+  "humanBlockers": [
+    {
+      "url": "http://localhost:8081/",
+      "container": "#operator-blocker",
+      "dismiss": "#operator-acknowledge"
+    }
+  ],
+  "detectors": [
+    {
+      "code": "UNEXPECTED_DIALOG",
+      "status": "HARD_FAILURE",
+      "target": {
+        "strategies": [
+          {
+            "kind": "css",
+            "selector": "#operator-blocker",
+            "frames": []
+          }
+        ]
+      },
+      "value": {
+        "literal": "Operator acknowledgement required"
+      }
+    }
+  ],
+  "privacy": {
+    "dataClass": "synthetic",
+    "sensitiveInputs": [],
+    "sensitiveSelectors": [],
+    "secretEnv": []
+  },
+  "routes": [
+    "/"
+  ],
+  "operations": [
+    {
+      "action": "click",
+      "path": "/",
+      "selector": "#member-query",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "fill",
+      "path": "/",
+      "selector": "#member-query",
+      "risk": "safe",
+      "allow": true
+    },
+    {
+      "action": "click",
+      "path": "/",
+      "selector": "#search-form button[type=submit]",
+      "risk": "safe",
+      "allow": true
+    }
+  ]
 }

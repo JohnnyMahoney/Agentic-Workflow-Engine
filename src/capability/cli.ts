@@ -1,4 +1,5 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from "node:fs";
+import { sanitize, writeFileSync } from "../safety/persistence.js";
+import { readFileSync, mkdirSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { requestSchema } from "./evidence.js";
 import { CapabilityError, validateInputs, type Inputs } from "./contract.js";
@@ -18,7 +19,9 @@ async function main(): Promise<void> {
   const command = args[0];
   if (args.includes("--handoff") && (!["replay", "discover"].includes(command!) || args.includes("--headless"))) throw new Error("--handoff requires visible Discovery or Replay");
   if (args.includes("--handoff") && !process.stdin.isTTY) throw new Error("--handoff requires an interactive terminal for take-control, resume, abort");
-  const policy = args.includes("--policy") ? policySchema.parse(JSON.parse(readFileSync(required("--policy"), "utf8"))) : testPolicy;
+  const policy = policySchema.parse(JSON.parse(readFileSync(required("--policy"), "utf8")));
+  if (!policy.privacy || policy.privacy.dataClass === "sensitive") throw new CapabilityError("SAFETY_CONFIGURATION_REQUIRED", "Trusted synthetic/public privacy classification is required");
+  if (!policy.routes?.length) throw new CapabilityError("SAFETY_CONFIGURATION_REQUIRED", "Explicit routes are required");
   const directory = required("--out");
   if (existsSync(directory) && readdirSync(directory).length) throw new Error("Output directory must be empty; use a new directory to preserve evidence");
   mkdirSync(directory, { recursive: true });
@@ -66,6 +69,6 @@ async function main(): Promise<void> {
   } else throw new Error("Expected discover, compile, validate, or replay");
 }
 main().catch((error) => {
-  console.error(JSON.stringify({ status: "failure", code: error instanceof CapabilityError ? error.code : "COMMAND_FAILED", message: error instanceof Error ? error.message : String(error), ...(error instanceof CapabilityError ? { details: error.details } : {}) }));
+  console.error(JSON.stringify(sanitize({ status: "failure", code: error instanceof CapabilityError ? error.code : "COMMAND_FAILED", message: error instanceof Error ? error.message : String(error), ...(error instanceof CapabilityError ? { details: error.details } : {}) })));
   process.exitCode = 1;
 });

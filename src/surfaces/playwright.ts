@@ -1,6 +1,9 @@
 import { chromium, type Browser, type Frame, type Locator, type Page, type CDPSession } from "playwright";
 import { CapabilityError, valueOf, actionNames, targetSchema, valueSchema, type Inputs, type Strategy, type Target, type ExtractProperty } from "../capability/contract.js";
 import { z } from "zod";
+import { routeSchema, operationSchema, privacySchema, checkDestination, enforceOperation, installNetworkPolicy, type SafetyPolicy } from "../safety/policy.js";
+import { writeFileSync, sanitize, learnPageSecrets } from "../safety/persistence.js";
+import { captureSnapshot } from "../capability/evidence.js";
 import type { SurfaceAdapter } from "./adapter.js";
 
 const detectorSchema = z.object({ code: z.string().min(1), status: z.enum(["BUSINESS_OUTCOME", "HARD_FAILURE", "RECOVERABLE_ERROR"]), target: targetSchema, value: valueSchema, resolvesMutations: z.array(z.string().min(1)).optional() }).strict();
@@ -29,16 +32,19 @@ function installInputGuard(enabled: boolean): void {
     }, {capture: true, passive: false});
   }
 }
-export interface Policy { origins: string[]; actions: string[]; detectors?: z.infer<typeof detectorSchema>[] | undefined; humanBlockers?: z.infer<typeof humanBlockerSchema>[] | undefined }
+export interface Policy extends SafetyPolicy { detectors?: z.infer<typeof detectorSchema>[] | undefined; humanBlockers?: z.infer<typeof humanBlockerSchema>[] | undefined }
 export const policySchema = z.object({
   origins: z.array(z.url().refine((value) => { const url = new URL(value); return ["http:", "https:"].includes(url.protocol) && url.origin === value; }, "Use an exact HTTP(S) origin without a path")).min(1),
   actions: z.array(z.enum(actionNames)).min(1),
   detectors: z.array(detectorSchema).optional(),
   humanBlockers: z.array(humanBlockerSchema).max(10).optional(),
+  routes: z.array(routeSchema).optional(),
+  operations: z.array(operationSchema).optional(),
+  privacy: privacySchema.optional(),
 }).strict();
-export const testPolicy: Policy = { origins: ["https://the-internet.herokuapp.com"], actions: ["navigate", "click", "fill", "selectOption", "extract", "wait", "assert"] };
+export const testPolicy: Policy = { origins: ["https://the-internet.herokuapp.com"], routes: ["/*"], operations: [], privacy: {dataClass: "synthetic", sensitiveInputs: [], sensitiveSelectors: [], secretEnv: []}, actions: ["navigate", "click", "fill", "selectOption", "extract", "wait", "assert"] };
 export function checkUrl(url: string, policy: Policy): void {
-  if (!policy.origins.includes(new URL(url).origin)) throw new CapabilityError("POLICY_DENIED", "Origin is not allowed");
+  checkDestination(url, policy);
 }
 export async function strategyLocator(root: Page | Frame, strategy: Strategy, inputs: Inputs): Promise<Locator> {
   let frame: Page | Frame = root;
@@ -90,6 +96,7 @@ export class PlaywrightAdapter implements SurfaceAdapter {
   private inputControl: CDPSession | undefined;
   private inputGuardInstalled = false;
   private humanInputEnabled = true;
+  private checkNetwork = () => {};
   constructor(readonly browser: Browser, readonly page: Page, readonly inputs: Inputs, readonly policy: Policy) {
     page.on("dialog", (dialog) => { this.dialogMessage = `${dialog.type()}: ${dialog.message()}`; void dialog.dismiss().catch(() => {}); });
   }
@@ -97,24 +104,30 @@ export class PlaywrightAdapter implements SurfaceAdapter {
   unexpectedDialog(): string | undefined { return this.dialogMessage; }
   static async launch(inputs: Inputs, policy: Policy = testPolicy, options: { headless?: boolean } = {}): Promise<PlaywrightAdapter> {
     const browser = await chromium.launch({ headless: options.headless ?? true });
-    const context = await browser.newContext();
+    const context = await browser.newContext({serviceWorkers: "block"});
     await context.addInitScript(installHumanBlockerGuard, policy.humanBlockers ?? []);
-    await context.route("**/*", (route) => {
-      try { checkUrl(route.request().url(), policy); return route.continue(); } catch { return route.abort(); }
-    });
+    const checkNetwork = await installNetworkPolicy(context, policy);
     const page = await context.newPage();
     page.setDefaultTimeout(5000);
-    return new PlaywrightAdapter(browser, page, inputs, policy);
+    const adapter = new PlaywrightAdapter(browser, page, inputs, policy);
+    adapter.checkNetwork = checkNetwork;
+    return adapter;
   }
   async navigate(url: string): Promise<void> {
     checkUrl(url, this.policy);
-    const response = await this.page.goto(url, { waitUntil: "load" });
+    let response;
+    try { response = await this.page.goto(url, { waitUntil: "load" }); } catch (error) { this.checkNetwork(); throw error; }
+    this.checkNetwork();
     checkUrl(this.page.url(), this.policy);
     if (!response?.ok()) throw new CapabilityError("NAVIGATION_FAILED", "Navigation did not return success", { status: response?.status() });
   }
-  async click(target: Target): Promise<void> { await (await resolveTarget(this.page, target, this.inputs)).click(); }
-  async fill(target: Target, value: string): Promise<void> { await (await resolveTarget(this.page, target, this.inputs)).fill(value); }
+  async click(target: Target): Promise<void> { const locator = await resolveTarget(this.page, target, this.inputs); await enforceOperation(this.page, locator, "click", this.policy); await locator.click(); this.checkNetwork(); }
+  async authorize(action: "click" | "fill" | "selectOption", target: Target): Promise<void> {
+    await enforceOperation(this.page, await resolveTarget(this.page, target, this.inputs), action, this.policy);
+  }
+  async fill(target: Target, value: string): Promise<void> { const locator = await resolveTarget(this.page, target, this.inputs); await enforceOperation(this.page, locator, "fill", this.policy); await locator.fill(value); this.checkNetwork(); }
   async selectOption(target: Target, by: "label" | "value", value: string): Promise<void> {
+    await enforceOperation(this.page, await resolveTarget(this.page, target, this.inputs), "selectOption", this.policy);
     const locator = await resolveTarget(this.page, target, this.inputs);
     if (await locator.evaluate((element) => element.tagName.toLowerCase()) !== "select") throw new CapabilityError("INVALID_TARGET", "selectOption target must be a native select");
     await locator.selectOption({ [by]: value });
@@ -129,7 +142,11 @@ export class PlaywrightAdapter implements SurfaceAdapter {
   }
   async visible(target: Target): Promise<boolean> { return (await resolveTarget(this.page, target, this.inputs)).isVisible(); }
   url(): string { return this.page.url(); }
-  async captureFailure(path: string): Promise<void> { await this.page.screenshot({ path }); }
+  async captureFailure(path: string): Promise<void> {
+    await learnPageSecrets(this.page);
+    writeFileSync(path + ".json", JSON.stringify({kind: "sanitized-dom-diagnostic", screenshotOmitted: true, snapshot: sanitize(await captureSnapshot(this.page))}, null, 2));
+    throw new CapabilityError("UNSAFE_IMAGE_OMITTED", "Screenshot omitted; sanitized DOM diagnostic saved", {diagnostic: path + ".json"});
+  }
   isClosed(): boolean { return this.page.isClosed() || !this.browser.isConnected(); }
   async setHumanInputEnabled(enabled: boolean): Promise<void> {
     this.humanInputEnabled = enabled;

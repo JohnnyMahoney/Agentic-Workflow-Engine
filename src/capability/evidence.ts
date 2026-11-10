@@ -1,3 +1,4 @@
+import { sanitize, learnPageSecrets } from "../safety/persistence.js";
 import { z } from "zod";
 import type { Page } from "playwright";
 import { inputSchema } from "./contract.js";
@@ -31,6 +32,7 @@ export interface DiscoveryIntervention {
 }
 
 export async function captureSnapshot(page: Page): Promise<Snapshot> {
+  const secrets = await learnPageSecrets(page);
   const frames = page.frames();
   const snapshots: FrameSnapshot[] = [];
   for (const [id, frame] of frames.entries()) {
@@ -69,5 +71,5 @@ export async function captureSnapshot(page: Page): Promise<Snapshot> {
     const elementNode = parent ? await (await frame.frameElement()).getAttribute("data-cap-node") : null;
     snapshots.push({ id, parent: parent ? frames.indexOf(parent) : null, elementNode, ...captured });
   }
-  return { url: page.url(), frames: snapshots };
+  return sanitize({ url: page.url(), frames: snapshots }, secrets);
 }

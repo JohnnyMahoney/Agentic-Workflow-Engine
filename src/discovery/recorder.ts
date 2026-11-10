@@ -1,4 +1,5 @@
-import { appendFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { appendFileSync, writeFileSync } from "../safety/persistence.js";
+import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { ToolError, type BetaBrowserMemberResult, type BetaToolsetCallContext } from "@anthropic-ai/sdk/helpers/beta/toolsets";
 import type { BetaBrowserMemberInput, BetaBrowserMemberName } from "@anthropic-ai/sdk/resources/beta";
@@ -84,8 +85,7 @@ export async function executeLogged(
       journal.add("observation", { action, name, text: result.slice(0, 20_000), truncated: result.length > 20_000 });
     } else if (result && typeof result === "object" && "data" in result && typeof result.data === "string") {
       const filename = `screenshot-${action}.png`;
-      writeFileSync(join(journal.directory, filename), Buffer.from(result.data, "base64"));
-      journal.add("observation", { action, name, screenshot: filename });
+      journal.add("observation", { action, name, screenshotOmitted: true, reason: "Raw image persistence disabled by safety policy" });
     } else {
       journal.add("outcome", { action, name, result, durationMs: Date.now() - started });
     }

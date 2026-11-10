@@ -4,12 +4,17 @@ import type { BetaBrowserClickTarget, BetaBrowserGetPageTextInput, BetaBrowserLe
 import { chromium, type Browser, type BrowserContext, type Frame, type Page } from "playwright";
 import { checkUrl, testPolicy, PlaywrightAdapter, installHumanBlockerGuard, type Policy } from "../surfaces/playwright.js";
 import { BeforeDispatchError } from "./failures.js";
+import { enforceOperation, installNetworkPolicy } from "../safety/policy.js";
+import { learnPageSecrets } from "../safety/persistence.js";
+import { captureSnapshot } from "../capability/evidence.js";
+import { CapabilityError } from "../capability/contract.js";
 
 export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   onExecute?: (context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput, run: () => Promise<BetaBrowserMemberResult>) => Promise<BetaBrowserMemberResult>;
   private readonly refs = new Map<string, Frame>();
   private nextRef = 0;
   private handoffAdapter: PlaywrightAdapter | undefined;
+  private checkNetwork = () => {};
   async isHumanOnlyTarget(target: BetaBrowserClickTarget): Promise<boolean> {
     for (const rule of this.policy.humanBlockers ?? []) {
       if (rule.url !== this.page.url()) continue;
@@ -57,14 +62,13 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
   static async launch(headless: boolean, policy: Policy = testPolicy): Promise<LocalPlaywrightBrowser> {
     const browser = await chromium.launch({ headless });
     try {
-      const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+      const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, serviceWorkers: "block" });
       await context.addInitScript(installHumanBlockerGuard, policy.humanBlockers ?? []);
-      await context.route("**/*", (route) => {
-        const url = new URL(route.request().url());
-        try { checkUrl(url.href, policy); return route.continue(); } catch { return route.abort(); }
-      });
+      const checkNetwork = await installNetworkPolicy(context, policy);
       const page = await context.newPage();
-      return new LocalPlaywrightBrowser(browser, context, page, policy);
+      const driver = new LocalPlaywrightBrowser(browser, context, page, policy);
+      driver.checkNetwork = checkNetwork;
+      return driver;
     } catch (error) {
       await browser.close();
       throw error;
@@ -79,7 +83,8 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
 
   protected override async execute(context: BetaToolsetCallContext, name: BetaBrowserMemberName, input: BetaBrowserMemberInput): Promise<BetaBrowserMemberResult> {
     const action = name === "left_click" ? "click" : name === "form_input" ? "fill" : ["read_page", "get_page_text", "screenshot"].includes(name) ? "extract" : name;
-    if (["navigate", "click", "fill", "wait", "extract"].includes(action) && !this.policy.actions.includes(action)) throw new ToolError(`Action ${action} is blocked by policy`);
+    this.checkNetwork();
+    if (name !== "form_input" && ["navigate", "click", "fill", "wait", "extract"].includes(action) && !this.policy.actions.includes(action)) throw new CapabilityError("POLICY_DENIED", "Action type is not allowed");
     const run = () => super.execute(context, name, input);
     return this.onExecute ? this.onExecute(context, name, input, run) : run();
   }
@@ -88,7 +93,12 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
     this.checkTab(input.tab_id);
     this.refs.clear();
     const url = input.url;
-    const response = url === "back" ? await this.page.goBack() : url === "forward" ? await this.page.goForward() : url === "reload" ? await this.page.reload() : await this.page.goto(url.includes("://") ? url : `https://${url}`, { waitUntil: "load" });
+    if (!['back','forward','reload'].includes(url)) checkUrl(url.includes("://") ? url : `https://${url}`, this.policy);
+    let response;
+    try { response = url === "back" ? await this.page.goBack() : url === "forward" ? await this.page.goForward() : url === "reload" ? await this.page.reload() : await this.page.goto(url.includes("://") ? url : `https://${url}`, { waitUntil: "load" }); }
+    catch (error) { this.checkNetwork(); throw error; }
+    this.checkNetwork(); checkUrl(this.page.url(), this.policy);
+    await learnPageSecrets(this.page);
     return { url: this.page.url(), title: await this.page.title(), status: response?.status() };
   }
 
@@ -137,6 +147,12 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
 
   protected override async left_click(_context: BetaToolsetCallContext, input: BetaBrowserLeftClickInput): Promise<void> {
     this.checkTab(input.tab_id);
+    if (!this.policy.actions.includes("click")) throw new CapabilityError("POLICY_DENIED", "Click is not allowed");
+    await captureSnapshot(this.page);
+    const facts = await this.inspectTarget(input.target);
+    if (!facts || typeof facts.frame !== "number" || typeof facts.node !== "string") throw new CapabilityError("POLICY_DENIED", "Cannot classify unresolved click target");
+    const resolved = this.page.frames()[facts.frame]!.locator(`[data-cap-node="${facts.node}"]`);
+    await enforceOperation(this.page, resolved, "click", this.policy);
     if (input.target.type === "coordinate") await this.page.mouse.click(input.target.x, input.target.y);
     else {
       const frame = this.refs.get(input.target.ref);
@@ -144,6 +160,7 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
       await frame.locator(`[data-browser-ref="${input.target.ref}"]`).click();
     }
     this.refs.clear();
+    this.checkNetwork();
   }
 
   async inspectTarget(target: BetaBrowserClickTarget): Promise<Record<string, unknown> | null> {
@@ -214,9 +231,10 @@ export class LocalPlaywrightBrowser extends BetaAbstractBrowserToolset20260801 {
     const target = frame.locator(`[data-browser-ref="${input.target.ref}"]`);
     if (await target.getAttribute("type") === "password") throw new ToolError("Secret entry is outside this public-data slice");
     if (await target.evaluate((element) => element.tagName.toLowerCase()) === "select") {
+      await enforceOperation(this.page, target, "selectOption", this.policy);
       const matchesLabel = await target.locator("option").evaluateAll((options, value) => options.some((option) => (option as HTMLOptionElement).label.trim() === value), input.value);
       await target.selectOption(matchesLabel ? { label: input.value } : { value: input.value });
-    } else await target.fill(input.value);
+    } else { await enforceOperation(this.page, target, "fill", this.policy); await target.fill(input.value); }
   }
 
   currentUrl(): string {

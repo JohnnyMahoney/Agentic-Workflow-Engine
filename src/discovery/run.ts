@@ -1,15 +1,16 @@
+import { withSafety, sanitize, learnPageSecrets } from "../safety/persistence.js";
+import { writeFileSync } from "../safety/persistence.js";
 import { ToolError } from "@anthropic-ai/sdk/helpers/beta/toolsets";
 import { ActiveDiscoveryBudget } from "./execution-control.js";
 import { DiscoveryHandoff } from "./handoff.js";
 import type { HandoffOptions } from "../replay/handoff.js";
 import Anthropic from "@anthropic-ai/sdk";
-import { writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { LocalPlaywrightBrowser } from "./local-browser.js";
 import { Journal, executeLogged, loggedInput, type Event } from "./recorder.js";
 import { captureSnapshot, type CompilationRequest, type DiscoveryEvidence, type Snapshot } from "../capability/evidence.js";
 import { BeforeDispatchError } from "./failures.js";
-import { type Policy } from "../surfaces/playwright.js";
+import { testPolicy, type Policy } from "../surfaces/playwright.js";
 
 export interface DiscoveryTask {
   name: string;
@@ -27,6 +28,9 @@ export interface DiscoveryTask {
 }
 
 export async function runDiscovery(task: DiscoveryTask): Promise<Event> {
+  return withSafety(task.policy ?? testPolicy, task.compilationRequest?.bindings ?? {}, async () => sanitize(await runDiscoveryInternal(task)));
+}
+async function runDiscoveryInternal(task: DiscoveryTask): Promise<Event> {
   const journal = new Journal(task.directory);
   journal.add("run_start", { name: task.name, mode: "local", model: task.model, url: task.url, goal: task.goal, intent: task.client ? "injected_client_test" : "live_anthropic_api" });
   let browser: LocalPlaywrightBrowser | undefined;
@@ -49,6 +53,7 @@ export async function runDiscovery(task: DiscoveryTask): Promise<Event> {
     const recordAction: NonNullable<LocalPlaywrightBrowser["onExecute"]> = async (context, name, input, run) => {
       let before: Snapshot | undefined;
       try {
+        await learnPageSecrets(active.page);
         before = evidence ? await captureSnapshot(active.page) : undefined;
         let target: Record<string, unknown> | null = null;
         if ((name === "left_click" || name === "form_input") && "target" in input) {

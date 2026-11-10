@@ -1,3 +1,4 @@
+import {fixtureSafety} from "./fixture-safety.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -32,7 +33,7 @@ test("before-dispatch blocker: same-session handoff retries click once after tar
         if (mode === "missing") await adapter.page.locator("#member").evaluate(element => element.remove());
         if (mode === "ambiguous") await adapter.page.locator("#member").evaluate(element => element.after(element.cloneNode()));
       });
-      const policy = {...testPolicy, origins: [origin], detectors: [{code: "UNEXPECTED_DIALOG", status: "HARD_FAILURE" as const, target: css("#blocker"), value: {literal: "Operator required"}}]};
+      const policy = {...testPolicy, ...fixtureSafety, origins: [origin], detectors: [{code: "UNEXPECTED_DIALOG", status: "HARD_FAILURE" as const, target: css("#blocker"), value: {literal: "Operator required"}}]};
       const result = await replayCapability(path, {}, dir, policy, async (inputs, rules) => {
         launches++; adapter = await PlaywrightAdapter.launch(inputs, rules);
         const click = adapter.click.bind(adapter); adapter.click = async target => { clickCalls++; await click(target); };
@@ -223,11 +224,11 @@ test("real browser handoff retains context, records operator events without type
     sameContext = await adapter.page.evaluate(() => localStorage.getItem("operator") === "same-context");
   });
   try {
-    const result = await replayCapability(artifactPath, {}, dir, {...testPolicy, origins: [origin]}, async (inputs, policy) => { launches++; adapter = await PlaywrightAdapter.launch(inputs, policy); return adapter; }, {controller: op});
+    const result = await replayCapability(artifactPath, {}, dir, {...testPolicy, ...fixtureSafety, origins: [origin]}, async (inputs, policy) => { launches++; adapter = await PlaywrightAdapter.launch(inputs, policy); return adapter; }, {controller: op});
     assert.equal(result.status, "SUCCESS"); assert.equal(result.outputs!.before, "Loading"); assert.equal(launches, 1); assert.ok(sameContext);
     const events = readFileSync(result.evidenceRef, "utf8"); assert.ok(events.includes('"kind":"human_action"')); assert.ok(!events.includes("secret-not-for-logs"));
     assert.ok(events.includes("button:nth-of-type(1)"));
-    for (const phase of ["before", "after"]) assert.ok(readFileSync(join(dir, `handoff-three-${phase}.png`)).length > 0);
+    for (const phase of ["before", "after"]) assert.ok(readFileSync(join(dir, `handoff-three-${phase}.png.json`)).length > 0);
     writeFileSync(join(dir, "assertions.json"), JSON.stringify({passed: true, simulatedOperator: true, sameContext, launches, result}, null, 2));
   } finally { await new Promise<void>(done => server.close(() => done())); }
 });
@@ -263,7 +264,7 @@ test("Banking Sandbox session expiry resumes in the same page after operator log
     await adapter.page.locator("#out tbody td:first-child").filter({hasText: "M-1005"}).waitFor();
   });
   try {
-    const policy = {...testPolicy, origins: [origin], detectors: [{code: "SESSION_EXPIRED", status: "HARD_FAILURE" as const, target: css('[role="alert"]'), value: {literal: "SESSION_EXPIRED"}}]};
+    const policy = {...testPolicy, ...fixtureSafety, origins: [origin], detectors: [{code: "SESSION_EXPIRED", status: "HARD_FAILURE" as const, target: css('[role="alert"]'), value: {literal: "SESSION_EXPIRED"}}]};
     writeFileSync(join(dir, "policy.json"), JSON.stringify(policy, null, 2));
     const result = await replayCapability(artifactPath, {}, dir, policy, async (inputs, rules) => { launches++; adapter = await PlaywrightAdapter.launch(inputs, rules); return adapter; }, {controller: op});
     assert.equal(result.status, "SUCCESS"); assert.equal(result.outputs!.member, "M-1005"); assert.equal(launches, 1);

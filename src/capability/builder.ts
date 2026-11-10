@@ -1,6 +1,8 @@
+import { withSafety, sanitize, assertUnredacted } from "../safety/persistence.js";
+import { writeFileSync } from "../safety/persistence.js";
 import { validateHumanEvidence } from "../discovery/human-evidence.js";
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium, type Page } from "playwright";
 import { z } from "zod";
@@ -170,17 +172,23 @@ export async function validateCandidate(raw: unknown, evidence: DiscoveryEvidenc
   } finally { await browser.close(); }
 }
 
-export async function buildArtifact(candidatePath: string, evidencePath: string, directory: string, policy: Policy = testPolicy): Promise<Capability> {
+async function buildArtifactInternal(candidatePath: string, evidencePath: string, directory: string, policy: Policy = testPolicy): Promise<Capability> {
   const evidenceText = readFileSync(evidencePath, "utf8");
   const candidateText = readFileSync(candidatePath, "utf8");
   const readinessEvidence: Record<string, unknown>[] = [];
   const evidence = JSON.parse(evidenceText) as DiscoveryEvidence;
   const audit = readDiscoveryAudit(evidencePath);
   const admission = checkDiscoveryEvidence(evidence, audit, policy);
+  assertUnredacted(sanitize(JSON.parse(candidateText)));
+  assertUnredacted(sanitize(JSON.parse(evidenceText)));
   const capability = await validateCandidate(JSON.parse(candidateText), evidence, policy, readinessEvidence, audit);
   writeFileSync(join(directory, "discovery-acceptance.json"), JSON.stringify({...admission, status: "accepted", goalVerification: "candidate-outputs-and-final-checkpoints-validated", excludedFailedActions: admission.recoveredFailures.map(failure => failure.action), limitation: "Goal verification is limited to the explicit request contract, observed outputs and checkpoints; it is not a general proof of arbitrary natural-language intent."}, null, 2) + "\n");
   writeFileSync(join(directory, "artifact.json"), JSON.stringify(capability, null, 2) + "\n");
   writeFileSync(join(directory, "output-readiness-validation.json"), JSON.stringify({schemaVersion: capability.schemaVersion, outputs: readinessEvidence, legacyUnverifiedOutputs: Object.entries(capability.outputs).filter(([,output]) => "savedValue" in output.source && !output.validation).map(([name]) => name)}, null, 2) + "\n");
   writeFileSync(join(directory, "validation.json"), JSON.stringify({ status: "validated", evidenceSha256: createHash("sha256").update(evidenceText).digest("hex"), candidateSha256: createHash("sha256").update(candidateText).digest("hex"), evidencePath, candidatePath, humanInterventionsVerified: (evidence.interventions ?? []).map(item => item.id), policySha256: createHash("sha256").update(JSON.stringify(policy)).digest("hex"), checks: ["human-blocker-policy-and-dom", "schema", "semantic", "explicit-bindings", "recorded-dom-targets", "action-identity-and-order", "observed-select-state", "observed-extraction", "observed-checkpoints", "policy"], limitation: "Recorded states prove observed identity; fresh-session replay must separately test stability." }, null, 2) + "\n");
   return capability;
+}
+
+export async function buildArtifact(...args: Parameters<typeof buildArtifactInternal>): Promise<Capability> {
+  return withSafety(args[3] ?? testPolicy, {}, () => buildArtifactInternal(...args));
 }
