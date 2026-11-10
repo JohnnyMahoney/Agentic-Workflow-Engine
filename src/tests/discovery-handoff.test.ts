@@ -8,7 +8,7 @@ import { join, resolve } from "node:path";
 import { ActiveDiscoveryBudget, DiscoveryQueue } from "../discovery/execution-control.js";
 import { runDiscovery } from "../discovery/run.js";
 import { LocalPlaywrightBrowser } from "../discovery/local-browser.js";
-import { checkDiscoveryEvidence, readDiscoveryAudit } from "../discovery/acceptance.js";
+import { admitDiscoveryEvidence, checkDiscoveryEvidence, readDiscoveryAudit } from "../discovery/acceptance.js";
 import { validateHumanEvidence } from "../discovery/human-evidence.js";
 import { humanRequestSchema } from "../discovery/handoff.js";
 import { buildArtifact } from "../capability/builder.js";
@@ -31,7 +31,7 @@ test("Discovery active budget pauses without losing its bound; shared queue seri
   assert.throws(() => humanRequestSchema.parse({reason: "BYPASS_POLICY", description: "x"}));
 });
 
-for (const scenario of ["dismiss", "policy-guard", "stale-action", "driver-fallback", "business-action", "abort", "unresolved", "network-outage"]) {
+for (const scenario of ["dismiss", "policy-guard", "stale-action", "driver-fallback", "business-action", "abort", "unresolved", "unresolved-stop", "network-outage"]) {
   test(`Discovery SDK integration: ${scenario} (scripted API, real browser)`, async () => {
     const server = createServer((_, response) => { response.setHeader("Content-Type", "text/html"); response.end('<main><p id="member">M-1001</p><p id="balance">$0.00</p><button id="business" onclick="document.querySelector(\'#balance\').textContent=\'$100.00\'">Business action</button></main><div id="blocker" role="dialog"><p>Operator acknowledgement required</p><button id="dismiss" onclick="document.querySelector(\'#blocker\').remove()">Acknowledge</button></div>'); });
     await new Promise<void>(done => server.listen(0, "127.0.0.1", done));
@@ -128,6 +128,14 @@ for (const scenario of ["dismiss", "policy-guard", "stale-action", "driver-fallb
             assert.equal(result.status, "SUCCESS");
             assert.equal(result.outputs?.balance, "$0.00");
           }
+        } else if (scenario === "unresolved-stop") {
+          // Claude may end its turn normally with an honest refusal. That is
+          // not proof of goal completion or resolved intervention.
+          checkDiscoveryEvidence(evidence, audit, policy);
+          await assert.rejects(admitDiscoveryEvidence(evidence, audit, policy), {code: "DISCOVERY_HANDOFF_UNRESOLVED"});
+          const out = join(directory, "rejected-compilation");
+          await assert.rejects(compileEvidence(join(directory, "discovery-v2.json"), out, "must-not-call-model", policy), {code: "DISCOVERY_HANDOFF_UNRESOLVED"});
+          assert.equal(existsSync(join(out, "artifact.json")), false);
         } else {
           await assert.rejects(validateHumanEvidence(evidence, policy), /not a proven/);
           const out = join(directory, "rejected-compilation");

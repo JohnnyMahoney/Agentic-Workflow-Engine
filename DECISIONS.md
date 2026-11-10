@@ -441,7 +441,7 @@ execution; page scripts and timers continue running while input is blocked.
 | Decision | Required evidence | Execution |
 | --- | --- | --- |
 | HUMAN_COMPLETED | Existing associated conditions all match; every pending mutation has a verified confirms relationship | Complete the failed step and continue in order |
-| SAFE_RETRY | Failed operation is extract/wait/assert and there are no pending mutations | Execute that observation-only step once more with bounded waits |
+| SAFE_RETRY | Observation-only step, or proven beforeDispatch failure; no pending mutations; policy, detectors and target revalidated | Execute the step once with bounded waits |
 | HANDOFF_UNRESOLVED | Insufficient conditions, blocked UI, invalid origin, ambiguity, failed retry or operator timeout | Stop without skipping or repeating a modifying action |
 | OUTCOME_UNKNOWN | Failure leaves a potentially modifying operation unconfirmed | Stop with reconciliationRequired; never automatically repeat the write |
 
@@ -450,7 +450,8 @@ step requires following contiguous wait/assert checks with a confirms link to th
 step. Identity/type checks in the group must all pass. Global final checkpoints
 are not assumed to be postconditions for an arbitrary click. Generic actions without
 sufficient associations stop unresolved. Click, fill, selectOption and navigate
-are never retried by handoff, even when marked readOnly. One intervention and at
+may execute once after a proven beforeDispatch failure (D12 amendment); an unknown
+or started dispatch cannot use that recovery path. One intervention and at
 most one safe recovery attempt are allowed per failed step.
 
 Eligible cases include missing/ambiguous targets, condition/output timeouts,
@@ -512,6 +513,16 @@ See [operator details](docs/handoff.md) and [the stable example](examples/handof
 
 ## D12 - Discovery handoff and trusted blocker admission
 
+**Admission correction:** The live negative run
+`test3-discovery-20261109-191823` showed an honest model refusal after an unresolved
+handoff, but the CLI announced recorded-for-compilation. Normal end_turn is not
+goal success. Discovery CLI now runs the existing offline human-evidence checks
+before announcing eligibility, writes a rejected admission result on failure,
+and reports DISCOVERY_HANDOFF_UNRESOLVED when a configured blocker remains in
+post-intervention evidence. Compilation/Builder retain their independent checks.
+The original negative run is preserved; its saved evidence now rejects without
+another API call, while the positive Test 2 evidence still admits.
+
 **Replay recovery amendment (approved):** Track each attempt as beforeDispatch,
 started, or completed. Only failures before the adapter operation begins provide
 beforeDispatch proof; never infer it from the disappearance of a blocker or an
@@ -540,11 +551,12 @@ input events while paused/verifying, including frames, and releases that guard
 on take-control. It adds no DOM elements or attributes, preserving admission
 snapshots. Regression coverage dispatches DOM clicks independently of CDP and
 checks locked/unlocked behavior. All 42 tests passed after the correction;
-physical mouse acceptance remains to be repeated by the operator. This protects
+the subsequent live handoff suite is documented in the acceptance record. This protects
 page interaction during handoff, not browser chrome, devtools or arbitrary scripts.
 
-**Status:** Accepted implementation strategy; genuine Claude full-pipeline human
-acceptance pending, deferred at the author's request.
+**Status:** Accepted and live-validated for Section 3.6 in the current web MVP.
+See [live acceptance and limitations](evidence/discovery-handoff/manual/README.md).
+The earlier deferral was superseded by the five manual test scenarios.
 
 **Decision:** Reuse the same-session CLI controller from D11 in Discovery. Register
 the typed request_human tool through the official SDK helper alongside Browser Use.
@@ -581,8 +593,17 @@ devtools or running scripts. Three interventions maximum, five minutes each;
 180 seconds of active Discovery time. Unknown prior action effects remain subject
 to conservative admission. Existing data-capture limitations still apply.
 
-**Validation:** The 42-test regression suite passed, including nine Discovery
-handoff tests. These use real Chromium and the installed SDK runner with scripted
+**Closure validation:** All five live scenarios were reviewed: no-intervention
+lookup, successful Discovery/Compilation/fresh Replay handoff, unresolved Resume,
+Abort in both stages, and rejected manual business actions. Test 2 returned
+M-1001 / Checking / $2,450.75 after a single proven beforeDispatch retry. Test 3's
+admission fix was revalidated offline against preserved evidence, not rerun live.
+Discovery Abort's generic CLI code remains a reporting limitation; its audit records
+HANDOFF_ABORTED. Current regression: **44/44 passed**, run sequentially because
+parallel runs previously exposed pattern-evaluation timeouts. No timeout threshold
+was loosened. See [closure test log](evidence/discovery-handoff/closure/tests.log).
+
+**Automated coverage:** Tests use real Chromium and the installed SDK runner with scripted
 API responses and simulated operators. The successful test validates a hand-authored
 candidate and performs a fresh Replay with a second intervention; it is not proof
 of genuine LLM compilation. Abort, unresolved blocker, policy guard, stale refs,
@@ -590,3 +611,10 @@ driver fallback, human business-action rejection and API outage are covered.
 See [verification evidence](evidence/discovery-handoff/README.md),
 [control flow and limits](docs/discovery-handoff.md), and
 [exact live acceptance commands](examples/discovery-handoff/README.md).
+
+**Next slice:** Section 3.4 remains open. Review existing origin/action enforcement
+and gaps for routes, define conservative trusted handling of risky actions, and
+prevent secrets/raw sensitive data from entering every persisted evidence channel.
+Validate policy denial before dispatch and redaction with synthetic sensitive-data
+fixtures. Human approval must not bypass these controls. Concrete behavior choices
+will be proposed before implementing that safety slice.

@@ -1,0 +1,31 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_ABORTED",
+  "sessionId": "66b822de-0e62-4d4a-ad05-21049ae4ec93",
+  "stepId": "focusMember",
+  "retryable": false,
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test4-replay-20261109-192228\\events.jsonl",
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "memberInput"
+  },
+  "observed": {
+    "code": "HANDOFF_ABORTED",
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "HANDOFF_ABORTED",
+    "recoveryMessage": "Operator aborted replay"
+  },
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "HANDOFF_ABORTED",
+    "recoveryMessage": "Operator aborted replay",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

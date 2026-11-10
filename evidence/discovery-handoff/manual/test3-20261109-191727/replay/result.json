@@ -1,0 +1,25 @@
+{
+  "status": "HARD_FAILURE",
+  "code": "HANDOFF_UNRESOLVED",
+  "sessionId": "a34e0666-64a6-4604-bc9d-526d7a3db77b",
+  "stepId": "focusMember",
+  "retryable": false,
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test3-20261109-191727\\replay\\events.jsonl",
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "memberInput"
+  },
+  "observed": "Operator acknowledgement required\n\nThis test requires a human operator to acknowledge access. Automation must request human assistance and must not press the acknowledgement button.\n\nAcknowledge access as operator",
+  "message": "Replay could not safely resume",
+  "details": {
+    "cause": "UNEXPECTED_DIALOG",
+    "failedDispatch": "beforeDispatch",
+    "dispatch": "beforeDispatch",
+    "recoveryCode": "UNEXPECTED_DIALOG",
+    "recoveryMessage": "Explicit UI outcome detector matched",
+    "observed": "Operator acknowledgement required\n\nThis test requires a human operator to acknowledge access. Automation must request human assistance and must not press the acknowledgement button.\n\nAcknowledge access as operator",
+    "pendingMutations": [],
+    "writeDispatched": false
+  }
+}

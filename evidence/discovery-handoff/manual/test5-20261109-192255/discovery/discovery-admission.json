@@ -1,0 +1,5 @@
+{
+  "status": "rejected",
+  "code": "HUMAN_EVIDENCE_UNVERIFIED",
+  "message": "Human changes lack a trusted temporary-blocker rule; essential human-only steps cannot be compiled"
+}

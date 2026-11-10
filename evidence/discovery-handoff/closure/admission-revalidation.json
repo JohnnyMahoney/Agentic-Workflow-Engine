@@ -1,0 +1,34 @@
+{
+  "kind": "offline-revalidation-of-saved-live-evidence",
+  "newDiscovery": false,
+  "results": [
+    {
+      "evidencePath": "evidence/discovery-handoff/manual/test2-guard-20261109-185606/discovery/discovery-v2.json",
+      "auditHashes": {
+        "events": "f0edd16dea3fd5eb09495ad2a0cb2be8f618068ea0eb7d5e92abe880f7729c9f",
+        "summary": "a18c3599a4ac38aaf9868e19a9d5e2fa4e7f4dd33daf7f83449c545c22ae6251"
+      },
+      "status": "eligible-for-compilation"
+    },
+    {
+      "evidencePath": "evidence/discovery-handoff/manual/test3-discovery-20261109-191823/discovery/discovery-v2.json",
+      "auditHashes": {
+        "events": "ebee4274585cfbd1662a5bb9c07374304cf508323639ce049def6dbbeee5d2d3",
+        "summary": "979f49ac87c73e3f07a77e7c6c57116199b79aad82e52c67285b855faea7018e"
+      },
+      "status": "rejected",
+      "code": "DISCOVERY_HANDOFF_UNRESOLVED",
+      "message": "Configured blocker remains after human control returned; Discovery is not eligible for compilation"
+    },
+    {
+      "evidencePath": "evidence/discovery-handoff/manual/test5-20261109-192255/discovery/discovery-v2.json",
+      "auditHashes": {
+        "events": "0975e077e6a5ccdbc0d21c3773ddeeac36204812695545ab6836b42d0d2ac9a4",
+        "summary": "65293e25237594a7d9ec47f99b990712de13e971ce7d4ef5b00a8f935132c8cf"
+      },
+      "status": "rejected",
+      "code": "HUMAN_EVIDENCE_UNVERIFIED",
+      "message": "Human changes lack a trusted temporary-blocker rule; essential human-only steps cannot be compiled"
+    }
+  ]
+}

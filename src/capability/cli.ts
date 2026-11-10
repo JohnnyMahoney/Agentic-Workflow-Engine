@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { requestSchema } from "./evidence.js";
 import { CapabilityError, validateInputs, type Inputs } from "./contract.js";
 import { PlaywrightAdapter, policySchema, testPolicy } from "../surfaces/playwright.js";
-import { checkDiscoveryEvidence, readDiscoveryAudit } from "../discovery/acceptance.js";
+import { admitDiscoveryEvidence, readDiscoveryAudit } from "../discovery/acceptance.js";
 import type { DiscoveryEvidence } from "./evidence.js";
 
 import { cliHandoffController } from "../replay/handoff.js";
@@ -34,7 +34,13 @@ async function main(): Promise<void> {
     const result = await runDiscovery({ name: request.id, url: request.url, goal: `${goal}\nRead the relevant page text both before acting and after the final state appears.`, model: process.env.CLAUDE_MODEL ?? "claude-sonnet-5-5", headless: args.includes("--headless"), directory, compilationRequest: request, policy, ...(args.includes("--handoff") ? {handoff: {controller: cliHandoffController()}} : {}) });
     if (!(result.assessment as { completed: boolean }).completed) throw new Error(`Discovery did not complete; inspect ${directory}`);
     const evidencePath = join(directory, "discovery-v2.json");
-    const admission = checkDiscoveryEvidence(JSON.parse(readFileSync(evidencePath, "utf8")) as DiscoveryEvidence, readDiscoveryAudit(evidencePath), policy);
+    let admission;
+    try {
+      admission = await admitDiscoveryEvidence(JSON.parse(readFileSync(evidencePath, "utf8")) as DiscoveryEvidence, readDiscoveryAudit(evidencePath), policy);
+    } catch (error) {
+      writeFileSync(join(directory, "discovery-admission.json"), JSON.stringify({status: "rejected", code: error instanceof CapabilityError ? error.code : "ADMISSION_FAILED", message: error instanceof Error ? error.message : String(error)}, null, 2) + "\n");
+      throw error;
+    }
     writeFileSync(join(directory, "discovery-admission.json"), JSON.stringify(admission, null, 2) + "\n");
     console.log(JSON.stringify({ status: "recorded-for-compilation", goalVerified: false, evidence: evidencePath, recoveredFailures: admission.recoveredFailures.length }));
   } else if (command === "compile") {

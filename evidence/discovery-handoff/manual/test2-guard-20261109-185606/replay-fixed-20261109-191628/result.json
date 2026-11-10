@@ -1,0 +1,14 @@
+{
+  "status": "SUCCESS",
+  "code": "SUCCESS",
+  "sessionId": "e2a2589c-7981-426c-b6ea-c3e0f1ffcd6a",
+  "stepId": "checkpoints",
+  "outputs": {
+    "memberId": "M-1001",
+    "accountType": "Checking",
+    "balance": "$2,450.75"
+  },
+  "outputReadiness": "validated",
+  "retryable": false,
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test2-guard-20261109-185606\\replay-fixed-20261109-191628\\events.jsonl"
+}

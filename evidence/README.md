@@ -5,7 +5,8 @@ Original logs and failures are preserved; a later fix does not change an earlier
 
 [Discovery handoff verification](discovery-handoff/README.md) contains automated
 SDK/real-browser tests with scripted model responses and simulated operators.
-It is separate from genuine model-driven evidence; live acceptance is pending.
+It is separate from [genuine live handoff acceptance](discovery-handoff/manual/README.md),
+which closes Section 3.6 for the current web MVP.
 
 ## Genuine model-driven workflows
 

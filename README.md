@@ -52,7 +52,7 @@ and the [design report](REPORT.md).
 | §3.3 Replay | Implemented/tested for this web MVP: parameterization, output readiness, typed outcomes and bounded recovery. Evidence includes failed runs and subsequent fixes; not universal reliability or final assignment acceptance. |
 | §3.4 Safety | Partial: origin/action policy and conservative write handling; production redaction and comprehensive risky-action controls remain. |
 | §3.5 Evidence | Structured logs, snapshots, validation reports and failure screenshots available for synthetic fixtures. |
-| §3.6 Handoff | Discovery and Replay CLI takeover/resume implemented; automated browser tests and live Replay operator runs recorded. Genuine human-assisted Discovery -> Compilation -> Replay acceptance remains pending. |
+| §3.6 Handoff | Accepted for the current web MVP: genuine Claude Discovery, separate Compilation and fresh Replay with a real operator; success, unresolved, abort and rejected manual actions verified. [Live acceptance](evidence/discovery-handoff/manual/README.md). |
 | §3.7 Heterogeneity | Web adapter seam and three web surfaces demonstrated; desktop and tenant reuse remain design work. |
 
 ## Prerequisites and setup
@@ -160,7 +160,8 @@ Historical failures remain unchanged and are not counted as successful runs.
 - Synthetic/public test data only; DOM, screenshots and outputs are not fully PII-redacted.
 - Handoff is opt-in and requires an interactive terminal. Discovery compilation
   admits only proven, trusted-policy blocker dismissals; arbitrary human business
-  actions fail closed. Live full-pipeline human acceptance remains pending.
+  actions fail closed. Live full-pipeline acceptance covers the controlled demo;
+  arbitrary authentication and human business operations remain unsupported.
   Without --handoff, failure closes the session.
 - Linear workflows cannot safely express the existing-account conditional branch.
 - v2.0 artifacts remain compatible but may report legacy-unverified output readiness;

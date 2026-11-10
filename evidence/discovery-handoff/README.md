@@ -1,8 +1,12 @@
 # Discovery handoff verification
 
-Implementation regression evidence, not a genuine Claude run. The full live
-Discovery -> Claude Compilation -> Validation -> fresh Replay with a human is
-deferred at the author's request. Section 3.6 is not claimed complete.
+Start with [live acceptance](manual/README.md): all five manual scenarios were
+reviewed, including genuine Claude Discovery, separate Compilation and successful
+fresh Replay. Section 3.6 is accepted for the current web MVP.
+
+The verification directory below contains earlier automated regression evidence,
+with scripted API responses and simulated operators. The current regression log is
+[closure/tests.log](closure/tests.log); original logs remain unchanged.
 
 `npm.cmd test` passed **42/42**, including nine Discovery handoff tests and nine
 Replay handoff tests. [Full log](verification/final-tests.log).

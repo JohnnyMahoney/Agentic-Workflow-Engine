@@ -45,8 +45,9 @@ applicable. Outcomes are SUCCESS, BUSINESS_OUTCOME, RECOVERABLE_ERROR, HARD_FAIL
 and OUTCOME_UNKNOWN. Authentication/permission errors need explicit UI detectors;
 a timeout alone does not imply either.
 
-Only explicitly supported safe reads can retry. Writes are never reissued by the
-engine. An unconfirmed potential mutation yields OUTCOME_UNKNOWN and requires
+Safe reads may retry; after handoff, an action proven blocked before dispatch
+may execute once after policy, detector and target checks, with no pending mutation.
+Potentially dispatched writes are never automatically reissued. An unconfirmed potential mutation yields OUTCOME_UNKNOWN and requires
 external reconciliation. Semantic checkpoints and output conditions reject known
 premature states, but sparse observations cannot establish exhaustive correctness.
 Effect annotations and conclusive rejection detectors still require trusted review.
@@ -77,7 +78,8 @@ Replay now supports opt-in CLI handoff: take-control, resume, abort. Eligible st
 failures pause in the same browser/context, preserving completed steps, outputs
 and pending writes. Manual event metadata and before/after screenshots are recorded.
 Resume checks existing artifact conditions and confirms relationships. Only safe
-reads/checks may retry once; insufficient proof stops unresolved or OUTCOME_UNKNOWN.
+reads/checks or proven beforeDispatch operations may retry once; insufficient
+proof stops unresolved or OUTCOME_UNKNOWN.
 
 Automated tests cover five-step continuation, unresolved/aborted handoff, uncertain
 writes and real-browser session-expiry remediation with a simulated operator.
@@ -87,8 +89,10 @@ active budget during bounded human control, and requires fresh refs on return.
 Compilation admits human changes only under a trusted temporary-blocker dismissal
 policy with audit and offline DOM checks. Human-only business steps are rejected;
 DOM checks cannot prove hidden server effects. Automated tests use scripted API
-responses and simulated operators, not genuine Claude acceptance. Full live
-Discovery -> Compilation -> Replay handoff acceptance remains pending. Other tabs,
+responses and simulated operators. Separately, [live acceptance](evidence/discovery-handoff/manual/README.md)
+confirms genuine Claude Discovery -> Compilation -> fresh Replay with a real
+operator, plus unresolved, abort and manual-business-action rejection scenarios.
+Section 3.6 is accepted for this controlled web MVP. Other tabs,
 crash-resume and OS-level control locking remain out of scope; no dashboard was added.
 
 ## Safety
@@ -109,6 +113,7 @@ No distributed services, database, plugin framework, desktop automation, tenant
 infrastructure or conditional workflow engine. The Banking Sandbox is a local,
 client-storage fixture with known defects preserved, not a banking backend.
 
-Next priorities are live full-pipeline handoff acceptance, safety completion and focused acceptance
-coverage. Sections 3.4-3.7 are not collectively claimed complete. Reviewer cleanup
+Next priority is Section 3.4: trusted route/action enforcement, conservative
+risky-action policy and sensitive-data handling with adversarial fixture tests.
+Section 3.6 is closed for the documented web MVP; the full assignment remains open. Reviewer cleanup
 changes documentation/navigation only and does not substitute for those deliverables.

@@ -38,6 +38,11 @@ Human actions are stored separately from executable Discovery actions. Admission
 checks intervention/audit consistency; Compilation preflight and Builder also run
 offline, network-disabled DOM verification before accepting human-assisted evidence.
 
+The Discovery CLI runs that same human-evidence verification before reporting
+recorded-for-compilation. A configured blocker still present after Resume returns
+DISCOVERY_HANDOFF_UNRESOLVED and writes a rejected discovery-admission.json.
+An ordinary model end_turn, including an honest refusal, does not bypass this check.
+
 The approved MVP supports a narrow trusted `humanBlockers` policy: exact URL,
 main-document container selector, and its dismissal control. The policy author
 certifies that the control only removes a temporary blocker. Automation cannot
@@ -64,8 +69,8 @@ This is not a genuine Claude Discovery or Compilation run.
 
 See [test evidence](../evidence/discovery-handoff/README.md) and the
 [live demo commands](../examples/discovery-handoff/README.md). Live Claude
-Discovery -> Compilation -> fresh Replay with a real operator remains deferred
-at the author's request. Section 3.6 is not yet claimed complete.
+Discovery -> Compilation -> fresh Replay with a real operator has passed within
+the controlled web MVP. See [five live scenarios and limitations](../evidence/discovery-handoff/manual/README.md). Section 3.6 is accepted for that scope.
 
 Only synthetic/public data is supported for this demo: screenshots, page text and
 model replies are not a production-grade credential/PII redaction boundary.

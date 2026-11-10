@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { CapabilityError } from "../capability/contract.js";
 import type { DiscoveryEvidence, Snapshot } from "../capability/evidence.js";
 import { FORM_INPUT_REJECTED_MESSAGE } from "./failures.js";
-import { sameObservedState } from "./human-evidence.js";
+import { sameObservedState, validateHumanEvidence } from "./human-evidence.js";
 import type { Policy } from "../surfaces/playwright.js";
 
 export interface DiscoveryAudit { events: Record<string, unknown>[]; summary: {assessment?: {completed?: boolean}; toolFailures?: number}; sourceHashes?: Record<string, string> }
@@ -13,6 +13,13 @@ export interface DiscoveryAdmission {
   goalVerification: "pending-builder-validation";
   recoveredFailures: {action: number; code: string; recoveryAction: number; target: {frame: number; node: string}; proof: "typed-before-dispatch" | "legacy-driver-guard-and-audit"; unchangedSnapshotSha256: string}[];
   auditHashes?: Record<string, string>;
+}
+// Used by the Discovery CLI before it announces compilation eligibility.
+// The structural audit alone cannot establish that human assistance resolved a blocker.
+export async function admitDiscoveryEvidence(evidence: DiscoveryEvidence, audit: DiscoveryAudit | undefined, policy: Policy): Promise<DiscoveryAdmission> {
+  const admission = checkDiscoveryEvidence(evidence, audit, policy);
+  await validateHumanEvidence(evidence, policy);
+  return admission;
 }
 const hash = (text: string) => createHash("sha256").update(text).digest("hex");
 function reject(code: string, message: string, details: Record<string, unknown> = {}): never { throw new CapabilityError(code, message, details); }

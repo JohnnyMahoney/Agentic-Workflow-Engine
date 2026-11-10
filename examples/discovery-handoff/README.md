@@ -4,7 +4,8 @@ Standalone synthetic UI with a temporary operator acknowledgement overlay. It
 does not modify the Banking Sandbox. The acknowledgement only removes the overlay;
 the trusted policy describes that exact control. It is not a real login system.
 
-Live acceptance has not been run yet. The commands below call Claude during
+[Live acceptance passed](../../evidence/discovery-handoff/manual/README.md) for this
+controlled demo, including negative scenarios. The commands below call Claude during
 Discovery and Compilation, requiring `ANTHROPIC_API_KEY` in the ignored root `.env`.
 Replay makes no LLM calls. Run from the repository root.
 
@@ -40,7 +41,7 @@ npm.cmd run capability:replay -- --artifact "$run/compilation/artifact.json" --i
 
 The fresh Replay session shows the overlay again. Repeat take-control, click the
 acknowledgement, resume. The expected outputs are M-1001, Checking and $2,450.75;
-these are expected results, not a claim of an executed live test.
+these outputs were verified in the saved successful live Replay.
 
 Inspect each run's `events.jsonl`, screenshots and results. Discovery also saves
 `discovery-v2.json` with separate interventions. Compilation saves its request,

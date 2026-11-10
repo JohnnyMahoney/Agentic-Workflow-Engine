@@ -22,9 +22,13 @@ export async function validateHumanEvidence(evidence: DiscoveryEvidence, policy:
       const fail = () => { throw new CapabilityError("HUMAN_EVIDENCE_UNVERIFIED", "Human action is not a proven policy-scoped blocker dismissal; cannot compile essential human-only steps", {intervention: intervention.id}); };
       if (intervention.outcome !== "resumed" || !intervention.after) fail();
       const end = intervention.after!;
+      await after.setContent(end.frames.find(frame => frame.id === 0)?.html ?? "");
+      for (const rule of policy.humanBlockers ?? []) {
+        if (rule.url === end.url && await after.locator(rule.container).count()) {
+          throw new CapabilityError("DISCOVERY_HANDOFF_UNRESOLVED", "Configured blocker remains after human control returned; Discovery is not eligible for compilation", {intervention: intervention.id});
+        }
+      }
       if (!intervention.humanActions.length && sameObservedState(intervention.before, end)) {
-        await after.setContent(end.frames.find(frame => frame.id === 0)?.html ?? "");
-        for (const rule of policy.humanBlockers ?? []) if (rule.url === end.url && await after.locator(rule.container).count()) fail();
         continue;
       }
       if (intervention.before.url !== end.url || intervention.before.frames.length !== end.frames.length) fail();

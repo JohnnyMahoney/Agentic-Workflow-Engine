@@ -1,0 +1,18 @@
+{
+  "sessionId": "66b822de-0e62-4d4a-ad05-21049ae4ec93",
+  "capabilityId": "memberLookupBalance",
+  "description": "Search the Synthetic Bank page for a member ID and return the member ID, account type and balance shown in the member details. If an operator acknowledgement dialog blocks the page, a human must dismiss it first. It is not an executable step.",
+  "stepId": "focusMember",
+  "reason": "UNEXPECTED_DIALOG",
+  "completedSteps": [
+    "openApp"
+  ],
+  "pendingMutations": [],
+  "savedOutputNames": [],
+  "expected": {
+    "id": "focusMember",
+    "action": "click",
+    "target": "memberInput"
+  },
+  "evidenceRef": "evidence\\discovery-handoff\\manual\\test4-replay-20261109-192228\\events.jsonl"
+}
