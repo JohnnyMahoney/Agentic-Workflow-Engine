@@ -1,7 +1,7 @@
 # Engineering Decisions
 
 This records the engineering choices behind the current web slice. The
-interface.ai assignment defines the requirements.
+The project requirements define the implementation scope.
 
 Entries record decisions at their original slice. Later decisions supersede earlier
 limits: D11-D12 cover live handoff, D13 covers current safety. Use the
