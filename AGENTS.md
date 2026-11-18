@@ -2,9 +2,9 @@
 
 ## 1. Source of Truth
 
-The primary source of requirements is `assignment/interface-ai-assignment.pdf`.
+The project requirements are summarized in `README.md` and `REPORT.md`.
 
-**Goal:** Build a correct, focused MVP of the computer-use automation system described in the interface.ai assignment, satisfying the requirements in the provided PDF.
+**Goal:** Build a correct, focused MVP of a computer-use automation system, satisfying the documented project requirements.
 
 Before implementing a feature, consult the relevant assignment sections. Do not replace explicit requirements with assumptions or generic best practices.
 
